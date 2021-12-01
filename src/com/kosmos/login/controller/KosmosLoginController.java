@@ -226,6 +226,11 @@ public class KosmosLoginController {
 				
 				msg = "successTe";
 				
+				// ==================
+				// 리턴 추가 :모델
+				// ==================
+				
+				
 			} else if (resultList.size() == 0){
 				System.out.println("DB에서 받아온 데이터가 없습니다. >>> : 아이디와 비밀번호를 다시 입력해주세요.");
 				
