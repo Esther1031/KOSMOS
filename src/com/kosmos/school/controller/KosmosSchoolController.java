@@ -29,7 +29,7 @@ public class KosmosSchoolController {
 	// 학교 메인 홈페이지(case1 : 수강신청에서 학교홈페이지 '링크' 클릭시 / case2 : 학교 홈페이지에서 '홈' 클릭시)
 	// =======================================================================================
 	
-	@GetMapping("home")
+	@GetMapping("mainHome")
 	public String home() {
 		
 		return "";
@@ -41,7 +41,7 @@ public class KosmosSchoolController {
 	// 학교 소개 : 학교 연혁 클릭
 	// =======================================================================================
 	
-	@GetMapping("history")
+	@GetMapping("mainHistory")
 	public String history() {
 		
 		return "";
@@ -61,7 +61,7 @@ public class KosmosSchoolController {
 	// 학교 소개 : 주소 약도 클릭
 	// =======================================================================================
 	
-	@GetMapping("location")
+	@GetMapping("mainLocation")
 	public String location() {
 		
 		return "";
@@ -72,7 +72,7 @@ public class KosmosSchoolController {
 	// 수강 신청 클릭
 	// =======================================================================================
 	
-	@GetMapping("apply")
+	@GetMapping("mainApply")
 	public String apply() {
 		
 		return "";
@@ -83,7 +83,7 @@ public class KosmosSchoolController {
 	// 수업 정보 : 과목 정보 클릭
 	// =======================================================================================
 	
-	@GetMapping("subject")
+	@GetMapping("mainSubject")
 	public String subject() {
 		
 		return "";
@@ -93,7 +93,7 @@ public class KosmosSchoolController {
 	// 수업 정보 : 시간표 클릭
 	// =======================================================================================
 	
-	@GetMapping("timeTable")
+	@GetMapping("mainTimeTable")
 	public String timeTable() {
 		
 		return "";
@@ -103,7 +103,7 @@ public class KosmosSchoolController {
 	// 공지사항 클릭
 	// =======================================================================================
 	
-	@GetMapping("notice")
+	@GetMapping("mainNotice")
 	public String notice() {
 		
 		return "";
@@ -114,7 +114,7 @@ public class KosmosSchoolController {
 	// 코스모스숲 클릭
 	// =======================================================================================
 	
-	@GetMapping("forest")
+	@GetMapping("mainForest")
 	public String forest() {
 		
 		return "";
@@ -124,7 +124,7 @@ public class KosmosSchoolController {
 	// 마이페이지 클릭
 	// =======================================================================================
 	
-	@GetMapping("myPage")
+	@GetMapping("mainMyPage")
 	public String myPage() {
 		
 		return "";
