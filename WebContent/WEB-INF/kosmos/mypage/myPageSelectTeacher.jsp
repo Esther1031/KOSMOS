@@ -1,5 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="com.kosmos.mypage.vo.KosmosMypageVO"%>
+
+<% Object data = request.getAttribute("data"); %>
+<% 
+	
+	KosmosMypageVO mvo = new KosmosMypageVO(); 
+
+	mvo = (KosmosMypageVO) data;
+
+	String mt_name = mvo.getMT_NAME();
+	String mt_id = mvo.getMT_ID();
+	String mt_cp = mvo.getMT_CP();
+	String mt_zipcode = mvo.getMT_ZIPCODE();
+	String mt_doro = mvo.getMT_DORO();
+	String mt_dorodetail = mvo.getMT_DORODETAIL();
+
+
+	System.out.println("\n===== jsp에서 출력한 데이터 ========================\n");
+	System.out.println("컨트롤러에서 가져온 데이터 mt_name >>> : " + mt_name);
+	System.out.println("컨트롤러에서 가져온 데이터 mt_id >>> : " + mt_id);
+	System.out.println("컨트롤러에서 가져온 데이터 mt_cp >>> : " + mt_cp);
+	System.out.println("컨트롤러에서 가져온 데이터 mt_zipcode >>> : " + mt_zipcode);
+	System.out.println("컨트롤러에서 가져온 데이터 mt_doro >>> : " + mt_doro);
+	System.out.println("컨트롤러에서 가져온 데이터 mt_dorodetail >>> : " + mt_dorodetail);
+	System.out.println("\n==============================================\n");
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,11 +73,10 @@
 		
 		$("#updateForm").click(function(){
 			console.log("회원정보 수정 버튼이 클릭됨 >>> : 회원 정보수정 팝업창을 띄웁니다.");
-			window.open("/KOSMOS/popUp/myPageUpdateTeacher.jsp", "", "width=680, height=800, resizable=no, scrollbars=no, status=no");
+			window.open("myPageUpdateTeacher.k", "", "width=680, height=800, resizable=no, scrollbars=no, status=no");
 		});
 		
 	});
-
 
 </script>
 </head>
@@ -63,28 +88,25 @@
 			<div class="left" border="1">
 				<div class="photozone">
 					<img src="img/profile.jpg" width="200" height="240">
-					<br> 최현준 / (29)
-					<br> 풀스택개발자
+					<br> ${ data.MT_NAME }<br>
 				</div>
 			</div>
 			<div class="right" border="1">
 				<div class="selectzone">
 					<br>
 					<h2>내 회원정보</h2>
-					<br>이름 : <input type="text" name="stname" id="stname"><br>
-					<br>이메일 : <input type="text" name="stmail" id="stmail"><br>
-					<br>핸드폰번호 : <input type="text" name="stcp" id="stcp"><br>
+					<br>이름 : <input type="text" name="tename" id="tename" value="${ data.MT_NAME }"><br>
+					<br>이메일 : <input type="text" name="temail" id="temail" value="${ data.MT_ID }"><br>
+					<br>핸드폰번호 : <input type="text" name="tecp" id="tecp" value="${ data.MT_CP }"><br>
 					<br>
-					우편번호 : <input type="text" name="me_zipcode" id="me_zipcode" style="width:50px" maxlength="6" >
+					우편번호 : <input type="text" name="me_zipcode" id="me_zipcode" style="width:50px" maxlength="6"  value="${ data.MT_ZIPCODE }">
 			 		<br>
 			 		<br>
-			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px">
+			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value="${ data.MT_DORO }">
 			 		<br>
 			 		<br>	 	
-			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px">
+			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.MT_DORODETAIL }">
 			 		<br>
-					<br>
-					담당과목 : <input type="text" name="role" id="role" style="width:250px">
 					<br>
 					<br>
 					<p align="center">

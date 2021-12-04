@@ -36,8 +36,8 @@ public class KosmosLoginServiceImpl implements KosmosLoginService {
 	}
 	@Override
 	public List<KosmosLoginVO> checkIdPwTeacher(KosmosLoginVO lvo){
-		logger.info("KosmosLoginServiceImpl.checkIdPwTeacher()진입 >>> : 선생의 아이디와 비밀번호 확인을 위해 DAO로 진입합니다.");
-		return kosmosLoginDAO.checkIdPwStudent(lvo);
+		logger.info("KosmosLoginServiceImpl.checkIdPwTeacher()진입 >>> : 교사의 아이디와 비밀번호 확인을 위해 DAO로 진입합니다.");
+		return kosmosLoginDAO.checkIdPwTeacher(lvo);
 	}
 
 	@Override
@@ -49,7 +49,7 @@ public class KosmosLoginServiceImpl implements KosmosLoginService {
 	
 	@Override
 	public List<KosmosLoginVO> findIdTeacher(KosmosLoginVO lvo){
-		logger.info("KosmosLoginServiceImpl.findIdTeacher()진입 >>> : 선생의 아이디 확인을 위해 DAO로 진입합니다.");
+		logger.info("KosmosLoginServiceImpl.findIdTeacher()진입 >>> : 교사의 아이디 확인을 위해 DAO로 진입합니다.");
 		return kosmosLoginDAO.findIdTeacher(lvo);
 	}
 	
@@ -62,7 +62,7 @@ public class KosmosLoginServiceImpl implements KosmosLoginService {
 	
 	@Override
 	public List<KosmosLoginVO> findPwTeacher(KosmosLoginVO lvo){
-		logger.info("KosmosLoginServiceImpl.findPwTeacher()진입 >>> : 선생의 비밀번호 확인을 위해 DAO로 진입합니다.");
+		logger.info("KosmosLoginServiceImpl.findPwTeacher()진입 >>> : 교사의 비밀번호 확인을 위해 DAO로 진입합니다.");
 		return kosmosLoginDAO.findPwTeacher(lvo);
 	}
 	

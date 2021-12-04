@@ -30,7 +30,7 @@ public class KosmosLoginDAOImpl implements KosmosLoginDAO {
 	
 	@Override
 	public List<KosmosLoginVO> checkIdPwTeacher(KosmosLoginVO lvo){
-		logger.info("KosmosLoginDAOImpl.checkIdPwTeacher()진입 >>> : 선생의 아이디와 비밀번호 확인을 위해 XML을 체크합니다.");
+		logger.info("KosmosLoginDAOImpl.checkIdPwTeacher()진입 >>> : 교사의 아이디와 비밀번호 확인을 위해 XML을 체크합니다.");
 		return sqlSession.selectOne("checkIdPwTeacher", lvo);
 	}
 
@@ -43,7 +43,7 @@ public class KosmosLoginDAOImpl implements KosmosLoginDAO {
 	
 	@Override
 	public List<KosmosLoginVO> findIdTeacher(KosmosLoginVO lvo){
-		logger.info("KosmosLoginDAOImpl.findIdTeacher()진입 >>> : 선생의 아이디 확인을 위해 XML을 체크합니다.");
+		logger.info("KosmosLoginDAOImpl.findIdTeacher()진입 >>> : 교사의 아이디 확인을 위해 XML을 체크합니다.");
 		return sqlSession.selectOne("findIdTeacher", lvo);
 	}
 	
@@ -56,7 +56,7 @@ public class KosmosLoginDAOImpl implements KosmosLoginDAO {
 	
 	@Override
 	public List<KosmosLoginVO> findPwTeacher(KosmosLoginVO lvo){
-		logger.info("KosmosLoginDAOImpl.findPwTeacher()진입 >>> : 선생의 비밀번호 확인을 위해 XML을 체크합니다.");
+		logger.info("KosmosLoginDAOImpl.findPwTeacher()진입 >>> : 교사의 비밀번호 확인을 위해 XML을 체크합니다.");
 		return sqlSession.selectOne("findPwTeacher", lvo);
 	}
 	

@@ -6,53 +6,53 @@ public class KosmosLoginVO {
 	// Variables
 	// ===============================================================================	
 	
-	// 선생 회원가입시 : 인증키
+	// 교사 회원가입시 : 인증키
 	private String authenticationkey;
 
-	// 로그인, 아이디, 비번 찾기시 
-	// 선택하는 유형  : 학생 [01], 선생[02]
+	// 회원 로그인, 아이디, 비밀번호 찾기시 
+	// 선택하는 유형  : 학생 [01], 교사[02]
 	private String chkbox;
 	
-	// 로그인시 : 아이디(e-mail형태), 패스워드
-	private String mid;
+	// 회원 로그인시 입력하는 아이디(e-mail형태), 패스워드
+	private String mid;		
 	private String mpw;
 	
-	// 아이디 찾기시 : 이름, 생년월일(아이디찾기용 / 비밀번호찾기용)
+	// 회원 아이디 찾기시 입력하는 이름, 생년월일(아이디찾기용 / 비밀번호찾기용)
 	private String mname;
 	private String mbirthId;
 	private String mbirthPw;
 	
-	// 비밀번호 찾기시 : 휴대폰번호
+	// 회원 비밀번호 찾기시 : 휴대폰번호
 	private String mcp;
 	
-	// 학생 로그인시 수강신청으로 보내는(DB에서 바인딩 받는) 데이터 : 학생 아이디, 학생 비번, 회원 번호
+	// 학생 로그인시  DB의 학생 테이블에서 조회해온 데이터 : 학생 아이디, 학생 비번, 회원 번호
 	private String MS_ID;
 	private String MS_PW;
 	private String MS_NUM;
 	
-	// 선생 로그인시 수강신청으로 보내는(DB에서 바인딩 받는) 데이터 : 선생 아이디, 선생 비번, 회원 번호
+	// 교사 로그인시  DB의 교사 테이블에서 조회해온 데이터 : 교사 아이디, 교사 비번, 회원 번호
 	private String MT_ID;
 	private String MT_PW;	
 	private String MT_NUM;
 	
 	
-	// 아이디 찾기시 DB에서 바인딩 받는 데이터 : 학생  
+	// 아이디 찾기시 DB의 학생 테이블에서 조회해온 데이터 : 학생 이름, 학생 생년월일  
 	private String MS_NAME;
 	private String MS_BIRTH;
 	
-	// 아이디 찾기시 DB에서 바인딩 받는 데이터 : 선생
+	// 아이디 찾기시 DB의 교사 테이블에서 조회해온 데이터 : 교사 이름, 교사 생년월일  
 	private String MT_NAME;
 	private String MT_BIRTH;
 		
-	// 비밀번호 찾기시 DB에서 바인딩 받는 데이터 : 학생
+	// 비밀번호 찾기시 DB의 학생 테이블에서 조회해온 데이터 : 학생 휴대폰 번호  
 	private String MS_CP;
 	
-	// 비밀번호 찾기시 DB에서 바인딩 받는 데이터 : 선생
+	// 비밀번호 찾기시 DB의 교사 테이블에서 조회해온 데이터 : 교사 휴대폰 번호  
 	private String MT_CP;
 		
 	 
 	// ===============================================================================
-	// Cunstructor & Overloading
+	// Cunstructor + Overloading
 	// ===============================================================================	
 	
 	// 기본 생성자
@@ -60,7 +60,7 @@ public class KosmosLoginVO {
 		
 	}
 
-	// 선생 인증확인용 : 인증키
+	// 교사 인증확인용 : 인증키
 	public KosmosLoginVO(String authenticationkey) {
 		this.authenticationkey = authenticationkey;
 	}
@@ -267,9 +267,9 @@ public class KosmosLoginVO {
 		System.out.println("DB에서 받아온 학생ID lvo.getMS_ID() >>> : " + lvo.getMS_ID());
 		System.out.println("DB에서 받아온 학생ID lvo.getMS_PW() >>> : " + lvo.getMS_PW());
 		System.out.println("DB에서 받아온 학생ID lvo.getMS_NUM() >>> : " + lvo.getMS_NUM());
-		System.out.println("DB에서 받아온 선생ID lvo.getMT_ID() >>> : " + lvo.getMT_ID());
-		System.out.println("DB에서 받아온 선생ID lvo.getMT_PW() >>> : " + lvo.getMT_PW());
-		System.out.println("DB에서 받아온 선생ID lvo.getMT_NUM() >>> : " + lvo.getMT_NUM());
+		System.out.println("DB에서 받아온 교사ID lvo.getMT_ID() >>> : " + lvo.getMT_ID());
+		System.out.println("DB에서 받아온 교사ID lvo.getMT_PW() >>> : " + lvo.getMT_PW());
+		System.out.println("DB에서 받아온 교사ID lvo.getMT_NUM() >>> : " + lvo.getMT_NUM());
 		System.out.println("\n============================================\n");
 
 	}

@@ -16,12 +16,12 @@ public interface KosmosLoginDAO {
 	
 	// 아이디 / 비밀번호 찾기 (loginForm.jsp)
 	
-	// 아이디 찾기 (학생, 선생)
+	// 아이디 찾기 (학생, 교사)
 	public List<KosmosLoginVO> findIdStudent(KosmosLoginVO lvo);
 	public List<KosmosLoginVO> findIdTeacher(KosmosLoginVO lvo);
 
 	
-	// 비밀번호 찾기 (학생, 선생)
+	// 비밀번호 찾기 (학생, 교사)
 	public List<KosmosLoginVO> findPwStudent(KosmosLoginVO lvo);
 	public List<KosmosLoginVO> findPwTeacher(KosmosLoginVO lvo);
 

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosmos.mypage.dao.KosmosMypageDAO">
+		
+<!-- 마이페이지에 출력할 학생 데이터 조회 -->
+		
+<select id="selectStudentData" parameterType="loginVO" resultType="mypageVO">
+		
+		SELECT	 A.MS_ID				MS_ID
+				,A.MS_NAME				MS_NAME
+				,A.MS_NUM				MS_NUM
+				,A.MS_CP				MS_CP
+				,A.MS_ZIPCODE			MS_ZIPCODE
+				,A.MS_DORO				MS_DORO
+				,A.MS_DORODETAIL		MS_DORODETAIL
+				,A.MS_INSDATE			MS_INSDATE
+				,A.MS_GRADE				MS_GRADE
+				,A.MS_CLASS				MS_CLASS
+				,A.MS_NUMBER			MS_NUMBER
+		FROM	KOSMOS_MEMSTU A
+		WHERE 	A.MS_DELYN = 'Y'
+		AND		A.MS_ID = #{MS_ID, jdbcType=VARCHAR}
+		AND		A.MS_NUM = #{MS_NUM, jdbcType=VARCHAR}
+</select>
+		
+		
+<!-- 마이페이지에 출력할 교사 데이터 조회 -->
+	
+<select id="selectTeacherData" parameterType="loginVO" resultType="mypageVO">
+		
+		SELECT	 A.MT_ID				MT_ID
+				,A.MT_NAME				MT_NAME
+				,A.MT_NUM				MT_NUM
+				,A.MT_CP				MT_CP
+				,A.MT_ZIPCODE			MT_ZIPCODE
+				,A.MT_DORO				MT_DORO
+				,A.MT_DORODETAIL		MT_DORODETAIL
+		FROM	KOSMOS_MEMTEA A
+		WHERE 	A.MT_DELYN = 'Y'
+		AND		A.MT_ID = #{MT_ID, jdbcType=VARCHAR}
+		AND		A.MT_NUM = #{MT_NUM, jdbcType=VARCHAR}
+</select>
+
+
+
+<!-- 학생 정보 업데이트  -->
+<!-- 가입일 빼고 전체 데이터 업데이트 가능하도록. -->
+<update id="updateStudentInfo" parameterType="mypageVO">
+	UPDATE 	KOSMOS_MEMSTU 
+	SET 					  MS_ID = #{MS_ID, jdbcType=VARCHAR}
+			  			  	, MS_NAME = #{MS_NAME, jdbcType=VARCHAR}
+						  	, MS_CP = #{MS_CP, jdbcType=VARCHAR}
+							, MS_ZIPCODE = #{MS_ZIPCODE, jdbcType=VARCHAR}
+							, MS_DORO = #{MS_DORO, jdbcType=VARCHAR}
+							, MS_DORODETAIL = #{MS_DORODETAIL, jdbcType=VARCHAR}
+							, MS_GRADE = #{MS_GRADE, jdbcType=VARCHAR}
+							, MS_CLASS = #{MS_CLASS, jdbcType=VARCHAR}
+							, MS_NUMBER = #{MS_NUMBER, jdbcType=VARCHAR}
+	WHERE 	MS_DELYN 		= 'Y' 
+	AND 	MS_ID 			= #{mid, jdbcType = VARCHAR}
+	AND 	MS_NUM 			= #{mnum, jdbcType = VARCHAR}
+
+</update>
+
+
+<!-- 교사 정보 업데이트 -->
+<!-- 전체 데이터 업데이트 가능하도록. -->
+<update id="updateTeacherInfo" parameterType="mypageVO">
+
+
+</update>
+
+
+
+</mapper>

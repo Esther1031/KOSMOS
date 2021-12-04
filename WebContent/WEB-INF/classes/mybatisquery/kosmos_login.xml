@@ -10,7 +10,7 @@
 	*테스트용으로 생성한 테이블입니다.
 	
 	KOSMOS_MEMSTU : 학생 테이블
-	KOSMOS_MEMTEA : 선생 테이블
+	KOSMOS_MEMTEA : 교사 테이블
 	
 	===========================
 	
@@ -99,7 +99,7 @@
 	
 	
 	
-	============================= 선생 테이블 생성 ==================================
+	============================= 교사 테이블 생성 ==================================
 	
 	
 	SELECT * FROM KOSMOS_MEMTEA;
@@ -126,7 +126,7 @@
                         );
 	
 	
-		============================= 선생 테이블 데이터 삽입 ==================================
+		============================= 교사 테이블 데이터 삽입 ==================================
 	
 	
 	INSERT INTO KOSMOS_MEMTEA (
@@ -177,7 +177,7 @@
 	AND   	A.MS_PW = #{mpw, jdbcType=VARCHAR} 
 </select>
 
-<!-- 선생 로그인시, ID/PW 확인 쿼리 -->
+<!-- 교사 로그인시, ID/PW 확인 쿼리 -->
 <select id="checkIdPwTeacher" parameterType="loginVO" resultType="loginVO">	
 	SELECT 	 A.MT_ID 	MT_ID
 	   		,A.MT_PW 	MT_PW
@@ -198,7 +198,7 @@
 	AND   	 A.MS_BIRTH = #{mbirthId, jdbcType=VARCHAR} 
 </select>
 
-<!-- 아이디 찾기 쿼리 : 선생-->
+<!-- 아이디 찾기 쿼리 : 교사-->
 <select id="findIdTeacher" parameterType="loginVO" resultType="loginVO">	
 	SELECT 	 A.MT_ID 	MT_ID
 	FROM 	 KOSMOS_MEMTEA A 
@@ -220,7 +220,7 @@
 </select>
 
 
-<!-- 비밀번호 찾기 쿼리 : 선생 -->
+<!-- 비밀번호 찾기 쿼리 : 교사 -->
 <select id="findPwTeacher" parameterType="loginVO" resultType="loginVO">	
 	SELECT 	 A.MT_ID 	MT_ID
 			,A.MT_PW 	MT_PW

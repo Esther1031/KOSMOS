@@ -230,7 +230,7 @@
 </script>	
 
 <body>
-<h3 align="center">회원 가입(선생)</h3>
+<h3 align="center">회원 가입(교사)</h3>
 <hr>
 <form name="memForm" id="memForm">
 <table border="1" align="center">

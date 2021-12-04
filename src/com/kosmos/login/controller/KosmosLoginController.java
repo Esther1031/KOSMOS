@@ -3,7 +3,9 @@ package com.kosmos.login.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
+import org.apache.catalina.Session;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -44,7 +46,7 @@ public class KosmosLoginController {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
 		return "login/loginForm";
 	}
-
+	
 	
 	//==================================================================================
 	//	회원가입 링크 클릭시 회원 유형 선택화면으로 연결
@@ -69,7 +71,7 @@ public class KosmosLoginController {
 	
 	
 	//==================================================================================
-	//	회원 유형 선택화면에서 선생 선택시 교사인증 팝업 창으로 연결
+	//	회원 유형 선택화면에서 교사 선택시 교사인증 팝업 창으로 연결
 	//==================================================================================
 	
 	@GetMapping("joinTeacher")
@@ -116,7 +118,7 @@ public class KosmosLoginController {
 	
 	
 	//==================================================================================
-	//	선생 인증 성공시 교사회원가입 창으로 연결
+	//	교사 인증 성공시 교사회원가입 창으로 연결
 	//==================================================================================
 	
 	@GetMapping("teacherForm")
@@ -151,13 +153,13 @@ public class KosmosLoginController {
 	
 	
 	//==================================================================================
-	//	로그인 버튼 클릭시
+	//	로그인 버튼 클릭시 메시지 리턴 로직 : 성공 / 실패
 	//==================================================================================
 	
-	//@PostMapping("login")
-	@RequestMapping(value="login", method=RequestMethod.POST, produces="application/text; charset=UTF-8")
+	//@PostMapping("loginMsg")
+	@RequestMapping(value="loginMsg", method=RequestMethod.POST, produces="application/text; charset=UTF-8")
 	@ResponseBody
-	public String login (HttpServletRequest req, KosmosLoginVO lvo, Model model) {
+	public String login (HttpSession hs, KosmosLoginVO lvo, Model model) {
 		logger.info("KosmosLoginController.login() 진입 >>> : 로그인시 입력한 ID/PW를 확인합니다.");
 		
 		// 데이터가 바인딩된 객체에 담긴 내용 출력 
@@ -174,7 +176,7 @@ public class KosmosLoginController {
 		// 리스트 세팅
 		List<KosmosLoginVO> resultList = null;
 		
-		// jsp에서 체크박스 선택이 학생인지 선생인지 필터링
+		// jsp에서 체크박스 선택이 학생인지 교사인지 필터링
 		// chkbox 유형 : 학생인 경우 학생 로직(함수) 실행
 		if (01 == type) {
 			
@@ -186,14 +188,16 @@ public class KosmosLoginController {
 			if (resultList.size() > 0) {
 				
 				KosmosLoginVO lvo_ = new KosmosLoginVO();
-
+				
+				// loginVO객체에 학생 테이블에서 조회한 데이터를 담는다.
 				lvo_ = resultList.get(0);
 				
 				System.out.println("DB에서 조회한 학생 ID >>> : " + lvo_.getMS_ID());
 				System.out.println("DB에서 조회한 학생 PW >>> : " + lvo_.getMS_PW());
 				System.out.println("DB에서 조회한 학생 회원번호 >>> : " + lvo_.getMS_NUM());
-
-				//model.addAttribute("result", lvo_);
+				
+				// 세션에 세팅
+				hs.setAttribute("result", lvo_);
 
 				msg = "successSt";
 
@@ -204,31 +208,29 @@ public class KosmosLoginController {
 				msg = "fail";
 
 			}
-		// chkbox 유형 : 선생인경우 선생 로직(함수) 실행
+		// chkbox 유형 : 교사인경우 교사 로직(함수) 실행
 		} else if (02 == type) {
 			
-			System.out.println("02 >>> : 선택된 유형은 [선생]입니다.");
+			System.out.println("02 >>> : 선택된 유형은 [교사]입니다.");
 			
 		 	resultList = kosmosLoginService.checkIdPwTeacher(lvo);
-			System.out.println("resultList(선생) >>> : DB에서 리턴된 리스트의 사이즈를 출력합니다 : " + resultList.size());
+			System.out.println("resultList(교사) >>> : DB에서 리턴된 리스트의 사이즈를 출력합니다 : " + resultList.size());
 
 			if (resultList.size() > 0) {
 				
 				KosmosLoginVO lvo_ = new KosmosLoginVO();
-
+				
+				// loginVO객체에 교사 테이블에서 조회한 데이터를 담는다.
 				lvo_ = resultList.get(0);
 				
-				System.out.println("DB에서 조회한 선생 ID >>> : " + lvo_.getMS_ID());
-				System.out.println("DB에서 조회한 선생 PW >>> : " + lvo_.getMS_PW());
-				System.out.println("DB에서 조회한 선생 회원번호 >>> : " + lvo_.getMS_NUM());
+				System.out.println("DB에서 조회한 교사 ID >>> : " + lvo_.getMT_ID());
+				System.out.println("DB에서 조회한 교사 PW >>> : " + lvo_.getMT_PW());
+				System.out.println("DB에서 조회한 교사 회원번호 >>> : " + lvo_.getMT_NUM());
 				
-				//model.addAttribute("result", lvo_);
+				// 세션에 세팅
+				hs.setAttribute("result", lvo_);
 				
 				msg = "successTe";
-				
-				// ==================
-				// 리턴 추가 :모델
-				// ==================
 				
 				
 			} else if (resultList.size() == 0){
@@ -249,26 +251,6 @@ public class KosmosLoginController {
 	@GetMapping("checkEnvironment")
 	public String checkEnvironment() {
 		return "popUp/checkEnvironment";
-	}
-	
-	
-	//==================================================================================
-	// 학생 로그인 성공시 : 수강신청 페이지로 이동 
-	//==================================================================================
-	
-	@GetMapping("sgRegistration")
-	public String sgRegistration() {
-		return "sugang/sgRegistration";
-	}
-	
-	
-	//==================================================================================
-	// 선생 로그인 성공시 : 학생 관리 페이지로 이동
-	//==================================================================================
-	
-	@GetMapping("sgManagement")
-	public String sgManagement() {
-		return "sugang/sgManagement";
 	}
 	
 	
@@ -301,7 +283,7 @@ public class KosmosLoginController {
 		// 리스트 세팅
 		List<KosmosLoginVO> resultList = null;
 		
-		// jsp에서 체크박스 선택이 학생인지 선생인지 필터링
+		// jsp에서 체크박스 선택이 학생인지 교사인지 필터링
 		// chkbox 유형 : 학생인 경우 학생 로직(함수) 실행
 		if (01 == type) {
 			
@@ -332,10 +314,10 @@ public class KosmosLoginController {
 		
 		} else if(02 == type) {
 			
-			System.out.println("02 >>> : 선택된 유형은 [선생]입니다.");
+			System.out.println("02 >>> : 선택된 유형은 [교사]입니다.");
 			
 			resultList = kosmosLoginService.findIdTeacher(lvo);
-			System.out.println("resultList(선생) >>> : DB에서 리턴된 리스트의 사이즈를 출력합니다 : " + resultList.size());
+			System.out.println("resultList(교사) >>> : DB에서 리턴된 리스트의 사이즈를 출력합니다 : " + resultList.size());
 			
 			if (resultList.size() > 0) {
 				
@@ -343,7 +325,7 @@ public class KosmosLoginController {
 
 				lvo_ = resultList.get(0);
 				id = lvo_.getMT_ID();
-				System.out.println("DB에서 조회한 선생 ID >>> : " + id);
+				System.out.println("DB에서 조회한 교사 ID >>> : " + id);
 
 				msg = "회원님의 아이디는  "+ id + "입니다.";
 		
@@ -389,7 +371,7 @@ public class KosmosLoginController {
 		// 리스트 세팅
 		List<KosmosLoginVO> resultList = null;
 
-		// jsp에서 체크박스 선택이 학생인지 선생인지 필터링
+		// jsp에서 체크박스 선택이 학생인지 교사인지 필터링
 		// chkbox 유형 : 학생인 경우 학생 로직(함수) 실행
 		if (01 == type) {
 					
@@ -422,10 +404,10 @@ public class KosmosLoginController {
 				
 		} else if(02 == type) {
 					
-			System.out.println("02 >>> : 선택된 유형은 [선생]입니다.");
+			System.out.println("02 >>> : 선택된 유형은 [교사]입니다.");
 					
 			resultList = kosmosLoginService.findPwTeacher(lvo);
-			System.out.println("resultList(선생) >>> : DB에서 리턴된 리스트의 사이즈를 출력합니다 : " + resultList.size());
+			System.out.println("resultList(교사) >>> : DB에서 리턴된 리스트의 사이즈를 출력합니다 : " + resultList.size());
 					
 			if (resultList.size() > 0) {
 						

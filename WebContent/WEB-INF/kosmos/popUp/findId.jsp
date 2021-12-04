@@ -12,10 +12,10 @@
 
 		var chkbox = '';
 		
-		// 학생, 선생 중복 체크 불가 로직
+		// 학생, 교사 중복 체크 불가 로직
 		$("#student").click(function(){								// 학생 체크박스 클릭시
 			$("#student").prop("checked", true);					// 학생 checked 값을 true로.
-			if($("#teacher").prop("checked", true)) {				// 만약 선생 체크박스의 checked 값이 true면
+			if($("#teacher").prop("checked", true)) {				// 만약 교사 체크박스의 checked 값이 true면
 				$("#teacher").prop("checked", false);				// false로 바꿔준다.
 				
 				chkbox = $("#student").val();					// 변수 chkbox에 학생의 밸류 "01"넣기
@@ -23,15 +23,15 @@
 			console.log("학생이 선택되었습니다. >>> : value : [01]");	// 콘솔 출력
 		});
 		
-		$("#teacher").click(function(){								// 선생 체크박스 클릭시
-			$("#teacher").prop("checked", true);					// 선생 checked 값을 true로.
+		$("#teacher").click(function(){								// 교사 체크박스 클릭시
+			$("#teacher").prop("checked", true);					// 교사 checked 값을 true로.
 			if($("#student").prop("checked", true)){				// 만약 학생 체크박스의 checked 값이 true면
 				$("#student").prop("checked", false)				// false로 바꿔준다.
 				
-				chkbox = $("#teacher").val();					// 변수 chkbox에 선생의 밸류 "02"넣기
+				chkbox = $("#teacher").val();					// 변수 chkbox에 교사의 밸류 "02"넣기
 				
 			}
-			console.log("선생이 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
+			console.log("교사이 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
 		});
 		
 		
@@ -52,7 +52,7 @@
 			if (01 == chkbox) {
 				alert("선택하신 유형은 학생 입니다");
 			} else if(02 == chkbox) {
-				alert("선택하신 유형은 선생 입니다");
+				alert("선택하신 유형은 교사 입니다");
 			}
  				
 			console.log("유형 >>> : [" + chkbox +"]");
@@ -124,7 +124,7 @@
 		<tr>
 			<td>유형선택 : &nbsp;&nbsp;
 				<input type="checkbox" name="chkbox" id="student" value="01"><span>학생</span>&nbsp;
-				<input type="checkbox" name="chkbox" id="teacher" value="02"><span>선생</span>
+				<input type="checkbox" name="chkbox" id="teacher" value="02"><span>교사</span>
 			</td>
 		</tr>
 		

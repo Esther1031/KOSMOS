@@ -11,6 +11,7 @@
 		<typeAlias type="com.kosmos.subject.vo.KosmosSubjectVO" alias="subjectVO"/>
 		<typeAlias type="com.kosmos.sugang.vo.KosmosSugangVO" alias="sugangVO"/>
 		<typeAlias type="com.kosmos.login.vo.KosmosLoginVO" alias="loginVO"/>
+		<typeAlias type="com.kosmos.mypage.vo.KosmosMypageVO" alias="mypageVO"/>		
 		<typeAlias type="com.kosmos.login.vo.TempAuthNumVO" alias="authnumVO"/>	
 		<typeAlias type="com.kosmos.login.vo.TempPwVO" alias="pwVO"/>
 	</typeAliases>

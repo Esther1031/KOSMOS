@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>선생님 인증키 확인창</title>
+<title>교사 인증키 확인창</title>
 <style type="text/css">
 
 	.frame{
