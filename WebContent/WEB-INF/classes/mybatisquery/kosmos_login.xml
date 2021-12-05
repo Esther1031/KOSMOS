@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosmos.login.dao.KosmosLoginDAO">
+
+<!-- 
+
+	========== INFO ===========
+	
+	*테스트용으로 생성한 테이블입니다.
+	
+	KOSMOS_MEMSTU : 학생 테이블
+	KOSMOS_MEMTEA : 교사 테이블
+	
+	===========================
+	
+
+	
+	============================= 학생 테이블 생성 ==================================
+	
+	
+	
+	SELECT * FROM KOSMOS_MEMSTU;
+	DROP TABLE KOSMOS_MEMSTU;
+
+	CREATE TABLE KOSMOS_MEMSTU (
+	                             MS_NUM          VARCHAR2(20) PRIMARY KEY
+	                            ,MS_ID           VARCHAR2(100)
+	                            ,MS_NAME         VARCHAR2(20)
+	                            ,MS_GEN          VARCHAR2(2)
+	                            ,MS_BIRTH        VARCHAR2(10)
+	                            ,MS_PW           VARCHAR2(20)
+	                            ,MS_CP           VARCHAR2(16)
+	                            ,MS_ZIPCODE      VARCHAR2(6)
+	                            ,MS_DORO         VARCHAR2(300)
+	                            ,MS_DORODETAIL   VARCHAR2(800)
+	                            ,MS_PHOTO        VARCHAR2(300)
+	                            ,MS_GRADE        NUMBER(1)
+	                            ,MS_SEMESTER     NUMBER(1)
+	                            ,MS_CLASS        NUMBER(2)
+	                            ,MS_NUMBER       NUMBER(2)
+	                            ,MS_ADMYEAR      NUMBER(4)
+	                            ,MS_JOINYN       VARCHAR2(1)
+	                            ,MS_INSDATE      DATE
+	                            ,MS_UPDDATE      DATE
+	                            ,MS_DELYN        VARCHAR2(1)
+                        );
+
+
+	============================= 학생 테이블 데이터 삽입 ==================================
+
+
+	INSERT INTO KOSMOS_MEMSTU (
+	          
+	                             MS_NUM         
+	                            ,MS_ID           
+	                            ,MS_NAME         
+	                            ,MS_GEN          
+	                            ,MS_BIRTH        
+	                            ,MS_PW           
+	                            ,MS_CP           
+	                            ,MS_ZIPCODE      
+	                            ,MS_DORO         
+	                            ,MS_DORODETAIL   
+	                            ,MS_PHOTO        
+	                            ,MS_GRADE        
+	                            ,MS_SEMESTER     
+	                            ,MS_CLASS        
+	                            ,MS_NUMBER       
+	                            ,MS_ADMYEAR      
+	                            ,MS_JOINYN       
+	                            ,MS_INSDATE      
+	                            ,MS_UPDDATE      
+	                            ,MS_DELYN        
+	          
+	            ) VALUES (
+	
+	                             '202111260001'                         - 채번 로직을 따른다. //임시로 테스트 진행
+	                             ,'accelerator@kakao.com'               - 아이디는 이메일주소의 형태.
+	                             ,'김찬기'                               - ex)홍길동
+	                             ,'02'                                  - 01 : 여자, 02 : 남자
+	                             ,'19881215'                            - 1945년01월01일 형태 숫자연결
+	                             ,'111111'                              - 8자리 (영문?)
+	                             ,'01074101900'                         - 11자리 숫자
+	                             ,'08110'                               - 5자리 숫자
+	                             ,'서울시 양천구 신정로170'                  - API활용 : 도로명 주소
+	                             ,'107동 406호'                          - API활용 : 도로명 상세주소 
+	                             ,'lion'                                - 사진 (이름으로 테스트 진행)
+	                             ,'2'                                   - 학생의 학년
+	                             ,'1'                                   - 학생의 학기
+	                             ,'8'                                   - 학생의 반    
+	                             ,'24'                                  - 학생의 번호
+	                             ,'2021'                                - 입학년도
+	                             ,'Y'                                   - (임시로 'Y'생성 후 테스트 진행)
+	                             ,SYSDATE                               - 등록일 : 현재 일시
+	                             ,SYSDATE                               - 수정일 : 수정 당시 일시
+	                             ,'Y'                                   - 삭제여부 : 데이터존재 'Y', 없으면 'N'
+	            );
+	
+	
+	
+	============================= 교사 테이블 생성 ==================================
+	
+	
+	SELECT * FROM KOSMOS_MEMTEA;
+	DROP TABLE KOSMOS_MEMTEA;
+	COMMIT;
+
+
+	CREATE TABLE KOSMOS_MEMTEA (
+	                             MT_NUM          VARCHAR2(20)       PRIMARY KEY
+	                            ,MT_ID           VARCHAR2(100)
+	                            ,MT_NAME         VARCHAR2(20)
+	                            ,MT_GEN          VARCHAR2(2)
+	                            ,MT_BIRTH        VARCHAR2(10)
+	                            ,MT_PW           VARCHAR2(20)
+	                            ,MT_CP           VARCHAR2(16)
+	                            ,MT_ZIPCODE      VARCHAR2(6)
+	                            ,MT_DORO         VARCHAR2(300)
+	                            ,MT_DORODETAIL   VARCHAR2(800)
+	                            ,MT_PHOTO        VARCHAR2(300)
+	                            ,SB_NUM          VARCHAR2(10) 
+	                            ,MT_INSDATAE     DATE
+	                            ,MT_UPDDATE      DATE
+	                            ,MT_DELYN        VARCHAR2(1)
+                        );
+	
+	
+		============================= 교사 테이블 데이터 삽입 ==================================
+	
+	
+	INSERT INTO KOSMOS_MEMTEA (
+                             MT_NUM          
+                            ,MT_ID           
+                            ,MT_NAME         
+                            ,MT_GEN          
+                            ,MT_BIRTH        
+                            ,MT_PW           
+                            ,MT_CP           
+                            ,MT_ZIPCODE      
+                            ,MT_DORO         
+                            ,MT_DORODETAIL   
+                            ,MT_PHOTO        
+                            ,SB_NUM         
+                            ,MT_INSDATAE     
+                            ,MT_UPDDATE      
+                            ,MT_DELYN        
+            ) VALUES (
+
+                             '202111260001'          
+                            ,'accelerator@kakao.com'        
+                            ,'김찬기'
+                            ,'02'
+                            ,'19881215'
+                            ,'111111'
+                            ,'01074101900'
+                            ,'08110'
+                            ,'서울시 양천구 신정로170'
+                            ,'107동 406호'
+                            ,'lion'
+                            ,'001'
+                            ,SYSDATE
+                            ,SYSDATE      
+                            ,'Y' 
+            );
+ 
+ -->
+
+<!-- 학생 로그인시, ID/PW 확인 쿼리 -->
+<select id="checkIdPwStudent" parameterType="loginVO" resultType="loginVO">	
+	SELECT 	 A.MS_ID 	MS_ID
+	   		,A.MS_PW 	MS_PW 
+	   		,A.MS_NUM   MS_NUM
+	FROM 	KOSMOS_MEMSTU A 
+	WHERE 	A.MS_DELYN = 'Y'
+	AND   	A.MS_ID = #{mid, jdbcType=VARCHAR}	                          	 
+	AND   	A.MS_PW = #{mpw, jdbcType=VARCHAR} 
+</select>
+
+<!-- 교사 로그인시, ID/PW 확인 쿼리 -->
+<select id="checkIdPwTeacher" parameterType="loginVO" resultType="loginVO">	
+	SELECT 	 A.MT_ID 	MT_ID
+	   		,A.MT_PW 	MT_PW
+	   		,A.MT_NUM	MT_NUM 
+	FROM 	KOSMOS_MEMTEA A 
+	WHERE 	A.MT_DELYN = 'Y'
+	AND   	A.MT_ID = #{mid, jdbcType=VARCHAR}	                          	 
+	AND   	A.MT_PW = #{mpw, jdbcType=VARCHAR} 
+</select>
+
+
+<!-- 아이디 찾기 쿼리 : 학생-->
+<select id="findIdStudent" parameterType="loginVO" resultType="loginVO">	
+	SELECT 	 A.MS_ID 	MS_ID
+	FROM 	 KOSMOS_MEMSTU A 
+	WHERE 	 A.MS_DELYN = 'Y'
+	AND   	 A.MS_NAME = #{mname, jdbcType=VARCHAR}	                          	 
+	AND   	 A.MS_BIRTH = #{mbirthId, jdbcType=VARCHAR} 
+</select>
+
+<!-- 아이디 찾기 쿼리 : 교사-->
+<select id="findIdTeacher" parameterType="loginVO" resultType="loginVO">	
+	SELECT 	 A.MT_ID 	MT_ID
+	FROM 	 KOSMOS_MEMTEA A 
+	WHERE 	 A.MT_DELYN = 'Y'
+	AND   	 A.MT_NAME = #{mname, jdbcType=VARCHAR}	                          	 
+	AND   	 A.MT_BIRTH = #{mbirthId, jdbcType=VARCHAR}
+</select>
+
+
+<!-- 비밀번호 찾기 쿼리 : 학생 -->
+<select id="findPwStudent" parameterType="loginVO" resultType="loginVO">	
+	SELECT 	 A.MS_ID 	MS_ID
+			,A.MS_PW 	MS_PW
+	FROM 	 KOSMOS_MEMSTU A 
+	WHERE 	 A.MS_DELYN = 'Y'
+	AND   	 A.MS_ID = #{mid, jdbcType=VARCHAR}	                          	 
+	AND   	 A.MS_BIRTH = #{mbirthPw, jdbcType=VARCHAR}
+	AND		 A.MS_CP = #{mcp, jdbcType=VARCHAR} 
+</select>
+
+
+<!-- 비밀번호 찾기 쿼리 : 교사 -->
+<select id="findPwTeacher" parameterType="loginVO" resultType="loginVO">	
+	SELECT 	 A.MT_ID 	MT_ID
+			,A.MT_PW 	MT_PW
+	FROM 	 KOSMOS_MEMTEA A 
+	WHERE 	 A.MT_DELYN = 'Y'
+	AND   	 A.MT_ID = #{mid, jdbcType=VARCHAR}	                          	 
+	AND   	 A.MT_BIRTH = #{mbirthPw, jdbcType=VARCHAR}
+	AND		 A.MT_CP = #{mcp, jdbcType=VARCHAR}
+</select>
+
+
+</mapper>
