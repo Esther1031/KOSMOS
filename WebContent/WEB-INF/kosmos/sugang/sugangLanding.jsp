@@ -12,7 +12,8 @@
 
 <!-- 더미 kosmosSugangController로 이동 -->
 
-<a href="registration.k">수강신청</a>
+<a href="registration.k">수강신청</a><br>
+<a href="mainTimeTable.k">시간표</a>
 
 </body>
 </html>
