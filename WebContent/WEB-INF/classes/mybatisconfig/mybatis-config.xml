@@ -14,5 +14,6 @@
 		<typeAlias type="com.kosmos.mypage.vo.KosmosMypageVO" alias="mypageVO"/>		
 		<typeAlias type="com.kosmos.login.vo.TempAuthNumVO" alias="authnumVO"/>	
 		<typeAlias type="com.kosmos.login.vo.TempPwVO" alias="pwVO"/>
+		<typeAlias type="com.kosmos.school.vo.KosmosSchoolVO" alias="SchoolVO"/>
 	</typeAliases>
 </configuration>
