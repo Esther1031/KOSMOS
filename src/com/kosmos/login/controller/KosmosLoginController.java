@@ -169,7 +169,7 @@ public class KosmosLoginController {
 		String msg = "";
 		
 		// 체크박스 데이터 변수에 초기화 
-		String memberType = lvo.getChkbox();
+		String memberType = lvo.getLogin_type();
 		int type = Integer.parseInt(memberType);
 		System.out.println("type >>> : 입력된 유형을 출력합니다. : 0" + type);
 		
@@ -192,9 +192,9 @@ public class KosmosLoginController {
 				// loginVO객체에 학생 테이블에서 조회한 데이터를 담는다.
 				lvo_ = resultList.get(0);
 				
-				System.out.println("DB에서 조회한 학생 ID >>> : " + lvo_.getMS_ID());
-				System.out.println("DB에서 조회한 학생 PW >>> : " + lvo_.getMS_PW());
-				System.out.println("DB에서 조회한 학생 회원번호 >>> : " + lvo_.getMS_NUM());
+				System.out.println("DB에서 조회한 학생 ID >>> : " + lvo_.getMs_id());
+				System.out.println("DB에서 조회한 학생 PW >>> : " + lvo_.getMs_pw());
+				System.out.println("DB에서 조회한 학생 회원번호 >>> : " + lvo_.getMs_num());
 				
 				// 세션에 세팅
 				hs.setAttribute("result", lvo_);
@@ -223,9 +223,9 @@ public class KosmosLoginController {
 				// loginVO객체에 교사 테이블에서 조회한 데이터를 담는다.
 				lvo_ = resultList.get(0);
 				
-				System.out.println("DB에서 조회한 교사 ID >>> : " + lvo_.getMT_ID());
-				System.out.println("DB에서 조회한 교사 PW >>> : " + lvo_.getMT_PW());
-				System.out.println("DB에서 조회한 교사 회원번호 >>> : " + lvo_.getMT_NUM());
+				System.out.println("DB에서 조회한 교사 ID >>> : " + lvo_.getMt_id());
+				System.out.println("DB에서 조회한 교사 PW >>> : " + lvo_.getMt_pw());
+				System.out.println("DB에서 조회한 교사 회원번호 >>> : " + lvo_.getMt_num());
 				
 				// 세션에 세팅
 				hs.setAttribute("result", lvo_);
@@ -264,7 +264,7 @@ public class KosmosLoginController {
 	public String findId (HttpServletRequest req, KosmosLoginVO lvo) {
 		logger.info("KosmosLoginController.findId() 진입 >>> : 아이디 찾기 로직을 실행합니다.");
 		
-		logger.info(lvo.getChkbox());
+		logger.info(lvo.getLogin_type());
 		logger.info(lvo.getMname());
 		logger.info(lvo.getMbirthId());
 		
@@ -276,7 +276,7 @@ public class KosmosLoginController {
 		String id = "";
 		
 		// 체크박스 데이터 변수에 초기화 
-		String memberType = lvo.getChkbox();
+		String memberType = lvo.getLogin_type();
 		int type = Integer.parseInt(memberType);
 		System.out.println("type >>> : 입력된 유형을 출력합니다. : 0" + type);
 		
@@ -297,7 +297,7 @@ public class KosmosLoginController {
 				KosmosLoginVO lvo_ = new KosmosLoginVO();
 
 				lvo_ = resultList.get(0);
-				id = lvo_.getMS_ID();
+				id = lvo_.getMs_id();
 				System.out.println("DB에서 조회한 학생 ID >>> : " + id);
 
 				msg = "회원님의 아이디는  "+ id + "입니다.";
@@ -324,7 +324,7 @@ public class KosmosLoginController {
 				KosmosLoginVO lvo_ = new KosmosLoginVO();
 
 				lvo_ = resultList.get(0);
-				id = lvo_.getMT_ID();
+				id = lvo_.getMt_id();
 				System.out.println("DB에서 조회한 교사 ID >>> : " + id);
 
 				msg = "회원님의 아이디는  "+ id + "입니다.";
@@ -364,7 +364,7 @@ public class KosmosLoginController {
 		
 		
 		// 체크박스 데이터 변수에 초기화 
-		String memberType = lvo.getChkbox();
+		String memberType = lvo.getLogin_type();
 		int type = Integer.parseInt(memberType);
 		System.out.println("type >>> : 입력된 유형을 출력합니다. : 0" + type);
 				
@@ -385,10 +385,10 @@ public class KosmosLoginController {
 				KosmosLoginVO lvo_ = new KosmosLoginVO();
 
 				lvo_ = resultList.get(0);
-				id = lvo_.getMS_ID();
+				id = lvo_.getMs_id();
 				System.out.println("DB에서 조회한 ID >>> : " + id);
 
-				pw = lvo_.getMS_PW();
+				pw = lvo_.getMs_pw();
 				System.out.println("DB에서 조회한 PW >>> : " + pw);
 
 				msg = SendEmail.sendEmail(id, pw);
@@ -414,9 +414,9 @@ public class KosmosLoginController {
 				KosmosLoginVO lvo_ = new KosmosLoginVO();
 
 				lvo_ = resultList.get(0);
-				id = lvo_.getMT_ID();
+				id = lvo_.getMt_id();
 				System.out.println("DB에서 조회한 ID >>> : " + id);
-				pw = lvo_.getMT_PW();
+				pw = lvo_.getMt_pw();
 				System.out.println("DB에서 조회한 PW >>> : " + pw);
 
 				msg = SendEmail.sendEmail(id, pw);

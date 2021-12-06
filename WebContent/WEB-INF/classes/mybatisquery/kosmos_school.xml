@@ -3,7 +3,42 @@
 					"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 					
 <mapper namespace="com.kosmos.school.dao.KosmosSchoolDAO">
+<!-- 
+
+	KOSMOS_SUGANGLIST 테이블 생성 쿼리
+			
+	CREATE TABLE KOSMOS_SUGANGLIST (
+								     SL_NUM VARCHAR2(10)
+								    ,MS_NUM VARCHAR2(20)
+								    ,SB_GROUP VARCHAR2(3)      추가 과목코드
+								    ,SB_NAME VARCHAR2(50)      추가
+								    ,SB_CREDITUNIT VARCHAR2(1) 이름/크기 통일
+								    ,SB_DAY VARCHAR2 (15)      삭제고려중 (솔잎)
+								    ,JS_TIME VARCHAR2 (10)
+								    ,SB_MAXSTU VARCHAR2(2)     추가
+								    ,SL_INSDATE DATE
+								    ,SL_UPDATE DATE
+								    ,SL_DELYN VARCHAR2 (1)
+								);
+
+	데이터 세팅 정보
 	
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','01','국어','3','월화수목', '62369','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','02','수학','3','월화수목', '91475','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','03','영어','3','월화수목', '59951','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','04','한국사','3','월화수목', '99539','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','05','통합사회','3','월화수목', '19294','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','06','통합과학','3','월화수목', '99929','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','06','과학탐구실험','3','월화수목', '45992','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','07','스포츠 생활','3','월화수목', '27949','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','08','음악','2','월화수목', '93199','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','09','한문1','2','월화수목', '99996','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','10','철학','2','월화수목', '94993','30',SYSDATE,SYSDATE,'Y');
+	INSERT INTO KOSMOS_SUGANGLIST VALUES ('번호','202111260001','11','진로','2','월화수목', '36619','30',SYSDATE,SYSDATE,'Y');
+
+ -->	
+
+
 	<!-- 1교시 -->
 	<!-- 빠진 부분 NULL값을 ' '로 바꿔주기 -->
 	<select id="timetable1" parameterType="SchoolVO" resultType="SchoolVO">

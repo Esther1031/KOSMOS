@@ -8,12 +8,12 @@
 
 	mvo = (KosmosMypageVO) data;
 
-	String mt_name = mvo.getMT_NAME();
-	String mt_id = mvo.getMT_ID();
-	String mt_cp = mvo.getMT_CP();
-	String mt_zipcode = mvo.getMT_ZIPCODE();
-	String mt_doro = mvo.getMT_DORO();
-	String mt_dorodetail = mvo.getMT_DORODETAIL();
+	String mt_name = mvo.getMt_name();
+	String mt_id = mvo.getMt_id();
+	String mt_cp = mvo.getMt_cp();
+	String mt_zipcode = mvo.getMt_zipcode();
+	String mt_doro = mvo.getMt_doro();
+	String mt_dorodetail = mvo.getMt_dorodetail();
 
 
 	System.out.println("\n===== jsp에서 출력한 데이터 ========================\n");
@@ -88,24 +88,24 @@
 			<div class="left" border="1">
 				<div class="photozone">
 					<img src="img/profile.jpg" width="200" height="240">
-					<br> ${ data.MT_NAME }<br>
+					<br> ${ data.mt_name }<br>
 				</div>
 			</div>
 			<div class="right" border="1">
 				<div class="selectzone">
 					<br>
 					<h2>내 회원정보</h2>
-					<br>이름 : <input type="text" name="tename" id="tename" value="${ data.MT_NAME }"><br>
-					<br>이메일 : <input type="text" name="temail" id="temail" value="${ data.MT_ID }"><br>
-					<br>핸드폰번호 : <input type="text" name="tecp" id="tecp" value="${ data.MT_CP }"><br>
+					<br>이름 : <input type="text" name="tename" id="tename" value="${ data.mt_name }"><br>
+					<br>이메일 : <input type="text" name="temail" id="temail" value="${ data.mt_id }"><br>
+					<br>핸드폰번호 : <input type="text" name="tecp" id="tecp" value="${ data.mt_cp }"><br>
 					<br>
-					우편번호 : <input type="text" name="me_zipcode" id="me_zipcode" style="width:50px" maxlength="6"  value="${ data.MT_ZIPCODE }">
+					우편번호 : <input type="text" name="me_zipcode" id="me_zipcode" style="width:50px" maxlength="6"  value="${ data.mt_zipcode }">
 			 		<br>
 			 		<br>
-			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value="${ data.MT_DORO }">
+			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value="${ data.mt_doro }">
 			 		<br>
 			 		<br>	 	
-			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.MT_DORODETAIL }">
+			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.mt_dorodetail }">
 			 		<br>
 					<br>
 					<br>
