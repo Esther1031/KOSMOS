@@ -13,12 +13,16 @@
 	table {
 	  border-collapse: collapse;
 	  text-align: center;
-	  line-height: 1.5;
+	  line-height: 2.5;
 	  border-top: 1px solid #ccc;
-	  border-left: 3px solid #369;
+	  border-bottom: 2px solid #036;
 	  margin : 0px;
 	  width:600px;
+	  font-weight:bold;
+	  font-family:Monospace;
+	  box-shadow:4px 4px 10px gray;
 	}
+	
 	table th {
 	  width: 200px;
 	  padding: 10px;
@@ -26,8 +30,10 @@
 	  vertical-align: top;
 	  color: #153d73;
 	  border-right: 1px solid #ccc;
-	  border-bottom: 1px solid #ccc;
+	  border-bottom: 3px solid #036;
+	  background-color:#D2E1FF;
 	}
+	
 	table td {
 	  width: 200px;
 	  padding: 10px;
@@ -35,6 +41,22 @@
 	  border-right: 1px solid #ccc;
 	  border-bottom: 1px solid #ccc;
 	  font-size:13px;
+	}
+	
+	.time{
+		 background-color:#EBF5FF;
+		 font-size: 17px;
+	}
+	
+	.hd{
+		font-size: 50px;
+		text-shadow: 4px 4px 6px gray; 
+		font-family:Monospace;
+		color:#5A78AF;
+	}
+	
+	.day{
+		font-size: 17px;
 	}
 </style>
 </head>
@@ -120,19 +142,20 @@
 		String sb_name33 = svo.getSb_name33();
 		String sb_name34 = svo.getSb_name34();
 %>
-<h1 align="center">- 시 간 표 -</h1>
+<br>
+<div class="hd" align="center">시 &nbsp;간 &nbsp;표</div><br>
 <div align="center">
 <table>
-	<tr style="width:250px;">
+	<tr>
 		<th></th>
-		<th>월</th>
-		<th>화</th>
-		<th>수</th>
-		<th>목</th>
-		<th>금</th>
+		<th class="day">월</th>
+		<th class="day">화</th>
+		<th class="day">수</th>
+		<th class="day">목</th>
+		<th class="day">금</th>
 	</tr>
 	<tr>
-		<td>1</td>
+		<td class="time">1</td>
 		<td><%= sb_name %></td>
 		<td><%= sb_name1 %></td>
 		<td><%= sb_name2 %></td>
@@ -140,7 +163,7 @@
 		<td><%= sb_name4 %></td>
 	</tr>
 	<tr>
-		<td>2</td>
+		<td class="time">2</td>
 		<td><%= sb_name5 %></td>
 		<td><%= sb_name6 %></td>
 		<td><%= sb_name7 %></td>
@@ -148,7 +171,7 @@
 		<td><%= sb_name9 %></td>
 	</tr>
 	<tr>
-		<td>3</td>
+		<td class="time">3</td>
 		<td><%= sb_name10 %></td>
 		<td><%= sb_name11 %></td>
 		<td><%= sb_name12 %></td>
@@ -156,7 +179,7 @@
 		<td><%= sb_name14 %></td>
 	</tr>
 	<tr>
-		<td>4</td>
+		<td class="time">4</td>
 		<td><%= sb_name15 %></td>
 		<td><%= sb_name16 %></td>
 		<td><%= sb_name17 %></td>
@@ -164,7 +187,7 @@
 		<td><%= sb_name19 %></td>
 	</tr>
 	<tr>
-		<td>5</td>
+		<td class="time">5</td>
 		<td><%= sb_name20 %></td>
 		<td><%= sb_name21 %></td>
 		<td><%= sb_name22 %></td>
@@ -172,7 +195,7 @@
 		<td><%= sb_name24 %></td>
 	</tr>
 	<tr>
-		<td>6</td>
+		<td class="time">6</td>
 		<td><%= sb_name25 %></td>
 		<td><%= sb_name26 %></td>
 		<td><%= sb_name27 %></td>
@@ -180,7 +203,7 @@
 		<td><%= sb_name29 %></td>
 	</tr>
 	<tr>
-		<td>7</td>
+		<td class="time">7</td>
 		<td><%= sb_name30 %></td>
 		<td><%= sb_name31 %></td>
 		<td><%= sb_name32 %></td>

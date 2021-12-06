@@ -170,6 +170,8 @@ public class KosmosLoginController {
 		
 		// 체크박스 데이터 변수에 초기화 
 		String memberType = lvo.getLogin_type();
+		
+		System.out.println("memberType >>> : " + memberType);
 		int type = Integer.parseInt(memberType);
 		System.out.println("type >>> : 입력된 유형을 출력합니다. : 0" + type);
 		
