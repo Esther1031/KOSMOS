@@ -31,17 +31,17 @@ public class KosmosMypageVO {
 	// ===============================================================================	
 	 
 	// 학생 아이디(이메일주소), 학생 비번, 회원 번호
-	private String MS_ID;			// 1. 학생 아이디(이메일주소)
-	private String MS_NAME;			// 2. 학생 이름
-	private String MS_NUM;			// 3. 학생 회원 번호
-	private String MS_CP;			// 4. 휴대폰 번호
-	private String MS_ZIPCODE; 		// 5. 우편번호
-	private String MS_DORO;   		// 6. 도로명주소
-	private String MS_DORODETAIL;  	// 7. 상세주소
-	private String MS_INSDATE;  	// 8. 가입일
-	private String MS_GRADE;   		// 9. 학년
-	private String MS_CLASS;  		// 10. 반
-	private String MS_NUMBER;   	// 11. 번호
+	private String ms_id;			// 1. 학생 아이디(이메일주소)
+	private String ms_name;			// 2. 학생 이름
+	private String ms_num;			// 3. 학생 회원 번호
+	private String ms_cp;			// 4. 휴대폰 번호
+	private String ms_zipcode; 		// 5. 우편번호
+	private String ms_doro;   		// 6. 도로명주소
+	private String ms_dorodetail;  	// 7. 상세주소
+	private String ms_insdate;  	// 8. 가입일
+	private String ms_grade;   		// 9. 학년
+	private String ms_class;  		// 10. 반
+	private String ms_number;   	// 11. 번호
 	
 	
 	// ===============================================================================
@@ -49,13 +49,13 @@ public class KosmosMypageVO {
 	// ===============================================================================	
 	 
 	// 교사 로그인시  DB의 교사 테이블에서 조회해온 데이터 : 교사 아이디, 교사 비번, 회원 번호
-	private String MT_ID;			// 1. 교사 아이디(이메일주소)
-	private String MT_NAME;			// 2. 교사 이름
-	private String MT_NUM;			// 3. 교사 회원 번호
-	private String MT_CP;			// 4. 휴대폰 번호
-	private String MT_ZIPCODE; 		// 5. 우편번호
-	private String MT_DORO;   		// 6. 도로명주소
-	private String MT_DORODETAIL;  	// 7. 상세주소
+	private String mt_id;			// 1. 교사 아이디(이메일주소)
+	private String mt_name;			// 2. 교사 이름
+	private String mt_num;			// 3. 교사 회원 번호
+	private String mt_cp;			// 4. 휴대폰 번호
+	private String mt_zipcode; 		// 5. 우편번호
+	private String mt_doro;   		// 6. 도로명주소
+	private String mt_dorodetail;  	// 7. 상세주소
 	
 	
 	// ===============================================================================
@@ -68,11 +68,11 @@ public class KosmosMypageVO {
 
 	public KosmosMypageVO(String mid, String mnum, String stname, String stmail, String stcp, String tename,
 			String temail, String tecp, String me_zipcode, String me_doro, String me_dorodetail, String admissionyear,
-			String grade, String st_class, String number, String mS_ID, String mS_NAME, String mS_NUM, String mS_CP,
-			String mS_ZIPCODE, String mS_DORO, String mS_DORODETAIL, String mS_INSDATE, String mS_GRADE,
-			String mS_CLASS, String mS_NUMBER, String mT_ID, String mT_NAME, String mT_NUM, String mT_CP,
-			String mT_ZIPCODE, String mT_DORO, String mT_DORODETAIL) {
-		
+			String grade, String st_class, String number, String ms_id, String ms_name, String ms_num, String ms_cp,
+			String ms_zipcode, String ms_doro, String ms_dorodetail, String ms_insdate, String ms_grade,
+			String ms_class, String ms_number, String mt_id, String mt_name, String mt_num, String mt_cp,
+			String mt_zipcode, String mt_doro, String mt_dorodetail) {
+
 		this.mid = mid;
 		this.mnum = mnum;
 		this.stname = stname;
@@ -88,27 +88,25 @@ public class KosmosMypageVO {
 		this.grade = grade;
 		this.st_class = st_class;
 		this.number = number;
-		MS_ID = mS_ID;
-		MS_NAME = mS_NAME;
-		MS_NUM = mS_NUM;
-		MS_CP = mS_CP;
-		MS_ZIPCODE = mS_ZIPCODE;
-		MS_DORO = mS_DORO;
-		MS_DORODETAIL = mS_DORODETAIL;
-		MS_INSDATE = mS_INSDATE;
-		MS_GRADE = mS_GRADE;
-		MS_CLASS = mS_CLASS;
-		MS_NUMBER = mS_NUMBER;
-		MT_ID = mT_ID;
-		MT_NAME = mT_NAME;
-		MT_NUM = mT_NUM;
-		MT_CP = mT_CP;
-		MT_ZIPCODE = mT_ZIPCODE;
-		MT_DORO = mT_DORO;
-		MT_DORODETAIL = mT_DORODETAIL;
+		this.ms_id = ms_id;
+		this.ms_name = ms_name;
+		this.ms_num = ms_num;
+		this.ms_cp = ms_cp;
+		this.ms_zipcode = ms_zipcode;
+		this.ms_doro = ms_doro;
+		this.ms_dorodetail = ms_dorodetail;
+		this.ms_insdate = ms_insdate;
+		this.ms_grade = ms_grade;
+		this.ms_class = ms_class;
+		this.ms_number = ms_number;
+		this.mt_id = mt_id;
+		this.mt_name = mt_name;
+		this.mt_num = mt_num;
+		this.mt_cp = mt_cp;
+		this.mt_zipcode = mt_zipcode;
+		this.mt_doro = mt_doro;
+		this.mt_dorodetail = mt_dorodetail;
 	}
-
-
 
 
 	// ===============================================================================
@@ -131,148 +129,148 @@ public class KosmosMypageVO {
 		this.mnum = mnum;
 	}
 
-	public String getMS_ID() {
-		return MS_ID;
+	public String getMs_id() {
+		return ms_id;
 	}
 
-	public String getMS_NAME() {
-		return MS_NAME;
+	public void setMs_id(String ms_id) {
+		this.ms_id = ms_id;
 	}
 
-	public String getMS_NUM() {
-		return MS_NUM;
+	public String getMs_name() {
+		return ms_name;
 	}
 
-	public String getMS_CP() {
-		return MS_CP;
+	public void setMs_name(String ms_name) {
+		this.ms_name = ms_name;
 	}
 
-	public String getMS_ZIPCODE() {
-		return MS_ZIPCODE;
+	public String getMs_num() {
+		return ms_num;
 	}
 
-	public String getMS_DORO() {
-		return MS_DORO;
+	public void setMs_num(String ms_num) {
+		this.ms_num = ms_num;
 	}
 
-	public String getMS_DORODETAIL() {
-		return MS_DORODETAIL;
+	public String getMs_cp() {
+		return ms_cp;
 	}
 
-	public String getMS_INSDATE() {
-		return MS_INSDATE;
+	public void setMs_cp(String ms_cp) {
+		this.ms_cp = ms_cp;
 	}
 
-	public String getMS_GRADE() {
-		return MS_GRADE;
+	public String getMs_zipcode() {
+		return ms_zipcode;
 	}
 
-	public String getMS_CLASS() {
-		return MS_CLASS;
+	public void setMs_zipcode(String ms_zipcode) {
+		this.ms_zipcode = ms_zipcode;
 	}
 
-	public String getMS_NUMBER() {
-		return MS_NUMBER;
+	public String getMs_doro() {
+		return ms_doro;
 	}
 
-	public String getMT_ID() {
-		return MT_ID;
+	public void setMs_doro(String ms_doro) {
+		this.ms_doro = ms_doro;
 	}
 
-	public String getMT_NAME() {
-		return MT_NAME;
+	public String getMs_dorodetail() {
+		return ms_dorodetail;
 	}
 
-	public String getMT_NUM() {
-		return MT_NUM;
+	public void setMs_dorodetail(String ms_dorodetail) {
+		this.ms_dorodetail = ms_dorodetail;
 	}
 
-	public String getMT_CP() {
-		return MT_CP;
+	public String getMs_insdate() {
+		return ms_insdate;
 	}
 
-	public String getMT_ZIPCODE() {
-		return MT_ZIPCODE;
+	public void setMs_insdate(String ms_insdate) {
+		this.ms_insdate = ms_insdate;
 	}
 
-	public String getMT_DORO() {
-		return MT_DORO;
+	public String getMs_grade() {
+		return ms_grade;
 	}
 
-	public String getMT_DORODETAIL() {
-		return MT_DORODETAIL;
+	public void setMs_grade(String ms_grade) {
+		this.ms_grade = ms_grade;
 	}
 
-	public void setMS_ID(String mS_ID) {
-		MS_ID = mS_ID;
+	public String getMs_class() {
+		return ms_class;
 	}
 
-	public void setMS_NAME(String mS_NAME) {
-		MS_NAME = mS_NAME;
+	public void setMs_class(String ms_class) {
+		this.ms_class = ms_class;
 	}
 
-	public void setMS_NUM(String mS_NUM) {
-		MS_NUM = mS_NUM;
+	public String getMs_number() {
+		return ms_number;
 	}
 
-	public void setMS_CP(String mS_CP) {
-		MS_CP = mS_CP;
+	public void setMs_number(String ms_number) {
+		this.ms_number = ms_number;
 	}
 
-	public void setMS_ZIPCODE(String mS_ZIPCODE) {
-		MS_ZIPCODE = mS_ZIPCODE;
+	public String getMt_id() {
+		return mt_id;
 	}
 
-	public void setMS_DORO(String mS_DORO) {
-		MS_DORO = mS_DORO;
+	public void setMt_id(String mt_id) {
+		this.mt_id = mt_id;
 	}
 
-	public void setMS_DORODETAIL(String mS_DORODETAIL) {
-		MS_DORODETAIL = mS_DORODETAIL;
+	public String getMt_name() {
+		return mt_name;
 	}
 
-	public void setMS_INSDATE(String mS_INSDATE) {
-		MS_INSDATE = mS_INSDATE;
+	public void setMt_name(String mt_name) {
+		this.mt_name = mt_name;
 	}
 
-	public void setMS_GRADE(String mS_GRADE) {
-		MS_GRADE = mS_GRADE;
+	public String getMt_num() {
+		return mt_num;
 	}
 
-	public void setMS_CLASS(String mS_CLASS) {
-		MS_CLASS = mS_CLASS;
+	public void setMt_num(String mt_num) {
+		this.mt_num = mt_num;
 	}
 
-	public void setMS_NUMBER(String mS_NUMBER) {
-		MS_NUMBER = mS_NUMBER;
+	public String getMt_cp() {
+		return mt_cp;
 	}
 
-	public void setMT_ID(String mT_ID) {
-		MT_ID = mT_ID;
+	public void setMt_cp(String mt_cp) {
+		this.mt_cp = mt_cp;
 	}
 
-	public void setMT_NAME(String mT_NAME) {
-		MT_NAME = mT_NAME;
+	public String getMt_zipcode() {
+		return mt_zipcode;
 	}
 
-	public void setMT_NUM(String mT_NUM) {
-		MT_NUM = mT_NUM;
+	public void setMt_zipcode(String mt_zipcode) {
+		this.mt_zipcode = mt_zipcode;
 	}
 
-	public void setMT_CP(String mT_CP) {
-		MT_CP = mT_CP;
+	public String getMt_doro() {
+		return mt_doro;
 	}
 
-	public void setMT_ZIPCODE(String mT_ZIPCODE) {
-		MT_ZIPCODE = mT_ZIPCODE;
+	public void setMt_doro(String mt_doro) {
+		this.mt_doro = mt_doro;
 	}
 
-	public void setMT_DORO(String mT_DORO) {
-		MT_DORO = mT_DORO;
+	public String getMt_dorodetail() {
+		return mt_dorodetail;
 	}
 
-	public void setMT_DORODETAIL(String mT_DORODETAIL) {
-		MT_DORODETAIL = mT_DORODETAIL;
+	public void setMt_dorodetail(String mt_dorodetail) {
+		this.mt_dorodetail = mt_dorodetail;
 	}
 
 	public String getStname() {
@@ -388,25 +386,25 @@ public class KosmosMypageVO {
 		
 		// 호출시 바인딩된 데이터 출력
 		System.out.println("\n===========KosmosMypageVO 변수 바인딩 현황=============\n");
-		System.out.println("1. 학생 아이디       MS_ID >>> : " + mvo.getMS_ID());
-		System.out.println("2. 학생 비밀번호    MS_NAME >>> : " + mvo.getMS_NAME());
-		System.out.println("3. 학생 회원번호    MS_NUM >>> : " + mvo.getMS_NUM());
-		System.out.println("4. 학생 휴대폰번호 MS_CP >>> : " + mvo.getMS_CP());
-		System.out.println("5. 학생 우편번호    MS_ZIPCODE >>> : " + mvo.getMS_ZIPCODE());
-		System.out.println("6. 학생 도로명주소 MS_DORO >>> : " + mvo.getMS_DORO());
-		System.out.println("7. 학생 상세주소    MS_DORODETAIL >>> : " + mvo.getMS_DORODETAIL());
-		System.out.println("8. 학생 가입일       MS_INSDATE >>> : " + mvo.getMS_INSDATE());
-		System.out.println("9. 학생 학년   	   MS_GRADE >>> : " + mvo.getMS_GRADE());
-		System.out.println("10. 학생 반   	   MS_CLASS >>> : " + mvo.getMS_CLASS());
-		System.out.println("11. 학생 번호   	   MS_NUMBER >>> : " + mvo.getMS_NUMBER());
+		System.out.println("1. 학생 아이디        ms_id >>> : " + mvo.getMs_id());
+		System.out.println("2. 학생 비밀번호     ms_name >>> : " + mvo.getMs_name());
+		System.out.println("3. 학생 회원번호     ms_num >>> : " + mvo.getMs_num());
+		System.out.println("4. 학생 휴대폰번호  ms_cp >>> : " + mvo.getMs_cp());
+		System.out.println("5. 학생 우편번호     ms_zipcode >>> : " + mvo.getMs_zipcode());
+		System.out.println("6. 학생 도로명주소  ms_doro >>> : " + mvo.getMs_doro());
+		System.out.println("7. 학생 상세주소     ms_dorodetail >>> : " + mvo.getMs_dorodetail());
+		System.out.println("8. 학생 가입일        ms_insdate >>> : " + mvo.getMs_insdate());
+		System.out.println("9. 학생 학년   	   ms_grade >>> : " + mvo.getMs_grade());
+		System.out.println("10. 학생 반   	   ms_class >>> : " + mvo.getMs_class());
+		System.out.println("11. 학생 번호   	   ms_number >>> : " + mvo.getMs_number());
 		System.out.println("\n============================================\n");
-		System.out.println("1. 교사 아이디             MT_ID >>> : " + mvo.getMT_ID());
-		System.out.println("2. 교사 이름                MT_NAME >>> : " + mvo.getMT_NAME());
-		System.out.println("3. 교사 회원번호          MT_NUM >>> : " + mvo.getMT_NUM());
-		System.out.println("4. 교사 휴대폰번호       MT_CP >>> : " + mvo.getMT_CP());
-		System.out.println("5. 교사 우편번호          MT_ZIPCODE >>> : " + mvo.getMT_ZIPCODE());
-		System.out.println("6. 교사 도로명주소       MT_DORO >>> : " + mvo.getMT_DORO());
-		System.out.println("7. 교사 상세주소          MT_DORODETAIL >>> : " + mvo.getMT_DORODETAIL());
+		System.out.println("1. 교사 아이디        mt_id >>> : " + mvo.getMt_id());
+		System.out.println("2. 교사 이름           mt_name >>> : " + mvo.getMt_name());
+		System.out.println("3. 교사 회원번호     mt_num >>> : " + mvo.getMt_num());
+		System.out.println("4. 교사 휴대폰번호  mt_cp >>> : " + mvo.getMt_cp());
+		System.out.println("5. 교사 우편번호     mt_zipcode >>> : " + mvo.getMt_zipcode());
+		System.out.println("6. 교사 도로명주소  mt_doro >>> : " + mvo.getMt_doro());
+		System.out.println("7. 교사 상세주소     mt_dorodetail >>> : " + mvo.getMt_dorodetail());
 		System.out.println("\n============================================\n");
 	}
 	

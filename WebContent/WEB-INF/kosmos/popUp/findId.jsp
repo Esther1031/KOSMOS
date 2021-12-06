@@ -31,7 +31,7 @@
 				chkbox = $("#teacher").val();					// 변수 chkbox에 교사의 밸류 "02"넣기
 				
 			}
-			console.log("교사이 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
+			console.log("교사가 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
 		});
 		
 		
@@ -74,7 +74,7 @@
 			let findIdURL = "findId.k";
 			let reqType = "POST";
 			let dataParam = { 
-					chkbox : chkbox,
+					login_type : chkbox,
 					mname : mname,
 					mbirthId : mbirthId
 			};

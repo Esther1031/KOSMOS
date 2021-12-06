@@ -67,12 +67,12 @@ public class KosmosSchoolController {
 		// 세션에서 가지고 온 데이터 객체에 담기 
 		KosmosLoginVO lvo_data = (KosmosLoginVO) hs.getAttribute("result");
 		
-		String ms_id = lvo_data.getMS_ID();
-		String ms_pw = lvo_data.getMS_PW();
-		String ms_num = lvo_data.getMS_NUM();
-		String mt_id = lvo_data.getMT_ID();
-		String mt_pw = lvo_data.getMT_PW();
-		String mt_num = lvo_data.getMT_NUM();
+		String ms_id = lvo_data.getMs_id();
+		String ms_pw = lvo_data.getMs_pw();
+		String ms_num = lvo_data.getMs_num();
+		String mt_id = lvo_data.getMt_id();
+		String mt_pw = lvo_data.getMt_pw();
+		String mt_num = lvo_data.getMt_num();
 		
 		System.out.println("ms_id >>> : " + ms_id);
 		System.out.println("ms_pw >>> : " + ms_pw);
@@ -165,7 +165,7 @@ public class KosmosSchoolController {
 		logger.info("KosmosSchoolController timetable() 함수 진입 >>> : ");
 		
 		KosmosLoginVO lvo_data = (KosmosLoginVO) hs.getAttribute("result");
-		String ms_num = lvo_data.getMS_NUM();
+		String ms_num = lvo_data.getMs_num();
 		System.out.println("ms_num >>> : " + ms_num);
 		svo.setMs_num(ms_num);
 		
@@ -222,57 +222,4 @@ public class KosmosSchoolController {
 		return "";
 	}
 	
-	// =======================================================================================
-	// 마이페이지 클릭 -> KosmosMypageController로 이관
-	// =======================================================================================
-	/*
-	@GetMapping("mainMyPage")
-	public String myPage(HttpSession hs, KosmosLoginVO lvo, Model model) {
-		
-		
-		// 세션에서 가지고 온 데이터 객체에 담기
-		KosmosLoginVO lvo_data = (KosmosLoginVO) hs.getAttribute("result");
-		
-		
-		// 가지고 온 데이터 출력
-		String ms_id = lvo_data.getMS_ID();				// 학생
-		String ms_pw = lvo_data.getMS_PW();
-		String ms_num = lvo_data.getMS_NUM();
-		
-		System.out.println("ms_id >>> : " + ms_id);
-		System.out.println("ms_pw >>> : " + ms_pw);
-		System.out.println("ms_num >>> : " + ms_num);
-		
-		String mt_id = lvo_data.getMT_ID();				// 교사
-		String mt_pw = lvo_data.getMT_PW();
-		String mt_num = lvo_data.getMT_NUM();
-	
-		System.out.println("mt_id >>> : " + mt_id);
-		System.out.println("mt_pw >>> : " + mt_pw);
-		System.out.println("mt_num >>> : " + mt_num);	
-		
-		
-		// 유형(학생/교사)에 따라 테이블에 보낼 데이터 조회해오기
-		
-			if (ms_id != null) {						// 학생인 경우
-				
-				KosmosMypageVO mvo = new KosmosMypageVO();
-				
-				//mvo = kosmosMypageVO.
-				// Service -> DAO -> XML -> DB
-				// DB로 조회할 데이터 리스트
-				// 이름, 이메일, 핸드폰번호, 우편번호, 도로명주소, 상세주소, 가입일, 학년, 반, 번호
-				
-				// 조회한 데이터 출력
-				KosmosMypageVO.printVO(mvo);
-				
-				// model.addAttribute(arg0);
-				return "mypage/myPageSelectStudent";
-			} else {									// 교사인 경우
-			
-				return "mypage/myPageSelectTeacher";
-
-			}
-	}
-	*/
 }

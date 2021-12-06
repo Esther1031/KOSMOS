@@ -78,8 +78,8 @@
 			let findPwURL = "findPw.k";
 			let reqType = "POST";
 			let dataParam = { 
-					chkbox : chkbox,
-					mid : mid,
+					login_type : chkbox,
+					login_id : mid,
 					mbirthPw : mbirthPw,
 					mcp : mcp
 			};

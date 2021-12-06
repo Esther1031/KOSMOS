@@ -46,12 +46,12 @@ public class KosmosMypageController {
 		lvo = (KosmosLoginVO) hs.getAttribute("result");
 		
 		// 학생 데이터를 받은 경우 바인딩할 변수
-		String ms_id = lvo.getMS_ID();
-		String ms_num = lvo.getMS_NUM();
+		String ms_id = lvo.getMs_id();
+		String ms_num = lvo.getMs_num();
 		
 		// 교사 데이터를 받은 경우 바인딩할 변수
-		String mt_id = lvo.getMT_ID();
-		String mt_num = lvo.getMT_NUM();
+		String mt_id = lvo.getMt_id();
+		String mt_num = lvo.getMt_num();
 		
 		// 받아온 데이터 출력하기
 		logger.info("\n=========== 세션에서 받아온 로그인 정보 ==========\n");
@@ -65,8 +65,8 @@ public class KosmosMypageController {
 		if (mt_id == null) {									// 학생인 경우
 			logger.info("현재 로그인한 회원은 [학생] 입니다.");
 			
-			logger.info("SQL에 이용할 회원 아이디 ms_id >>> : " + lvo.getMS_ID());
-			logger.info("SQL에 이용할 회원 번호 ms_num >>> : " + lvo.getMS_NUM());
+			logger.info("SQL에 이용할 회원 아이디 ms_id >>> : " + lvo.getMs_id());
+			logger.info("SQL에 이용할 회원 번호 ms_num >>> : " + lvo.getMs_num());
 			
 			// 서비스로 데이터 조회 요청 보내기 >>> : 데이터 담는 리스트 초기화
 			List<KosmosMypageVO> resultList = null;
@@ -80,27 +80,27 @@ public class KosmosMypageController {
 				
 				mvo = resultList.get(0);
 				
-				String student_name = mvo.getMS_NAME();
-				String student_id = mvo.getMS_ID();
-				String student_cp = mvo.getMS_CP();
-				String student_zipcode = mvo.getMS_ZIPCODE();
-				String student_doro = mvo.getMS_DORO();
-				String student_doro_detail = mvo.getMS_DORODETAIL();
-				String student_ad_year = mvo.getMS_INSDATE();
-				String student_grade = mvo.getMS_GRADE();
-				String student_class = mvo.getMS_CLASS();
-				String student_number = mvo.getMS_NUMBER();
+				String student_name = mvo.getMs_name();
+				String student_id = mvo.getMs_id();
+				String student_cp = mvo.getMs_cp();
+				String student_zipcode = mvo.getMs_zipcode();
+				String student_doro = mvo.getMs_doro();
+				String student_doro_detail = mvo.getMs_dorodetail();
+				String student_ad_year = mvo.getAdmissionyear();
+				String student_grade = mvo.getMs_grade();
+				String student_class = mvo.getMs_class();
+				String student_number = mvo.getMs_number();
 				
-				logger.info("DB에서 가지고온 이름 mvo.setMS_NAME >>> : " + mvo.getMS_NAME());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_ID >>> : " + mvo.getMS_ID());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_CP >>> : " + mvo.getMS_CP());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_ZIPCODE >>> : " + mvo.getMS_ZIPCODE());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_DORO >>> : " + mvo.getMS_DORO());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_DORODETAIL >>> : " + mvo.getMS_DORODETAIL());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_INSDATE >>> : " + mvo.getMS_INSDATE());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_GRADE >>> : " + mvo.getMS_GRADE());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_CLASS >>> : " + mvo.getMS_CLASS());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_NUMBER >>> : " + mvo.getMS_NUMBER());
+				logger.info("DB에서 가지고온 이름 mvo.getMs_name() >>> : " + student_name);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_id >>> : " + student_id);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_cp >>> : " + student_cp);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_zipcode >>> : " + student_zipcode);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_doro >>> : " + student_doro);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_dorodetail >>> : " + student_doro_detail);
+				logger.info("DB에서 가지고온 이름 mvo.getAdmissionyear >>> : " + student_ad_year);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_grade >>> : " + student_grade);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_class >>> : " + student_class);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_number >>> : " + student_number);
 				
 				model.addAttribute("data", mvo);
 				
@@ -110,8 +110,8 @@ public class KosmosMypageController {
 		} else if (ms_id == null) {								// 교사인 경우
 			logger.info("현재 로그인한 회원은 [교사] 입니다.");
 
-			logger.info("SQL에 이용할 회원 아이디 mt_id >>> : " + lvo.getMT_ID());
-			logger.info("SQL에 이용할 회원 번호 mt_num >>> : " + lvo.getMT_NUM());
+			logger.info("SQL에 이용할 회원 아이디 mt_id >>> : " + lvo.getMt_id());
+			logger.info("SQL에 이용할 회원 번호 mt_num >>> : " + lvo.getMt_num());
 			
 			// 서비스로 데이터 조회 요청 보내기 >>> : 데이터 담는 리스트 초기화
 			List<KosmosMypageVO> resultList = null;
@@ -125,19 +125,19 @@ public class KosmosMypageController {
 				
 				mvo = resultList.get(0);
 				
-				String teacher_name = mvo.getMT_NAME();
-				String teacher_id = mvo.getMT_ID();
-				String teacher_cp = mvo.getMT_CP();
-				String teacher_zipcode = mvo.getMT_ZIPCODE();
-				String teacher_doro = mvo.getMT_DORO();
-				String teacher_doro_detail = mvo.getMT_DORODETAIL();
+				String teacher_name = mvo.getMt_name();
+				String teacher_id = mvo.getMt_id();
+				String teacher_cp = mvo.getMt_cp();
+				String teacher_zipcode = mvo.getMt_zipcode();
+				String teacher_doro = mvo.getMt_doro();
+				String teacher_doro_detail = mvo.getMt_dorodetail();
 				
-				logger.info("DB에서 가지고온 이름 mvo.setMT_NAME >>> : " + mvo.getMT_NAME());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_ID >>> : " + mvo.getMT_ID());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_CP >>> : " + mvo.getMT_CP());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_ZIPCODE >>> : " + mvo.getMT_ZIPCODE());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_DORO >>> : " + mvo.getMT_DORO());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_DORODETAIL >>> : " + mvo.getMT_DORODETAIL());
+				logger.info("DB에서 가지고온 이름 mvo.getMt_name >>> : " + teacher_name);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_id >>> : " + teacher_id);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_cp >>> : " + teacher_cp);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_zipcode >>> : " + teacher_zipcode);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_doro >>> : " + teacher_doro);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_dorodetail >>> : " + teacher_doro_detail);
 			
 				model.addAttribute("data", mvo);
 				
@@ -160,12 +160,12 @@ public class KosmosMypageController {
 		lvo = (KosmosLoginVO) hs.getAttribute("result");
 				
 		// 학생 데이터를 받은 경우 바인딩할 변수
-		String ms_id = lvo.getMS_ID();
-		String ms_num = lvo.getMS_NUM();
+		String ms_id = lvo.getMs_id();
+		String ms_num = lvo.getMs_num();
 				
 		// 교사 데이터를 받은 경우 바인딩할 변수
-		String mt_id = lvo.getMT_ID();
-		String mt_num = lvo.getMT_NUM();
+		String mt_id = lvo.getMt_id();
+		String mt_num = lvo.getMt_num();
 				
 		logger.info("\n=========== 세션에서 받아온 로그인 정보 ==========\n");
 		logger.info("세션에서 가져온 ms_id >>> : " + ms_id);
@@ -178,8 +178,8 @@ public class KosmosMypageController {
 		if (mt_id == null) {									// 학생인 경우
 		logger.info("현재 로그인한 회원은 [학생] 입니다.");
 					
-		logger.info("SQL에 이용할 회원 아이디 ms_id >>> : " + lvo.getMS_ID());
-		logger.info("SQL에 이용할 회원 번호 ms_num >>> : " + lvo.getMS_NUM());
+		logger.info("SQL에 이용할 회원 아이디 ms_id >>> : " + lvo.getMs_id());
+		logger.info("SQL에 이용할 회원 번호 ms_num >>> : " + lvo.getMs_num());
 					
 		// 서비스로 데이터 조회 요청 보내기 >>> : 데이터 담는 리스트 초기화
 		List<KosmosMypageVO> resultList = null;
@@ -193,27 +193,27 @@ public class KosmosMypageController {
 							
 				mvo = resultList.get(0);
 							
-				String student_name = mvo.getMS_NAME();
-				String student_id = mvo.getMS_ID();
-				String student_cp = mvo.getMS_CP();
-				String student_zipcode = mvo.getMS_ZIPCODE();
-				String student_doro = mvo.getMS_DORO();
-				String student_doro_detail = mvo.getMS_DORODETAIL();
-				String student_ad_year = mvo.getMS_INSDATE();
-				String student_grade = mvo.getMS_GRADE();
-				String student_class = mvo.getMS_CLASS();
-				String student_number = mvo.getMS_NUMBER();
-							
-				logger.info("DB에서 가지고온 이름 mvo.setMS_NAME >>> : " + mvo.getMS_NAME());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_ID >>> : " + mvo.getMS_ID());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_CP >>> : " + mvo.getMS_CP());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_ZIPCODE >>> : " + mvo.getMS_ZIPCODE());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_DORO >>> : " + mvo.getMS_DORO());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_DORODETAIL >>> : " + mvo.getMS_DORODETAIL());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_INSDATE >>> : " + mvo.getMS_INSDATE());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_GRADE >>> : " + mvo.getMS_GRADE());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_CLASS >>> : " + mvo.getMS_CLASS());
-				logger.info("DB에서 가지고온 이름 mvo.setMS_NUMBER >>> : " + mvo.getMS_NUMBER());
+				String student_name = mvo.getMs_name();
+				String student_id = mvo.getMs_id();
+				String student_cp = mvo.getMs_cp();
+				String student_zipcode = mvo.getMs_zipcode();
+				String student_doro = mvo.getMs_doro();
+				String student_doro_detail = mvo.getMs_dorodetail();
+				String student_ad_year = mvo.getAdmissionyear();
+				String student_grade = mvo.getMs_grade();
+				String student_class = mvo.getMs_class();
+				String student_number = mvo.getMs_number();
+				
+				logger.info("DB에서 가지고온 이름 mvo.getMs_name() >>> : " + student_name);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_id >>> : " + student_id);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_cp >>> : " + student_cp);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_zipcode >>> : " + student_zipcode);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_doro >>> : " + student_doro);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_dorodetail >>> : " + student_doro_detail);
+				logger.info("DB에서 가지고온 이름 mvo.getAdmissionyear >>> : " + student_ad_year);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_grade >>> : " + student_grade);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_class >>> : " + student_class);
+				logger.info("DB에서 가지고온 이름 mvo.getMs_number >>> : " + student_number);
 				
 				model.addAttribute("data", mvo);
 			
@@ -242,12 +242,12 @@ public class KosmosMypageController {
 		String msg = "";
 		
 		// 학생 데이터를 받은 경우 바인딩할 변수
-		String ms_id = lvo.getMS_ID();
-		String ms_num = lvo.getMS_NUM();
+		String ms_id = lvo.getMs_id();
+		String ms_num = lvo.getMs_num();
 				
 		// 교사 데이터를 받은 경우 바인딩할 변수
-		String mt_id = lvo.getMT_ID();
-		String mt_num = lvo.getMT_NUM();
+		String mt_id = lvo.getMt_id();
+		String mt_num = lvo.getMt_num();
 				
 		logger.info("\n=========== 세션에서 받아온 로그인 정보 ==========\n");
 		logger.info("세션에서 가져온 ms_id >>> : " + ms_id);
@@ -285,8 +285,8 @@ public class KosmosMypageController {
 		if (mt_id == null) {									// 학생인 경우
 		logger.info("현재 로그인한 회원은 [학생] 입니다.");
 					
-		logger.info("SQL에 이용할 회원 아이디 ms_id >>> : " + lvo.getMS_ID());
-		logger.info("SQL에 이용할 회원 번호 ms_num >>> : " + lvo.getMS_NUM());
+		logger.info("SQL에 이용할 회원 아이디 ms_id >>> : " + lvo.getMs_id());
+		logger.info("SQL에 이용할 회원 번호 ms_num >>> : " + lvo.getMs_num());
 					
 		// 서비스로 데이터 조회 요청 보내기 >>> : 데이터 담는 리스트 초기화
 		List<KosmosMypageVO> resultList = null;
@@ -302,15 +302,15 @@ public class KosmosMypageController {
 				_mvo.setMid(ms_id);					// 현재 로그인한 회원의 아이디
 				_mvo.setMnum(ms_num);				// 현재 로그인한 회원의 회원번호
 				
-				_mvo.setMS_ID(st_mail);
-				_mvo.setMS_NAME(st_name);
-				_mvo.setMS_CP(st_cp);
-				_mvo.setMS_ZIPCODE(me_zipcode);
-				_mvo.setMS_DORO(me_doro);
-				_mvo.setMS_DORODETAIL(me_dorodetail);
-				_mvo.setMS_GRADE(st_grade);
-				_mvo.setMS_CLASS(st_class);
-				_mvo.setMS_NUMBER(st_number);
+				_mvo.setMs_id(st_mail);
+				_mvo.setMs_name(st_name);
+				_mvo.setMs_cp(st_cp);
+				_mvo.setMs_zipcode(me_zipcode);
+				_mvo.setMs_doro(me_doro);
+				_mvo.setMs_dorodetail(me_dorodetail);
+				_mvo.setMs_grade(st_grade);
+				_mvo.setMs_class(st_class);
+				_mvo.setMs_number(st_number);
 				
 				int nCnt = kosmosMypageService.updateStudentInfo(_mvo);
 			
@@ -342,12 +342,12 @@ public class KosmosMypageController {
 		lvo = (KosmosLoginVO) hs.getAttribute("result");
 				
 		// 학생 데이터를 받은 경우 바인딩할 변수
-		String ms_id = lvo.getMS_ID();
-		String ms_num = lvo.getMS_NUM();
+		String ms_id = lvo.getMs_id();
+		String ms_num = lvo.getMs_num();
 				
 		// 교사 데이터를 받은 경우 바인딩할 변수
-		String mt_id = lvo.getMT_ID();
-		String mt_num = lvo.getMT_NUM();
+		String mt_id = lvo.getMt_id();
+		String mt_num = lvo.getMt_num();
 				
 		logger.info("\n=========== 세션에서 받아온 로그인 정보 ==========\n");
 		logger.info("세션에서 가져온 ms_id >>> : " + ms_id);
@@ -360,8 +360,8 @@ public class KosmosMypageController {
 		if (ms_id == null) {									// 학생인 경우
 		logger.info("현재 로그인한 회원은 [교사] 입니다.");
 					
-		logger.info("SQL에 이용할 회원 아이디 mt_id >>> : " + lvo.getMT_ID());
-		logger.info("SQL에 이용할 회원 번호 mt_num >>> : " + lvo.getMT_NUM());
+		logger.info("SQL에 이용할 회원 아이디 mt_id >>> : " + lvo.getMt_id());
+		logger.info("SQL에 이용할 회원 번호 mt_num >>> : " + lvo.getMt_num());
 					
 		// 서비스로 데이터 조회 요청 보내기 >>> : 데이터 담는 리스트 초기화
 		List<KosmosMypageVO> resultList = null;
@@ -375,19 +375,19 @@ public class KosmosMypageController {
 							
 				mvo = resultList.get(0);
 							
-				String teacher_name = mvo.getMT_NAME();
-				String teacher_id = mvo.getMT_ID();
-				String teacher_cp = mvo.getMT_CP();
-				String teacher_zipcode = mvo.getMT_ZIPCODE();
-				String teacher_doro = mvo.getMT_DORO();
-				String teacher_doro_detail = mvo.getMT_DORODETAIL();
-
-				logger.info("DB에서 가지고온 이름 mvo.setMT_NAME >>> : " + mvo.getMT_NAME());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_ID >>> : " + mvo.getMT_ID());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_CP >>> : " + mvo.getMT_CP());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_ZIPCODE >>> : " + mvo.getMT_ZIPCODE());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_DORO >>> : " + mvo.getMT_DORO());
-				logger.info("DB에서 가지고온 이름 mvo.setMT_DORODETAIL >>> : " + mvo.getMT_DORODETAIL());
+				String teacher_name = mvo.getMt_name();
+				String teacher_id = mvo.getMt_id();
+				String teacher_cp = mvo.getMt_cp();
+				String teacher_zipcode = mvo.getMt_zipcode();
+				String teacher_doro = mvo.getMt_doro();
+				String teacher_doro_detail = mvo.getMt_dorodetail();
+				
+				logger.info("DB에서 가지고온 이름 mvo.getMt_name >>> : " + teacher_name);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_id >>> : " + teacher_id);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_cp >>> : " + teacher_cp);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_zipcode >>> : " + teacher_zipcode);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_doro >>> : " + teacher_doro);
+				logger.info("DB에서 가지고온 이름 mvo.getMt_dorodetail >>> : " + teacher_doro_detail);
 				
 				model.addAttribute("data", mvo);
 			
@@ -420,12 +420,12 @@ public class KosmosMypageController {
 		String msg = "";
 		
 		// 학생 데이터를 받은 경우 바인딩할 변수
-		String ms_id = lvo.getMS_ID();
-		String ms_num = lvo.getMS_NUM();
+		String ms_id = lvo.getMs_id();
+		String ms_num = lvo.getMs_num();
 				
 		// 교사 데이터를 받은 경우 바인딩할 변수
-		String mt_id = lvo.getMT_ID();
-		String mt_num = lvo.getMT_NUM();
+		String mt_id = lvo.getMt_id();
+		String mt_num = lvo.getMt_num();
 				
 		logger.info("\n=========== 세션에서 받아온 로그인 정보 ==========\n");
 		logger.info("세션에서 가져온 ms_id >>> : " + ms_id);
@@ -455,8 +455,8 @@ public class KosmosMypageController {
 		if (ms_id == null) {									// 교사인 경우
 		logger.info("현재 로그인한 회원은 [교사] 입니다.");
 					
-		logger.info("SQL에 이용할 회원 아이디 mt_id >>> : " + lvo.getMT_ID());
-		logger.info("SQL에 이용할 회원 번호 mt_num >>> : " + lvo.getMT_NUM());
+		logger.info("SQL에 이용할 회원 아이디 mt_id >>> : " + lvo.getMt_id());
+		logger.info("SQL에 이용할 회원 번호 mt_num >>> : " + lvo.getMt_num());
 					
 		// 서비스로 데이터 조회 요청 보내기 >>> : 데이터 담는 리스트 초기화
 		List<KosmosMypageVO> resultList = null;
@@ -472,12 +472,12 @@ public class KosmosMypageController {
 				_mvo.setMid(mt_id);					// 현재 로그인한 회원의 아이디
 				_mvo.setMnum(mt_num);				// 현재 로그인한 회원의 회원번호
 				
-				_mvo.setMT_ID(te_mail);
-				_mvo.setMT_NAME(te_name);
-				_mvo.setMT_CP(te_cp);
-				_mvo.setMT_ZIPCODE(me_zipcode);
-				_mvo.setMT_DORO(me_doro);
-				_mvo.setMT_DORODETAIL(me_dorodetail);
+				_mvo.setMt_id(te_mail);
+				_mvo.setMt_name(te_name);
+				_mvo.setMt_cp(te_cp);
+				_mvo.setMt_zipcode(me_zipcode);
+				_mvo.setMt_doro(me_doro);
+				_mvo.setMt_dorodetail(me_dorodetail);
 				
 				int nCnt = kosmosMypageService.updateStudentInfo(_mvo);
 			
