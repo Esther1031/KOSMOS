@@ -22,6 +22,7 @@
 	  font-family:Monospace;
 	  box-shadow:4px 4px 10px gray;
 	}
+	
 	table th {
 	  width: 200px;
 	  padding: 10px;
@@ -32,6 +33,7 @@
 	  border-bottom: 3px solid #036;
 	  background-color:#D2E1FF;
 	}
+	
 	table td {
 	  width: 200px;
 	  padding: 10px;
@@ -40,16 +42,19 @@
 	  border-bottom: 1px solid #ccc;
 	  font-size:13px;
 	}
+	
 	.time{
 		 background-color:#EBF5FF;
 		 font-size: 17px;
 	}
+	
 	.hd{
 		font-size: 50px;
 		text-shadow: 4px 4px 6px gray; 
 		font-family:Monospace;
 		color:#5A78AF;
 	}
+	
 	.day{
 		font-size: 17px;
 	}
