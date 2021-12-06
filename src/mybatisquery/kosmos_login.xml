@@ -173,8 +173,8 @@
 	   		,A.MS_NUM   MS_NUM
 	FROM 	KOSMOS_MEMSTU A 
 	WHERE 	A.MS_DELYN = 'Y'
-	AND   	A.MS_ID = #{mid, jdbcType=VARCHAR}	                          	 
-	AND   	A.MS_PW = #{mpw, jdbcType=VARCHAR} 
+	AND   	A.MS_ID = #{login_id, jdbcType=VARCHAR}	                          	 
+	AND   	A.MS_PW = #{login_pw, jdbcType=VARCHAR} 
 </select>
 
 <!-- 교사 로그인시, ID/PW 확인 쿼리 -->
@@ -184,8 +184,8 @@
 	   		,A.MT_NUM	MT_NUM 
 	FROM 	KOSMOS_MEMTEA A 
 	WHERE 	A.MT_DELYN = 'Y'
-	AND   	A.MT_ID = #{mid, jdbcType=VARCHAR}	                          	 
-	AND   	A.MT_PW = #{mpw, jdbcType=VARCHAR} 
+	AND   	A.MT_ID = #{login_id, jdbcType=VARCHAR}	                          	 
+	AND   	A.MT_PW = #{login_pw, jdbcType=VARCHAR} 
 </select>
 
 
@@ -214,7 +214,7 @@
 			,A.MS_PW 	MS_PW
 	FROM 	 KOSMOS_MEMSTU A 
 	WHERE 	 A.MS_DELYN = 'Y'
-	AND   	 A.MS_ID = #{mid, jdbcType=VARCHAR}	                          	 
+	AND   	 A.MS_ID = #{login_id, jdbcType=VARCHAR}	                          	 
 	AND   	 A.MS_BIRTH = #{mbirthPw, jdbcType=VARCHAR}
 	AND		 A.MS_CP = #{mcp, jdbcType=VARCHAR} 
 </select>
@@ -226,7 +226,7 @@
 			,A.MT_PW 	MT_PW
 	FROM 	 KOSMOS_MEMTEA A 
 	WHERE 	 A.MT_DELYN = 'Y'
-	AND   	 A.MT_ID = #{mid, jdbcType=VARCHAR}	                          	 
+	AND   	 A.MT_ID = #{login_id, jdbcType=VARCHAR}	                          	 
 	AND   	 A.MT_BIRTH = #{mbirthPw, jdbcType=VARCHAR}
 	AND		 A.MT_CP = #{mcp, jdbcType=VARCHAR}
 </select>

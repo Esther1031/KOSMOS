@@ -116,9 +116,9 @@
 			let loginURL = "loginMsg.k";
 			let reqType = "POST";
 			let dataParam = { 
-					chkbox : chkbox,
-					mid : mid,
-					mpw : mpw
+					login_type : chkbox,
+					login_id : mid,
+					login_pw : mpw
 			};
 			
 			$.ajax({

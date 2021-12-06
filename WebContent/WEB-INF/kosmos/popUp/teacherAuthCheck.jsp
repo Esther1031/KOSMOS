@@ -81,8 +81,6 @@
 				alert("인증키 확인 중 에러가 발생했습니다. >>> : " + e.responseText);
 			}
 		}
-		
-		
 	});
 	
 </script>

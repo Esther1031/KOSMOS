@@ -8,16 +8,16 @@
 
 	mvo = (KosmosMypageVO) data;
 
-	String ms_name = mvo.getMS_NAME();
-	String ms_id = mvo.getMS_ID();
-	String ms_cp = mvo.getMS_CP();
-	String ms_zipcode = mvo.getMS_ZIPCODE();
-	String ms_doro = mvo.getMS_DORO();
-	String ms_dorodetail = mvo.getMS_DORODETAIL();
-	String ms_whenjoin = mvo.getMS_INSDATE();	//admissionyear대신 회원등록한 일자를 가져옴 
-	String ms_grade = mvo.getMS_GRADE();
-	String ms_class = mvo.getMS_CLASS();
-	String ms_number = mvo.getMS_NUMBER();
+	String ms_name = mvo.getMs_name();
+	String ms_id = mvo.getMs_id();
+	String ms_cp = mvo.getMs_cp();
+	String ms_zipcode = mvo.getMs_zipcode();
+	String ms_doro = mvo.getMs_doro();
+	String ms_dorodetail = mvo.getMs_dorodetail();
+	String ms_whenjoin = mvo.getMs_insdate();	//admissionyear대신 회원등록한 일자를 가져옴 
+	String ms_grade = mvo.getMs_grade();
+	String ms_class = mvo.getMs_class();
+	String ms_number = mvo.getMs_number();
 
 	System.out.println("\n===== jsp에서 출력한 데이터 ========================\n");
 	System.out.println("컨트롤러에서 가져온 데이터 ms_name >>> : " + ms_name);
@@ -175,22 +175,22 @@
 	<h2>내 회원정보 수정하기</h2>
 	<hr>
 	<br>
-	<br>이름 : <input type="text" name="stname" id="stname" value="${ data.MS_NAME }"><br>
+	<br>이름 : <input type="text" name="stname" id="stname" value="${ data.ms_name }"><br>
 	<br>이메일 : <input type="text" name="stmail" id="stmail" value=<%= ms_id %>><br>
-	<br>핸드폰번호 : <input type="text" name="stcp" id="stcp" value="${ data.MS_CP }"><br>
+	<br>핸드폰번호 : <input type="text" name="stcp" id="stcp" value="${ data.ms_cp }"><br>
 	<br>
-	우편번호 : <input type="text" name="me_zipcode" id="me_zipcode" style="width:50px" maxlength="6" value="${ data.MS_ZIPCODE }">
+	우편번호 : <input type="text" name="me_zipcode" id="me_zipcode" style="width:50px" maxlength="6" value="${ data.ms_zipcode }">
 	<br>
 	<br>
 	도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value=<%= ms_doro %>>
 	<br>
 	<br>	 	
-	상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.MS_DORODETAIL }">
+	상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.ms_dorodetail }">
 	<br>
 	<br>입학년도 : <input type="text" name="admissionyear" id="admissionyear" value=<%= ms_whenjoin %>><br>
-	<br>학년 :&nbsp; <input type="text" name="grade" id="grade" value="${ data.MS_GRADE }">
+	<br>학년 :&nbsp; <input type="text" name="grade" id="grade" value="${ data.ms_grade }">
 	&nbsp;반 :&nbsp; <input type="text" name="class" id="class" value=<%= ms_class %>>
-	&nbsp;번호 :&nbsp; <input type="text" name="number" id="number" value="${ data.MS_NUMBER }">
+	&nbsp;번호 :&nbsp; <input type="text" name="number" id="number" value="${ data.ms_number }">
 	<br>
 	<br>
 	<br>
