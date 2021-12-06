@@ -25,7 +25,7 @@ div {text-align: center;}
 <img src="img/img2.jpg" alt="Girl in a jacket" width="1500" height="500">
 <p class="search-school-title"> 
 <h1>연구*선도학교</h1>
-<a href="subject.k">과목테스트</a>
+
 <br>
 <a href="loginForm.k">백암고등학교(로그인테스트)-(로그인 후 시간표 확인 가능)</a>
 <h2>
