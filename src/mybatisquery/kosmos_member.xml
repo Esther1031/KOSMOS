@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosmos.member.student.dao.KosmosMemberDAO">
+
+<insert id="memberInsert" parameterType="memberVO">
+
+	INSERT INTO KOSMOS_MEMSTU( 	 
+								 MS_NUM 	<!-- placeholer 1 -->
+								,MS_ID 		<!-- placeholer 2 --> 
+								,MS_NAME	<!-- placeholer 3 -->
+								,MS_GEN		<!-- placeholer 4 -->
+								,MS_BIRTH	<!-- placeholer 5 -->
+								,MS_PW		<!-- placeholer 6 -->
+								,MS_CP		<!-- placeholer 7 -->
+								,MS_ZIPCODE <!-- placeholer 8 -->
+								,MS_DORO	<!-- placeholer 9 -->
+								,MS_PHOTO	<!-- placeholer 11 -->
+								,MS_GRADE	<!-- placeholer 12 -->
+								,MS_SEMESTER	<!-- placeholer 13 -->
+								,MS_CLASS	<!-- placeholer 14 -->
+								,MS_NUMBER	<!-- placeholer 15 -->
+								,MS_ADMYEAR	<!-- placeholer 16 -->
+								,MS_JOINYN	<!-- placeholer 17 -->
+								,MS_INSDATE	<!-- placeholer 18 -->
+								,MS_UPDDATE	<!-- placeholer 19 -->
+								,MS_DELYN	<!-- placeholer 20 -->
+							) 
+					VALUES
+							( 	 
+								 #{ms_num, jdbcType=VARCHAR} 				<!-- placeholer 1 -->
+								,#{ms_id, jdbcType=VARCHAR} 			<!-- placeholer 2 --> 
+								,#{ms_name, jdbcType=VARCHAR} 				<!-- placeholer 3 -->
+								,#{ms_gen, jdbcType=VARCHAR}  				<!-- placeholer 4 -->
+								,#{ms_birth, jdbcType=VARCHAR} 			<!-- placeholer 5 -->
+								,#{ms_pw, jdbcType=VARCHAR}  			<!-- placeholer 6 -->
+								,#{ms_cp, jdbcType=VARCHAR} 				<!-- placeholer 7 -->
+								,#{ms_zipcode, jdbcType=VARCHAR}  			<!-- placeholer 8 -->
+								,#{ms_doro, jdbcType=VARCHAR}  			<!-- placeholer 9 -->
+								,#{ms_photo, jdbcType=VARCHAR} 	<!-- placeholer 11 -->
+								,#{ms_grade, jdbcType=VARCHAR}  			<!-- placeholer 12 -->
+								,#{ms_semester, jdbcType=VARCHAR}  			<!-- placeholer 13 -->
+								,#{ms_class, jdbcType=VARCHAR}  			<!-- placeholer 14 -->
+								,#{ms_number, jdbcType=VARCHAR}  			<!-- placeholer 15 -->
+								,#{ms_admyear, jdbcType=VARCHAR}  			<!-- placeholer 16 -->
+								,#{ms_joinyn, jdbcType=VARCHAR}  			<!-- placeholer 17 -->
+								,SYSDATE    			<!-- placeholer 18 -->
+								,SYSDATE 			<!-- placeholer 19 -->
+								,'Y' 			<!-- placeholer 20 -->
+							) 
+</insert>
+
+<update id="memberUpdate" parameterType="memberVO">
+	UPDATE   KOSMOS_MEMSTU 
+	SET 	 MS_ID 		= #{ms_id, jdbcType=VARCHAR}
+			,MS_ZIPCODE = #{ms_zipcode, jdbcType=VARCHAR}
+			,MS_DORO 	= #{ms_doro, jdbcType=VARCHAR}
+	       	,MS_UPDATE = SYSDATE
+	WHERE 	MS_DELYN = 'Y' 
+	AND 	MS_NUM = #{ms_num, jdbcType=VARCHAR}
+</update>
+
+
+<select id="memberIdCheck" parameterType="memberVO" resultType="memberVO">
+	SELECT 	A.MS_ID 	MS_ID
+	FROM 	KOSMOS_MEMSTU A 
+	WHERE 	MS_DELYN = 'Y'
+	AND     A.MS_ID = #{ms_id, jdbcType=VARCHAR}
+</select>
+</mapper>
+
