@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+				"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+			
+<mapper namespace="com.kosmos.common.dao.ChabunDAO">
+
+
+<select id="getMemChabun" resultType="memberVO">
+	SELECT NVL(MAX(SUBSTR(A.MS_NUM, -4)), 0) + 1  MS_NUM FROM KOSMOS_MEMSTU A
+</select>
+
+<select id="getTeacherChabun" resultType="teacherVO">
+	SELECT NVL(MAX(SUBSTR(A.MT_NUM, -4)), 0) + 1  MT_NUM FROM KOSMOS_MEMTEA A
+</select>
+
+</mapper>			

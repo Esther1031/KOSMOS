@@ -6,7 +6,6 @@
     <typeAliases>
     	
 		<typeAlias type="com.kosmos.board.vo.KosmosBoardVO" alias="boardVO"/>
-		<typeAlias type="com.kosmos.member.vo.KosmosMemberVO" alias="memberVO"/>
 		<typeAlias type="com.kosmos.notice.vo.KosmosNoticeVO" alias="noticeVO"/>
 		<typeAlias type="com.kosmos.subject.vo.KosmosSubjectVO" alias="subjectVO"/>
 		<typeAlias type="com.kosmos.sugang.vo.KosmosSugangVO" alias="sugangVO"/>
@@ -15,5 +14,7 @@
 		<typeAlias type="com.kosmos.login.vo.TempAuthNumVO" alias="authnumVO"/>	
 		<typeAlias type="com.kosmos.login.vo.TempPwVO" alias="pwVO"/>
 		<typeAlias type="com.kosmos.school.vo.KosmosSchoolVO" alias="SchoolVO"/>
+		<typeAlias type="com.kosmos.member.student.vo.KosmosMemberVO" alias="memberVO"/>
+		<typeAlias type="com.kosmos.member.teacher.vo.KosmosTeacherVO" alias="teacherVO"/>
 	</typeAliases>
 </configuration>
