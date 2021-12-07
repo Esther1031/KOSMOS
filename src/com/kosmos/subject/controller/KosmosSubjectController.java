@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmos.common.CommonUtils;
 import com.kosmos.login.vo.KosmosLoginVO;
-import com.kosmos.member.vo.KosmosMemberVO;
 import com.kosmos.subject.service.KosmosSubjectService;
 import com.kosmos.subject.vo.KosmosSubjectVO;
 
