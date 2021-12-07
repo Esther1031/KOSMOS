@@ -329,11 +329,10 @@
 							<td><%= sb_group %></td>	<!-- 국어, 영어, 수학, 사회, 과학 -->
 							<td><%= svo.getSb_code() %></td>
 							<td><%= svo.getSb_type() %></td>	<!-- 필수/선택 -->
-							<td><button type="button" class="btnclr" id="selectBtn2" name = "selectBtn" value="<%= svo.getSb_num() %>"><%= svo.getSb_name()%></button></td>
-							<!-- <td><input type="text" value="<%= svo.getSb_name()%>" readonly></td> -->
+							<td><a href="subjectSelect.k"><input type="hidden" id="sb_name" name ="sb_name" value="<%= svo.getSb_num() %>"><%= svo.getSb_name()%></a></td>
 							<td><%= svo.getSb_creditunit() %></td>	<!-- 1, 2, 3 -->
 							<td><%= sb_grade %>학년</td>	<!-- 1, 2, 3 학년 -->
-							<td><%= sb_semester %>학기</td>
+							<td><%= sb_semester %>학기</td></a>
 							<td><%= svo.getSb_teacher() %></td>
 							<td><%= svo.getSb_maxstu() %> 명</td>
 							<td><%= svo.getSb_day() %>요일</td>	
@@ -348,11 +347,17 @@
 			%>
 				<tr>
 					<td colspan="20" align="center">
-						<!-- 조회 버튼은 마우스오버/과목명 클릭하면 볼 수 있게하면 더 좋음. 하지만 나중에 생각하기 -->
+			
+			
 						<input type="button" id="selectBtn" value="조회">
+			<%
+				if (true){};
+			%>
 						<input type="button" id="insertBtn" value="새등록">
 						<input type="button" id="updateBtn" value="수정">
 						<input type="button" id="deleteBtn" value="삭제">
+			<%
+			 %>
 					</td>
 				</tr>
 			</table>

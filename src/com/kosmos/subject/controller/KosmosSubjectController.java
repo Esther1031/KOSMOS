@@ -3,6 +3,7 @@ package com.kosmos.subject.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmos.common.CommonUtils;
+import com.kosmos.login.vo.KosmosLoginVO;
 import com.kosmos.member.vo.KosmosMemberVO;
 import com.kosmos.subject.service.KosmosSubjectService;
 import com.kosmos.subject.vo.KosmosSubjectVO;
@@ -39,16 +41,24 @@ public class KosmosSubjectController {
 	}
 	
 	@GetMapping("subjectSelectAll")
-	public String subjectSelectAll(KosmosSubjectVO svo, Model model){
+	public String subjectSelectAll(KosmosSubjectVO svo, Model model, HttpSession hs, KosmosLoginVO lvo){
 		logger.info("SubjectController : subjectSelectAll() >>> : ");
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
+		
+		String mt_id = lvo_data.getMt_id();
+		String ms_id = lvo_data.getMs_id();
+		logger.info("mt_id >>> : " + lvo_data.getMt_id());
+		logger.info("ms_id >>> : " + lvo_data.getMs_id());
 		
 		List<KosmosSubjectVO> listSA = kosmosSubjectService.subjectSelectAll(svo);
 		logger.info("subjectSelectAll() 다녀온 후 >>> : ");
 		KosmosSubjectVO.subjectKeyPrintVO(svo);
 		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSA.size());
-		if (listSA != null && listSA.size() > 0) {
-			model.addAttribute("listSA", listSA);
-			return "subject/subjectSelectAll";
+		if (mt_id != null || ms_id != null) {
+			if (listSA != null && listSA.size() > 0) {
+				model.addAttribute("listSA", listSA);
+				return "subject/subjectSelectAll";
+			}
 		}
 		return "subject/subjectSelectAll";
 	}
@@ -59,6 +69,7 @@ public class KosmosSubjectController {
 		
 		logger.info("subjectSelect() : svo.getSb_num() >>> : " + svo.getSb_num());
 		List<KosmosSubjectVO> listS = kosmosSubjectService.subjectSelect(svo);
+		logger.info("subjectSelect() : svo.getSb_num() >>> : " + listS.size());
 		if (listS.size() == 1) {
 			model.addAttribute("listS", listS);
 			return "subject/subjectSelect";
