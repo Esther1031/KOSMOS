@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosmos.sugang.dao.KosmosSugangDAO">
+	
+	<select id="subjectSelectAll" parameterType="kosmosSugangSubjectVO" resultType="kosmosSugangSubjectVO">
+		SELECT		 SB_NUM
+					,SB_GROUP 
+					,SB_CODE
+					,SB_TYPE
+					,SB_NAME
+					,SB_CREDITUNIT
+					,SB_GRADE
+				--	,SB_YEAR 
+					,SB_SEMESTER
+					,SB_TEACHER
+					,SB_MAXSTU 
+					,SB_DAY 
+					,SB_TIMETABLE
+					,SB_BEFOREYN
+					,SB_BEFORENAME
+					,SB_INSDATE
+					,SB_UPDDATE 
+					,SB_DELYN 
+		FROM		KOSMOS_SUBJECT1
+	</select>
+
+	
+	<select id="sugangListSelect" parameterType="kosmosSugangListVO" resultType="kosmosSugangListVO">
+			SELECT		  SL_NUM	
+	   					 ,MS_NUM 
+	   					 ,SB_GROUP	
+	   					 ,SB_NAME
+	    				 ,SB_CREDITUNIT 	
+					     ,SB_DAY 	
+					     ,SB_TIMETABLE
+					     ,SB_BEFOREYN 
+    					 ,SB_BEFORENAME	
+						 ,SB_MAXSTU
+					     ,SL_INSDATE
+					     ,SL_UPDATE
+					     ,SL_DELYN
+			FROM		KOSMOS_SUGANGLIST
+	</select>
+
+	<select id="sugangOldlistSelectAll" parameterType="kosmosSugangListVO" resultType="kosmosSugangListVO">
+			SELECT		  SL_NUM	
+	   					 ,MS_NUM 
+	   					 ,SB_GROUP	
+	   					 ,SB_NAME
+	   					 ,SB_GRADE
+	    				 ,SB_CREDITUNIT 	
+					     ,SB_DAY 	
+					     ,SB_TIMETABLE    
+					     ,SB_BEFOREYN
+    					 ,SB_BEFORENAME 	
+						 ,SB_MAXSTU
+					     ,SL_INSDATE
+					     ,SL_UPDATE
+					     ,SL_DELYN
+			FROM		KOSMOS_OLDSUGANG
+	</select>
+
+
+
+
+	<insert id="sugangListInsert" parameterType="kosmosSugangListVO">
+		
+		INSERT INTO KOSMOS_SUGANGLIST(
+                          SL_NUM	
+	   					 ,MS_NUM 
+	   					 ,SB_GROUP	
+	   					 ,SB_NAME
+	   					 ,SB_GRADE
+	    				 ,SB_CREDITUNIT 	
+					     ,SB_DAY 	
+					     ,SB_TIMETABLE
+						 ,SB_BEFOREYN 
+    					 ,SB_BEFORENAME	
+						 ,SB_MAXSTU
+					     ,SL_INSDATE
+					     ,SL_UPDATE
+					     ,SL_DELYN ) 	SELECT		'번호',
+	                   								#{ms_num, jdbcType=VARCHAR}, 
+	                   								#{sb_group, jdbcType=VARCHAR}, 
+								                   	#{sb_name, jdbcType=VARCHAR}, 
+							                   		#{sb_grade, jdbcType=VARCHAR}, 
+								                   	#{sb_creditunit, jdbcType=VARCHAR}, 
+								                   	#{sb_day, jdbcType=VARCHAR},
+								                   	#{sb_timetable, jdbcType=VARCHAR},
+								                   	#{sb_beforeyn, jdbcType=VARCHAR},
+								                   	#{sb_beforename, jdbcType=VARCHAR},
+								                   	#{sb_maxstu, jdbcType=VARCHAR},
+								                   	SYSDATE,      
+								                   	SYSDATE,      
+								                   	'N'
+										FROM    	DUAL
+										WHERE NOT EXISTS (  SELECT   SB_NAME
+											                FROM     KOSMOS_SUGANGLIST
+											                WHERE    SL_NUM	 LIKE '번호'
+											                AND 	 MS_NUM  LIKE  #{ms_num, jdbcType=VARCHAR} 
+											                AND      SB_GROUP LIKE #{sb_group, jdbcType=VARCHAR 
+									                        AND		 SB_NAME LIKE #{sb_name, jdbcType=VARCHAR}
+									                        AND 	 SB_CREDITUNIT LIKE #{sb_creditunit, jdbcType=VARCHAR}
+									                        AND 	 SB_GRADE LIKE #{sb_grade, jdbcType=VARCHAR}
+									                        AND 	 SB_DAY LIKE #{sb_day, jdbcType=VARCHAR}
+									                        AND   	 SB_TIMETABLE LIKE #{sb_timetable, jdbcType=VARCHAR}
+									                        AND 	 SB_BEFOREYN LIKE #{sb_beforeyn, jdbcType=VARCHAR}
+								                   			AND 	 SB_BEFORENAME LIKE #{sb_beforename, jdbcType=VARCHAR}
+									                        AND 	 SB_MAXSTU LIKE #{sb_maxstu, jdbcType=VARCHAR}
+									                        AND 	 SL_DELYN LIKE 'N'
+											                )
+	
+	</insert>  
+	
+	<insert id="sugangOldListInsert" parameterType="kosmosSugangListVO">
+	
+		INSERT INTO KOSMOS_OLDSUGANG(
+                          SL_NUM	
+	   					 ,MS_NUM 
+	   					 ,SB_GROUP	
+	   					 ,SB_NAME
+	   					 ,SB_GRADE
+	    				 ,SB_CREDITUNIT 	
+					     ,SB_DAY 	
+					     ,SB_TIMETABLE
+						 ,SB_BEFOREYN 
+    					 ,SB_BEFORENAME	
+						 ,SB_MAXSTU
+					     ,SL_INSDATE
+					     ,SL_UPDATE
+					     ,SL_DELYN ) 	SELECT		'번호',
+	                   								#{ms_num, jdbcType=VARCHAR}, 
+	                   								#{sb_group, jdbcType=VARCHAR}, 
+								                   	#{sb_name, jdbcType=VARCHAR}, 
+							                   		#{sb_grade, jdbcType=VARCHAR}, 
+								                   	#{sb_creditunit, jdbcType=VARCHAR}, 
+								                   	#{sb_day, jdbcType=VARCHAR},
+								                   	#{sb_timetable, jdbcType=VARCHAR},
+								                   	#{sb_beforeyn, jdbcType=VARCHAR},
+								                   	#{sb_beforename, jdbcType=VARCHAR},
+								                   	#{sb_maxstu, jdbcType=VARCHAR},
+								                   	SYSDATE,      
+								                   	SYSDATE,      
+								                   	'Y'
+										FROM    	DUAL
+										WHERE NOT EXISTS (  SELECT   SB_NAME
+											                FROM     KOSMOS_OLDSUGANG
+											                WHERE    SL_NUM	 LIKE '번호'
+											                AND 	 MS_NUM  LIKE #{ms_num, jdbcType=VARCHAR} 
+											                AND      SB_GROUP LIKE #{sb_group, jdbcType=VARCHAR 
+									                        AND		 SB_NAME LIKE #{sb_name, jdbcType=VARCHAR}
+									                        AND 	 SB_CREDITUNIT LIKE #{sb_creditunit, jdbcType=VARCHAR}
+									                        AND 	 SB_GRADE LIKE #{sb_grade, jdbcType=VARCHAR}
+									                        AND 	 SB_DAY LIKE #{sb_day, jdbcType=VARCHAR}
+									                        AND   	 SB_TIMETABLE LIKE #{sb_timetable, jdbcType=VARCHAR}
+									                        AND 	 SB_BEFOREYN LIKE #{sb_beforeyn, jdbcType=VARCHAR}
+								                   			AND 	 SB_BEFORENAME LIKE #{sb_beforename, jdbcType=VARCHAR}
+									                        AND 	 SB_MAXSTU LIKE #{sb_maxstu, jdbcType=VARCHAR}
+									                        AND 	 SL_DELYN LIKE 'Y'
+											                )
+	
+	</insert>  
+	
+	<select id="sugangListSelectGroup" parameterType="hashmap" resultType="kosmosSugangListVO">
+		SELECT		  SL_NUM	
+		             ,MS_NUM 
+		             ,SB_GROUP	
+		             ,SB_NAME
+		             ,SB_CREDITUNIT 	
+		             ,SB_DAY 	
+		             ,SB_TIMETABLE 	
+		             ,SB_MAXSTU
+		             ,SL_INSDATE
+		             ,SL_UPDATE
+		             ,SL_DELYN
+		FROM		KOSMOS_SUGANGLIST
+		WHERE       SB_GROUP LIKE #{code, jdbcType=VARCHAR}                         
+	</select>
+	
+	<update id="sugangListUpdateOne" parameterType="hashmap">
+		UPDATE 		 KOSMOS_SUGANGLIST 
+		SET 		 SL_DELYN = 'Y'
+					,SL_UPDATE = SYSDATE 
+					--,SB_MAXSTU = (SB_MAXSTU-1)
+		WHERE 		 SB_NAME LIKE #{name, jdbcType=VARCHAR}
+	</update>
+	
+	<update id="sugangListUpdateList" parameterType="hashmap">
+		UPDATE 		 KOSMOS_SUGANGLIST
+		SET 		 SL_DELYN = 'N'
+					,SL_UPDATE = SYSDATE
+		WHERE 		 SB_GROUP LIKE (SELECT 	SB_GROUP 
+									FROM 	KOSMOS_SUGANGLIST 
+									WHERE 	SB_NAME LIKE #{name, jdbcType=VARCHAR} 
+									AND ROWNUM = 1) 
+	</update>
+	
+	
+	
+	
+	<select id="sugangSelectAll" parameterType="kosmosSugangListVO" resultType="kosmosSugangListVO">
+		SELECT		  SL_NUM	
+		             ,MS_NUM 
+		             ,SB_GROUP	
+		             ,SB_NAME
+		             ,SB_CREDITUNIT 	
+		             ,SB_DAY 	
+		             ,SB_TIMETABLE 	
+		             ,SB_BEFOREYN 
+    				 ,SB_BEFORENAME	
+		             ,SB_MAXSTU
+		             ,SL_INSDATE
+		             ,SL_UPDATE
+		             ,SL_DELYN
+		FROM		KOSMOS_SUGANGLIST
+		WHERE       SL_DELYN='Y'                         
+	</select>
+	
+</mapper>
