@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.kosmos.subject.vo.KosmosSubjectVO" %>
-<%@ page import="com.kosmos.common.CommonUtils" %>  
+<%@ page import="com.kosmos.common.CommonUtils" %> 
+<%@ page import="com.kosmos.login.vo.KosmosLoginVO" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -332,7 +333,7 @@
 							<td><a href="subjectSelect.k"><input type="hidden" id="sb_name" name ="sb_name" value="<%= svo.getSb_num() %>"><%= svo.getSb_name()%></a></td>
 							<td><%= svo.getSb_creditunit() %></td>	<!-- 1, 2, 3 -->
 							<td><%= sb_grade %>학년</td>	<!-- 1, 2, 3 학년 -->
-							<td><%= sb_semester %>학기</td></a>
+							<td><%= sb_semester %>학기</td>
 							<td><%= svo.getSb_teacher() %></td>
 							<td><%= svo.getSb_maxstu() %> 명</td>
 							<td><%= svo.getSb_day() %>요일</td>	
@@ -347,16 +348,18 @@
 			%>
 				<tr>
 					<td colspan="20" align="center">
-			
-			
 						<input type="button" id="selectBtn" value="조회">
 			<%
-				if (true){};
+				Object obj1 = session.getAttribute("result");
+				KosmosLoginVO lvo = (KosmosLoginVO)obj1;
+				String mt_id = lvo.getMt_id();
+				if (mt_id != null){
 			%>
 						<input type="button" id="insertBtn" value="새등록">
 						<input type="button" id="updateBtn" value="수정">
 						<input type="button" id="deleteBtn" value="삭제">
 			<%
+				};
 			 %>
 					</td>
 				</tr>

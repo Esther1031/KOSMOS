@@ -7,7 +7,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.kosmos.member.vo.KosmosMemberVO;
 import com.kosmos.subject.vo.KosmosSubjectVO;
 
 @Repository
@@ -29,13 +28,6 @@ public class KosmosSubjectDAOImpl implements KosmosSubjectDAO {
 		// TODO Auto-generated method stub
 		logger.info("KosmosSubjectDAOImpl : subjectSelect() >>> : ");
 		return sqlSession.selectList("subjectSelect", svo);
-	}
-
-	@Override
-	public List<KosmosSubjectVO> subjectAdminCheck(KosmosMemberVO mvo) {
-		// TODO Auto-generated method stub
-		logger.info("KosmosSubjectDAOImpl : subjectAdminCheck() >>> : ");
-		return sqlSession.selectList("subjectAdminCheck", mvo);
 	}
 
 	@Override

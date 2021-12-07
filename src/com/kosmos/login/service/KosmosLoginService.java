@@ -3,7 +3,6 @@ package com.kosmos.login.service;
 import java.util.List;
 
 import com.kosmos.login.vo.KosmosLoginVO;
-import com.kosmos.member.vo.KosmosMemberVO;
 
 public interface KosmosLoginService {
 	
