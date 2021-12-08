@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kosmos.member.teacher.dao.KosmosTeacherDAO">
+
+<insert id="teacherInsert" parameterType="teacherVO">
+
+	INSERT INTO KOSMOS_MEMTEA( 	 
+								 MT_NUM 	<!-- placeholer 1 -->
+								,MT_ID 		<!-- placeholer 2 --> 
+								,MT_NAME	<!-- placeholer 3 -->
+								,MT_GEN		<!-- placeholer 4 -->
+								,MT_BIRTH	<!-- placeholer 5 -->
+								,MT_PW		<!-- placeholer 6 -->
+								,MT_CP		<!-- placeholer 7 -->
+								,MT_ZIPCODE <!-- placeholer 8 -->
+								,MT_DORO	<!-- placeholer 9 -->
+								,MT_DORODETAIL	<!-- placeholer 10 -->
+								,MT_PHOTO	<!-- placeholer 11 -->
+								,SB_NUM	<!-- placeholer 17 -->
+								,MT_INSDATE	<!-- placeholer 18 -->
+								,MT_UPDDATE	<!-- placeholer 19 -->
+								,MT_DELYN	<!-- placeholer 20 -->
+								) 
+								VALUES
+								( 	 
+								 #{mt_num, jdbcType=VARCHAR} 				<!-- placeholer 1 -->
+								,#{mt_id, jdbcType=VARCHAR} 			<!-- placeholer 2 --> 
+								,#{mt_name, jdbcType=VARCHAR} 				<!-- placeholer 3 -->
+								,#{mt_gen, jdbcType=VARCHAR}  				<!-- placeholer 4 -->
+								,#{mt_birth, jdbcType=VARCHAR} 			<!-- placeholer 5 -->
+								,#{mt_pw, jdbcType=VARCHAR}  			<!-- placeholer 6 -->
+								,#{mt_cp, jdbcType=VARCHAR} 				<!-- placeholer 7 -->
+								,#{mt_zipcode, jdbcType=VARCHAR}  			<!-- placeholer 8 -->
+								,#{mt_doro, jdbcType=VARCHAR}  			<!-- placeholer 9 -->
+								,#{mt_dorodetail, jdbcType=VARCHAR} 		<!-- placeholer 10 -->
+								,#{mt_photo, jdbcType=VARCHAR} 	<!-- placeholer 11 -->
+								,#{sb_num, jdbcType=VARCHAR}  			<!-- placeholer 12 -->
+								,SYSDATE    			<!-- placeholer 18 -->
+								,SYSDATE 			<!-- placeholer 19 -->
+								,'Y' 			<!-- placeholer 20 -->
+								) 
+
+</insert>
+
+<update id="teacherUpdate" parameterType="teacherVO">
+	UPDATE   KOSMOS_MEMTEA 
+	SET 	 MT_ID 		= #{mt_id, jdbcType=VARCHAR}
+			,MT_ZIPCODE  	= #{mt_zipcode, jdbcType=VARCHAR}
+			,MT_DORO 	= #{mt_doro, jdbcType=VARCHAR}
+	       	,MT_UPDATE = SYSDATE
+	WHERE 	MT_DELYN = 'Y' 
+	AND 	MT_NUM = #{mt_num, jdbcType=VARCHAR}
+</update>
+
+
+<select id="teacherIdCheck" parameterType="teacherVO" resultType="teacherVO">
+	SELECT 	A.MT_ID MT_ID
+	FROM 	KOSMOS_MEMTEA A 
+	WHERE 	MT_DELYN = 'Y'
+	AND     A.MT_ID = #{mt_id, jdbcType=VARCHAR}
+</select>
+</mapper>

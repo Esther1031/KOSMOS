@@ -24,7 +24,7 @@
 <br>
 수강신청
 <br>
-과목정보
+<a href="subjectSelectAll.k">과목정보</a>
 <br>
 시간표
 <br>

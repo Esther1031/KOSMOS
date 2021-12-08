@@ -121,7 +121,7 @@ public class KosmosLoginController {
 	//	교사 인증 성공시 교사회원가입 창으로 연결
 	//==================================================================================
 	
-	@GetMapping("teacherForm")
+	//@GetMapping("teacherForm")
 	public String teacherForm() {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
 		return "form/kosmosMemberFormTeacher";

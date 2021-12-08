@@ -3,17 +3,16 @@ package com.kosmos.subject.controller;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmos.common.CommonUtils;
-import com.kosmos.member.vo.KosmosMemberVO;
+import com.kosmos.login.vo.KosmosLoginVO;
 import com.kosmos.subject.service.KosmosSubjectService;
 import com.kosmos.subject.vo.KosmosSubjectVO;
 
@@ -34,42 +33,82 @@ public class KosmosSubjectController {
 	}
 
 	@GetMapping("subjectInsertForm")
-	public String subjectForm() {
-		return "subject/subjectInsertForm";
-	}
-	
-	@GetMapping("subjectSelectAll")
-	public String subjectSelectAll(KosmosSubjectVO svo, Model model){
-		logger.info("SubjectController : subjectSelectAll() >>> : ");
+	public String subjectInsertForm(HttpSession hs) {
+		// 세션에서 가지고 온 데이터 객체에 담기
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
 		
-		List<KosmosSubjectVO> listSA = kosmosSubjectService.subjectSelectAll(svo);
-		logger.info("subjectSelectAll() 다녀온 후 >>> : ");
-		KosmosSubjectVO.subjectKeyPrintVO(svo);
-		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSA.size());
-		if (listSA != null && listSA.size() > 0) {
-			model.addAttribute("listSA", listSA);
-			return "subject/subjectSelectAll";
+		String mt_id = lvo_data.getMt_id();
+		
+		if (mt_id != null) {
+			
+			return "subject/subjectInsertForm";
 		}
 		return "subject/subjectSelectAll";
 	}
 	
-	@GetMapping("subjectSelect")
-	public String subjectSelect(KosmosSubjectVO svo, Model model) {
-		logger.info("SubjectController : subjectSelect() >>> : ");
+	@GetMapping("subjectSelectAll")
+	public String subjectSelectAll(KosmosSubjectVO svo, Model model, HttpSession hs){
+		logger.info("SubjectController : subjectSelectAll() >>> : ");
+		// 세션에서 가지고 온 데이터 객체에 담기
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
 		
+		// 세션 값 확인
+		String mt_id = lvo_data.getMt_id();
+		String ms_id = lvo_data.getMs_id();
+		logger.info("mt_id >>> : " + lvo_data.getMt_id());
+		logger.info("ms_id >>> : " + lvo_data.getMs_id());
+		
+		// 과목 전체 조회 + 상세 조회
+		List<KosmosSubjectVO> listSA = kosmosSubjectService.subjectSelectAll(svo);
+		logger.info("subjectSelectAll() 다녀온 후 >>> : ");
+		KosmosSubjectVO.subjectKeyPrintVO(svo);
+		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSA.size());
+		if (mt_id != null || ms_id != null) {
+			if (listSA != null && listSA.size() > 0) {
+				model.addAttribute("listSA", listSA);
+				return "subject/subjectSelectAll";
+			}
+		}
+		// 학교 메인 홈페이지로 이동 
+		return "school/home";
+	}
+	
+	@GetMapping("subjectSelect")
+	public String subjectSelect(KosmosSubjectVO svo, Model model, HttpSession hs) {
+		logger.info("SubjectController : subjectSelect() >>> : ");
+		// 세션에서 가지고 온 데이터 객체에 담기
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
+		// 세션 값 확인
+		String mt_id = lvo_data.getMt_id();
+		String ms_id = lvo_data.getMs_id();
+		logger.info("mt_id >>> : " + lvo_data.getMt_id());
+		logger.info("ms_id >>> : " + lvo_data.getMs_id());
+		
+		// 과목 단일 조회  
 		logger.info("subjectSelect() : svo.getSb_num() >>> : " + svo.getSb_num());
 		List<KosmosSubjectVO> listS = kosmosSubjectService.subjectSelect(svo);
-		if (listS.size() == 1) {
-			model.addAttribute("listS", listS);
-			return "subject/subjectSelect";
+		logger.info("subjectSelect() : svo.getSb_num() >>> : " + listS.size());
+		if (mt_id != null || ms_id != null) {
+			if (listS.size() == 1) {
+				model.addAttribute("listS", listS);
+				return "subject/subjectSelect";
+			}
 		}
 		return "subject/subjectSelectAll";
 	}
 			
 	@GetMapping("subjectInsert")
-	public String subjectInsert(HttpServletRequest req, KosmosSubjectVO svo, Model model) {
+	public String subjectInsert(HttpServletRequest req, KosmosSubjectVO svo, Model model, HttpSession hs) {
 		logger.info("KosmosSubjectController : subjectInsert() >>> : ");
+		// 세션에서 가지고 온 데이터 객체에 담기
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
+		// 세션 값 확인
+		String mt_id = lvo_data.getMt_id();
+		String ms_id = lvo_data.getMs_id();
+		logger.info("mt_id >>> : " + lvo_data.getMt_id());
+		logger.info("ms_id >>> : " + lvo_data.getMs_id());
 		
+		// 등록할 과목 정보 
 		String sb_group = req.getParameter("sb_group");
 		String sb_code = req.getParameter("sb_code");
 		String sb_type = req.getParameter("sb_type");
@@ -120,11 +159,11 @@ public class KosmosSubjectController {
 			model.addAttribute("nCntI", svo);
 			return "subject/subjectPass";
 		}
-		return "subject/subjectCheckFail";		// 일단은 나중에 subjectSelectAll 페이지로 이동
+		return "subject/subjectPass";		
 	}
 	
 	@GetMapping("subjectUpdateForm")
-	public String subjectUpdateForm(KosmosSubjectVO svo, Model model) {
+	public String subjectUpdateForm(KosmosSubjectVO svo, Model model, HttpSession hs) {
 		logger.info("KosmosSubjectController : subjectUpdateForm() >>> : ");
 		logger.info("subjectUpdateForm() : svo.getSb_num() >>> : " + svo.getSb_num());
 		List<KosmosSubjectVO> listUF = kosmosSubjectService.subjectSelect(svo);
@@ -132,7 +171,7 @@ public class KosmosSubjectController {
 			model.addAttribute("listUF", listUF);
 			return "subject/subjectUpdateForm";
 		}
-		return "subject/subjectUpdateForm";
+		return "subject/subjectPass";
 	}
 	
 	@GetMapping("subjectUpdate")
@@ -145,7 +184,7 @@ public class KosmosSubjectController {
 		if (nCntU > 0) {
 			return "subject/subjectPass";
 		}
-		return "subject/subjectCheckFail";
+		return "subject/subjectPass";
 	}
 	
 	@GetMapping("subjectDelete")
@@ -158,7 +197,7 @@ public class KosmosSubjectController {
 		if (nCntD > 0) {
 			return "subject/subjectDelete";
 		}
-		return "subject/subjectCheckFail";
+		return "subject/subjectPass";
 	}
 	
 	
