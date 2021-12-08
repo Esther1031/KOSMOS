@@ -4,7 +4,6 @@
 
 <configuration>
     <typeAliases>
-    <typeAliases>
 		<typeAlias type="com.kosmos.board.vo.KosmosBoardVO" alias="boardVO"/>
 		<typeAlias type="com.kosmos.notice.vo.KosmosNoticeVO" alias="noticeVO"/>
 		<typeAlias type="com.kosmos.subject.vo.KosmosSubjectVO" alias="subjectVO"/>
