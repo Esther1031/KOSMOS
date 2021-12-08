@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kosmos.member.vo.KosmosMemberVO;
 import com.kosmos.subject.dao.KosmosSubjectDAO;
 import com.kosmos.subject.dao.KosmosSubjectDAOImpl;
 import com.kosmos.subject.vo.KosmosSubjectVO;
@@ -36,13 +35,6 @@ public class KosmosSubjectServiceImpl implements KosmosSubjectService {
 		// TODO Auto-generated method stub
 		logger.info("KosmosSubjectServiceImpl subjectSelect() >>> : ");
 		return kosmosSubjectDAO.subjectSelect(svo);
-	}
-
-	@Override
-	public List<KosmosSubjectVO> subjectAdminCheck(KosmosMemberVO mvo) {
-		// TODO Auto-generated method stub
-		logger.info("KosmosSubjectServiceImpl subjectAdminCheck() >>> : ");
-		return kosmosSubjectDAO.subjectAdminCheck(mvo);
 	}
 
 	@Override
