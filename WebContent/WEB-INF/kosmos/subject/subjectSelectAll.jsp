@@ -247,14 +247,7 @@
 <div class="bg_gnb"></div>
 <div class="content-top">제일 위</div>
 <div class="content" align="center">
-	<div id="s_left">
-		<nav>
-			<ul id="sub_menu">
-				<li>필수</li>
-				<li>선택</li>
-			</ul>
-		</nav>
-	</div>
+	<div id="s_left"></div>
 	<div id="contents">
 	<hr>
 	<hr>
