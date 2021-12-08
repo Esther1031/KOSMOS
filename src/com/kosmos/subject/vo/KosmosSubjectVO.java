@@ -27,7 +27,7 @@ public class KosmosSubjectVO {
 	private String sb_upddate;
 	private String sb_delyn;
 	
-	// 검색용
+	// 검색 구분자 및 검색어
 	private String key_sbname;
 	private String key_sbteacher;
 	private String key_sbgrade;
@@ -36,6 +36,12 @@ public class KosmosSubjectVO {
 	private String key_sbtime;
 	private String key_sbsemester;
 	private String key_sbyear;
+	
+	// 페이징 이동 필드
+	private String pageSize;
+	private String groupSize;
+	private String curPage;
+	private String totalCount;
 	
 	public KosmosSubjectVO() {
 		
@@ -267,14 +273,6 @@ public class KosmosSubjectVO {
 		this.key_sbsemester = key_sbsemester;
 	}
 
-	public static Logger getLogger() {
-		return logger;
-	}
-
-	public static void setLogger(Logger logger) {
-		KosmosSubjectVO.logger = logger;
-	}
-
 	public String getKey_sbyear() {
 		return key_sbyear;
 	}
@@ -282,6 +280,41 @@ public class KosmosSubjectVO {
 	public void setKey_sbyear(String key_sbyear) {
 		this.key_sbyear = key_sbyear;
 	}
+	
+	// 페이징 이동 필드
+
+	public String getPageSize() {
+		return pageSize;
+	}
+
+	public void setPageSize(String pageSize) {
+		this.pageSize = pageSize;
+	}
+
+	public String getGroupSize() {
+		return groupSize;
+	}
+
+	public void setGroupSize(String groupSize) {
+		this.groupSize = groupSize;
+	}
+
+	public String getCurPage() {
+		return curPage;
+	}
+
+	public void setCurPage(String curPage) {
+		this.curPage = curPage;
+	}
+
+	public String getTotalCount() {
+		return totalCount;
+	}
+
+	public void setTotalCount(String totalCount) {
+		this.totalCount = totalCount;
+	}
+
 
 	public static void subjectPrintVO(KosmosSubjectVO svo) {
 		logger.info("KosmosSubjectVO 데이터 체크 시작 >>> : ");

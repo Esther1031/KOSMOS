@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.kosmos.common.AuthenticationKey" %>
-<%@ page import="com.kosmos.common.CommonUtils" %>    
+<%@ page import="com.kosmos.common.SubjectUtils" %>    
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,7 +94,7 @@
 			}
 			
 			// 학년 드롭박스
-			<%  String g = CommonUtils.gradeFrontToDB();
+			<%  String g = SubjectUtils.gradeFrontToDB();
 				String[] gArray = g.split(",");
 				for (int i=0; i < gArray.length; i++){
 					String key_selectGrade = gArray[i];
@@ -111,7 +111,7 @@
 			}
 			
 			// 학기 드롭박스
-			<%  String s = CommonUtils.semesterFrontToDB();
+			<%  String s = SubjectUtils.semesterFrontToDB();
 				String[] sArray = s.split(",");
 				for (int i=0; i < sArray.length; i++){
 					String key_selectSemester = sArray[i];
@@ -122,7 +122,7 @@
 			%>
 			
 			// 수업요일 드롭박스
-			<%  String d = CommonUtils.dayFrontToDB();
+			<%  String d = SubjectUtils.dayFrontToDB();
 				String[] dArray = d.split(",");
 				for (int i=0; i < dArray.length; i++){
 					String key_selectDay = dArray[i];
@@ -145,7 +145,7 @@
 			
 			// 선수과목명
 			<% 
-			String b = CommonUtils.beforenameFrontToDB();
+			String b = SubjectUtils.beforenameFrontToDB();
 			String[] bArray = b.split(",");
 			for (int i=0; i < bArray.length; i++){
 				String key_beforename = bArray[i];
@@ -157,7 +157,7 @@
 			
 			// 교과군
 			<% 
-			String r = CommonUtils.groupFrontToDB();
+			String r = SubjectUtils.groupFrontToDB();
 			String[] rArray = r.split(",");
 			for (int i=0; i < rArray.length; i++){
 				String key_group = rArray[i];

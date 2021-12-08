@@ -19,6 +19,8 @@
 	</select>
 	 
 	<select id="subjectSelectAll" parameterType="subjectVO" resultType="subjectVO">
+		SELECT		*
+		FROM (
 		SELECT		 A.SB_NUM						SB_NUM
 					,A.SB_GROUP						SB_GROUP
 					,A.SB_CODE						SB_CODE
@@ -40,6 +42,10 @@
 					,TO_CHAR(TO_DATE(A.SB_INSDATE), 'YYYY-MM-DD')		SB_INSDATE
 					,TO_CHAR(TO_DATE(A.SB_UPDDATE), 'YYYY-MM-DD')		SB_UPDDATE
 					,A.SB_DELYN			SB_DELYN
+					
+					<!-- 페이지 사이즈 : pageSize -->
+					,CEIL(ROW_NUMBER() OVER(ORDER BY SB_NUM)/ #{pageSize, jdbcType=VARCHAR}) pageSize
+					,COUNT(SB_NUM) OVER() AS totalCount
 		FROM		KOSMOS_SUBJECT	A
 		WHERE		A.SB_DELYN = 'Y'
 			<!-- 과목명으로 조회 (텍스트) -->
@@ -76,6 +82,8 @@
 			<if test="key_sbyear != null and key_sbyear != ''">
 				<![CDATA[AND A.SB_YEAR LIKE '%' ||  #{key_sbyear, jdbcType=VARCHAR} || '%' ]]>
 			</if>
+			<!-- 현재 페이지 : curPage -->
+			) WHERE pageSize = #{curPage, jdbcType=VARCHAR}
 	</select>
 	
 	<select id="subjectAdminCheck" parameterType="memberVO" resultType="memberVO">
