@@ -21,6 +21,8 @@ package com.kosmos.school.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -55,6 +57,17 @@ public class KosmosSchoolController {
 		this.kosmosSchoolService = kosmosSchoolService;
 	}
 	
+	//==================================================================================
+	//	로그인 화면으로 연결
+	//==================================================================================
+	
+	@GetMapping("loginForm")
+	public String loginForm() {
+		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
+		return "login/test_loginForm";
+	}
+	
+	
 	// =======================================================================================
 	// 로그인 화면에서 로그인 성공시 수강신청 화면 연결 로직 학생/선생 분기
 	// =======================================================================================
@@ -82,8 +95,11 @@ public class KosmosSchoolController {
 		System.out.println("mt_num >>> : " + mt_num);	
 		
 		if(ms_id != null) {								// 학생인 경우 수강 컨트롤러 -> 수강신청 페이지로 이동
+			// #솔잎 이 만들어준 페이지 미적용 상태
+			// 현재 더미페이지
 			return "sugang/sugangLanding";
 		} else {										// 교사인 경우 수강 관리 페이지로 -> 교사 관리 페이지는 구현 보류 상태
+			// #미구현 : 홀딩 : 교수가 로그인한 경우 수강신청관리페이지로 이동해야 함.
 			return "sugang/sgManagement";
 		}
 		
@@ -97,7 +113,7 @@ public class KosmosSchoolController {
 	@GetMapping("mainHome")
 	public String home() {
 		
-		return "school/home";
+		return "school/kosmos_main_page";
 	}
 	
 	
@@ -166,37 +182,36 @@ public class KosmosSchoolController {
 		
 		KosmosLoginVO lvo_data = (KosmosLoginVO) hs.getAttribute("result");
 		String ms_num = lvo_data.getMs_num();
-		System.out.println("ms_num >>> : " + ms_num);
+
 		svo.setMs_num(ms_num);
 		
 		// 1교시 세팅
-		List<KosmosSchoolVO> aList1 = kosmosSchoolService.timetable1(svo);
+		List<KosmosSchoolVO> list1 = kosmosSchoolService.timetable1(svo);
 		// 2교시 세팅
-		List<KosmosSchoolVO> aList2 = kosmosSchoolService.timetable2(svo);
+		List<KosmosSchoolVO> list2 = kosmosSchoolService.timetable2(svo);
 		// 3교시 세팅
-		List<KosmosSchoolVO> aList3 = kosmosSchoolService.timetable3(svo);
+		List<KosmosSchoolVO> list3 = kosmosSchoolService.timetable3(svo);
 		// 4교시 세팅
-		List<KosmosSchoolVO> aList4 = kosmosSchoolService.timetable4(svo);
+		List<KosmosSchoolVO> list4 = kosmosSchoolService.timetable4(svo);
 		// 5교시 세팅
-		List<KosmosSchoolVO> aList5 = kosmosSchoolService.timetable5(svo);
+		List<KosmosSchoolVO> list5 = kosmosSchoolService.timetable5(svo);
 		// 6교시 세팅
-		List<KosmosSchoolVO> aList6 = kosmosSchoolService.timetable6(svo);
+		List<KosmosSchoolVO> list6 = kosmosSchoolService.timetable6(svo);
 		// 7교시 세팅
-		List<KosmosSchoolVO> aList7 = kosmosSchoolService.timetable7(svo);
+		List<KosmosSchoolVO> list7 = kosmosSchoolService.timetable7(svo);
 		
-		model.addAttribute("aList1", aList1);
-		model.addAttribute("aList2", aList2);
-		model.addAttribute("aList3", aList3);
-		model.addAttribute("aList4", aList4);
-		model.addAttribute("aList5", aList5);
-		model.addAttribute("aList6", aList6);
-		model.addAttribute("aList7", aList7);
+		// 리스트 하나로 합치기
+		List<KosmosSchoolVO> listall = Stream.of(list1, list2, list3, list4, list5, list6, list7)
+										.flatMap(x -> x.stream())
+										.collect(Collectors.toList());
 		
-		// 6교시까지 셀렉트 성공하면 sugang_timetable로
-		if(aList1.size() > 0 && aList2.size() > 0 && aList3.size() > 0 && 
-				aList4.size() > 0 && aList5.size() > 0 && aList6.size() > 0
-				&& aList7.size() > 0) {
-			return "school/school_timetable";
+		model.addAttribute("listall", listall);
+		
+		// 7교시까지 셀렉트 성공하면 school_timetable로
+		if(list1.size() > 0 && list2.size() > 0 && list3.size() > 0 && 
+				list4.size() > 0 && list5.size() > 0 && list6.size() > 0
+				&& list7.size() > 0) {
+			return "../../kosmos_timetable";
 		}
 		return "school/checkfail";
 	}

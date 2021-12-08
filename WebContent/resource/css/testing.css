@@ -1,0 +1,156 @@
+.list-group-item-sophie {
+	color: #383d41;
+    background-color: #eeeeee;
+    border: 5px solid #34558B;
+    border-radius: 10px;
+}
+
+.alert-sophie {
+	color: #383d41;
+    background-color: #eeeeee;
+    border-color: #34558B;
+    border: 1px solid gray;
+}
+
+.sideMenu{
+	border-right: 1px solid gray;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: black;
+  background-color: #34558B;
+}
+.border-bottom {
+    border-bottom: 1px solid gray;
+}
+
+
+a {
+    color: black;
+   }
+
+a:hover{
+	color: black;
+}
+.blank_p {
+	height: 70px;
+}
+.btn-outline-info {
+	margin-left : 10px;
+	margin-right : 10px;
+
+}
+
+
+.btn-outline-primary {
+	margin-left : 10px;
+	margin-right : 10px;
+}
+
+.button_container {
+	padding-bottom: 10px; 
+	margin-bottom: 10px;
+}
+.container {
+	width: 1000px;
+}
+.wrap {
+	padding-right: 20px;
+	padding-left: 180px;
+	float: center;
+	
+}
+.category {
+	
+	font-size: large;
+	font-weight: bold;
+}
+
+body {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	font-size: initial;
+    background: #eee
+}
+
+.section {
+    padding-top: 20px;
+    padding-left: 30px;
+    width: 100%;
+    padding-bottom: 30px;
+}
+
+.section input[type="radio"],
+.section input[type="checkbox"] {
+    display: none
+}
+
+.radio-container {
+    margin-bottom: 30px;
+    
+}
+
+.radio-container label {
+    position: relative
+}
+
+.radio-container span::before,
+.radio-container span::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    margin: auto
+}
+
+.radio-container span.radio:hover {
+    cursor: pointer
+}
+
+.radio-container span.radio::before {
+    left: -52px;
+    width: 45px;
+    height: 25px;
+    background-color: #A8AAC1;
+    border-radius: 50px
+}
+
+.radio-container span.radio::after {
+    left: -49px;
+    width: 17px;
+    height: 17px;
+    border-radius: 10px;
+    background-color: #6C788A;
+    transition: left .25s, background-color .25s
+}
+
+input[type="radio"]:checked+label span.radio::after {
+    left: -27px;
+    background-color: #EBFF43
+}
+
+.radio-container span.checkbox::before {
+    width: 27px;
+    height: 27px;
+    background-color: #fff;
+    left: -35px;
+    box-sizing: border-box;
+    border: 3px solid transparent;
+    transition: border-color .2s
+}
+
+.radio-container span.checkbox:hover::before {
+    border: 3px solid #F0FF76
+}
+
+.radio-container span.checkbox::after {
+    content: '\f00c';
+    font-family: 'FontAwesome';
+    left: -31px;
+    top: 2px;
+    color: transparent;
+    transition: color .2s
+}
+
+input[type="checkbox"]:checked+label span.checkbox::after {
+    color: #62AFFF
+}

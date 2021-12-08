@@ -13,7 +13,6 @@
 				,A.MS_CP				MS_CP
 				,A.MS_ZIPCODE			MS_ZIPCODE
 				,A.MS_DORO				MS_DORO
-				,A.MS_DORODETAIL		MS_DORODETAIL
 				,A.MS_INSDATE			MS_INSDATE
 				,A.MS_GRADE				MS_GRADE
 				,A.MS_CLASS				MS_CLASS
@@ -35,7 +34,6 @@
 				,A.MT_CP				MT_CP
 				,A.MT_ZIPCODE			MT_ZIPCODE
 				,A.MT_DORO				MT_DORO
-				,A.MT_DORODETAIL		MT_DORODETAIL
 		FROM	KOSMOS_MEMTEA A
 		WHERE 	A.MT_DELYN = 'Y'
 		AND		A.MT_ID = #{mt_id, jdbcType=VARCHAR}
@@ -53,7 +51,6 @@
 						  	, MS_CP = #{ms_cp, jdbcType=VARCHAR}
 							, MS_ZIPCODE = #{ms_zipcode, jdbcType=VARCHAR}
 							, MS_DORO = #{ms_doro, jdbcType=VARCHAR}
-							, MS_DORODETAIL = #{ms_dorodetail, jdbcType=VARCHAR}
 							, MS_GRADE = #{ms_grade, jdbcType=VARCHAR}
 							, MS_CLASS = #{ms_class, jdbcType=VARCHAR}
 							, MS_NUMBER = #{ms_number, jdbcType=VARCHAR}
@@ -72,7 +69,6 @@
 						  	, MT_CP = #{mt_cp, jdbcType=VARCHAR}
 							, MT_ZIPCODE = #{mt_zipcode, jdbcType=VARCHAR}
 							, MT_DORO = #{mt_doro, jdbcType=VARCHAR}
-							, MT_DORODETAIL = #{mt_dorodetail, jdbcType=VARCHAR}
 							, MT_GRADE = #{mt_grade, jdbcType=VARCHAR}
 							, MT_CLASS = #{mt_class, jdbcType=VARCHAR}
 							, MT_NUMBER = #{mt_number, jdbcType=VARCHAR}

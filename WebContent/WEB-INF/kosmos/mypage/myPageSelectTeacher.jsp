@@ -13,7 +13,6 @@
 	String mt_cp = mvo.getMt_cp();
 	String mt_zipcode = mvo.getMt_zipcode();
 	String mt_doro = mvo.getMt_doro();
-	String mt_dorodetail = mvo.getMt_dorodetail();
 
 
 	System.out.println("\n===== jsp에서 출력한 데이터 ========================\n");
@@ -22,7 +21,6 @@
 	System.out.println("컨트롤러에서 가져온 데이터 mt_cp >>> : " + mt_cp);
 	System.out.println("컨트롤러에서 가져온 데이터 mt_zipcode >>> : " + mt_zipcode);
 	System.out.println("컨트롤러에서 가져온 데이터 mt_doro >>> : " + mt_doro);
-	System.out.println("컨트롤러에서 가져온 데이터 mt_dorodetail >>> : " + mt_dorodetail);
 	System.out.println("\n==============================================\n");
 
 %>
@@ -103,9 +101,6 @@
 			 		<br>
 			 		<br>
 			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value="${ data.mt_doro }">
-			 		<br>
-			 		<br>	 	
-			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.mt_dorodetail }">
 			 		<br>
 					<br>
 					<br>

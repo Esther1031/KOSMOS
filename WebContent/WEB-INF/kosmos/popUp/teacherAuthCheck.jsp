@@ -9,7 +9,7 @@
 
 	.frame{
 		margin : 0 auto;
-		border : 5px solid #F6CED8;
+		border : 5px solid #34558B;
 	}
 	h2{
 		text-align : center;

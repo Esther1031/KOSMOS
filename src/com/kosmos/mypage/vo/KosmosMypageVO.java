@@ -19,7 +19,7 @@ public class KosmosMypageVO {
 	private String tecp;			// 교사 전용
 	private String me_zipcode;		// 공통 변수
 	private String me_doro;			// 공통 변수
-	private String me_dorodetail;	// 공통 변수
+	//private String me_dorodetail;	// 공통 변수
 	private String admissionyear;	// 학생 전용
 	private String grade;			// 학생 전용
 	private String st_class;		// 학생 전용
@@ -37,7 +37,7 @@ public class KosmosMypageVO {
 	private String ms_cp;			// 4. 휴대폰 번호
 	private String ms_zipcode; 		// 5. 우편번호
 	private String ms_doro;   		// 6. 도로명주소
-	private String ms_dorodetail;  	// 7. 상세주소
+	//private String ms_dorodetail;  	// 7. 상세주소
 	private String ms_insdate;  	// 8. 가입일
 	private String ms_grade;   		// 9. 학년
 	private String ms_class;  		// 10. 반
@@ -55,7 +55,7 @@ public class KosmosMypageVO {
 	private String mt_cp;			// 4. 휴대폰 번호
 	private String mt_zipcode; 		// 5. 우편번호
 	private String mt_doro;   		// 6. 도로명주소
-	private String mt_dorodetail;  	// 7. 상세주소
+	//private String mt_dorodetail;  	// 7. 상세주소
 	
 	
 	// ===============================================================================
@@ -83,7 +83,7 @@ public class KosmosMypageVO {
 		this.tecp = tecp;
 		this.me_zipcode = me_zipcode;
 		this.me_doro = me_doro;
-		this.me_dorodetail = me_dorodetail;
+		//this.me_dorodetail = me_dorodetail;
 		this.admissionyear = admissionyear;
 		this.grade = grade;
 		this.st_class = st_class;
@@ -94,7 +94,7 @@ public class KosmosMypageVO {
 		this.ms_cp = ms_cp;
 		this.ms_zipcode = ms_zipcode;
 		this.ms_doro = ms_doro;
-		this.ms_dorodetail = ms_dorodetail;
+		//this.ms_dorodetail = ms_dorodetail;
 		this.ms_insdate = ms_insdate;
 		this.ms_grade = ms_grade;
 		this.ms_class = ms_class;
@@ -105,7 +105,7 @@ public class KosmosMypageVO {
 		this.mt_cp = mt_cp;
 		this.mt_zipcode = mt_zipcode;
 		this.mt_doro = mt_doro;
-		this.mt_dorodetail = mt_dorodetail;
+		//this.mt_dorodetail = mt_dorodetail;
 	}
 
 
@@ -177,13 +177,13 @@ public class KosmosMypageVO {
 		this.ms_doro = ms_doro;
 	}
 
-	public String getMs_dorodetail() {
-		return ms_dorodetail;
-	}
+	//public String getMs_dorodetail() {
+	//	return ms_dorodetail;
+	//}
 
-	public void setMs_dorodetail(String ms_dorodetail) {
-		this.ms_dorodetail = ms_dorodetail;
-	}
+	//public void setMs_dorodetail(String ms_dorodetail) {
+	//	this.ms_dorodetail = ms_dorodetail;
+	//}
 
 	public String getMs_insdate() {
 		return ms_insdate;
@@ -265,13 +265,13 @@ public class KosmosMypageVO {
 		this.mt_doro = mt_doro;
 	}
 
-	public String getMt_dorodetail() {
-		return mt_dorodetail;
-	}
+	//public String getMt_dorodetail() {
+	//	return mt_dorodetail;
+	//}
 
-	public void setMt_dorodetail(String mt_dorodetail) {
-		this.mt_dorodetail = mt_dorodetail;
-	}
+	//public void setMt_dorodetail(String mt_dorodetail) {
+	//	this.mt_dorodetail = mt_dorodetail;
+	//}
 
 	public String getStname() {
 		return stname;
@@ -305,9 +305,9 @@ public class KosmosMypageVO {
 		return me_doro;
 	}
 
-	public String getMe_dorodetail() {
-		return me_dorodetail;
-	}
+	//public String getMe_dorodetail() {
+	//	return me_dorodetail;
+	//}
 
 	public String getAdmissionyear() {
 		return admissionyear;
@@ -357,9 +357,9 @@ public class KosmosMypageVO {
 		this.me_doro = me_doro;
 	}
 
-	public void setMe_dorodetail(String me_dorodetail) {
-		this.me_dorodetail = me_dorodetail;
-	}
+	//public void setMe_dorodetail(String me_dorodetail) {
+	//	this.me_dorodetail = me_dorodetail;
+	//}
 
 	public void setAdmissionyear(String admissionyear) {
 		this.admissionyear = admissionyear;
@@ -392,7 +392,7 @@ public class KosmosMypageVO {
 		System.out.println("4. 학생 휴대폰번호  ms_cp >>> : " + mvo.getMs_cp());
 		System.out.println("5. 학생 우편번호     ms_zipcode >>> : " + mvo.getMs_zipcode());
 		System.out.println("6. 학생 도로명주소  ms_doro >>> : " + mvo.getMs_doro());
-		System.out.println("7. 학생 상세주소     ms_dorodetail >>> : " + mvo.getMs_dorodetail());
+		//System.out.println("7. 학생 상세주소     ms_dorodetail >>> : " + mvo.getMs_dorodetail());
 		System.out.println("8. 학생 가입일        ms_insdate >>> : " + mvo.getMs_insdate());
 		System.out.println("9. 학생 학년   	   ms_grade >>> : " + mvo.getMs_grade());
 		System.out.println("10. 학생 반   	   ms_class >>> : " + mvo.getMs_class());
@@ -404,7 +404,7 @@ public class KosmosMypageVO {
 		System.out.println("4. 교사 휴대폰번호  mt_cp >>> : " + mvo.getMt_cp());
 		System.out.println("5. 교사 우편번호     mt_zipcode >>> : " + mvo.getMt_zipcode());
 		System.out.println("6. 교사 도로명주소  mt_doro >>> : " + mvo.getMt_doro());
-		System.out.println("7. 교사 상세주소     mt_dorodetail >>> : " + mvo.getMt_dorodetail());
+		//System.out.println("7. 교사 상세주소     mt_dorodetail >>> : " + mvo.getMt_dorodetail());
 		System.out.println("\n============================================\n");
 	}
 	
