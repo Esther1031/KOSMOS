@@ -1,4 +1,37 @@
+.list-group-item-sophie {
+	color: #383d41;
+    background-color: #eeeeee;
+    border: 5px solid #34558B;
+    border-radius: 10px;
+}
 
+.alert-sophie {
+	color: #383d41;
+    background-color: #eeeeee;
+    border-color: #34558B;
+    border: 1px solid gray;
+}
+
+.sideMenu{
+	border-right: 1px solid gray;
+}
+.nav-pills .nav-link.active,
+.nav-pills .show > .nav-link {
+  color: black;
+  background-color: #34558B;
+}
+.border-bottom {
+    border-bottom: 1px solid gray;
+}
+
+
+a {
+    color: black;
+   }
+
+a:hover{
+	color: black;
+}
 .blank_p {
 	height: 70px;
 }
@@ -14,14 +47,19 @@
 	margin-right : 10px;
 }
 
-.button_container{
+.button_container {
 	padding-bottom: 10px; 
 	margin-bottom: 10px;
 }
-.container{
+.container {
 	width: 1000px;
 }
-
+.wrap {
+	padding-right: 20px;
+	padding-left: 180px;
+	float: center;
+	
+}
 .category {
 	
 	font-size: large;
