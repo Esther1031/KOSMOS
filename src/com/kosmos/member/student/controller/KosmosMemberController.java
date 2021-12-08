@@ -79,53 +79,40 @@ public class KosmosMemberController {
 		// 성별
 		mvo.setMs_gen(fu.getParameter("ms_gen"));
 		// 생년월일
-		String ms_birth = fu.getParameter("ms_birth");
-		String ms_birth1 = fu.getParameter("ms_birth1");
-		String ms_birth2 = fu.getParameter("ms_birth2");
-		ms_birth = ms_birth + ms_birth1 + ms_birth2;
-		mvo.setMs_birth(ms_birth);
+		mvo.setMs_birth(fu.getParameter("ms_birth"));	
 		// 핸드폰
-		String ms_cp = fu.getParameter("ms_cp");
-		String ms_cp1 = fu.getParameter("ms_cp1");
-		String ms_cp2 = fu.getParameter("ms_cp2");
-		ms_cp = ms_cp + ms_cp1 + ms_cp2;
-		mvo.setMs_cp(ms_cp);
+		mvo.setMs_cp(fu.getParameter("ms_cp"));
 		// 주소 : 우편번호
 		mvo.setMs_zipcode(fu.getParameter("ms_zipcode"));	
-		// 주소 : 도로명 주소						
+		// 주소 : 도로명 주소
 		String ms_doro = fu.getParameter("ms_doro");
 		String ms_dorodetail = fu.getParameter("ms_dorodetail");						
 		ms_doro = ms_doro.concat("@").concat(ms_dorodetail);
 		mvo.setMs_doro(ms_doro);
+		//학년
+		mvo.setMs_semester(fu.getParameter("ms_semester"));
+		//반
+		mvo.setMs_class(fu.getParameter("ms_class"));
+		//번호
+		mvo.setMs_number(fu.getParameter("ms_number"));
+		// 학번
+		mvo.setMs_grade(fu.getParameter("ms_grade"));
+		// 반
+		mvo.setMs_class(fu.getParameter("ms_class"));
+		// 입학년도
+		mvo.setMs_admyear(fu.getParameter("ms_admyear"));
+		// 학생학기
+		mvo.setMs_joinyn(fu.getParameter("ms_joinyn"));
+
 		// 사진
 		ArrayList<String> aFileName = fu.getFileNames();
 		String ms_photo = aFileName.get(0);				
-		mvo.setMs_photo(ms_photo);
-		
-		//학기
-		mvo.setMs_semester(fu.getParameter("ms_semester"));
-		// 학번
-
-		mvo.setMs_grade(fu.getParameter("ms_grade"));
-		// 반
-
-		mvo.setMs_class(fu.getParameter("ms_class"));
-		// 번호
-
-		mvo.setMs_number(fu.getParameter("ms_number"));
-		
-		// 입학년도
-
-		mvo.setMs_admyear(fu.getParameter("ms_admyear"));
-		
-		// 학생학기
-
-		mvo.setMs_joinyn(fu.getParameter("ms_joinyn"));
+		mvo.setMs_photo(ms_photo);		
 
 		int nCnt = kosmosMemberService.memberInsert(mvo);
 			
-		if (nCnt > 0) { return "member/end";}
-		return "WEB-INF/end";
+		if (nCnt > 0) { return "login/loginForm";}
+		return "login/loginForm";
 	}
 	
 	// 아이디 중복 체크하기

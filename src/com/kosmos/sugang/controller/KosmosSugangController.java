@@ -151,7 +151,7 @@ public class KosmosSugangController {
 		
 */
     	
-        return "sugang/mainTimeTable";
+        return "../../kosmos_timetable";
     }
     
     /* 최종 수강신청한 내역 확인 (Delyn으로 체크)  */

@@ -36,7 +36,7 @@ public class KosmosLoginController {
 		this.kosmosLoginService = kosmosLoginService;
 	}
 	
-	
+	/* School Controller로 이전
 	//==================================================================================
 	//	로그인 화면으로 연결
 	//==================================================================================
@@ -46,7 +46,7 @@ public class KosmosLoginController {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
 		return "login/loginForm";
 	}
-	
+	*/
 	
 	//==================================================================================
 	//	회원가입 링크 클릭시 회원 유형 선택화면으로 연결
@@ -66,7 +66,7 @@ public class KosmosLoginController {
 	@GetMapping("joinStudent")
 	public String joinStudent() {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
-		return "form/kosmosMemberForm";
+		return "member/kosmosMemFormStudent";
 	}
 	
 	
@@ -124,7 +124,7 @@ public class KosmosLoginController {
 	//@GetMapping("teacherForm")
 	public String teacherForm() {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
-		return "form/kosmosMemberFormTeacher";
+		return "member/kosmosMemFormTeacher";
 	}
 	
 	
@@ -252,7 +252,7 @@ public class KosmosLoginController {
 	
 	@GetMapping("checkEnvironment")
 	public String checkEnvironment() {
-		return "popUp/checkEnvironment";
+		return "popUp/test_checkEnvironment";
 	}
 	
 	
