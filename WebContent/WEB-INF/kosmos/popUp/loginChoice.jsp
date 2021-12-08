@@ -11,7 +11,7 @@
 		width : 316px;
 		height : 242px;
 		align : center;
-		border : 5px solid #F6CED8;
+		border : 5px solid #34558B;
 		margin : 100px auto;
 	}
 	
@@ -36,7 +36,6 @@
 			window.open("joinTeacher.k", "", "width=660, height=700, resizable=no, scrollbars=no, status=no");
 
 		});
-		
 		
 	});
 	

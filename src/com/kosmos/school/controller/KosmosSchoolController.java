@@ -57,6 +57,17 @@ public class KosmosSchoolController {
 		this.kosmosSchoolService = kosmosSchoolService;
 	}
 	
+	//==================================================================================
+	//	로그인 화면으로 연결
+	//==================================================================================
+	
+	@GetMapping("loginForm")
+	public String loginForm() {
+		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
+		return "login/test_loginForm";
+	}
+	
+	
 	// =======================================================================================
 	// 로그인 화면에서 로그인 성공시 수강신청 화면 연결 로직 학생/선생 분기
 	// =======================================================================================
@@ -84,8 +95,11 @@ public class KosmosSchoolController {
 		System.out.println("mt_num >>> : " + mt_num);	
 		
 		if(ms_id != null) {								// 학생인 경우 수강 컨트롤러 -> 수강신청 페이지로 이동
+			// #솔잎 이 만들어준 페이지 미적용 상태
+			// 현재 더미페이지
 			return "sugang/sugangLanding";
 		} else {										// 교사인 경우 수강 관리 페이지로 -> 교사 관리 페이지는 구현 보류 상태
+			// #미구현 : 홀딩 : 교수가 로그인한 경우 수강신청관리페이지로 이동해야 함.
 			return "sugang/sgManagement";
 		}
 		
@@ -99,7 +113,7 @@ public class KosmosSchoolController {
 	@GetMapping("mainHome")
 	public String home() {
 		
-		return "school/home";
+		return "school/kosmos_main_page";
 	}
 	
 	

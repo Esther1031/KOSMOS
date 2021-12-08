@@ -3,7 +3,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>스프링 회원가입 폼</title>
+<title>교사 회원가입 폼</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Sign Up Form by Colorlib</title>
+
+<!-- Font Icon -->
+<link rel="stylesheet" href="fonts/material-icon/css/material-design-iconic-font.min.css">
+<link rel="stylesheet" href="vendor/nouislider/nouislider.min.css">
+
+<!-- Main css -->
+<link rel="stylesheet" href="css/style.css">
 
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -91,33 +102,6 @@
 			}
 		}); // 비밀번호 체크 끝
 		
-		// 성별
-		
-		// 생년월일
-		$("#mt_birth").on("input", function(){
-			var m = $("#mt_birth");
-			if (m.val().length > m.maxlength){
-				m.value = m.value.slice(0, m.maxlength);
-			}
-		}); // 생년월일 체크 끝
-       
-		// 월 
-        $("#mt_birth1").append("<option value=''>월--- </option>");
-        for(var i = 1; i <= 12; i++){
-        	if (i < 10){ i = '0'+i;}
-            $("#mt_birth1").append("<option value='"+ i +"'>"+ i + "</option>");
-        } // 월 끝
-        // 일 
-        $("#mt_birth2").append("<option value=''>일 ---</option>");
-        for(var i = 1; i <= 31; i++){
-        	if (i < 10){ i = '0'+i;}
-            $("#mt_birth2").append("<option value='"+ i +"'>"+ i + "</option>");
-        } // 일 끝
-
-		
-		// 핸드폰		
-		// 전화번호
-		
 		// 우편번호	
 		$("#zonecode").click(function(){
 			console.log("zonecode >>> : ");
@@ -129,9 +113,6 @@
 			}).open();
 		}); // 우편번호 끝
 		
-		// 취미		
-		// 소개글 		
-		// 사진 
 		
 		// 폼태그 데이터 JSP 보내기 
 		$("#btn").click(function(){
@@ -144,28 +125,15 @@
 			console.log("mt_pw >>> : " + document.teacherForm.mt_pw.value);
 			console.log("mt_pw_r >>> : " + document.teacherForm.mt_pw_r.value);
 			
-			// 성별
-			var mt_gen_check = document.getElementsByName('mt_gen');
-			for (var i=0; i < mt_gen_check.length; i++){
-				if(mt_gen_check[i].checked == true){
-					console.log("mt_gen_check["+i+"].value >>> : " + mt_gen_check[i].value);
-				}
-			} // 성별 for 끝
 			
 			// 생일
 			console.log("mt_birth >>> : " + document.teacherForm.mt_birth.value);
-			console.log("mt_birth1 >>> : " + document.teacherForm.mt_birth1.value);
-			console.log("mt_birth2 >>> : " + document.teacherForm.mt_birth2.value);
 			
 			// 핸드폰
 			console.log("mt_cp >>> : " + document.teacherForm.mt_cp.value);
-			console.log("mt_cp1 >>> : " + document.teacherForm.mt_cp1.value);
-			console.log("mt_cp2 >>> : " + document.teacherForm.mt_cp2.value);
 			
-
 			// 이메일
 			console.log("mt_id >>> : " + document.teacherForm.mt_id.value);
-			console.log("mt_id1 >>> : " + document.teacherForm.mt_id1.value);
 		
 			// 주소
 			console.log("mt_zipcode >>> : " + document.teacherForm.mt_zipcode.value);
@@ -175,19 +143,11 @@
 			// 사진
 			console.log("mt_photo >>> : " + document.teacherForm.mt_photo.value);
 			
-			// 성별
-			var mt_gen_check = $('input:radio[name=mt_gen]:checked').val();
-			console.log("mt_gen_check.value >>> : " + mt_gen_check);
-			
 			// 생일
 			console.log("mt_birth >>> : " + $('input[name=mt_birth]').val());
-			console.log("mt_birth1 >>> : " + $('select[name=mt_birth1]').val());
-			console.log("mt_birth2 >>> : " + $('select[name=mt_birth2]').val());
 			
 			// 핸드폰
 			console.log("mt_cp >>> : " + $('select[name=mt_cp]').val());
-			console.log("mt_cp1 >>> : " + $('input[name=mt_cp1]').val());
-			console.log("mt_cp2 >>> : " + $('input[name=mt_cp2]').val());
 			
 			// 주소
 			console.log("mzonecode >>> : " + $('input[name=zonecode]').val());
@@ -211,90 +171,84 @@
 </script>	
 </head>
 <body>
-<h3 align="center">회원 가입</h3>
-<hr>
-<form name="teacherForm" id="teacherForm">
-<table border="1" align="center">
-<tr>
-	<td colspan="2" align="center">					
-		<font size="4" style="color:blue;">선생님(관리자)</font> 
-	</td>
-</tr>
-<tr>
-	<td>회원번호</td>
-	<td><input type="text" name="mt_num" id="mt_num" readonly/></td>
- </tr>
-<tr>
-	<td>이름</td>
-	<td><input type="text" name="mt_name" id="mt_name"/></td>
-</tr>
-<div id="mt_iddiv">
-<tr>
-	<td>아이디(이메일)</td>
-	<td>		
-		<input type="text" name="mt_id"  id="mt_id" style="width:100px" placeholder="아이디 체크" />
-        <input type="button" name="midbtn" id="midbtn" value="아이디중복확인"  />
-	</td>
-</tr>
-<tr>
-	<td>패스워드</td>
-	<td>
-		<input type="text" name="mt_pw" id="mt_pw" /><br/>	
-		<input type="text" id="mt_pw_r" name="mt_pw_r" placeholder="비밀번호확인" />
-		<input type="button" value="비밀번호확인" id="pwCheck"/><br/>
-	</td>
-</tr>
-<tr>
-	<td>성별</td>
-	<td> 
-		<input type="radio" name="mt_gen" id="mt_gen" value="01" checked /> 여자
-      	<input type="radio" name="mt_gen" id="mt_gen" value="02" /> 남자
-    </td>
-</tr>
-<tr>
-	<td>생년월일</td>
-	<td>		
-		<input type="text" name="mt_birth" id=mt_birth 
-		       placeholder="년(4자)" maxlength="4" style="width:50px"/>
-		<select name="mt_birth1" id="mt_birth1"></select>
-        <select name="mt_birth2" id="mt_birth2"></select>
-	</td>
-</tr>
-<tr>
-	<td>핸드폰</td>
-	<td>
-		<select name="mt_cp" id="mt_cp">
-        	<option value="010">010</option>
-        	<option value="011">011</option>
-        	<option value="016">016</option>
-        	<option value="017">017</option>		        	
-         </select>
-         - <input type="text" name="mt_cp1" id="mt_cp1" size="2" maxlength="4" />
-         - <input type="text" name="mt_cp2" id="mt_cp2" size="2" maxlength="4" />
-	</td>
-</tr>
-<tr>
- 	<td>주소</td>
- 	<td>
- 		<input type="text" name="mt_zipcode" id="mt_zipcode" placeholder="우편번호" style="width:50px" maxlength="6" >
- 		<input type="button" name="zonecode" id="zonecode" value="우편번호 찾기"><br>	 	
- 		<input type="text" name="mt_doro" id="mt_doro" placeholder="도로명주소" style="width:250px"><br>	 	
- 		<input type="text" name="mt_dorodetail" id="mt_dorodetail" placeholder="도로명주소 상세주소" style="width:250px"><br>
- 	</td>
-</tr>
-<tr>
-	<td>사진</td>
-	<td> 
-		<input type="file" name="mt_photo"  /><br>
-    </td>
-</tr>
-<tr>
-	<td colspan="2"> 			
-		<button type="button" id="btn">보내기</button>
-		<button type="reset">다시 </button>	
-	</td>				
-</tr>
-</table>				 		        		     
-</form>	
-</body>
+
+    <div class="main">
+
+        <div class="container">
+            <div class="signup-content">
+                <div class="signup-img">
+                    <img src="images/1.jpg" alt="">
+                    <div class="signup-img-content">
+                        <h2>선생님 회원가입 </h2>
+                    </div>
+                </div>
+                <div class="signup-form">
+                    <form class="register-form" name="teacherForm" id="teacherForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                 <div class="form-input">
+                                    <label for="mt_num" class="required">회원번호</label>
+									<td><input type="text" name="mt_num" id="mt_num" readonly/></td>
+                                 </div>
+                                <div class="form-input">
+                                    <label for="mt_name" class="required">이름</label>
+                                    <td><input type="text" name="mt_name" id="mt_name"/></td>
+                                </div>
+                                <div class="form-input">
+                                    <label for="mt_id" class="required">아이디(이메일)</label>
+							 		<input type="text" name="mt_id"  id="mt_id"  placeholder="아이디 체크" />
+							         <input type="button" name="midbtn" id="midbtn" style="width:150px" value="아이디중복확인"  />
+                                </div>
+                                <div class="form-input">
+                                    <label for="mt_pw">비밀번호</label>
+	                              	<input type="text" name="mt_pw" id="mt_pw" placeholder="비밀번호입력 "/>	
+									<input type="text" id="mt_pw_r" name="mt_pw_r" placeholder="비밀번호확인" />
+									<input type="button" value="비밀번호확인" style="width:150px" id="pwCheck"/><br/>
+                                </div>
+                                <div class="form-input" >
+                                        <label for="mt_gen" class="required">성별</label>
+                                   	<input type="text" name="mt_gen" id="mt_gen"placeholder="남자/여자" maxlength="2" >
+                                </div>
+                              <div class="form-input" >
+                                      <label for="mt_birth" class="required">생년월일</label>
+                                  	<input type="text" name="mt_birth" id="mt_birth"placeholder="ex)20200101" maxlength="8" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" >
+       						  </div>   
+       						 </div>        
+                           <div class="form-group">
+                                <div class="form-input">
+                                    <label for="mt_zipcode">주소</label>
+                               		<input type="text" name="mt_zipcode" id="mt_zipcode" placeholder="우편번호" style="width:100px" maxlength="6" >
+	                              	<input type="text" name="mt_doro" id="mt_doro" placeholder="도로명주소 "/>
+									<input type="text" id="mt_dorodetail" name="mt_dorodetail" placeholder="도로명주소상세주소" />
+									<input type="button" name="zonecode" value="우편번호 찾기" id="zonecode"/>
+                                </div>
+                                <div class="form-input">
+                                    <label for="mt_cp" class="required" >핸드폰 번호</label>
+                                    <input type="text" name="mt_cp" id="mt_cp" placeholder="-빼고 번호만 입력" />
+                                </div>
+                                 <div class="form-input">
+                                    <label for="mt_photo">사진</label>
+										<input type="file" name="mt_photo"  /><br>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-submit">
+                            <input type="submit" value="Submit" class="submit" id="btn" name="submit" />
+                            <input type="submit" value="Reset" class="submit" id="reset" name="reset" />
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- JS -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/nouislider/nouislider.min.js"></script>
+    <script src="vendor/wnumb/wNumb.js"></script>
+    <script src="vendor/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="vendor/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>
