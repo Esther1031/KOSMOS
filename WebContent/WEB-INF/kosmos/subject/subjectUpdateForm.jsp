@@ -2,7 +2,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.kosmos.subject.vo.KosmosSubjectVO" %>
 <%@ page import="com.kosmos.common.AuthenticationKey" %>
-<%@ page import="com.kosmos.common.CommonUtils" %>
+<%@ page import="com.kosmos.common.SubjectUtils" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -87,7 +87,7 @@
 		});
 		
 		// 학년 드롭박스
-		<%  String g = CommonUtils.gradeFrontToDB();
+		<%  String g = SubjectUtils.gradeFrontToDB();
 			String[] gArray = g.split(",");
 			for (int i=0; i < gArray.length; i++){
 				String key_selectGrade = gArray[i];
@@ -104,7 +104,7 @@
 		}
 		
 		// 학기 드롭박스
-		<%  String s = CommonUtils.semesterFrontToDB();
+		<%  String s = SubjectUtils.semesterFrontToDB();
 			String[] sArray = s.split(",");
 			for (int i=0; i < sArray.length; i++){
 				String key_selectSemester = sArray[i];
@@ -115,7 +115,7 @@
 		%>
 		
 		// 수업요일 드롭박스
-		<%  String d = CommonUtils.dayFrontToDB();
+		<%  String d = SubjectUtils.dayFrontToDB();
 			String[] dArray = d.split(",");
 			for (int i=0; i < dArray.length; i++){
 				String key_selectDay = dArray[i];
@@ -126,7 +126,7 @@
 		%>
 		
 		// 교시 드롭박스
-		<%  String t = CommonUtils.timeFrontToDB();
+		<%  String t = SubjectUtils.timeFrontToDB();
 			String[] tArray = t.split(",");
 			for (int i=0; i < tArray.length; i++){
 				String key_selectTime = tArray[i];
@@ -138,7 +138,7 @@
 		
 		// 선수과목명
 		<% 
-		String b = CommonUtils.beforenameFrontToDB();
+		String b = SubjectUtils.beforenameFrontToDB();
 		String[] bArray = b.split(",");
 		for (int i=0; i < bArray.length; i++){
 			String key_beforename = bArray[i];
@@ -150,7 +150,7 @@
 		
 		// 교과군
 		<% 
-		String r = CommonUtils.groupFrontToDB();
+		String r = SubjectUtils.groupFrontToDB();
 		String[] rArray = r.split(",");
 		for (int i=0; i < rArray.length; i++){
 			String key_group = rArray[i];
@@ -283,8 +283,8 @@
 		List<KosmosSubjectVO> listUF = (List<KosmosSubjectVO>)obj;
 		if (listUF != null && listUF.size() > 0){
 			KosmosSubjectVO svo = listUF.get(0);
-			String sb_grade = CommonUtils.gradeDBToFront(svo.getSb_grade());
-			String sb_group = CommonUtils.groupDBToFront(svo.getSb_group());
+			String sb_grade = SubjectUtils.gradeDBToFront(svo.getSb_grade());
+			String sb_group = SubjectUtils.groupDBToFront(svo.getSb_group());
 			if (svo.getSb_beforename() == null){
 				svo.setSb_beforename("");
 			}
