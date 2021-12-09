@@ -19,9 +19,9 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
     </style>
-	<script>
-	$().alert('close')
-	</script>
+    <script>
+        $().alert('close')
+    </script>
     <%
 
         String code_num = (String) request.getAttribute("code");
@@ -109,15 +109,19 @@
 <body>
 
 <!-- 사이드메뉴 -->
-<div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 120px; float:left;">
+<div class="d-flex flex-column flex-shrink-0 vh-100" style="width: 150px; float:left;">
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
-        <li class="nav-item"><a href="registration.k?year=2&subjectBefore="
-                                class="nav-link active py-3 border-bottom bg-secondary"> <i class="fa fa-home"></i>
-            <small>홈</small> </a></li>
-        <li><a href="subjectGroup.k?code=01" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small
-                style="font-color: secondary">수강신청</small> </a></li>
-        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> <small>수강신청현황</small>
+        <li class="nav-item">
+            <a href="registration.k?year=2&subjectBefore=" class="nav-link active py-3 border-bottom"> <i
+                    class="fa fa-home"></i> 홈 </a></li>
+        <li><a href="subjectGroup.k?code=01" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i>수강신청
         </a></li>
+        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> 수강신청현황
+        </a></li>
+        <!-- 학교홈페이 연결부분 -->
+        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> xx 고등학교
+        </a></li>
+
 
     </ul>
     <div class="dropdown border-top">
@@ -133,6 +137,7 @@
             <li><a class="dropdown-item" href="#">Sign out</a></li>
         </ul>
     </div>
+</div>
 </div>
 
 
@@ -154,22 +159,22 @@
             </symbol>
         </svg>
 
-        <div class="alert alert-secondary d-flex align-items-center" role="alert">
+        <div class="alert alert-sophie d-flex align-items-center" role="alert">
             <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
                 <use xlink:href="#info-fill"/>
             </svg>
             <div style="width: 10px">
             </div>
             <div>
-                	도움말은 <a href="#" class="alert-link">여기</a>를 클릭하세요.
+                도움말은 <a href="#" class="alert-link">여기</a>를 클릭하세요.
             </div>
         </div>
 
-        
+
         <div class="blank" style="height: 135px">
 
             <%if (request.getAttribute("name") != null) {%>
-            <div class="alert alert-secondary alert-dismissible fade show" role="alert">
+            <div class="alert alert-sophie alert-dismissible fade show" role="alert">
                 <strong><%=sub_name%>
                 </strong>에서 <strong>${name}</strong>을 선택하셨습니다.
             </div>
@@ -222,10 +227,10 @@
                 </div>
 
 
-                 <div class="d-flex justify-content-left mt-5 align-items-center">
-                    <section id="first" class="section"> 
+                <div class="d-flex justify-content-left mt-5 align-items-center">
+                    <section id="first" class="section">
 
-                        <%
+                            <%
                             Object ob_groupRowNum = request.getAttribute("groupRowNum");
                             String groupRowString = (String) ob_groupRowNum;
                             Object ob_sugangList = request.getAttribute("groupList");
@@ -249,33 +254,37 @@
 
                         %>
                         <table class="table table-hover">
-                            <tr><td><div style="width :30%; float:right;"><input type="radio" name="radio01" id="<%=list.get(i).getSb_name()%>"
-                                   onclick="location='update.k?name=<%=list.get(i).getSb_name()%>&code=<%=code_num%>'"></div>
-                            <label style="width:100%;" for="<%=list.get(i).getSb_name()%>">
-					        <span class="radio"><%=list.get(i).getSb_name()%></span>
-					        
-                           
-<!--                         <tr><td><div class="radio-container"> -->
-                    
-                        
-                         <div style="width: 10%; float:right"><%=list.get(i).getSb_creditunit()%>학점</div>
-                    <div style="width: 15%; float:right">정원<%=list.get(i).getSb_maxstu()%>명</div>
-                    </label>
-                   </div>
-                        
-                        </td>
-                        </tr>
-                        </section>
-                        <%} %>
-                            </table>
-             
+                            <tr>
+                                <td>
+                                    <div style="width :30%; float:right;"><input type="radio" name="radio01"
+                                                                                 id="<%=list.get(i).getSb_name()%>"
+                                                                                 onclick="location='update.k?name=<%=list.get(i).getSb_name()%>&code=<%=code_num%>'">
+                                    </div>
+                                    <label style="width:100%;" for="<%=list.get(i).getSb_name()%>">
+                                        <span class="radio"><%=list.get(i).getSb_name()%></span>
+
+
+                                        <!--                         <tr><td><div class="radio-container"> -->
+
+
+                                        <div style="width: 10%; float:right"><%=list.get(i).getSb_creditunit()%>학점</div>
+                                        <div style="width: 15%; float:right">정원<%=list.get(i).getSb_maxstu()%>명</div>
+                                    </label>
                 </div>
 
-            </li>
-        </ul>
+                </td>
+                </tr>
+                </section>
+                    <%} %>
+                </table>
 
-        <script type="text/javascript" src="/resource/js/bootstrap.js"></script>
-    </form>
+</div>
+
+</li>
+</ul>
+
+<script type="text/javascript" src="/resource/js/bootstrap.js"></script>
+</form>
 
 </div>
 </body>

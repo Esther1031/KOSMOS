@@ -15,39 +15,39 @@
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="resource/css/testing.css">
-<!-- border: 1px solid #735e5e; 
-        
--->
+    <!-- border: 1px solid #735e5e; 
+            
+    -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
-         	
-		.scroll{
-		 	border: 1px solid #6c757d 0.5;   
-		    overflow-y: scroll;
-		    height: 500px;
-		    box-sizing: border-box;
-		    color: white;
 
-		}
-		
-		/* 스크롤바 설정*/
-		.type1::-webkit-scrollbar{
-		    width: 6px;
-		}
-		
-		/* 스크롤바 막대 설정*/
-		.type1::-webkit-scrollbar-thumb{
-		    height: 17%;
-		    background-color: rgba(255,255,255,1);
-		    /* 스크롤바 둥글게 설정    */
-		    border-radius: 10px;    
-		}
-		
-		/* 스크롤바 뒷 배경 설정*/
-		.type1::-webkit-scrollbar-track{
-		    background-color: rgba(0,0,0,0);
-		}
-    	
+        .scroll {
+            border: 1px solid #6c757d 0.5;
+            overflow-y: scroll;
+            height: 500px;
+            box-sizing: border-box;
+            color: white;
+
+        }
+
+        /* 스크롤바 설정*/
+        .type1::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /* 스크롤바 막대 설정*/
+        .type1::-webkit-scrollbar-thumb {
+            height: 17%;
+            background-color: rgba(255, 255, 255, 1);
+            /* 스크롤바 둥글게 설정    */
+            border-radius: 10px;
+        }
+
+        /* 스크롤바 뒷 배경 설정*/
+        .type1::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0);
+        }
+
     </style>
 
     <%
@@ -61,15 +61,20 @@
 <body>
 
 <!-- 사이드메뉴 -->
-<div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 120px; float:left;">
+<div class="d-flex flex-column flex-shrink-0 vh-100" style="width: 150px; float:left;">
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li class="nav-item">
-            <a href="registration.k?year=2&subjectBefore=" class="nav-link active py-3 border-bottom bg-secondary"> <i
-                    class="fa fa-home"></i> <small>홈</small> </a></li>
-        <li><a href="subjectGroup.k?code=01" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small
-                style="font-color: black">수강신청</small> </a></li>
-        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> <small>수강신청현황</small>
+            <a href="registration.k?year=2&subjectBefore=" class="nav-link active py-3 border-bottom"> <i
+                    class="fa fa-home"></i> 홈 </a></li>
+        <li><a href="subjectGroup.k?code=01" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i>수강신청
         </a></li>
+        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> 수강신청현황
+        </a></li>
+
+        <!-- 학교홈페이 연결부분 -->
+        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> xx 고등학교
+        </a></li>
+
 
     </ul>
     <div class="dropdown border-top">
@@ -85,6 +90,7 @@
             <li><a class="dropdown-item" href="#">Sign out</a></li>
         </ul>
     </div>
+</div>
 </div>
 
 
@@ -105,7 +111,7 @@
         </symbol>
     </svg>
 
-    <div class="alert alert-secondary d-flex align-items-center" role="alert">
+    <div class="alert alert-sophie d-flex align-items-center" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
             <use xlink:href="#info-fill"/>
         </svg>
@@ -123,39 +129,39 @@
     <div class="button_container" align="center">
 
     </div>
-	    <div class="scroll type1">
 
-    <li class="list-group-item list-group-item-secondary">
-        <div class="blank" style="height: 10px"></div>
-        <!-- 
-                for (int i=0; i<subList.size(); i++){
-                    out.print(subList.get(i)+"");
-                }
-        -->
-        <div class="blank" style="height: 30px"></div>
-        <table class="table table-hover">
-            <%
+        <li class="list-group-item list-group-item-sophie">
+    <div class="scroll type1">
+            <div class="blank" style="height: 10px"></div>
+            <!-- 
+                    for (int i=0; i<subList.size(); i++){
+                        out.print(subList.get(i)+"");
+                    }
+            -->
+            <div class="blank" style="height: 30px"></div>
+            <table class="table table-hover">
+                    <%
                 int total = 0;
                 for (int i = 0; i < listAll.size(); i++) {
             %>
-            <tr>
-                <td>
-                    <div style="width: 80%; float:left;"><%=listAll.get(i).getSb_name()%>
-                    </div>
-                    <div style="width: 10%; float:left"><%=listAll.get(i).getSb_creditunit()%>학점</div>
-                    <div style="float:left">정원 <%=listAll.get(i).getSb_maxstu()%>명</div>
-                    <% total += Integer.parseInt(listAll.get(i).getSb_creditunit()); %>
+                <tr>
+                    <td>
+                        <div style="width: 80%; float:left;"><%=listAll.get(i).getSb_name()%>
+                        </div>
+                        <div style="width: 10%; float:left"><%=listAll.get(i).getSb_creditunit()%>학점</div>
+                        <div style="float:left">정원 <%=listAll.get(i).getSb_maxstu()%>명</div>
+                        <% total += Integer.parseInt(listAll.get(i).getSb_creditunit()); %>
 
-                </td>
-            </tr>
-            <% } %>
-            <tr>
-            </tr>
-</div>
-        </table>
-       
-  
-        <p class="blank_p"></p>
+                    </td>
+                </tr>
+                    <% } %>
+                <tr>
+                </tr>
+    </table>
+
+
+    <p class="blank_p"></p>
+    </div>
 
     </li>
 
