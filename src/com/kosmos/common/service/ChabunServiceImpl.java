@@ -5,9 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.kosmos.board.vo.KosmosBoardVO;
 import com.kosmos.common.dao.ChabunDAO;
 import com.kosmos.member.student.vo.KosmosMemberVO;
 import com.kosmos.member.teacher.vo.KosmosTeacherVO;
+import com.kosmos.rboard.vo.KosmosRboardVO;
 
 
 @Service
@@ -34,4 +36,17 @@ public class ChabunServiceImpl implements ChabunService {
 		logger.info("ChabunServiceImpl getTeacherChabun >>> : ");
 		return chabunDAO.getTeacherChabun();
 	}	
+	@Override
+	public KosmosBoardVO getBoardChabun() {
+		// TODO Auto-generated method stub
+		logger.info("ChabunServiceImpl getBoardChabun >>> : ");
+		return chabunDAO.getBoardChabun();
+	}
+
+	@Override
+	public KosmosRboardVO getRboardChabun() {
+		// TODO Auto-generated method stub
+		logger.info("ChabunServiceImpl getRboardChabun >>> : ");
+		return chabunDAO.getRboardChabun();
+	}
 }

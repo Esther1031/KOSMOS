@@ -98,6 +98,7 @@ public class KosmosSchoolController {
 			// #솔잎 이 만들어준 페이지 미적용 상태
 			// 현재 더미페이지
 			return "sugang/sugangLanding";
+			
 		} else {										// 교사인 경우 수강 관리 페이지로 -> 교사 관리 페이지는 구현 보류 상태
 			// #미구현 : 홀딩 : 교수가 로그인한 경우 수강신청관리페이지로 이동해야 함.
 			return "sugang/sgManagement";

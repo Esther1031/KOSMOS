@@ -13,4 +13,13 @@
 	SELECT NVL(MAX(SUBSTR(A.MT_NUM, -4)), 0) + 1  MT_NUM FROM KOSMOS_MEMTEA A
 </select>
 
+<select id="getBoardChabun" resultType="boardVO">
+	SELECT NVL(MAX(SUBSTR(BO_NUM, -4)), 0) + 1  BO_NUM FROM KOSMOS_BOARD
+</select>
+
+ 
+<select id="getRboardChabun" resultType="rboardVO">
+	SELECT NVL(MAX(SUBSTR(CO_NUM, -4)), 0) + 1  CO_NUM FROM KOSMOS_RBOARD
+</select>
+
 </mapper>			

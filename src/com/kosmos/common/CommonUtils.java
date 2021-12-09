@@ -21,6 +21,20 @@ public abstract class CommonUtils {
 	private static final String[] beforename_value = {"직접입력", "물리학1", "생명과학1", "수학1", "영어1", "일본어1", "중국어1", "화학1", "한문1"};
 	private static final String[] group_value = {" - ", "국어", "수학", "영어", "한국사", "사회", "과학", "체육", "교양", "생활", "진로"};
 	
+	// 게시판
+				// 경로확인 잘해야됨
+				// C:\00.KOSMO93\30.Web\el_kosmos_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\kosmos\fileupload\board
+			public static final String BOARD_IMG_UPLOAD_PATH = "C:\\00.KOSMO93\\30.Web\\el_kosmos_work\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\KOSMOS\\fileupload\\board";
+			//public static final String BOARD_IMG_UPLOAD_PATH = "C:\\00.KOSMO93\\30.Web\\el_kosmos_work\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kosmos\\fileupload\\board";
+			public static final int BOARD_IMG_FILE_SIZE = 2*1024*1024; // 2MB
+			public static final String BOARD_EN_CODE = "UTF-8";
+			
+			// 게시판 목록 페이징 (게시판 버튼)
+			public static final int BOARD_PAGE_SIZE = 5;
+			public static final int BOARD_GROUP_SIZE = 5;
+			public static final int BOARD_CUR_PAGE = 1;
+			public static final int BOARD_TOTAL_COUNT = 0;
+			
 	// 화면에 표현하는 역할
 	public static String frontToDB(String[] arrayS) {
 		String resultF = "";

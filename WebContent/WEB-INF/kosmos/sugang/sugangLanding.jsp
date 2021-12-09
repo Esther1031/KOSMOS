@@ -14,6 +14,6 @@
 
 <a href="registration.k">수강신청</a><br>
 <a href="mainTimeTable.k">시간표</a>
-
+<a href="boardSelectAll.k">시간표</a>
 </body>
 </html>
