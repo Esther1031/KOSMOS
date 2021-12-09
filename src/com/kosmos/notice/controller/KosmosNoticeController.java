@@ -34,7 +34,7 @@ public class KosmosNoticeController {
 	}
 	
 	// ==================================================================== /
-	// �������� �۾��� �� ��� 
+	//  공지사항 글쓰기 폼 출력
 	// ==================================================================== /	
 	@GetMapping("noticeForm")
 	public String noticeForm(KosmosNoticeVO nvo) {
@@ -45,7 +45,7 @@ public class KosmosNoticeController {
 
 
 	// ==================================================================== /
-	// �������� �۾���
+	// 공지사항 글쓰기
 	// ==================================================================== /
 	@PostMapping("noticeInsert")
 	public String noticeInsert(HttpSession hs, HttpServletRequest req) throws IOException {
@@ -55,15 +55,15 @@ public class KosmosNoticeController {
 		KosmosNoticeVO nvo = null; 
 		nvo = new KosmosNoticeVO();
 
-		// noticeList()���� �ٽ� ������ ������ ���� �̸�
+		// from noticeList() => get teacher's name
 		String mt_num = (String)hs.getAttribute("userName");
-		logger.info("�α���-> Ȩ-> �������� ��� -> �۾��� -> �ۼ��� �̸� : " + mt_num);
+		logger.info("로그인-> 홈-> 공지사항 목록 -> 글쓰기 -> 작성자 이름 : " + mt_num);
 
-		// vo�� ���ǿ��� ���� ������ �缳��.
+		// REset from session value
 		nvo.setMt_num(mt_num);
-		logger.info("�ۼ� ������ �ִ� ���� ȸ���� �̸��� -> " + nvo.getMt_num());
+		logger.info("작성 권한이 있는 교사 회원의 이름은 -> " + nvo.getMt_num());
 		
-		// ���Ͼ��ε���ƿ �ν��Ͻ�
+		// fileUploadUtil Instance
 		FileUploadUtil fu = new FileUploadUtil(CommonUtils.NOTICE_IMG_UPLOAD_PATH,
 											   CommonUtils.NOTICE_IMG_FILE_SIZE,
 											   CommonUtils.NOTICE_EN_CODE);
@@ -85,7 +85,7 @@ public class KosmosNoticeController {
 		nvo.setNo_file(no_file);						// ����
 		nvo.setMt_id(mt_id);							// ���� ���̵�
 		
-		// noticeInsert() gogo : ������ ���������� ����.
+		// noticeInsert() gogo 
 		int nCnt = kosmosNoticeService.noticeInsert(nvo);
 		logger.info("�Է� �Ϸ� >>>> : " + nCnt);
 		
@@ -100,22 +100,22 @@ public class KosmosNoticeController {
 	
 	
 	// ==================================================================== /
-	// �������� ��� ��ȸ
+	// 공지사항 목록 조회 (LANDING: SELECT ALL)
 	// ==================================================================== /
 	@GetMapping("noticeList")
 	public String noticeList(HttpSession hs, Model model, KosmosNoticeVO nvo) {
 		logger.info("noticeList() ȣ��");
 		
-		// ���ǿ� "result"�� ����� �����͵�(ȸ����ȣ, ȸ�����̵�, ȸ�� ��й�ȣ) lvo�� ��Ƶα�
+		// 세션에 "result"로 저장된 데이터들(회원번호, 회원아이디, 회원 비밀번호) lvo에 담아두기
 		KosmosLoginVO lvo = (KosmosLoginVO) hs.getAttribute("result");
 		
-		// �л� ȸ�� �α���
+		// student login check
 		String ms_id = lvo.getMs_id();
 		String ms_pw = lvo.getMs_pw();
 		logger.info("�α����� �л� ���̵� >>> : " + ms_id);
 		logger.info("�α����� �л� ��й�ȣ >>> : " + ms_pw);
 		
-		// ���� ȸ�� �α���
+		// teacher login check
 		String mt_id = lvo.getMt_id();
 		String mt_pw = lvo.getMt_pw();
 		logger.info("�α����� ���� ���̵� >>> : " + mt_id);
@@ -128,7 +128,7 @@ public class KosmosNoticeController {
 		nvo.setSearchType(searchType);
 		nvo.setKeyword(keyword);
 
-		// ����¡ ���� ����
+		// paging field setting (rehandling vo DATATYPE)
 		int pageSize = CommonUtils.NOTICE_PAGE_SIZE;
 		int groupSize = CommonUtils.NOTICE_GROUP_SIZE;
 		int curPage = CommonUtils.BOARD_CUR_PAGE;
@@ -154,12 +154,12 @@ public class KosmosNoticeController {
 					+ nvo.getTotalCount());
 
 		
-		if(keyword != null) {						// ======= �˻�� ���� ��� ======= //
-			if(mt_id != null) {						// ���� �α���
+		if(keyword != null) {						// ======= 검색어가 입력된 경우 ======= //
+			if(mt_id != null) {						// TEACHER LOGIN ==================== //
 				
 				logger.info("nvo.getSearchType() : " + nvo.getSearchType());
 				logger.info("keyword ");
-				// lvo(ȸ�� ���̵�� ȸ�� ��й�ȣ��)�� ȸ�� �̸� ������
+				// lvo(회원 아이디와 회원 비밀번호로)로 회원 이름 끄내기
 				List<KosmosNoticeVO> listTea = kosmosNoticeService.checkTeacher(lvo);
 				nvo = listTea.get(0);
 				String teacherName = nvo.getMt_name();
@@ -167,20 +167,20 @@ public class KosmosNoticeController {
 				logger.info("show me what ur name is : " + teacherName);
 				logger.info("what's ur id : " + teacherId);
 				
-				// �������� ���̺� �ۼ���(mt_num)���� ���� ���̺��� ���� �̸� ����!
+				// 공지사항 테이블 작성자(mt_num)에다 교사 테이블의 교사 이름 세팅!
 				nvo.setMt_num(teacherName);
 				nvo.setMt_id(teacherId);
 				
-				// nvo�� searchType�� keyword ����
+				// keyword & searchType set in nvo
 				nvo.setSearchType(searchType);
 				nvo.setKeyword(keyword);
 				
-				// session�� ����� ���� �̸�(mt_name)�� �ۼ���(writer)�� �Ҵ��ϱ�
+				// MT_NAME ---> "writer"
 				hs.setAttribute("writer", teacherName);
-				// session�� ����� ���� �̸�(mt_name)�� ȸ����(userName)�� �Ҵ��ϱ�
+				// MT_NAME ---> "userName"
 				hs.setAttribute("userName", teacherName);
 				
-				// ����¡ ����
+				// PAGIN SETTING
 				nvo.setPageSize(String.valueOf(pageSize));
 				nvo.setGroupSize(String.valueOf(groupSize));
 				nvo.setCurPage(String.valueOf(curPage));
@@ -196,31 +196,31 @@ public class KosmosNoticeController {
 				}		
 				return "notice/noticeList";
 				
-			} else {								// �л� �α���
+			} else {								// STUDENT LOGIN ==================== //
 	
 				List<KosmosNoticeVO> listStu = kosmosNoticeService.checkStudent(lvo);
-				// ����Ʈ�� ù ��° ���� nvo�� ����.
+				// LIST'S first index -> go to nvo
 				nvo = listStu.get(0);
 				String ms_name = nvo.getMs_name();
 				
 				nvo.setMs_name(ms_name);
 				logger.info("show me what ur name is : " + ms_name);
 				
-				// Ű����� �˻� ���� �ٽ� ����.
+				// RESET keyword & searchType in nvo
 				nvo.setSearchType(searchType);
 				nvo.setKeyword(keyword);
-				// session�� ����� �л� �̸�(ms_name)�� ȸ����(userName)�� �Ҵ��ϱ�
+				// MS_NAME ---> userName
 //				hs.setAttribute("userName", ms_name);
-				logger.info("�˻� ���� Ȯ�� >>> : " + nvo.getSearchType());
-				logger.info("Ű���� Ȯ�� >>> : " + nvo.getKeyword());
+				logger.info("DO U GET searchType ??? : " + nvo.getSearchType());
+				logger.info("DO U GET keyword ??? : " + nvo.getKeyword());
 				
-				// ����¡ ����
+				// PAGING SETTING
 				nvo.setPageSize(String.valueOf(pageSize));
 				nvo.setGroupSize(String.valueOf(groupSize));
 				nvo.setCurPage(String.valueOf(curPage));
 				nvo.setTotalCount(String.valueOf(totalCount));
 				
-				// nvo�� ���õ� ��� ���� ������ noticeList�� ���!
+				// noticeList() gogo
 				List<KosmosNoticeVO> listAll = kosmosNoticeService.noticeList(nvo);
 				
 				if(listAll.size() > 0) {
@@ -233,11 +233,11 @@ public class KosmosNoticeController {
 				return "notice/noticeList";
 			}
 		
-		} else {										// ======= �׳� ��� ��ȸ ======= //
+		} else {										// ======= JUST SELECT NOTICE LIST ======= //
 			
-				if(mt_id != null) {						// ���� �α���
+				if(mt_id != null) {						// TEACHER LOGIN ========================= //
 				
-				// lvo(ȸ�� ���̵�� ȸ�� ��й�ȣ��)�� ȸ�� �̸� ������
+				// lvo(회원 아이디와 회원 비밀번호로)로 회원 이름 끄내기
 				List<KosmosNoticeVO> listTea =  kosmosNoticeService.checkTeacher(lvo);
 				nvo = listTea.get(0);
 				String teacherName = nvo.getMt_name();
@@ -245,15 +245,16 @@ public class KosmosNoticeController {
 				logger.info("show me what ur name is : " + teacherName);
 				logger.info("what's ur id : " + teacherId);
 				
-				// �������� ���̺� �ۼ���(mt_num)���� ���� ���̺��� ���� �̸� ����!
-				nvo.setMt_num(teacherName);	// �ۼ���
-				nvo.setMt_id(teacherId);	// ���� ���̵�
+				// 공지사항 테이블 작성자(mt_num)에다 교사 테이블의 교사 이름 세팅!
+				nvo.setMt_num(teacherName);
+				nvo.setMt_id(teacherId);
 				
-				// () session�� ����� ���� �̸�(mt_name)�� ȸ����(userName)�� �Ҵ��ϱ�
+				// MT_NAME ---> "writer"
+				hs.setAttribute("writer", teacherName);
+				// MT_NAME ---> "userName"
 				hs.setAttribute("userName", teacherName);
-				hs.setAttribute("teacherId", teacherId);
 				
-				// ����¡ ����
+				// PAGIN SETTING
 				nvo.setPageSize(String.valueOf(pageSize));
 				nvo.setGroupSize(String.valueOf(groupSize));
 				nvo.setCurPage(String.valueOf(curPage));
@@ -269,7 +270,7 @@ public class KosmosNoticeController {
 				}		
 				return "notice/noticeList";
 				
-			} else {								// �л� �α���
+			} else {								// STUDENT LOGIN ========================= //
 	
 				List<KosmosNoticeVO> listStu = kosmosNoticeService.checkStudent(lvo);
 				
@@ -277,10 +278,10 @@ public class KosmosNoticeController {
 				String ms_name = nvo.getMs_name();
 				logger.info("show me what ur name is : " + ms_name);
 				
-				// session�� ����� �л� �̸�(ms_name)�� ȸ����(userName)�� �Ҵ��ϱ�
+				// MS_NAME ---> "userName"
 				hs.setAttribute("userName", ms_name);
 	
-				// ����¡ ����
+				// PAGING SETTING
 				nvo.setPageSize(String.valueOf(pageSize));
 				nvo.setGroupSize(String.valueOf(groupSize));
 				nvo.setCurPage(String.valueOf(curPage));
@@ -303,29 +304,29 @@ public class KosmosNoticeController {
 	
 
 	// ==================================================================== /
-	// �Խñ� �� ��ȸ
+	// 게시글 상세 조회
 	// ==================================================================== /
 	@GetMapping("noticeDetail")
 	public String noticeSelect(KosmosNoticeVO nvo, HttpServletRequest req, Model model, HttpSession hs) {
-		logger.info("noticeSelect() ȣ��");
+		logger.info("noticeSelect() CALL");
 		
-		// noticeList()���� �ҷ��� ���� �̸�
+		// FROM noticeList()
 		String myName = (String)hs.getAttribute("userName");
-		logger.info("�α���-> Ȩ-> �������� ��� -> ��ȸ -> �� �̸� : " + myName);
+		logger.info("HOME(SCHOOL) -> NOTICE -> NOTICELIST -> SELECT, MY NAME? : " + myName);
 		String mt_id = (String) hs.getAttribute("teacherId");
-		logger.info("���� ���̵� : " + mt_id);
+		logger.info("TEAHCER'S ID : " + mt_id);
 		
-		if(nvo.getMs_name() != null) {		// �л� �α���
+		if(nvo.getMs_name() != null) {		// STUDENT LOGIN ============== //
 			
 			nvo.setMs_name(myName);
-			logger.info("�л��ΰ� : �� �̸��� : " + nvo.getMs_name());
+			logger.info("IMMA STUDENT, AND MY NAME IS : " + nvo.getMs_name());
 			
 			String no_num = req.getParameter("no_num");
-			logger.info("������ �������� �� ��ȣ: " + no_num);
+			logger.info("선택한 공지사항 글 번호 : " + no_num);
 			
 			KosmosNoticeVO listS = kosmosNoticeService.noticeSelect(nvo);
 
-			// ��ȸ�� ���� �Լ��� �Բ� ����
+			// 조회수 증가 함수도 함께 실행
 			kosmosNoticeService.updateCntHit(no_num);
 
 			model.addAttribute("listS", listS);
@@ -333,20 +334,20 @@ public class KosmosNoticeController {
 			return "notice/noticeDetail";
 		
 		
-		} else {							// ���� �α���
+		} else {							// TEACHER LOGIN ============== //
 			
 			nvo.setMt_name(myName);
-			logger.info("�����ΰ� : �� �̸��� : " + nvo.getMt_name());
+			logger.info("IMMA TEACHER, AND MY NAME IS : " + nvo.getMt_name());
 
 			String no_num = req.getParameter("no_num");
-			logger.info("������ �������� �� ��ȣ: " + no_num);
+			logger.info("선택한 공지사항 글 번호: " + no_num);
 
 			nvo.setMt_id(mt_id);
-			logger.info("�� ���̵� : " + nvo.getMt_id());
+			logger.info("TEACHER'S ID : " + nvo.getMt_id());
 			
 			KosmosNoticeVO listS = kosmosNoticeService.noticeSelect(nvo);
 
-			// ��ȸ�� ���� �Լ��� �Բ� ����
+			// 조회수 증가 함수도 함께 실행
 			kosmosNoticeService.updateCntHit(no_num);
 
 			model.addAttribute("listS", listS);
@@ -357,7 +358,7 @@ public class KosmosNoticeController {
 	}
 
 	// ==================================================================== /
-	// �Խñ� ���� ȭ�� ���
+	// 게시글 수정 화면 출력
 	// ==================================================================== /
 	@PostMapping("noticeUpdateForm")
 	public String noticeUpdateForm(KosmosNoticeVO nvo, HttpServletRequest req, Model model) {
@@ -371,19 +372,19 @@ public class KosmosNoticeController {
 	
 	
 	// ==================================================================== /
-	// �Խñ� ����
+	// 게시글 수정
 	// ==================================================================== /
 	@PostMapping("noticeUpdate")
 	public String noticeUpdate(KosmosNoticeVO nvo, HttpSession hs, HttpServletRequest req) {
 		logger.info("noticeUpdate() ȣ��");
 		
-		// noticeList()���� �ҷ��� ���� �̸�
+		// from noticeList()
 		String myName = (String)hs.getAttribute("userName");
-		logger.info("�α���-> Ȩ-> �������� ��� -> ��ȸ -> ���� -> �� �̸� : " + myName);
+		logger.info("로그인-> 홈-> 공지사항 목록 -> 조회 -> 수정 -> 내 이름 :  : " + myName);
 		String mt_id = (String) hs.getAttribute("teacherId");
-		logger.info("���� ���̵� : " + mt_id);
+		logger.info("TEACHER'S ID : " + mt_id);
 		
-		// ���Ͼ��ε���ƿ �ν��Ͻ�
+		// FILEUPLOADUTIL INSTANCE
 		FileUploadUtil fu = new FileUploadUtil(CommonUtils.NOTICE_IMG_UPLOAD_PATH,
 											   CommonUtils.NOTICE_IMG_FILE_SIZE,
 											   CommonUtils.NOTICE_EN_CODE);
@@ -396,22 +397,22 @@ public class KosmosNoticeController {
 		String no_contents = fu.getParameter("no_contents");
 		String no_file = fu.getFileName("no_file");
 
-		logger.info("�۹�ȣ          >>>>>>>>>>>>>>> :" + no_num);
-		logger.info("���� is >>> : " + no_subject);
-		logger.info("������ : " + no_contents);
-		logger.info("����         >>>>>>>>>>>>>>> :" + no_file);
+		logger.info("NO_NUM ------------------ :" + no_num);
+		logger.info("NO_SUBJECT -------------- : " + no_subject);
+		logger.info("NO_CONTENTS ------------- : " + no_contents);
+		logger.info("NO_FILE ----------------- :" + no_file);
 		
 		nvo.setNo_num(no_num);
-		nvo.setNo_subject(no_subject);					// ����
-		nvo.setNo_contents(no_contents);				// ����
-		nvo.setNo_file(no_file);						// ����
+		nvo.setNo_subject(no_subject);					// 제목
+		nvo.setNo_contents(no_contents);				// 내용
+		nvo.setNo_file(no_file);						// 파일
 		
-		if(nvo.getMs_name() != null) {		// �л� �α���
+		if(nvo.getMs_name() != null) {		// STUDENT LOGIN =============== //
 			
 			nvo.setMs_name(myName);
-			logger.info("�л� �α��� : �� �̸��� : " + nvo.getMs_name());
+			logger.info("IMMA STUDENT, MY NAME IS : " + nvo.getMs_name());
 			
-			logger.info("������ �������� �� ��ȣ: " + no_num);
+			logger.info("선택한 공지사항 글 번호: " + no_num);
 			
 			// noticeUpdate() gogo
 			int nCnt = kosmosNoticeService.noticeUpdate(nvo);
@@ -422,15 +423,15 @@ public class KosmosNoticeController {
 				return "notice/noticeUpdateForm";
 			}
 			
-		} else {							// ���� �α���
+		} else {							// TEACHER LOGIN ================ //
 			nvo.setMt_name(myName);
-			logger.info("���� �α��� : �� �̸��� : " + nvo.getMt_name());
+			logger.info("교사 로그인 : 내 이름은  : " + nvo.getMt_name());
 
 
-			logger.info("������ �������� �� ��ȣ: " + no_num);
+			logger.info("선택한 공지사항 글 번호: " + no_num);
 
 			nvo.setMt_id(mt_id);
-			logger.info("�� ���̵� : " + nvo.getMt_id());
+			logger.info("내 아이디 : " + nvo.getMt_id());
 			
 			// noticeUpdate() gogo
 			int nCnt = kosmosNoticeService.noticeUpdate(nvo);
@@ -445,7 +446,7 @@ public class KosmosNoticeController {
 	}
 
 	// ==================================================================== /
-	// �Խñ� ����
+	// 게시글 삭제
 	// ==================================================================== /	
 	@PostMapping("noticeDelete")
 	public String noticeDelete(KosmosNoticeVO nvo, HttpServletRequest req) {
@@ -453,9 +454,9 @@ public class KosmosNoticeController {
 		
 		String no_num = req.getParameter("no_num");
 		
-		logger.info("������ �������� �� ��ȣ: " + no_num);
+		logger.info("no_num --------------------------------------- : " + no_num);
 		nvo.setNo_num(no_num);
-		logger.info("recheck! ������ �������� �� ��ȣ: " + no_num);
+		logger.info("recheck! no_num ------------------------------ : " + no_num);
 		
 		// noticeDelete() gogo
 		int nCnt = kosmosNoticeService.noticeDelete(nvo);
