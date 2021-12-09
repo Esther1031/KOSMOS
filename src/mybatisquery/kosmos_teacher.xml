@@ -15,9 +15,7 @@
 								,MT_CP		<!-- placeholer 7 -->
 								,MT_ZIPCODE <!-- placeholer 8 -->
 								,MT_DORO	<!-- placeholer 9 -->
-									<!-- placeholer 10 -->
 								,MT_PHOTO	<!-- placeholer 11 -->
-								,SB_NUM	<!-- placeholer 17 -->
 								,MT_INSDATE	<!-- placeholer 18 -->
 								,MT_UPDDATE	<!-- placeholer 19 -->
 								,MT_DELYN	<!-- placeholer 20 -->
@@ -25,20 +23,18 @@
 								VALUES
 								( 	 
 								 #{mt_num, jdbcType=VARCHAR} 				<!-- placeholer 1 -->
-								,#{mt_id, jdbcType=VARCHAR} 				<!-- placeholer 2 --> 
+								,#{mt_id, jdbcType=VARCHAR} 			<!-- placeholer 2 --> 
 								,#{mt_name, jdbcType=VARCHAR} 				<!-- placeholer 3 -->
 								,#{mt_gen, jdbcType=VARCHAR}  				<!-- placeholer 4 -->
-								,#{mt_birth, jdbcType=VARCHAR} 				<!-- placeholer 5 -->
-								,#{mt_pw, jdbcType=VARCHAR}  				<!-- placeholer 6 -->
+								,#{mt_birth, jdbcType=VARCHAR} 			<!-- placeholer 5 -->
+								,#{mt_pw, jdbcType=VARCHAR}  			<!-- placeholer 6 -->
 								,#{mt_cp, jdbcType=VARCHAR} 				<!-- placeholer 7 -->
 								,#{mt_zipcode, jdbcType=VARCHAR}  			<!-- placeholer 8 -->
-								,#{mt_doro, jdbcType=VARCHAR}  				<!-- placeholer 9 -->
-										<!-- placeholer 10 -->
-								,#{mt_photo, jdbcType=VARCHAR} 				<!-- placeholer 11 -->
-								,#{sb_num, jdbcType=VARCHAR}  				<!-- placeholer 12 -->
-								,SYSDATE    								<!-- placeholer 18 -->
-								,SYSDATE 									<!-- placeholer 19 -->
-								,'Y' 										<!-- placeholer 20 -->
+								,#{mt_doro, jdbcType=VARCHAR}  			<!-- placeholer 9 -->
+								,#{mt_photo, jdbcType=VARCHAR} 	<!-- placeholer 11 -->
+								,SYSDATE    			<!-- placeholer 18 -->
+								,SYSDATE 			<!-- placeholer 19 -->
+								,'Y' 			<!-- placeholer 20 -->
 								) 
 
 </insert>
@@ -56,7 +52,7 @@
 
 <select id="teacherIdCheck" parameterType="teacherVO" resultType="teacherVO">
 	SELECT 	A.MT_ID MT_ID
-	FROM 	KOSMOS_MEMTEA A
+	FROM 	KOSMOS_MEMTEA A 
 	WHERE 	MT_DELYN = 'Y'
 	AND     A.MT_ID = #{mt_id, jdbcType=VARCHAR}
 </select>

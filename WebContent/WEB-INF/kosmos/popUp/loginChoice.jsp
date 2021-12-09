@@ -54,7 +54,7 @@
 				<td align="center"><h2>교사</h2></td>
 			</tr>
 			<tr>
-				<td><img src="/KOSMOS/img/Students.jpg" width="150" height="150" name="stImg" id="stImg"></td>
+				<td><img src="/KOSMOS/img/Student.png" width="150" height="150" name="stImg" id="stImg"></td>
 				<td><img src="/KOSMOS/img/Teacher.png" width="150" height="150" name="teImg" id="teImg"></td>
 			</tr>
 		</div>
