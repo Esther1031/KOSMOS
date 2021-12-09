@@ -16,4 +16,10 @@ public interface KosmosSubjectService {
 	public List<KosmosSubjectVO> beforeNameList();
 	// 채번
 	public KosmosSubjectVO subjectChabun(KosmosSubjectVO svo);
+	// 코드번호 호출
+	public KosmosSubjectVO subjectCallCode(KosmosSubjectVO svo);
+	// 과목정보 필수 
+	public List<KosmosSubjectVO> subjectSelectEssential(KosmosSubjectVO svo);
+	// 과목정보 선택
+	public List<KosmosSubjectVO> subjectSelectChoice(KosmosSubjectVO svo);
 }

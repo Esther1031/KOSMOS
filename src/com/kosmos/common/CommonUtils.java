@@ -14,8 +14,8 @@ public abstract class CommonUtils {
 	public static final String TEACHER_EN_CODE = "UTF-8";
 
 	// 과목정보 게시판 페이징 
-	public static final int SUBJECT_PAGE_SIZE = 5;
-	public static final int SUBJECT_GROUP_SIZE = 3;
+	public static final int SUBJECT_PAGE_SIZE = 10;
+	public static final int SUBJECT_GROUP_SIZE = 5;
 	public static final int SUBJECT_CUR_PAGE = 1;
 	public static final int SUBJECT_TOTAL_COUNT = 0;
 }

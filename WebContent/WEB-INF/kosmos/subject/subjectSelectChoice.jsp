@@ -93,14 +93,14 @@
 		int curPage = 0;
 		int totalCount = 0;
 			
-		Object objPaging = request.getAttribute("pagingSVO");
-		KosmosSubjectVO pagingSVO = (KosmosSubjectVO)objPaging;
+		Object objPaging = request.getAttribute("pagingSVO_C");
+		KosmosSubjectVO pagingSVO_C = (KosmosSubjectVO)objPaging;
 			
-		Object obj = request.getAttribute("listSA");
+		Object obj = request.getAttribute("listSC");
 		if (obj == null){
 		System.out.println("obj가 null");
 		}
-		ArrayList<KosmosSubjectVO> listSA = (ArrayList<KosmosSubjectVO>)obj;
+		ArrayList<KosmosSubjectVO> listSC = (ArrayList<KosmosSubjectVO>)obj;
 	%>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
@@ -165,7 +165,7 @@
 		// 과목명 클릭 후 단일 조회
 		$(document).on("click", "#searchBtn", function(){
 			$("#subjectSelectAll").attr({
-				'action':'subjectSelectAll.k',
+				'action':'subjectSelectChoice.k',
 				'method':'GET',
 				'enctype':'application/x-www-form-urlencoded'
 			}).submit();
@@ -319,13 +319,13 @@
 					</tr>
 				</thead>
 			<%
-				if (listSA != null && listSA.size() >= 0){
-					for (int i=0; i < listSA.size(); i++){
-						KosmosSubjectVO svo = listSA.get(i);
+				if (listSC != null && listSC.size() >= 0){
+					for (int i=0; i < listSC.size(); i++){
+						KosmosSubjectVO svo = listSC.get(i);
 						// 패이징 세팅
-						pageSize = Integer.parseInt(pagingSVO.getPageSize());
-						groupSize = Integer.parseInt(pagingSVO.getGroupSize());
-						curPage = Integer.parseInt(pagingSVO.getCurPage());
+						pageSize = Integer.parseInt(pagingSVO_C.getPageSize());
+						groupSize = Integer.parseInt(pagingSVO_C.getGroupSize());
+						curPage = Integer.parseInt(pagingSVO_C.getCurPage());
 						totalCount = Integer.parseInt(svo.getTotalCount());
 						
 						// 과목 세팅
@@ -377,7 +377,7 @@
 				<tr>
 					<td colspan="20">
 						<jsp:include page ="subjectPaging.jsp" flush="true">
-							<jsp:param value="subjectSelectAll.k" name="url"/>
+							<jsp:param value="subjectSelectChoice.k" name="url"/>
 							<jsp:param value="" name="str"/>
 							<jsp:param value="<%= pageSize %>" name="pageSize"/>
 							<jsp:param value="<%= groupSize %>"	name="groupSize"/>

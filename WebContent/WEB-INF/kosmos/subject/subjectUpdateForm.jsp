@@ -114,17 +114,6 @@
 			}
 		%>
 		
-		// 수업요일 드롭박스
-		<%  String d = SubjectUtils.dayFrontToDB();
-			String[] dArray = d.split(",");
-			for (int i=0; i < dArray.length; i++){
-				String key_selectDay = dArray[i];
-		%>
-				$("#sb_day").append("<option value='"+"<%= key_selectDay %>"+"'>"+ "<%= key_selectDay %>요일" +"</option>");
-		<%
-			}
-		%>
-		
 		// 교시 드롭박스
 		<%  String t = SubjectUtils.timeFrontToDB();
 			String[] tArray = t.split(",");
@@ -374,7 +363,7 @@
 					<td colspan="5">
 						수업요일/교시
 						<select id="sb_day" name="sb_day">
-							<option value="<%= svo.getSb_day() %>"><%= svo.getSb_day() %>요일</option>
+							<option value="<%= svo.getSb_day() %>" ><%= svo.getSb_day() %>요일</option>
 						</select>
 						<select id="sb_time" name="sb_time">
 							<option value="<%= svo.getSb_time() %>"><%= svo.getSb_time() %>교시</option>

@@ -72,4 +72,25 @@ public class KosmosSubjectServiceImpl implements KosmosSubjectService {
 		return kosmosSubjectDAO.subjectChabun(svo);
 	}
 
+	@Override
+	public KosmosSubjectVO subjectCallCode(KosmosSubjectVO svo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmosSubjectServiceImpl : subjectCallCode() >>> : ");
+		return kosmosSubjectDAO.subjectCallCode(svo);
+	}
+
+	@Override
+	public List<KosmosSubjectVO> subjectSelectEssential(KosmosSubjectVO svo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmosSubjectServiceImpl : subjectSelectEssential() >>> : ");
+		return kosmosSubjectDAO.subjectSelectEssential(svo);
+	}
+
+	@Override
+	public List<KosmosSubjectVO> subjectSelectChoice(KosmosSubjectVO svo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmosSubjectServiceImpl : subjectSelectChoice() >>> : ");
+		return kosmosSubjectDAO.subjectSelectChoice(svo);
+	}
+
 }	

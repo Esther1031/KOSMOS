@@ -8,7 +8,8 @@ public class SubjectUtils {
 	private static final String[] time_value = {" - ", "1", "2", "3", "4", "5", "6", "7", "8"};
 	private static final String[] semester_value = {" - ", "1", "2", "전"};
 	private static final String[] beforename_value = {"직접입력", "물리학1", "생명과학1", "수학1", "영어1", "일본어1", "중국어1", "화학1", "한문1"};
-	private static final String[] group_value = {" - ", "국어", "수학", "영어", "한국사", "사회", "과학", "체육", "교양", "생활", "진로"};
+	// 교과군 : [국어:01],[수학:02],[영어:03],[한국사:04],[사회:05],[과학:06], [체육:07] [예술:08],[교양: 09] [생활:10] [진로:11]
+	private static final String[] group_value = {" - ", "국어", "수학", "영어", "한국사", "사회", "과학", "체육", "예술", "교양", "생활", "진로"};	
 	
 	// 화면에 표현하는 역할
 	public static String frontToDB(String[] arrayS) {

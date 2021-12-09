@@ -43,15 +43,22 @@ public class KosmosSubjectVO {
 	private String curPage;
 	private String totalCount;
 	
+	//vars for ajax
+	private String group;
+	private String name;
+	
 	public KosmosSubjectVO() {
 		
 	}
 
 	public KosmosSubjectVO(String sb_num, String sb_group, String sb_code, String sb_type, String sb_name,
-					 String sb_creditunit, String sb_grade, String sb_year, String sb_semester, String sb_teacher,
-					 String sb_maxstu, String sb_day, String sb_time, String sb_beforeyn, String sb_beforename,
-					 String sb_insdate, String sb_upddate, String sb_delyn) {
-		
+			String sb_creditunit, String sb_grade, String sb_year, String sb_semester, String sb_teacher,
+			String sb_maxstu, String sb_day, String sb_time, String sb_beforeyn, String sb_beforename,
+			String sb_insdate, String sb_upddate, String sb_delyn, String key_sbname, String key_sbteacher,
+			String key_sbgrade, String key_selectgrade, String key_sbday, String key_sbtime, String key_sbsemester,
+			String key_sbyear, String pageSize, String groupSize, String curPage, String totalCount, String group,
+			String name) {
+		super();
 		this.sb_num = sb_num;
 		this.sb_group = sb_group;
 		this.sb_code = sb_code;
@@ -70,6 +77,37 @@ public class KosmosSubjectVO {
 		this.sb_insdate = sb_insdate;
 		this.sb_upddate = sb_upddate;
 		this.sb_delyn = sb_delyn;
+		this.key_sbname = key_sbname;
+		this.key_sbteacher = key_sbteacher;
+		this.key_sbgrade = key_sbgrade;
+		this.key_selectgrade = key_selectgrade;
+		this.key_sbday = key_sbday;
+		this.key_sbtime = key_sbtime;
+		this.key_sbsemester = key_sbsemester;
+		this.key_sbyear = key_sbyear;
+		this.pageSize = pageSize;
+		this.groupSize = groupSize;
+		this.curPage = curPage;
+		this.totalCount = totalCount;
+		this.group = group;
+		this.name = name;
+	}
+
+
+	public String getGroup() {
+		return group;
+	}
+
+	public void setGroup(String group) {
+		this.group = group;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getSb_num() {
@@ -339,6 +377,11 @@ public class KosmosSubjectVO {
 		logger.info("KosmosSubjectVO 데이터 체크 끝 >>> : ");
 	}
 
+	public static void subjectCodeCallPrintVO(KosmosSubjectVO svo) {
+		logger.info("svo.getSb_beforename() >>> : " + svo.getGroup());
+		logger.info("svo.getSb_beforename() >>> : " + svo.getName());
+	}
+	
 	public static void subjectKeyPrintVO(KosmosSubjectVO svo) {
 		logger.info("KosmosSubjectVO 데이터 체크 시작 >>> : ");
 		logger.info("svo.getKey_sbname() >>> : " + svo.getKey_sbname());
