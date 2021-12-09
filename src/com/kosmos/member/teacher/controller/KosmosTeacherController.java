@@ -96,8 +96,8 @@ public class KosmosTeacherController {
 		
 		int nCnt = KosmosTeacherService.teacherInsert(mvo);
 			
-		if (nCnt > 0) { return "login/loginForm";}
-		return "login/loginForm";
+		if (nCnt > 0) { return "login/test_loginForm";}
+		return "login/test_loginForm";
 	}
 	
 	// 아이디 중복 체크하기
