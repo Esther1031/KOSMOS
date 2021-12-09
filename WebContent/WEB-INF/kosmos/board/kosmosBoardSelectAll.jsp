@@ -227,7 +227,7 @@
 <thead>
 <tr>
 	<td colspan="10" align="center">
-		<h2>게시판</h2>
+		<h2>코스모스숲</h2>
 	</td>
 </tr>
 <tr>

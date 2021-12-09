@@ -16,8 +16,6 @@
   <script src="js/jquery.js" charset="utf-8"></script>
   <script src="js/gnb3.js" charset="utf-8"></script>
 <style type="text/css">
-	<!-- -->
-
 </style>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript">
@@ -208,7 +206,7 @@
 <td> 
 <img src="/KOSMOS/fileupload/board/<%= bvo.getBo_file() %>" 
 border="1" width="40" height="50" alt="image">
-<!--C:\00.KOSMO93\30.Web\el_kosmos_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\KOSMOS\fileupload\board  -->
+<!--C:\00.KOSMO93\30.Web\el_kosmos_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\KOSMOS\fileupload\board -->
 </td>
 </tr>
 </tr>

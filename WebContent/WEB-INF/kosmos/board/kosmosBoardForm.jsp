@@ -111,7 +111,7 @@
 	<form name="boardForm" id="boardForm">
 <table border="1" align="center">
 	<tr>
-		<td colspan="2" align="center">게시판 글쓰기</td>				
+		<td colspan="2" align="center">게시글쓰기</td>				
 	</tr>
 	<tr>
 		<td align="center">게시글번호</td>
@@ -127,7 +127,7 @@
 		<td><input type="text" name="bo_subject" id="bo_subject" size="53"></td>
 	</tr>
 	<tr>
-		<td  align="center">회원번호</td>.
+		<td  align="center">회원번호</td>
 		<td><input type="text" name="ms_num" id="ms_num" size="53"></td>
 	</tr>
 	<tr>
