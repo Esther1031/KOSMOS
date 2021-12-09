@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.kosmos.subject.vo.KosmosSubjectVO" %>
-<%@ page import="com.kosmos.common.CommonUtils" %> 
+<%@ page import="com.kosmos.common.SubjectUtils" %> 
 <%@ page import="com.kosmos.login.vo.KosmosLoginVO" %>
 <!DOCTYPE html>
 <html>
@@ -83,13 +83,24 @@
 			border-bottom: dotted 1px #cccccc;
 		}
 	</style>
-	<% 	request.setCharacterEncoding("UTF-8"); %>
 	<%
-		Object obj = request.getAttribute("listSA");
-		if (obj == null){
-			System.out.println("obj가 null");
-		}
-		ArrayList<KosmosSubjectVO> listSA = (ArrayList<KosmosSubjectVO>)obj;
+		request.setCharacterEncoding("UTF-8");
+	%>
+	<%
+		// 페이징 변수 세팅
+			int pageSize = 0;
+			int groupSize = 0;
+			int curPage = 0;
+			int totalCount = 0;
+			
+			Object objPaging = request.getAttribute("pagingSVO");
+			KosmosSubjectVO pagingSVO = (KosmosSubjectVO)objPaging;
+			
+			Object obj = request.getAttribute("listSA");
+			if (obj == null){
+		System.out.println("obj가 null");
+			}
+			ArrayList<KosmosSubjectVO> listSA = (ArrayList<KosmosSubjectVO>)obj;
 	%>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
@@ -120,48 +131,36 @@
 		}
 		
 		// 학년 드롭박스
-		<%  String g = CommonUtils.gradeFrontToDB();
+		<%String g = SubjectUtils.gradeFrontToDB();
 			String[] gArray = g.split(",");
 			for (int i=0; i < gArray.length; i++){
-				String key_selectGrade = gArray[i];
-		%>
-				$("#key_sbgrade").append("<option value='"+"<%= i %>"+"'>"+ "<%= key_selectGrade %>학년" +"</option>");
-		<%
-			}
-		%>
+				String key_selectGrade = gArray[i];%>
+				$("#key_sbgrade").append("<option value='"+"<%= i %>"+"'>"+ "<%=key_selectGrade%>학년" +"</option>");
+		<%}%>
 		
 		// 학기 드롭박스
-		<%  String s = CommonUtils.semesterFrontToDB();
+		<%String s = SubjectUtils.semesterFrontToDB();
 			String[] sArray = s.split(",");
 			for (int i=0; i < sArray.length; i++){
-				String key_selectSemester = sArray[i];
-		%>
-				$("#key_sbsemester").append("<option value='"+"<%= i %>"+"'>"+ "<%= key_selectSemester %>학기" +"</option>");
-		<%
-			}
-		%>
+				String key_selectSemester = sArray[i];%>
+				$("#key_sbsemester").append("<option value='"+"<%= i %>"+"'>"+ "<%=key_selectSemester%>학기" +"</option>");
+		<%}%>
 		
 		// 요일 드롭박스
-		<%  String d = CommonUtils.dayFrontToDB();
+		<%String d = SubjectUtils.dayFrontToDB();
 			String[] dArray = d.split(",");
 			for (int i=0; i < dArray.length; i++){
-				String key_selectDay = dArray[i];
-		%>
-				$("#key_sbday").append("<option value='"+"<%= key_selectDay %>"+"'>"+ "<%= key_selectDay %>요일" +"</option>");
-		<%
-			}
-		%>
+				String key_selectDay = dArray[i];%>
+				$("#key_sbday").append("<option value='"+"<%= key_selectDay %>"+"'>"+ "<%=key_selectDay%>요일" +"</option>");
+		<%}%>
 		
 		// 교시 드롭박스
-		<%  String t = CommonUtils.timeFrontToDB();
+		<%String t = SubjectUtils.timeFrontToDB();
 			String[] tArray = t.split(",");
 			for (int i=0; i < tArray.length; i++){
-				String key_selectTime = tArray[i];
-		%>
-				$("#key_sbtime").append("<option value='"+"<%= key_selectTime %>"+"'>"+ "<%= key_selectTime %>교시" +"</option>");
-		<%
-			}
-		%>
+				String key_selectTime = tArray[i];%>
+				$("#key_sbtime").append("<option value='"+"<%= key_selectTime %>"+"'>"+ "<%=key_selectTime%>교시" +"</option>");
+		<%}%>
 		
 		// 과목명 클릭 후 단일 조회
 		$(document).on("click", "#searchBtn", function(){
@@ -248,14 +247,7 @@
 <div class="bg_gnb"></div>
 <div class="content-top">제일 위</div>
 <div class="content" align="center">
-	<div id="s_left">
-		<nav>
-			<ul id="sub_menu">
-				<li>필수</li>
-				<li>선택</li>
-			</ul>
-		</nav>
-	</div>
+	<div id="s_left"></div>
 	<div id="contents">
 	<hr>
 	<hr>
@@ -295,7 +287,6 @@
 				<thead>
 					<tr>
 						<th><input type="checkbox" id="chkTop" name="chkTop"></th>
-						<!-- 일단 순서대로 정렬 + 데이터 받아보기 -->
 						<th>개설년도</th>
 						<th>교과군</th>	<!-- 국어, 영어, 수학, 사회, 과학 -->
 						<th>과목코드</th>
@@ -308,20 +299,25 @@
 						<th>정원</th>
 						<th>수업요일</th>	
 						<th>수업교시</th> 
-						<th>선수과목명</th>	
-						<th>수정일</th> <!-- 나중에 삭제 예정. 데이터 넘어오는지 확인용 -->
+						<th>선수과목명</th>
 					</tr>
 				</thead>
-			<%		
-			if (listSA != null && listSA.size() >= 0){
-				for (int i=0; i < listSA.size(); i++){
-					KosmosSubjectVO svo = listSA.get(i);
-					String sb_grade = CommonUtils.gradeDBToFront(svo.getSb_grade());
-					String sb_group = CommonUtils.groupDBToFront(svo.getSb_group());
-					String sb_semester = CommonUtils.semesterDBToFront(svo.getSb_semester());
-					if (svo.getSb_beforename() == null){
-						svo.setSb_beforename("(없음)");
-					}
+			<%
+				if (listSA != null && listSA.size() >= 0){
+					for (int i=0; i < listSA.size(); i++){
+						KosmosSubjectVO svo = listSA.get(i);
+						// 패이징 새팅
+						pageSize = Integer.parseInt(pagingSVO.getPageSize());
+						groupSize = Integer.parseInt(pagingSVO.getGroupSize());
+						curPage = Integer.parseInt(pagingSVO.getCurPage());
+						totalCount = Integer.parseInt(svo.getTotalCount());
+						
+						String sb_grade = SubjectUtils.gradeDBToFront(svo.getSb_grade());
+						String sb_group = SubjectUtils.groupDBToFront(svo.getSb_group());
+						String sb_semester = SubjectUtils.semesterDBToFront(svo.getSb_semester());
+						if (svo.getSb_beforename() == null){
+							svo.setSb_beforename("(없음)");
+						}
 			%>
 					<tbody>
 						<tr>
@@ -339,7 +335,6 @@
 							<td><%= svo.getSb_day() %>요일</td>	
 							<td><%= svo.getSb_time() %>교시</td>
 							<td><%= svo.getSb_beforename() %></td>
-							<td><%= svo.getSb_upddate() %></td> <!-- 나중에 삭제 예정. 데이터 넘어오는지 확인용 -->
 						</tr>
 					</tbody>	
 			<%
@@ -361,6 +356,18 @@
 			<%
 				};
 			 %>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="20">
+						<jsp:include page ="subjectPaging.jsp" flush="true">
+							<jsp:param value="subjectSelectAll.k" name="url"/>
+							<jsp:param value="" name="str"/>
+							<jsp:param value="<%= pageSize %>" name="pageSize"/>
+							<jsp:param value="<%= groupSize %>"	name="groupSize"/>
+							<jsp:param value="<%= curPage %>" name="curPage"/>
+							<jsp:param value="<%= totalCount %>" name="totalCount"/>
+						</jsp:include>
 					</td>
 				</tr>
 			</table>
