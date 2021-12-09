@@ -31,7 +31,6 @@ public class KosmosSugangController {
 
     Logger logger = Logger.getLogger(KosmosSugangController.class);
     private KosmosSugangService kosmosSugangService;
-    private KosmosSchoolService kosmosSchoolService;
 
     @Autowired(required = false)
     public KosmosSugangController(KosmosSugangService kosmosSugangService) {
@@ -82,74 +81,6 @@ public class KosmosSugangController {
     	}
     	model.addAttribute("listAll", listAll);
     	hs.setAttribute("timeTableList", listAll);
-/*    	
-    	KosmosSchoolVO svo = new KosmosSchoolVO();
-    	
-		List<KosmosSchoolVO> aList1 = kosmosSchoolService.timetable1(svo);
-		logger.info("aList1.size()" + aList1.size());
-		// 2교시 세팅
-		List<KosmosSchoolVO> aList2 = kosmosSchoolService.timetable2(svo);
-		// 3교시 세팅
-		List<KosmosSchoolVO> aList3 = kosmosSchoolService.timetable3(svo);
-		// 4교시 세팅
-		List<KosmosSchoolVO> aList4 = kosmosSchoolService.timetable4(svo);
-		// 5교시 세팅
-		List<KosmosSchoolVO> aList5 = kosmosSchoolService.timetable5(svo);
-		// 6교시 세팅
-		List<KosmosSchoolVO> aList6 = kosmosSchoolService.timetable6(svo);
-		// 7교시 세팅
-		List<KosmosSchoolVO> aList7 = kosmosSchoolService.timetable7(svo);
-		
-		svo.setSb_name(aList1.get(0).getSb_name());
-		svo.setSb_name(aList1.get(0).getSb_name1());
-		svo.setSb_name1(aList1.get(0).getSb_name2());
-		svo.setSb_name2(aList1.get(0).getSb_name3());
-		svo.setSb_name3(aList1.get(0).getSb_name4());
-		svo.setSb_name4(aList1.get(0).getSb_name5());
-		svo.setSb_name5(aList2.get(0).getSb_name6());
-		svo.setSb_name6(aList2.get(0).getSb_name7());
-		svo.setSb_name7(aList2.get(0).getSb_name8());
-		svo.setSb_name8(aList2.get(0).getSb_name9());
-		svo.setSb_name9(aList2.get(0).getSb_name10());
-		svo.setSb_name10(aList3.get(0).getSb_name11());
-		svo.setSb_name11(aList3.get(0).getSb_name12());
-		svo.setSb_name12(aList3.get(0).getSb_name13());
-		svo.setSb_name13(aList3.get(0).getSb_name14());
-		svo.setSb_name14(aList3.get(0).getSb_name15());
-		svo.setSb_name15(aList4.get(0).getSb_name16());
-		svo.setSb_name16(aList4.get(0).getSb_name17());
-		svo.setSb_name17(aList4.get(0).getSb_name18());
-		svo.setSb_name18(aList4.get(0).getSb_name19());
-		svo.setSb_name19(aList4.get(0).getSb_name20());
-		svo.setSb_name20(aList5.get(0).getSb_name21());
-		svo.setSb_name21(aList5.get(0).getSb_name22());
-		svo.setSb_name22(aList5.get(0).getSb_name23());
-		svo.setSb_name23(aList5.get(0).getSb_name24());
-		svo.setSb_name24(aList5.get(0).getSb_name25());
-		svo.setSb_name25(aList6.get(0).getSb_name26());
-		svo.setSb_name26(aList6.get(0).getSb_name27());
-		svo.setSb_name27(aList6.get(0).getSb_name28());
-		svo.setSb_name28(aList6.get(0).getSb_name29());
-		svo.setSb_name29(aList6.get(0).getSb_name30());
-		svo.setSb_name30(aList7.get(0).getSb_name31());
-		svo.setSb_name31(aList7.get(0).getSb_name32());
-		svo.setSb_name32(aList7.get(0).getSb_name33());
-		svo.setSb_name33(aList7.get(0).getSb_name34());
-		svo.setSb_name(aList7.get(0).getSb_name());
-		
-		logger.info(1 + ") "+svo.getSb_name());
-		logger.info(2 + ") "+svo.getSb_name1());
-		logger.info(3 + ") "+svo.getSb_name2());
-		logger.info(4 + ") "+svo.getSb_name3());
-		logger.info(5 + ") "+svo.getSb_name4());
-		logger.info(6 + ") "+svo.getSb_name5());
-		logger.info(7 + ") "+svo.getSb_name6());
-		logger.info(8 + ") "+svo.getSb_name7());
-		logger.info(9 + ") "+svo.getSb_name8());
-		logger.info(10 + ") "+svo.getSb_name9());
-		
-		
-*/
     	
         return "sugang/mainTimeTable";
     }
