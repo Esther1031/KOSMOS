@@ -71,7 +71,7 @@
         <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> 수강신청현황
         </a></li>
 
-        <!-- 학교홈페이 연결부분 -->
+        <!-- 학교홈페이g 연결부분 -->
         <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> xx 고등학교
         </a></li>
 
