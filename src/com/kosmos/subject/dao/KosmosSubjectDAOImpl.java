@@ -65,5 +65,26 @@ public class KosmosSubjectDAOImpl implements KosmosSubjectDAO {
 		return sqlSession.selectOne("subjectChabun", svo);
 	}
 
+	@Override
+	public KosmosSubjectVO subjectCallCode(KosmosSubjectVO svo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmosSubjectDAOImpl : subjectCallCode() >>> : ");
+		return sqlSession.selectOne("subjectCallCode", svo);
+	}
+
+	@Override
+	public List<KosmosSubjectVO> subjectSelectEssential(KosmosSubjectVO svo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmosSubjectDAOImpl : subjectSelectEssential() >>> : ");
+		return sqlSession.selectList("subjectSelectEssential", svo);
+	}
+
+	@Override
+	public List<KosmosSubjectVO> subjectSelectChoice(KosmosSubjectVO svo) {
+		// TODO Auto-generated method stub
+		logger.info("KosmosSubjectDAOImpl : subjectSelectChoice() >>> : ");
+		return sqlSession.selectList("subjectSelectChoice", svo);
+	}
+
 	
 }

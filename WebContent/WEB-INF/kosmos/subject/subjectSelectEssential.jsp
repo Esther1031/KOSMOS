@@ -93,14 +93,14 @@
 		int curPage = 0;
 		int totalCount = 0;
 			
-		Object objPaging = request.getAttribute("pagingSVO");
-		KosmosSubjectVO pagingSVO = (KosmosSubjectVO)objPaging;
+		Object objPaging = request.getAttribute("pagingSVO_E");
+		KosmosSubjectVO pagingSVO_E = (KosmosSubjectVO)objPaging;
 			
-		Object obj = request.getAttribute("listSA");
+		Object obj = request.getAttribute("listSE");
 		if (obj == null){
 		System.out.println("obj가 null");
 		}
-		ArrayList<KosmosSubjectVO> listSA = (ArrayList<KosmosSubjectVO>)obj;
+		ArrayList<KosmosSubjectVO> listSE = (ArrayList<KosmosSubjectVO>)obj;
 	%>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
@@ -165,7 +165,7 @@
 		// 과목명 클릭 후 단일 조회
 		$(document).on("click", "#searchBtn", function(){
 			$("#subjectSelectAll").attr({
-				'action':'subjectSelectAll.k',
+				'action':'subjectSelectEssential.k',
 				'method':'GET',
 				'enctype':'application/x-www-form-urlencoded'
 			}).submit();
@@ -236,7 +236,7 @@
       <li>
         <a href="#">수업정보</a>
         <ul>
-          <li><a href="#subjectSelectAll.k">과목정보</a></li>
+          <li><a href="subjectSelectAll.k">과목정보</a></li>
           <li><a href="#">시간표</a></li>
         </ul>
       </li>
@@ -319,13 +319,13 @@
 					</tr>
 				</thead>
 			<%
-				if (listSA != null && listSA.size() >= 0){
-					for (int i=0; i < listSA.size(); i++){
-						KosmosSubjectVO svo = listSA.get(i);
+				if (listSE != null && listSE.size() >= 0){
+					for (int i=0; i < listSE.size(); i++){
+						KosmosSubjectVO svo = listSE.get(i);
 						// 패이징 세팅
-						pageSize = Integer.parseInt(pagingSVO.getPageSize());
-						groupSize = Integer.parseInt(pagingSVO.getGroupSize());
-						curPage = Integer.parseInt(pagingSVO.getCurPage());
+						pageSize = Integer.parseInt(pagingSVO_E.getPageSize());
+						groupSize = Integer.parseInt(pagingSVO_E.getGroupSize());
+						curPage = Integer.parseInt(pagingSVO_E.getCurPage());
 						totalCount = Integer.parseInt(svo.getTotalCount());
 						
 						// 과목 세팅
@@ -377,7 +377,7 @@
 				<tr>
 					<td colspan="20">
 						<jsp:include page ="subjectPaging.jsp" flush="true">
-							<jsp:param value="subjectSelectAll.k" name="url"/>
+							<jsp:param value="subjectSelectEssential.k" name="url"/>
 							<jsp:param value="" name="str"/>
 							<jsp:param value="<%= pageSize %>" name="pageSize"/>
 							<jsp:param value="<%= groupSize %>"	name="groupSize"/>

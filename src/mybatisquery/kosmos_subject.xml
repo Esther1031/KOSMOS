@@ -3,6 +3,31 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.kosmos.subject.dao.KosmosSubjectDAO">
+
+	<!-- 
+		과목 테이블
+		
+		CREATE TABLE KOSMOS_SUBJECT (
+			SB_NUM VARCHAR2(20),  PRIMARY KEY, 
+			SB_GROUP VARCHAR2(2),   
+			SB_CODE VARCHAR2(3),    
+			SB_TYPE VARCHAR2(20),    
+			SB_NAME VARCHAR2(50),           
+			SB_CREDITUNIT VARCHAR2(1),  
+			SB_GRADE VARCHAR2(1),      
+			SB_YEAR VARCHAR2(10),        
+			SB_SEMESTER VARCHAR2(1),   
+			SB_TEACHER VARCHAR2(20),          
+			SB_MAXSTU VARCHAR2(2),     
+			SB_DAY VARCHAR2(15),      
+			SB_TIME NUMBER(2),       
+			SB_BEFOREYN VARCHAR2(1),    
+			SB_BEFORENAME VARCHAR2(50),
+			SB_INSDATE DATE,         
+			SB_UPDDATE DATE,            
+			SB_DELYN VARCHAR2(1)       
+			);    
+	 -->
 		
 	<select id="subjectChabun" parameterType="subjectVO" resultType="subjectVO">
 		SELECT  	DISTINCT
@@ -18,6 +43,7 @@
 		FROM    KOSMOS_SUBJECT A
 	</select>
 	 
+	 <!-- 과목 목록 전체 조회 -->
 	<select id="subjectSelectAll" parameterType="subjectVO" resultType="subjectVO">
 		SELECT		*
 		FROM (
@@ -48,6 +74,146 @@
 					,COUNT(SB_NUM) OVER() AS totalCount
 		FROM		KOSMOS_SUBJECT	A
 		WHERE		A.SB_DELYN = 'Y'
+			<!-- 과목명으로 조회 (텍스트) -->
+			<if test="key_sbname != null and key_sbname !='' ">
+				<![CDATA[AND A.SB_NAME LIKE '%' || #{key_sbname, jdbcType=VARCHAR} || '%']]>
+			</if>
+			
+			<!-- 교사명으로 조회 (텍스트) -->
+			<if test="key_sbteacher != null and key_sbteacher !='' ">
+				<![CDATA[AND A.SB_TEACHER LIKE '%' || #{key_sbteacher, jdbcType=VARCHAR} || '%']]>
+			</if>
+			
+			<!-- 대상학년으로 조회 (드롭박스) -->
+			<if test="key_sbgrade != null and key_sbgrade !='' and key_sbgrade != 0">
+				<![CDATA[AND A.SB_GRADE LIKE '%' ||  #{key_sbgrade, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 대상학기로 조회 (드롭박스) -->
+			<if test="key_sbsemester != null and key_sbsemester !='' and key_sbsemester != 0">
+				<![CDATA[AND A.SB_SEMESTER LIKE '%' ||  #{key_sbsemester, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 수업요일으로 조회 (드롭박스) -->  
+			<if test="key_sbday != null and key_sbday !='' and key_sbday != ' - '">
+				<![CDATA[AND A.SB_DAY LIKE '%' ||  #{key_sbday, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 수업교시로 조회 (드롭박스) -->  
+			<if test="key_sbtime != null and key_sbtime !='' and key_sbtime != ' - '">
+				<![CDATA[AND A.SB_TIME LIKE '%' ||  #{key_sbtime, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 개설년도로 조회 (드롭박스) -->  
+			<if test="key_sbyear != null and key_sbyear != ''">
+				<![CDATA[AND A.SB_YEAR LIKE '%' ||  #{key_sbyear, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			<!-- 현재 페이지 : curPage -->
+			) WHERE pageSize = #{curPage, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 필수 과목만 검색 -->
+	<select id="subjectSelectEssential" parameterType="subjectVO" resultType="subjectVO">
+		SELECT		*
+		FROM (
+		SELECT		 A.SB_NUM						SB_NUM
+					,A.SB_GROUP						SB_GROUP
+					,A.SB_CODE						SB_CODE
+					,A.SB_TYPE						SB_TYPE
+					,A.SB_NAME						SB_NAME
+
+					,A.SB_CREDITUNIT				SB_CREDITUNIT
+					,A.SB_GRADE						SB_GRADE
+					,A.SB_YEAR						SB_YEAR
+					,A.SB_SEMESTER					SB_SEMESTER
+					,A.SB_TEACHER					SB_TEACHER
+
+					,A.SB_MAXSTU					SB_MAXSTU
+					,A.SB_DAY						SB_DAY
+					,A.SB_TIME						SB_TIME
+					,A.SB_BEFOREYN					SB_BEFOREYN
+					,A.SB_BEFORENAME				SB_BEFORENAME
+
+					,TO_CHAR(TO_DATE(A.SB_INSDATE), 'YYYY-MM-DD')		SB_INSDATE
+					,TO_CHAR(TO_DATE(A.SB_UPDDATE), 'YYYY-MM-DD')		SB_UPDDATE
+					,A.SB_DELYN			SB_DELYN
+					
+					<!-- 페이지 사이즈 : pageSize -->
+					,CEIL(ROW_NUMBER() OVER(ORDER BY SB_NUM)/ #{pageSize, jdbcType=VARCHAR}) pageSize
+					,COUNT(SB_NUM) OVER() AS totalCount
+		FROM		KOSMOS_SUBJECT	A
+		WHERE		A.SB_DELYN = 'Y'
+		AND			A.SB_TYPE = '필수'
+			<!-- 과목명으로 조회 (텍스트) -->
+			<if test="key_sbname != null and key_sbname !='' ">
+				<![CDATA[AND A.SB_NAME LIKE '%' || #{key_sbname, jdbcType=VARCHAR} || '%']]>
+			</if>
+			
+			<!-- 교사명으로 조회 (텍스트) -->
+			<if test="key_sbteacher != null and key_sbteacher !='' ">
+				<![CDATA[AND A.SB_TEACHER LIKE '%' || #{key_sbteacher, jdbcType=VARCHAR} || '%']]>
+			</if>
+			
+			<!-- 대상학년으로 조회 (드롭박스) -->
+			<if test="key_sbgrade != null and key_sbgrade !='' and key_sbgrade != 0">
+				<![CDATA[AND A.SB_GRADE LIKE '%' ||  #{key_sbgrade, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 대상학기로 조회 (드롭박스) -->
+			<if test="key_sbsemester != null and key_sbsemester !='' and key_sbsemester != 0">
+				<![CDATA[AND A.SB_SEMESTER LIKE '%' ||  #{key_sbsemester, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 수업요일으로 조회 (드롭박스) -->  
+			<if test="key_sbday != null and key_sbday !='' and key_sbday != ' - '">
+				<![CDATA[AND A.SB_DAY LIKE '%' ||  #{key_sbday, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 수업교시로 조회 (드롭박스) -->  
+			<if test="key_sbtime != null and key_sbtime !='' and key_sbtime != ' - '">
+				<![CDATA[AND A.SB_TIME LIKE '%' ||  #{key_sbtime, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			
+			<!-- 개설년도로 조회 (드롭박스) -->  
+			<if test="key_sbyear != null and key_sbyear != ''">
+				<![CDATA[AND A.SB_YEAR LIKE '%' ||  #{key_sbyear, jdbcType=VARCHAR} || '%' ]]>
+			</if>
+			<!-- 현재 페이지 : curPage -->
+			) WHERE pageSize = #{curPage, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 선택 과목만 검색 -->
+	<select id="subjectSelectChoice" parameterType="subjectVO" resultType="subjectVO">
+		SELECT		*
+		FROM (
+		SELECT		 A.SB_NUM						SB_NUM
+					,A.SB_GROUP						SB_GROUP
+					,A.SB_CODE						SB_CODE
+					,A.SB_TYPE						SB_TYPE
+					,A.SB_NAME						SB_NAME
+
+					,A.SB_CREDITUNIT				SB_CREDITUNIT
+					,A.SB_GRADE						SB_GRADE
+					,A.SB_YEAR						SB_YEAR
+					,A.SB_SEMESTER					SB_SEMESTER
+					,A.SB_TEACHER					SB_TEACHER
+
+					,A.SB_MAXSTU					SB_MAXSTU
+					,A.SB_DAY						SB_DAY
+					,A.SB_TIME						SB_TIME
+					,A.SB_BEFOREYN					SB_BEFOREYN
+					,A.SB_BEFORENAME				SB_BEFORENAME
+
+					,TO_CHAR(TO_DATE(A.SB_INSDATE), 'YYYY-MM-DD')		SB_INSDATE
+					,TO_CHAR(TO_DATE(A.SB_UPDDATE), 'YYYY-MM-DD')		SB_UPDDATE
+					,A.SB_DELYN			SB_DELYN
+					
+					<!-- 페이지 사이즈 : pageSize -->
+					,CEIL(ROW_NUMBER() OVER(ORDER BY SB_NUM)/ #{pageSize, jdbcType=VARCHAR}) pageSize
+					,COUNT(SB_NUM) OVER() AS totalCount
+		FROM		KOSMOS_SUBJECT	A
+		WHERE		A.SB_DELYN = 'Y'
+		AND			A.SB_TYPE = '선택'
 			<!-- 과목명으로 조회 (텍스트) -->
 			<if test="key_sbname != null and key_sbname !='' ">
 				<![CDATA[AND A.SB_NAME LIKE '%' || #{key_sbname, jdbcType=VARCHAR} || '%']]>
@@ -193,4 +359,12 @@
 		WHERE		SB_DELYN = 'Y'
 		AND			SB_NUM = #{sb_num, jdbcType=VARCHAR}
 	</update>
+	
+	<select id="subjectCallCode" parameterType="subjectVO" resultType="subjectVO">
+		SELECT 		SB_CODE
+		FROM  		KOSMOS_SUBJECT
+		WHERE 		SB_GROUP = #{group, jdbcType=VARCHAR}
+		AND   		SB_NAME = #{name, jdbcType=VARCHAR}
+		AND   		ROWNUM = 1
+	</select>
 </mapper>

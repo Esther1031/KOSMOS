@@ -205,12 +205,8 @@
 						<td><%= svo.getSb_maxstu() %> 명</td>
 					</tr>
 					<tr>
-						<td>수업요일</td>
-						<td><%= svo.getSb_day() %>요일</td>		
-					</tr>
-					<tr>
-						<td>수업교시</td>
-						<td><%= svo.getSb_time() %>교시</td>		
+						<td>수업요일/교시</td>
+						<td><%= svo.getSb_day() %>요일&nbsp;<%= svo.getSb_time() %>교시</td>		
 					</tr>
 					<tr>
 						<td>선수과목명</td>
