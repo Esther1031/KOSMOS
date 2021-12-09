@@ -13,6 +13,7 @@ public abstract class CommonUtils {
 	public static final int TEACHER_IMG_FILE_SIZE = 2*1024*1024; // 2MB
 	public static final String TEACHER_EN_CODE = "UTF-8";
 
+<<<<<<< HEAD
 
 	private static final String[] grade_value = {" - ", "1", "2", "3", "전"};
 	private static final String[] day_value = {" - ", "월", "화", "수", "목", "금"};
@@ -116,4 +117,11 @@ public abstract class CommonUtils {
 //		CommonUtils.timeFrontToDB();
 //		CommonUtils.consDBToFront("4", grade_value);
 	}
+=======
+	// 과목정보 게시판 페이징 
+	public static final int SUBJECT_PAGE_SIZE = 5;
+	public static final int SUBJECT_GROUP_SIZE = 3;
+	public static final int SUBJECT_CUR_PAGE = 1;
+	public static final int SUBJECT_TOTAL_COUNT = 0;
+>>>>>>> 2225fc4d62af80eb59e88754c1e75c001a02e879
 }

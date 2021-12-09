@@ -43,7 +43,7 @@ public class KosmosSubjectController {
 			
 			return "subject/subjectInsertForm";
 		}
-		return "subject/subjectSelectAll";
+		return "subject/subjectPass";
 	}
 	
 	@GetMapping("subjectSelectAll")
@@ -51,12 +51,28 @@ public class KosmosSubjectController {
 		logger.info("SubjectController : subjectSelectAll() >>> : ");
 		// 세션에서 가지고 온 데이터 객체에 담기
 		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
-		
+	
 		// 세션 값 확인
 		String mt_id = lvo_data.getMt_id();
 		String ms_id = lvo_data.getMs_id();
 		logger.info("mt_id >>> : " + lvo_data.getMt_id());
 		logger.info("ms_id >>> : " + lvo_data.getMs_id());
+		
+		// 페이징 변수 세팅
+		int pageSize = CommonUtils.SUBJECT_PAGE_SIZE;
+		int groupSize = CommonUtils.SUBJECT_GROUP_SIZE;
+		int curPage = CommonUtils.SUBJECT_CUR_PAGE;
+		int totalCount = CommonUtils.SUBJECT_TOTAL_COUNT;
+		
+		if(svo.getCurPage() != null) {
+			curPage = Integer.parseInt(svo.getCurPage());
+			logger.info("curPage >>> : " + curPage);
+		}
+		
+		svo.setPageSize(String.valueOf(pageSize));
+		svo.setGroupSize(String.valueOf(groupSize));
+		svo.setCurPage(String.valueOf(curPage));
+		svo.setTotalCount(String.valueOf(totalCount));
 		
 		// 과목 전체 조회 + 상세 조회
 		List<KosmosSubjectVO> listSA = kosmosSubjectService.subjectSelectAll(svo);
@@ -65,12 +81,13 @@ public class KosmosSubjectController {
 		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSA.size());
 		if (mt_id != null || ms_id != null) {
 			if (listSA != null && listSA.size() > 0) {
+				model.addAttribute("pagingSVO", svo);
 				model.addAttribute("listSA", listSA);
 				return "subject/subjectSelectAll";
 			}
 		}
 		// 학교 메인 홈페이지로 이동 
-		return "school/home";
+		return "subject/subjectSelectAll";
 	}
 	
 	@GetMapping("subjectSelect")

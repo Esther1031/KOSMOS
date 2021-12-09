@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>교사 회원가입 폼</title>
+<title>스프링 회원가입 폼</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -200,7 +200,7 @@
 							         <input type="button" name="midbtn" id="midbtn" style="width:150px" value="아이디중복확인"  />
                                 </div>
                                 <div class="form-input">
-                                    <label for="mt_pw">비밀번호</label>
+                                    <label for="mt_pw" class="required">비밀번호</label>
 	                              	<input type="text" name="mt_pw" id="mt_pw" placeholder="비밀번호입력 "/>	
 									<input type="text" id="mt_pw_r" name="mt_pw_r" placeholder="비밀번호확인" />
 									<input type="button" value="비밀번호확인" style="width:150px" id="pwCheck"/><br/>
@@ -216,7 +216,7 @@
        						 </div>        
                            <div class="form-group">
                                 <div class="form-input">
-                                    <label for="mt_zipcode">주소</label>
+                                    <label for="mt_zipcode" class="required">주소</label>
                                		<input type="text" name="mt_zipcode" id="mt_zipcode" placeholder="우편번호" style="width:100px" maxlength="6" >
 	                              	<input type="text" name="mt_doro" id="mt_doro" placeholder="도로명주소 "/>
 									<input type="text" id="mt_dorodetail" name="mt_dorodetail" placeholder="도로명주소상세주소" />

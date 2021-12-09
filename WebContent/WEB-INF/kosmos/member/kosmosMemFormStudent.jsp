@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>학생 회원가입 폼</title>
+<title>스프링 회원가입 폼</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -234,12 +234,16 @@
 									<input type="text" id="ms_dorodetail" name="ms_dorodetail" placeholder="도로명주소상세주소" />
 									<input type="button" name="zonecode" value="우편번호 찾기" id="zonecode"/>
                                 </div>
-                                <div class="form-radio-group">
-                                    <label for="ms_grade" class="required">학번</label>
-                                    <input type="text" name="ms_grade" id="ms_grade" placeholder="학년(00)" maxlength="2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
-                                    <input type="text" name="ms_class" id="ms_class" placeholder="반(00)"  maxlength="2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
-                                    <input type="text" name="ms_number" id="ms_number" placeholder="번호(00)"  maxlength="2" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
-
+                                <div class="form-radio">
+                                   <div class="label-flex">
+                                     <label for="ms_grade" class="required">학번</label>
+                                     <a href="#" class="form-link">학년,반,번호는 01~99 숫자로만 입력합니다</a>
+                                   </div>
+                    			  <div class="form-radio-group">   
+                                    <input type="text" name="ms_grade" id="ms_grade" placeholder="학년(00)" maxlength="2" style="width:150px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+                                    <input type="text" name="ms_class" id="ms_class" placeholder="반(00)"  maxlength="2" style="width:150px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+                                    <input type="text" name="ms_number" id="ms_number" placeholder="번호(00)"  maxlength="2" style="width:150px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+                                 </div>
                                 </div>
                                 <div class="form-input">
                                     <label for="ms_cp" class="required" >핸드폰 번호</label>

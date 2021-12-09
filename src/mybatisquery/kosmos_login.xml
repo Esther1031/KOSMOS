@@ -116,7 +116,6 @@ CREATE TABLE KOSMOS_MEMTEA (
                             ,MT_ZIPCODE      VARCHAR2(6)
                             ,MT_DORO         VARCHAR2(300)
                             ,MT_PHOTO        VARCHAR2(300)
-                            ,SB_NUM          VARCHAR2(10) 
                             ,MT_INSDATE      DATE
                             ,MT_UPDDATE      DATE
                             ,MT_DELYN        VARCHAR2(1)
@@ -134,7 +133,6 @@ INSERT INTO KOSMOS_MEMTEA (
                             ,MT_ZIPCODE      
                             ,MT_DORO         
                             ,MT_PHOTO        
-                            ,SB_NUM         
                             ,MT_INSDATE     
                             ,MT_UPDDATE      
                             ,MT_DELYN        
@@ -150,7 +148,6 @@ INSERT INTO KOSMOS_MEMTEA (
                             ,'08110'
                             ,'서울시 양천구 신정로170'
                             ,'lion'
-                            ,'001'
                             ,SYSDATE
                             ,SYSDATE      
                             ,'Y' 
