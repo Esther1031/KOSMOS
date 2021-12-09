@@ -26,60 +26,63 @@ public class KosmosNoticeServiceImpl implements KosmosNoticeService {
 		this.kosmosNoticeDAO = kosmosNoticeDAO;
 	}
 
-	// ±Û¾²±â
+	// ê²Œì‹œê¸€ ì‘ì„±
 	@Override
 	public int noticeInsert(KosmosNoticeVO nvo) {
-		logger.info("noticeInsert(nvo) Transaction");
+		logger.info("noticeInsert(nvo) transaction");
 		return kosmosNoticeDAO.noticeInsert(nvo);
 	}
 	
-	// ¸ñ·Ï Á¶È¸
+	// ëª©ë¡ ì¡°íšŒ
 	@Override
 	public List<KosmosNoticeVO> noticeList(KosmosNoticeVO nvo) {
-		logger.info("noticeList(nvo) È£Ãâ");
+		logger.info("noticeList(nvo) transaction");
 		return kosmosNoticeDAO.noticeList(nvo);
 	}
 	
-	// °Ô½Ã±Û »ó¼¼ Á¶È¸
+	// ê²Œì‹œê¸€ ìƒì„¸ ì¡°íšŒ
 	@Override
 	public KosmosNoticeVO noticeSelect(KosmosNoticeVO nvo) {
-		logger.info("noticeSelect(nvo) È£Ãâ");
+		logger.info("noticeSelect(nvo) transaction");
 		return kosmosNoticeDAO.noticeSelect(nvo);
 	}
 	
-	// Á¶È¸¼ö ¾÷µ¥ÀÌÆ®
+	// ì¡°íšŒìˆ˜ ì¦ê°€ UPDATEë¬¸
 	@Override
 	public void updateCntHit(String no_num) {
-		logger.info("updateCntHit() Transaction");
+		logger.info("updateCntHit(nvo) transaction");
 		kosmosNoticeDAO.updateCntHit(no_num);
 	}
 	
-	// ¼öÁ¤
+	// ê²Œì‹œê¸€ ìˆ˜ì •
 	@Override
 	public int noticeUpdate(KosmosNoticeVO nvo) {
-		logger.info("noticeUpdate(nvo) Transaction");
+		logger.info("noticeUpdate(nvo) transaction");
 		return kosmosNoticeDAO.noticeUpdate(nvo);
 	}
 
-	// »èÁ¦
+	// ê²Œì‹œê¸€ ì‚­ì œ
 	@Override
 	public int noticeDelete(KosmosNoticeVO nvo) {
-		logger.info("noticeDelete(nvo) Transaction");
+		logger.info("noticeDelete(nvo) transaction");
 		return kosmosNoticeDAO.noticeDelete(nvo);
 	}
 
 	
-	// ±³»ç È¸¿ø ÀÌ¸§ Á¶È¸
+	// ==================================================== //
+	// REFER TO MEMSTU TABLE, MEMTEA TABLE
+	// ==================================================== //
+	// êµì‚¬ ì´ë¦„, ì•„ì´ë”” ì¡°íšŒ
 	@Override
 	public List<KosmosNoticeVO> checkTeacher(KosmosLoginVO lvo) {
-		logger.info("checkTeacher(lvo) È£Ãâ");
+		logger.info("checkTeacher(lvo) transaction");
 		return kosmosNoticeDAO.checkTeacher(lvo);
 	}
 	
-	// ÇĞ»ı È¸¿ø ÀÌ¸§ Á¶È¸
+	// í•™ìƒ ì´ë¦„, ì•„ì´ë”” ì¡°íšŒ
 	@Override
 	public List<KosmosNoticeVO> checkStudent(KosmosLoginVO lvo) {
-		logger.info("checkStudent(lvo) È£Ãâ");
+		logger.info("checkStudent(lvo) transaction");
 		return kosmosNoticeDAO.checkStudent(lvo);
 	}
 

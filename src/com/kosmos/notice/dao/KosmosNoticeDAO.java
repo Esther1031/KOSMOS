@@ -7,27 +7,28 @@ import com.kosmos.notice.vo.KosmosNoticeVO;
 
 public interface KosmosNoticeDAO {
 
-	// °Ô½Ã±Û ÀÛ¼º
+	// ê²Œì‹œê¸€ ì‘ì„±
 	public int noticeInsert(KosmosNoticeVO nvo);
-	// °Ô½Ã±Û ¸ñ·Ï Á¶È¸
+	// ëª©ë¡ ì¡°íšŒ
 	public List<KosmosNoticeVO> noticeList(KosmosNoticeVO nvo);
 	
 
-	// °Ô½Ã±Û »ó¼¼ Á¶È¸
+	// ê²Œì‹œê¸€ ìƒì„¸ ì¡°íšŒ
 	public KosmosNoticeVO noticeSelect(KosmosNoticeVO nvo);
-	// Á¶È¸¼ö Áõ°¡
+	// ì¡°íšŒìˆ˜ ì¦ê°€
 	public void updateCntHit(String no_num);
 
 
-	// °Ô½Ã±Û ¼öÁ¤
+	// ê²Œì‹œê¸€ ìˆ˜ì •
 	public int noticeUpdate(KosmosNoticeVO nvo);
-	// °Ô½Ã±Û »èÁ¦
+	// ê²Œì‹œê¸€ ì‚­ì œ
 	public int noticeDelete(KosmosNoticeVO nvo);
 	
 	
-	// ±³»ç È¸¿ø ÀÌ¸§ Á¶È¸
+	// íšŒì› í…Œì´ë¸”ì—ì„œ íšŒì› ì •ë³´ ì¡°íšŒ =================================== //	
+	// êµì‚¬ íšŒì› ì´ë¦„, ì•„ì´ë”” ì¡°íšŒ
 	public List<KosmosNoticeVO> checkTeacher(KosmosLoginVO lvo);
-	// ÇĞ»ı È¸¿ø ÀÌ¸§ Á¶È¸
+	// í•™ìƒ íšŒì› ì´ë¦„, ì•„ì´ë”” ì¡°íšŒ
 	public List<KosmosNoticeVO> checkStudent(KosmosLoginVO lvo);
 
 	

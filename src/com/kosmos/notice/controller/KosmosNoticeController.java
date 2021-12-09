@@ -38,7 +38,7 @@ public class KosmosNoticeController {
 	// ==================================================================== /	
 	@GetMapping("noticeForm")
 	public String noticeForm(KosmosNoticeVO nvo) {
-		logger.info("noticeForm() ȣ��");
+		logger.info("noticeForm() CALL");
 		return "notice/noticeForm";
 	}
 
@@ -50,18 +50,18 @@ public class KosmosNoticeController {
 	@PostMapping("noticeInsert")
 	public String noticeInsert(HttpSession hs, HttpServletRequest req) throws IOException {
 
-		logger.info("noticeInsert() ȣ��");
+		logger.info("noticeInsert() CALL");
  
 		KosmosNoticeVO nvo = null; 
 		nvo = new KosmosNoticeVO();
 
 		// from noticeList() => get teacher's name
 		String mt_num = (String)hs.getAttribute("userName");
-		logger.info("로그인-> 홈-> 공지사항 목록 -> 글쓰기 -> 작성자 이름 : " + mt_num);
+		logger.info("LOGIN -> HOME -> NOTICE LIST -> NOTICE FORM -> TEACHER NAME : " + mt_num);
 
 		// REset from session value
 		nvo.setMt_num(mt_num);
-		logger.info("작성 권한이 있는 교사 회원의 이름은 -> " + nvo.getMt_num());
+		logger.info("TEACHER NAME IS : " + nvo.getMt_num());
 		
 		// fileUploadUtil Instance
 		FileUploadUtil fu = new FileUploadUtil(CommonUtils.NOTICE_IMG_UPLOAD_PATH,
@@ -76,18 +76,18 @@ public class KosmosNoticeController {
 		String no_file = fu.getFileName("no_file");
 		String mt_id = fu.getParameter("mt_id");
 		
-		logger.info("���� is >>> : " + no_subject);
-		logger.info("������ : " + no_contents);
+		logger.info("NOTICE SUBJECT(TITLE) IS ---- : " + no_subject);
+		logger.info("NOTICE CONTENTS IS ---------- :  " + no_contents);
 		
-		nvo.setMt_num(mt_num);							// �ۼ���
-		nvo.setNo_subject(no_subject);					// ����
-		nvo.setNo_contents(no_contents);				// ����
-		nvo.setNo_file(no_file);						// ����
-		nvo.setMt_id(mt_id);							// ���� ���̵�
+		nvo.setMt_num(mt_num);							// 작성자
+		nvo.setNo_subject(no_subject);					// 제목
+		nvo.setNo_contents(no_contents);				// 내용
+		nvo.setNo_file(no_file);						// 파일명
+		nvo.setMt_id(mt_id);							// 교사 아이디
 		
 		// noticeInsert() gogo 
 		int nCnt = kosmosNoticeService.noticeInsert(nvo);
-		logger.info("�Է� �Ϸ� >>>> : " + nCnt);
+		logger.info("SUCCESS? THEN PRINT ((((1)))) : " + nCnt);
 		
 		if (nCnt > 0) {
 		
@@ -104,7 +104,7 @@ public class KosmosNoticeController {
 	// ==================================================================== /
 	@GetMapping("noticeList")
 	public String noticeList(HttpSession hs, Model model, KosmosNoticeVO nvo) {
-		logger.info("noticeList() ȣ��");
+		logger.info("noticeList() CALL");
 		
 		// 세션에 "result"로 저장된 데이터들(회원번호, 회원아이디, 회원 비밀번호) lvo에 담아두기
 		KosmosLoginVO lvo = (KosmosLoginVO) hs.getAttribute("result");
@@ -112,19 +112,19 @@ public class KosmosNoticeController {
 		// student login check
 		String ms_id = lvo.getMs_id();
 		String ms_pw = lvo.getMs_pw();
-		logger.info("�α����� �л� ���̵� >>> : " + ms_id);
-		logger.info("�α����� �л� ��й�ȣ >>> : " + ms_pw);
+		logger.info("STUDENT ID ----- : " + ms_id);
+		logger.info("STUDENT PW ----- : " + ms_pw);
 		
 		// teacher login check
 		String mt_id = lvo.getMt_id();
 		String mt_pw = lvo.getMt_pw();
-		logger.info("�α����� ���� ���̵� >>> : " + mt_id);
-		logger.info("�α����� ���� ��й�ȣ >>> : " + mt_pw);
+		logger.info("TEAHCER ID ----- : " + mt_id);
+		logger.info("TEAHCER PW ----- : " + mt_pw);
 
 		String searchType = nvo.getSearchType();
 		String keyword = nvo.getKeyword();
-		logger.info("�˻� �ɼ��� �հ���? : " + searchType);
-		logger.info("�˻���� �հ���?? : " + keyword);
+		logger.info("searchType ------ : " + searchType);
+		logger.info("keyword --------- : " + keyword);
 		nvo.setSearchType(searchType);
 		nvo.setKeyword(keyword);
 

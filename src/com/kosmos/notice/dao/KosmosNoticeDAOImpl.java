@@ -15,23 +15,23 @@ import com.kosmos.notice.vo.KosmosNoticeVO;
 @Repository
 public class KosmosNoticeDAOImpl implements KosmosNoticeDAO {
 
-	// KosmosNoticeDAO에 관한 로그 출력
+	
 	private Logger logger = Logger.getLogger(KosmosNoticeDAOImpl.class);
 
 	@Autowired(required=false)
 	private SqlSessionTemplate sqlSession;
 
-	// 공지사항 게시글 입력 
+	// Notice Article INSERT
 	@Override
 	public int noticeInsert(KosmosNoticeVO nvo) {
-		logger.info("DAOImpl.noticeInsert()");
+		logger.info("DAOImpl.noticeInsert() CALL");
 		return (Integer)sqlSession.insert("noticeInsert", nvo);
 	}
 	
-	// 목록 조회
+	// SELECT Notice List
 	@Override
 	public List<KosmosNoticeVO> noticeList(KosmosNoticeVO nvo){
-		logger.info("DAOImpl.noticeList() 호출");
+		logger.info("DAOImpl.noticeList() CALL");
 
 		String searchType = nvo.getSearchType();
 		String keyword = nvo.getKeyword();
@@ -41,28 +41,28 @@ public class KosmosNoticeDAOImpl implements KosmosNoticeDAO {
 		return sqlSession.selectList("noticeList", nvo);
 	}
 	
-	// 공지사항 게시글 상세 조회
+	// SELECT One Notice Article
 	@Override
 	public KosmosNoticeVO noticeSelect(KosmosNoticeVO nvo) {
-		logger.info("DAOImpl.noticeSelect() 호출");
+		logger.info("DAOImpl.noticeSelect() CALL");
 		return sqlSession.selectOne("noticeSelect", nvo);
 	}
 
-	// 조회수 카운트(update문)
+	// UPDATE HIT +1 When SELECT One Notice Article
 	@Override
 	public void updateCntHit(String no_num) {
-		logger.info("DAOImpl.updateCntHit() ");
+		logger.info("DAOImpl.updateCntHit() CALL");
 		sqlSession.update("updateCntHit", no_num);
 	}
 	
-	// 게시글 수정(update문)
+	// UPDATE One Notice Article
 	@Override
 	public int noticeUpdate(KosmosNoticeVO nvo) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("noticeUpdate", nvo);
 	}
 	
-	// 게시글 삭제(update문)
+	// UPDATE One Notice Article
 	@Override
 	public int noticeDelete(KosmosNoticeVO nvo) {
 		// TODO Auto-generated method stub
@@ -70,14 +70,14 @@ public class KosmosNoticeDAOImpl implements KosmosNoticeDAO {
 	}
 
 	
-	// 교사 회원 이름 조회
+	// SELECT MT_ID, MT_NAME
 	@Override
 	public List<KosmosNoticeVO> checkTeacher(KosmosLoginVO lvo) {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList("checkTeacher", lvo);
 	}
 
-	// 학생 회원 이름 조회
+	// SELECT MS_ID, MS_NAME
 	@Override
 	public List<KosmosNoticeVO> checkStudent(KosmosLoginVO lvo) {
 		// TODO Auto-generated method stub

@@ -7,27 +7,27 @@ import com.kosmos.notice.vo.KosmosNoticeVO;
 
 public interface KosmosNoticeService {
 
-	// �Խñ� �ۼ�
+	// 게시글 작성
 	public int noticeInsert(KosmosNoticeVO nvo);
 
-	// �������� ��� ��ȸ
+	// 공지사항 목록 조회
 	public List<KosmosNoticeVO> noticeList(KosmosNoticeVO nvo);
 
-	// �Խñ� �� ��ȸ
+	// 게시글 상세 조회
 	public KosmosNoticeVO noticeSelect(KosmosNoticeVO nvo);
-	// ��ȸ�� ����
+	// 조회수 증가
 	public void updateCntHit(String no_num);
 
-	// �Խñ� ����
+	// 게시글 수정
 	public int noticeUpdate(KosmosNoticeVO nvo);
 
-	// �Խñ� ����
+	// 게시글 삭제
 	public int noticeDelete(KosmosNoticeVO nvo);
 
-// ȸ�� ���̺����� ȸ�� ���� ��ȸ�ϴ� �Լ�	
-	// ���� ȸ�� �̸� ��ȸ
+	// 회원 테이블에서 회원 정보 조회 =================================== //	
+	// 교사 회원 이름, 아이디 조회
 	public List<KosmosNoticeVO> checkTeacher(KosmosLoginVO lvo);
-	// �л� ȸ�� �̸� ��ȸ
+	// 학생 회원 이름, 아이디 조회
 	public List<KosmosNoticeVO> checkStudent(KosmosLoginVO lvo);
 
 
