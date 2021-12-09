@@ -143,7 +143,7 @@
 		<tr>
 			<td>
 				<h2>
-					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디 찾기</b>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;아이디 찾기</b>
 				</h2>
 			</td>
 		</tr>
@@ -167,7 +167,7 @@
 		</tr>
 		<tr>
 			<td>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
 			<button type="button" id="findId">아이디찾기</button>
 			</td>
 		</tr>	

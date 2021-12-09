@@ -65,7 +65,7 @@ public class KosmosSchoolController {
 	public String loginForm() {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
 	//	return "login/test_loginForm";
-		return "login/loginForm";
+		return "login/test_loginForm";
 	}
 	
 	

@@ -6,6 +6,51 @@
 <meta charset="UTF-8">
 <title>고교학점제 수강신청 프로그램</title>
 
+<style>
+		body{
+			background: #e6e6e6;
+			}
+		
+		.container {
+			height: 1600px;
+		}
+		
+		.title,p {
+			font-size: 18px;
+		}
+		option {
+			font-size: 16px;
+		
+		}
+
+        .scroll {
+            border: 1px solid #6c757d 0.5;
+            overflow-y: scroll;
+            height: 500px;
+            box-sizing: border-box;
+            color: white;
+
+        }
+
+        /* 스크롤바 설정*/
+        .type1::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        /* 스크롤바 막대 설정*/
+        .type1::-webkit-scrollbar-thumb {
+            height: 17%;
+            background-color: rgba(255, 255, 255, 1);
+            /* 스크롤바 둥글게 설정    */
+            border-radius: 10px;
+        }
+
+        /* 스크롤바 뒷 배경 설정*/
+        .type1::-webkit-scrollbar-track {
+            background-color: rgba(0, 0, 0, 0);
+        }
+</style>
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" type="text/css" href="css/style5.css">
 </head>
@@ -20,7 +65,7 @@
 			</h1>
 		</div>
 	</head>
-	<div class="container"">
+	<div class="container">
 		<div class="row">
 			<h2 class="sub_name">고교학점제란</h2>
 			<div class="box_video">
@@ -31,14 +76,14 @@
 		</div>
 		<div class="row2">
 			<div class="col-md-7">
-				<img alt="미래를 여는 선택 고교학점제" src="img/img3.png">
+				<img alt="미래를 여는 선택 고교학점제" src="img/map.jpg">
 			</div>
 			<div class="select_wrap">
 				<p>* 지역을 선택하신 후, 학교명을 클릭하시면 학교별 수강신청 사이트로 넘어갈수 있습니다.</p>
 				<div class="col-md-2">
 					<p class="title">"연구학교"<span class="num" id="rschCnt">(10)</span></p>
 					<select name='선도학교' size='7' onchange="if(this.value) location.href=(this.value);">
-						<option value="http://localhost:8088/KOSMOS/loginForm.k">코스모스고등학교</option>
+						<option value="loginForm.k">코스모스고등학교</option>
 						<option value='high school2'>당곡등학교</option>
 						<option value='high school3'>동북고등학교</option>
 						<option value='high school4'>문현고등학교</option>
@@ -83,6 +128,9 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div style="height:100px">
+
 </div>
 </body>
 </html>
