@@ -5,6 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <title>교사 인증키 확인창</title>
+<script src="resource/css/front.css"></script>
 <style type="text/css">
 
 	.frame{

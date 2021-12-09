@@ -6,6 +6,7 @@
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="resource/css/front.css"></script>
 <script type="text/javascript">
 	
 	$(document).ready(function(){

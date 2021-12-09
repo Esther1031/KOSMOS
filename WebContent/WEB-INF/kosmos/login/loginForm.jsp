@@ -6,7 +6,21 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
-<style type="text/css">
+<style>
+
+#video {
+       position: absolute;
+     top: 0px;
+     left: 0px;
+     min-width: 100%;
+     min-height: 100%;
+     width: 1px;
+     z-index: -1;
+     overflow: hidden;
+     background-size:30px 30px
+    }
+    
+ <style type="text/css">
 
 	.wrap {
 		width : 330px;
@@ -116,9 +130,9 @@
 			let loginURL = "loginMsg.k";
 			let reqType = "POST";
 			let dataParam = { 
-					login_type : chkbox,
-					login_id : mid,
-					login_pw : mpw
+					chkbox : chkbox,
+					mid : mid,
+					mpw : mpw
 			};
 			
 			$.ajax({
@@ -137,24 +151,29 @@
 				//if (resData != null) {
 				//	alert("입력하신 정보에 해당하는 데이터가 없습니다.");
 				//	return
-					
-				 if (resData == "successSt") {
-					
+				
+
+				// ========================================================================================================================= //					
+
+				if (resData == "successSt") {		// 학생 회원 로그인 성공
 					alert("로그인 성공!")
-					location.href="mainSugang.k";
+					location.href="boardSelectAll.k";
 					window.open("checkEnvironment.k", "", "width=600, height=800, resizable=no, scrollbars=no, status=no");	
 					return dataParam 
-					
-				} else if (resData == "successTe") {
+				
+				
+				} else if (resData == "successTe") { // 교사 회원 로그인 성공
 					
 					alert("로그인 성공!")
-					location.href="mainSugang.k";
+					location.href="boardSelectAll.k";
 					window.open("checkEnvironment.k", "", "width=600, height=800, resizable=no, scrollbars=no, status=no");	
 
 				} else if (resData == "fail" || resData == null) {
 					
 					alert("로그인 실패 : 유형 / 아이디 / 비밀번호를 다시 확인해주세요.");
-				}	
+				}
+				
+				// ========================================================================================================================= //
 			}
 				
 			function whenError(e){
@@ -171,6 +190,9 @@
 </script>
 </head>
 <body>
+<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
+      <source src="img/vedio2.mp4">
+</video>
 <div class="wrap">
 <h1>로그인</h1>
 	<form name="loginForm" id="loginForm">
