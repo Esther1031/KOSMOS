@@ -15,9 +15,7 @@
 								,MT_CP		<!-- placeholer 7 -->
 								,MT_ZIPCODE <!-- placeholer 8 -->
 								,MT_DORO	<!-- placeholer 9 -->
-								,MT_DORODETAIL	<!-- placeholer 10 -->
 								,MT_PHOTO	<!-- placeholer 11 -->
-								,SB_NUM	<!-- placeholer 17 -->
 								,MT_INSDATE	<!-- placeholer 18 -->
 								,MT_UPDDATE	<!-- placeholer 19 -->
 								,MT_DELYN	<!-- placeholer 20 -->
@@ -33,9 +31,7 @@
 								,#{mt_cp, jdbcType=VARCHAR} 				<!-- placeholer 7 -->
 								,#{mt_zipcode, jdbcType=VARCHAR}  			<!-- placeholer 8 -->
 								,#{mt_doro, jdbcType=VARCHAR}  			<!-- placeholer 9 -->
-								,#{mt_dorodetail, jdbcType=VARCHAR} 		<!-- placeholer 10 -->
 								,#{mt_photo, jdbcType=VARCHAR} 	<!-- placeholer 11 -->
-								,#{sb_num, jdbcType=VARCHAR}  			<!-- placeholer 12 -->
 								,SYSDATE    			<!-- placeholer 18 -->
 								,SYSDATE 			<!-- placeholer 19 -->
 								,'Y' 			<!-- placeholer 20 -->

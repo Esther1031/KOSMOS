@@ -2,16 +2,29 @@ package com.kosmos.common;
 
 public abstract class CommonUtils {
 	
-	
+
+	// ================================================================================ //
+	// 회원가입 MEMBER
+	// ================================================================================ //
 	// 회원가입 학생
-	public static final String MEMBER_IMG_UPLOAD_PATH = "C:\\00.KOSMO93_JJH\\a";	//
+	public static final String MEMBER_IMG_UPLOAD_PATH = "C:\\Users\\82107\\Desktop\\img_test";	// 접속 환경에서 개별 세팅
 	public static final int MEMBER_IMG_FILE_SIZE = 2*1024*1024; // 2MB
 	public static final String MEMBER_EN_CODE = "UTF-8";
 	
 	// 회원가입 선생님
-	public static final String TEACHER_IMG_UPLOAD_PATH = "C:\\00.KOSMO93_JJH\\a";	//
+	public static final String TEACHER_IMG_UPLOAD_PATH = "C:\\Users\\82107\\Desktop\\img_test";	// 접속 환경에서 개별 세팅
 	public static final int TEACHER_IMG_FILE_SIZE = 2*1024*1024; // 2MB
 	public static final String TEACHER_EN_CODE = "UTF-8";
+
+
+	// ================================================================================ //
+	// 과목 정보 SUBJECT
+	// ================================================================================ //
+	// 과목정보 게시판 페이징 
+	public static final int SUBJECT_PAGE_SIZE = 10;
+	public static final int SUBJECT_GROUP_SIZE = 5;
+	public static final int SUBJECT_CUR_PAGE = 1;
+	public static final int SUBJECT_TOTAL_COUNT = 0;
 
 
 	private static final String[] grade_value = {" - ", "1", "2", "3", "전"};
@@ -102,4 +115,38 @@ public abstract class CommonUtils {
 //		CommonUtils.timeFrontToDB();
 //		CommonUtils.consDBToFront("4", grade_value);
 	}
+	
+	
+	// ================================================================================ //
+	// 코스모스 숲 BOARD
+	// ================================================================================ //
+	// 경로 확인 
+	// C:\00.KOSMO93\30.Web\el_kosmos_work\.metadata\.plugins\org.eclipse.wst.server.core\tmp0\wtpwebapps\kosmos\fileupload\board
+	//public static final String BOARD_IMG_UPLOAD_PATH = "C:\\00.KOSMO93_LJH\\30.Web\\el_kosmos_work\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kosmos\\fileupload\\board";
+	public static final String BOARD_IMG_UPLOAD_PATH = "C:\\00.KOSMO93\\30.Web\\el_kosmos_work\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\kosmos\\fileupload\\board";
+	public static final int BOARD_IMG_FILE_SIZE = 2*1024*1024; // 2MB
+	public static final String BOARD_EN_CODE = "UTF-8";
+	
+	// 게시판 목록 페이징 
+	public static final int BOARD_PAGE_SIZE = 5;
+	public static final int BOARD_GROUP_SIZE = 5;
+	public static final int BOARD_CUR_PAGE = 1;
+	public static final int BOARD_TOTAL_COUNT = 0;
+
+	
+	// ================================================================================ //
+	// 공지사항 NOTICE
+	// ================================================================================ //
+	// 파일(이미지) 업로드(경로 다시 설정해야 함.)
+	public static final String NOTICE_IMG_UPLOAD_PATH = "C:\\new_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\test\\fileupload\\notice";
+	public static final int NOTICE_IMG_FILE_SIZE = 2*1024*1024; // 2MB
+	public static final String NOTICE_EN_CODE = "UTF-8";
+	
+	// 공지사항 목록 페이징 
+	public static final int NOTICE_PAGE_SIZE = 10;		// 한 페이지에 보이는 게시글 수
+	public static final int NOTICE_GROUP_SIZE = 10;		// 그룹 크기
+	public static final int NOTICE_CUR_PAGE = 1;		// 현재 페이지
+	public static final int NOTICE_TOTAL_COUNT = 0;		// 전체 게시물 개수
+	
+	
 }

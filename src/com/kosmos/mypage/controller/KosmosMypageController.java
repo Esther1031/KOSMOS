@@ -85,7 +85,6 @@ public class KosmosMypageController {
 				String student_cp = mvo.getMs_cp();
 				String student_zipcode = mvo.getMs_zipcode();
 				String student_doro = mvo.getMs_doro();
-				String student_doro_detail = mvo.getMs_dorodetail();
 				String student_ad_year = mvo.getAdmissionyear();
 				String student_grade = mvo.getMs_grade();
 				String student_class = mvo.getMs_class();
@@ -96,7 +95,6 @@ public class KosmosMypageController {
 				logger.info("DB에서 가지고온 이름 mvo.getMs_cp >>> : " + student_cp);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_zipcode >>> : " + student_zipcode);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_doro >>> : " + student_doro);
-				logger.info("DB에서 가지고온 이름 mvo.getMs_dorodetail >>> : " + student_doro_detail);
 				logger.info("DB에서 가지고온 이름 mvo.getAdmissionyear >>> : " + student_ad_year);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_grade >>> : " + student_grade);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_class >>> : " + student_class);
@@ -130,14 +128,12 @@ public class KosmosMypageController {
 				String teacher_cp = mvo.getMt_cp();
 				String teacher_zipcode = mvo.getMt_zipcode();
 				String teacher_doro = mvo.getMt_doro();
-				String teacher_doro_detail = mvo.getMt_dorodetail();
 				
 				logger.info("DB에서 가지고온 이름 mvo.getMt_name >>> : " + teacher_name);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_id >>> : " + teacher_id);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_cp >>> : " + teacher_cp);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_zipcode >>> : " + teacher_zipcode);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_doro >>> : " + teacher_doro);
-				logger.info("DB에서 가지고온 이름 mvo.getMt_dorodetail >>> : " + teacher_doro_detail);
 			
 				model.addAttribute("data", mvo);
 				
@@ -198,7 +194,6 @@ public class KosmosMypageController {
 				String student_cp = mvo.getMs_cp();
 				String student_zipcode = mvo.getMs_zipcode();
 				String student_doro = mvo.getMs_doro();
-				String student_doro_detail = mvo.getMs_dorodetail();
 				String student_ad_year = mvo.getAdmissionyear();
 				String student_grade = mvo.getMs_grade();
 				String student_class = mvo.getMs_class();
@@ -209,7 +204,6 @@ public class KosmosMypageController {
 				logger.info("DB에서 가지고온 이름 mvo.getMs_cp >>> : " + student_cp);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_zipcode >>> : " + student_zipcode);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_doro >>> : " + student_doro);
-				logger.info("DB에서 가지고온 이름 mvo.getMs_dorodetail >>> : " + student_doro_detail);
 				logger.info("DB에서 가지고온 이름 mvo.getAdmissionyear >>> : " + student_ad_year);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_grade >>> : " + student_grade);
 				logger.info("DB에서 가지고온 이름 mvo.getMs_class >>> : " + student_class);
@@ -262,7 +256,6 @@ public class KosmosMypageController {
 		String st_cp = mvo.getStcp();
 		String me_zipcode = mvo.getMe_zipcode();
 		String me_doro = mvo.getMe_doro();
-		String me_dorodetail = mvo.getMe_dorodetail();
 		String admissionyear = mvo.getAdmissionyear();
 		String st_grade = mvo.getGrade();
 		String st_class = mvo.getSt_class();
@@ -274,7 +267,6 @@ public class KosmosMypageController {
 		logger.info("학생 핸드폰번호 st_cp >>> : " + st_cp);
 		logger.info("학생 우편번호 me_zipcode >>> : " + me_zipcode);
 		logger.info("학생 도로명주소 st_doro >>> : " + me_doro);
-		logger.info("학생 상세주소 st_dorodetail >>> : " + me_dorodetail);
 		logger.info("학생 가입일 admissionyear >>> : " + admissionyear);
 		logger.info("학생 학년 st_grade >>> : " + st_grade);
 		logger.info("학생 반 st_class >>> : " + st_class);
@@ -307,7 +299,6 @@ public class KosmosMypageController {
 				_mvo.setMs_cp(st_cp);
 				_mvo.setMs_zipcode(me_zipcode);
 				_mvo.setMs_doro(me_doro);
-				_mvo.setMs_dorodetail(me_dorodetail);
 				_mvo.setMs_grade(st_grade);
 				_mvo.setMs_class(st_class);
 				_mvo.setMs_number(st_number);
@@ -380,14 +371,12 @@ public class KosmosMypageController {
 				String teacher_cp = mvo.getMt_cp();
 				String teacher_zipcode = mvo.getMt_zipcode();
 				String teacher_doro = mvo.getMt_doro();
-				String teacher_doro_detail = mvo.getMt_dorodetail();
 				
 				logger.info("DB에서 가지고온 이름 mvo.getMt_name >>> : " + teacher_name);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_id >>> : " + teacher_id);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_cp >>> : " + teacher_cp);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_zipcode >>> : " + teacher_zipcode);
 				logger.info("DB에서 가지고온 이름 mvo.getMt_doro >>> : " + teacher_doro);
-				logger.info("DB에서 가지고온 이름 mvo.getMt_dorodetail >>> : " + teacher_doro_detail);
 				
 				model.addAttribute("data", mvo);
 			
@@ -440,7 +429,6 @@ public class KosmosMypageController {
 		String te_cp = mvo.getTecp();
 		String me_zipcode = mvo.getMe_zipcode();
 		String me_doro = mvo.getMe_doro();
-		String me_dorodetail = mvo.getMe_dorodetail();
 		
 		logger.info("\n============== jsp에서 받은 데이터 출력 ============\n");
 		logger.info("교사 이름 te_name >>> : " + te_name);
@@ -448,7 +436,6 @@ public class KosmosMypageController {
 		logger.info("교사 핸드폰번호 te_cp >>> : " + te_cp);
 		logger.info("교사 우편번호 me_zipcode >>> : " + me_zipcode);
 		logger.info("교사 도로명주소 me_doro >>> : " + me_doro);
-		logger.info("교사 상세주소 me_dorodetail >>> : " + me_dorodetail);
 		logger.info("\n=============================================\n");
 
 		// 분기 로직 : 학생 / 교사
@@ -477,7 +464,6 @@ public class KosmosMypageController {
 				_mvo.setMt_cp(te_cp);
 				_mvo.setMt_zipcode(me_zipcode);
 				_mvo.setMt_doro(me_doro);
-				_mvo.setMt_dorodetail(me_dorodetail);
 				
 				int nCnt = kosmosMypageService.updateStudentInfo(_mvo);
 			

@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.kosmos.subject.vo.KosmosSubjectVO" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.kosmos.common.CommonUtils" %>
+<%@ page import="com.kosmos.common.SubjectUtils" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -154,9 +154,9 @@
 	<div id="s_left">사이드바 왼쪽</div>
 	<div id="contents">
 	<%	
-		String sb_group = CommonUtils.groupDBToFront(svo.getSb_group());
-		String sb_grade = CommonUtils.gradeDBToFront(svo.getSb_grade());
-		String sb_semester = CommonUtils.semesterDBToFront(svo.getSb_semester());
+		String sb_group = SubjectUtils.groupDBToFront(svo.getSb_group());
+		String sb_grade = SubjectUtils.gradeDBToFront(svo.getSb_grade());
+		String sb_semester = SubjectUtils.semesterDBToFront(svo.getSb_semester());
 		if (svo.getSb_beforename() == null){
 			svo.setSb_beforename("(없음)");
 		}
@@ -205,12 +205,8 @@
 						<td><%= svo.getSb_maxstu() %> 명</td>
 					</tr>
 					<tr>
-						<td>수업요일</td>
-						<td><%= svo.getSb_day() %>요일</td>		
-					</tr>
-					<tr>
-						<td>수업교시</td>
-						<td><%= svo.getSb_time() %>교시</td>		
+						<td>수업요일/교시</td>
+						<td><%= svo.getSb_day() %>요일&nbsp;<%= svo.getSb_time() %>교시</td>		
 					</tr>
 					<tr>
 						<td>선수과목명</td>

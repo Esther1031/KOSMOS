@@ -13,7 +13,6 @@
 	String ms_cp = mvo.getMs_cp();
 	String ms_zipcode = mvo.getMs_zipcode();
 	String ms_doro = mvo.getMs_doro();
-	String ms_dorodetail = mvo.getMs_dorodetail();
 	String ms_whenjoin = mvo.getMs_insdate();	//admissionyear대신 회원등록한 일자를 가져옴 
 	String ms_grade = mvo.getMs_grade();
 	String ms_class = mvo.getMs_class();
@@ -25,7 +24,6 @@
 	System.out.println("컨트롤러에서 가져온 데이터 ms_cp >>> : " + ms_cp);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_zipcode >>> : " + ms_zipcode);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_doro >>> : " + ms_doro);
-	System.out.println("컨트롤러에서 가져온 데이터 ms_dorodetail >>> : " + ms_dorodetail);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_whenjoin >>> : " + ms_whenjoin);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_grade >>> : " + ms_grade);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_class >>> : " + ms_class);
@@ -53,7 +51,7 @@
 			// 3. 미구현) 이미 입력되어있는 데이터와 현재 입력된 데이터가 같은 경우 >>> : 로직을 생각할 시간이 부족해서 PASS
 			if('' == $("#stname").val() || '' == $("#stmail").val() ||
 			   '' == $("#stcp").val() || '' == $("#me_zipcode").val() ||
-			   '' == $("#me_doro").val() || '' == $("#me_dorodetail").val() ||
+			   '' == $("#me_doro").val() ||
 			   '' == $("#admissionyear").val() || '' == $("#grade").val() ||
 			   '' == $("#class").val() || '' == $("#number").val()) {
 			   
@@ -68,7 +66,6 @@
 				var stcp = $("#stcp").val();
 				var me_zipcode = $("#me_zipcode").val();
 				var me_doro = $("#me_doro").val();
-				var me_dorodetail = $("#me_dorodetail").val();
 				var admissionyear = $("#admissionyear").val();
 				var grade = $("#grade").val();
 				var st_class = $("#class").val();
@@ -80,7 +77,6 @@
 				console.log("stcp >>> :" + stcp);
 				console.log("me_zipcode >>> :" + me_zipcode);
 				console.log("me_doro >>> :" + me_doro);
-				console.log("me_dorodetail >>> :" + me_dorodetail);
 				console.log("admissionyear >>> :" + admissionyear);
 				console.log("grade >>> :" + grade);
 				console.log("st_class >>> :" + st_class);
@@ -88,7 +84,7 @@
 				console.log("====================================");
 
 				callAjaxUpdate( stname, stmail, stcp,
-								me_zipcode, me_doro, me_dorodetail,
+								me_zipcode, me_doro,
 								admissionyear, grade, st_class,
 								number);
 				
@@ -96,7 +92,7 @@
 		});
 
 		function callAjaxUpdate( stname, stmail, stcp,
-								 me_zipcode, me_doro, me_dorodetail,
+								 me_zipcode, me_doro,
 								 admissionyear, grade, st_class,
 								 number ) {
 			
@@ -106,7 +102,6 @@
 			console.log("stcp >>> :" + stcp);
 			console.log("me_zipcode >>> :" + me_zipcode);
 			console.log("me_doro >>> :" + me_doro);
-			console.log("me_dorodetail >>> :" + me_dorodetail);
 			console.log("admissionyear >>> :" + admissionyear);
 			console.log("grade >>> :" + grade);
 			console.log("st_class >>> :" + st_class);
@@ -123,7 +118,6 @@
 					stcp : stcp,
 					me_zipcode : me_zipcode,
 					me_doro : me_doro,
-					me_dorodetail : me_dorodetail,
 					admissionyear : admissionyear,
 					grade : grade,
 					st_class : st_class,
@@ -184,10 +178,8 @@
 	<br>
 	도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value=<%= ms_doro %>>
 	<br>
-	<br>	 	
-	상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value="${ data.ms_dorodetail }">
 	<br>
-	<br>입학년도 : <input type="text" name="admissionyear" id="admissionyear" value=<%= ms_whenjoin %>><br>
+	입학년도 : <input type="text" name="admissionyear" id="admissionyear" value=<%= ms_whenjoin %>><br>
 	<br>학년 :&nbsp; <input type="text" name="grade" id="grade" value="${ data.ms_grade }">
 	&nbsp;반 :&nbsp; <input type="text" name="class" id="class" value=<%= ms_class %>>
 	&nbsp;번호 :&nbsp; <input type="text" name="number" id="number" value="${ data.ms_number }">

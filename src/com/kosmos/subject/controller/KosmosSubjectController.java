@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.kosmos.common.CommonUtils;
 import com.kosmos.login.vo.KosmosLoginVO;
@@ -43,20 +45,37 @@ public class KosmosSubjectController {
 			
 			return "subject/subjectInsertForm";
 		}
-		return "subject/subjectSelectAll";
+		return "subject/subjectPass";
 	}
 	
+	// 과목 전체 목록 조회
 	@GetMapping("subjectSelectAll")
 	public String subjectSelectAll(KosmosSubjectVO svo, Model model, HttpSession hs){
 		logger.info("SubjectController : subjectSelectAll() >>> : ");
 		// 세션에서 가지고 온 데이터 객체에 담기
 		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
-		
+	
 		// 세션 값 확인
 		String mt_id = lvo_data.getMt_id();
 		String ms_id = lvo_data.getMs_id();
 		logger.info("mt_id >>> : " + lvo_data.getMt_id());
 		logger.info("ms_id >>> : " + lvo_data.getMs_id());
+		
+		// 페이징 변수 세팅
+		int pageSize = CommonUtils.SUBJECT_PAGE_SIZE;
+		int groupSize = CommonUtils.SUBJECT_GROUP_SIZE;
+		int curPage = CommonUtils.SUBJECT_CUR_PAGE;
+		int totalCount = CommonUtils.SUBJECT_TOTAL_COUNT;
+		
+		if(svo.getCurPage() != null) {
+			curPage = Integer.parseInt(svo.getCurPage());
+			logger.info("curPage >>> : " + curPage);
+		}
+		
+		svo.setPageSize(String.valueOf(pageSize));
+		svo.setGroupSize(String.valueOf(groupSize));
+		svo.setCurPage(String.valueOf(curPage));
+		svo.setTotalCount(String.valueOf(totalCount));
 		
 		// 과목 전체 조회 + 상세 조회
 		List<KosmosSubjectVO> listSA = kosmosSubjectService.subjectSelectAll(svo);
@@ -65,12 +84,103 @@ public class KosmosSubjectController {
 		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSA.size());
 		if (mt_id != null || ms_id != null) {
 			if (listSA != null && listSA.size() > 0) {
+				model.addAttribute("pagingSVO", svo);
 				model.addAttribute("listSA", listSA);
 				return "subject/subjectSelectAll";
 			}
 		}
 		// 학교 메인 홈페이지로 이동 
-		return "school/home";
+		return "subject/subjectSelectAll";
+	}
+	
+	// 과목유형 선택만 조회
+	@GetMapping("subjectSelectChoice")
+	public String subjectSelectAllChoice(KosmosSubjectVO svo, Model model, HttpSession hs){
+		logger.info("SubjectController : subjectSelectAll() >>> : ");
+		// 세션에서 가지고 온 데이터 객체에 담기
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
+	
+		// 세션 값 확인
+		String mt_id = lvo_data.getMt_id();
+		String ms_id = lvo_data.getMs_id();
+		logger.info("mt_id >>> : " + lvo_data.getMt_id());
+		logger.info("ms_id >>> : " + lvo_data.getMs_id());
+		
+		// 페이징 변수 세팅
+		int pageSize = CommonUtils.SUBJECT_PAGE_SIZE;
+		int groupSize = CommonUtils.SUBJECT_GROUP_SIZE;
+		int curPage = CommonUtils.SUBJECT_CUR_PAGE;
+		int totalCount = CommonUtils.SUBJECT_TOTAL_COUNT;
+		
+		if(svo.getCurPage() != null) {
+			curPage = Integer.parseInt(svo.getCurPage());
+			logger.info("curPage >>> : " + curPage);
+		}
+		
+		svo.setPageSize(String.valueOf(pageSize));
+		svo.setGroupSize(String.valueOf(groupSize));
+		svo.setCurPage(String.valueOf(curPage));
+		svo.setTotalCount(String.valueOf(totalCount));
+		
+		// 과목 전체 조회 + 상세 조회
+		List<KosmosSubjectVO> listSC = kosmosSubjectService.subjectSelectChoice(svo);
+		logger.info("subjectSelectAll() 다녀온 후 >>> : ");
+		KosmosSubjectVO.subjectKeyPrintVO(svo);
+		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSC.size());
+		if (mt_id != null || ms_id != null) {
+			if (listSC != null && listSC.size() > 0) {
+				model.addAttribute("pagingSVO_C", svo);
+				model.addAttribute("listSC", listSC);
+				return "subject/subjectSelectChoice";
+			}
+		}
+		// 학교 메인 홈페이지로 이동 
+		return "subject/subjectSelectAll";
+	}
+	
+	// 과목유형 필수만 조회
+	@GetMapping("subjectSelectEssential")
+	public String subjectSelectAllEssential(KosmosSubjectVO svo, Model model, HttpSession hs){
+		logger.info("SubjectController : subjectSelectAll() >>> : ");
+		// 세션에서 가지고 온 데이터 객체에 담기
+		KosmosLoginVO lvo_data = (KosmosLoginVO)hs.getAttribute("result");
+	
+		// 세션 값 확인
+		String mt_id = lvo_data.getMt_id();
+		String ms_id = lvo_data.getMs_id();
+		logger.info("mt_id >>> : " + lvo_data.getMt_id());
+		logger.info("ms_id >>> : " + lvo_data.getMs_id());
+		
+		// 페이징 변수 세팅
+		int pageSize = CommonUtils.SUBJECT_PAGE_SIZE;
+		int groupSize = CommonUtils.SUBJECT_GROUP_SIZE;
+		int curPage = CommonUtils.SUBJECT_CUR_PAGE;
+		int totalCount = CommonUtils.SUBJECT_TOTAL_COUNT;
+		
+		if(svo.getCurPage() != null) {
+			curPage = Integer.parseInt(svo.getCurPage());
+			logger.info("curPage >>> : " + curPage);
+		}
+		
+		svo.setPageSize(String.valueOf(pageSize));
+		svo.setGroupSize(String.valueOf(groupSize));
+		svo.setCurPage(String.valueOf(curPage));
+		svo.setTotalCount(String.valueOf(totalCount));
+		
+		// 과목 전체 조회 + 상세 조회
+		List<KosmosSubjectVO> listSE = kosmosSubjectService.subjectSelectEssential(svo);
+		logger.info("subjectSelectAll() 다녀온 후 >>> : ");
+		KosmosSubjectVO.subjectKeyPrintVO(svo);
+		logger.info("SubjectController : subjectSelectAll() listSA.size() >>> : " + listSE.size());
+		if (mt_id != null || ms_id != null) {
+			if (listSE != null && listSE.size() > 0) {
+				model.addAttribute("pagingSVO_E", svo);
+				model.addAttribute("listSE", listSE);
+				return "subject/subjectSelectEssential";
+			}
+		}
+		// 학교 메인 홈페이지로 이동 
+		return "subject/subjectSelectAll";
 	}
 	
 	@GetMapping("subjectSelect")
@@ -200,5 +310,18 @@ public class KosmosSubjectController {
 		return "subject/subjectPass";
 	}
 	
-	
+	@PostMapping("subjectCallCode")
+	@ResponseBody
+	public String subjectCallCode(KosmosSubjectVO svo, Model model) {
+		logger.info("KosmosSubjectController : subjectCallCode() >>> : ");
+		KosmosSubjectVO.subjectCodeCallPrintVO(svo);
+		
+		String codeVal = "";
+		
+		KosmosSubjectVO svo_ = kosmosSubjectService.subjectCallCode(svo);
+		codeVal = svo_.getSb_code();
+		logger.info("codeVal >>> : " + codeVal);
+				
+		return codeVal;
+	}
 }

@@ -4,10 +4,12 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>실패</title>
+<title>넘겨주는 페이지</title>
 </head>
 <body>
-	<h3>Fail</h3>
-	<h3>AdminCheck 실패</h3>
+	<script>
+		alert("삭제되었습니다.");
+		location.href="noticeList.k";
+	</script>
 </body>
 </html>

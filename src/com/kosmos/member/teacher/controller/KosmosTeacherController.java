@@ -73,24 +73,15 @@ public class KosmosTeacherController {
 		// 회원이름
 		mvo.setMt_name(fu.getParameter("mt_name"));
 		// 이메일(아이디)
-		// 아이디
 		mvo.setMt_id(fu.getParameter("mt_id"));
 		// 패스워드
 		mvo.setMt_pw(fu.getParameter("mt_pw"));
 		// 성별
 		mvo.setMt_gen(fu.getParameter("mt_gen"));
 		// 생년월일
-		String mt_birth = fu.getParameter("mt_birth");
-		String mt_birth1 = fu.getParameter("mt_birth1");
-		String mt_birth2 = fu.getParameter("mt_birth2");
-		mt_birth = mt_birth + mt_birth1 + mt_birth2;
-		mvo.setMt_birth(mt_birth);
+		mvo.setMt_birth(fu.getParameter("mt_birth"));	
 		// 핸드폰
-		String mt_cp = fu.getParameter("mt_cp");
-		String mt_cp1 = fu.getParameter("mt_cp1");
-		String mt_cp2 = fu.getParameter("mt_cp2");
-		mt_cp = mt_cp + mt_cp1 + mt_cp2;
-		mvo.setMt_cp(mt_cp);
+		mvo.setMt_cp(fu.getParameter("mt_cp"));
 		// 주소 : 우편번호
 		mvo.setMt_zipcode(fu.getParameter("mt_zipcode"));	
 		// 주소 : 도로명 주소						
@@ -105,8 +96,8 @@ public class KosmosTeacherController {
 		
 		int nCnt = KosmosTeacherService.teacherInsert(mvo);
 			
-		if (nCnt > 0) { return "member/end";}
-		return "WEB-INF/end";
+		if (nCnt > 0) { return "login/test_loginForm";}
+		return "login/test_loginForm";
 	}
 	
 	// 아이디 중복 체크하기

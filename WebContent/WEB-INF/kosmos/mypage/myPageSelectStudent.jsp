@@ -13,7 +13,6 @@
 	String ms_cp = mvo.getMs_cp();
 	String ms_zipcode = mvo.getMs_zipcode();
 	String ms_doro = mvo.getMs_doro();
-	String ms_dorodetail = mvo.getMs_dorodetail();
 	String ms_whenjoin = mvo.getMs_insdate();	//admissionyear대신 회원등록한 일자를 가져옴 
 	String ms_grade = mvo.getMs_grade();
 	String ms_class = mvo.getMs_class();
@@ -25,7 +24,6 @@
 	System.out.println("컨트롤러에서 가져온 데이터 ms_cp >>> : " + ms_cp);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_zipcode >>> : " + ms_zipcode);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_doro >>> : " + ms_doro);
-	System.out.println("컨트롤러에서 가져온 데이터 ms_dorodetail >>> : " + ms_dorodetail);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_whenjoin >>> : " + ms_whenjoin);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_grade >>> : " + ms_grade);
 	System.out.println("컨트롤러에서 가져온 데이터 ms_class >>> : " + ms_class);
@@ -113,10 +111,8 @@
 			 		<br>
 			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value="${ data.ms_doro }">
 			 		<br>
-			 		<br>
-			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px" value=<%= ms_dorodetail %>>
-			 		<br>
-					<br>가입일 : <input type="text" name="admissionyear" id="admissionyear" value="${ data.ms_insdate }"><br>
+					<br>
+					가입일 : <input type="text" name="admissionyear" id="admissionyear" value="${ data.ms_insdate }"><br>
 					<br>학년 :&nbsp; <input type="text" name="grade" id="grade" value=<%= ms_grade %>>
 					&nbsp;반 :&nbsp; <input type="text" name="st_class" id="st_class" value="${ data.ms_class}">
 					&nbsp;번호 :&nbsp; <input type="text" name="number" id="number" value=<%= ms_number %>>

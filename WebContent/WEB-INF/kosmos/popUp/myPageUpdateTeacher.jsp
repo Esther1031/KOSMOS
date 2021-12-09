@@ -12,7 +12,6 @@
 	String mt_cp = mvo.getMt_cp();
 	String mt_zipcode = mvo.getMt_zipcode();
 	String mt_doro = mvo.getMt_doro();
-	String mt_dorodetail = mvo.getMt_dorodetail();
 
 	System.out.println("\n===== jsp에서 출력한 데이터 ========================\n");
 	System.out.println("컨트롤러에서 가져온 데이터 mt_name >>> : " + mt_name);
@@ -20,7 +19,6 @@
 	System.out.println("컨트롤러에서 가져온 데이터 mt_cp >>> : " + mt_cp);
 	System.out.println("컨트롤러에서 가져온 데이터 mt_zipcode >>> : " + mt_zipcode);
 	System.out.println("컨트롤러에서 가져온 데이터 mt_doro >>> : " + mt_doro);
-	System.out.println("컨트롤러에서 가져온 데이터 mt_dorodetail >>> : " + mt_dorodetail);
 	System.out.println("\n==============================================\n");
 
 %>
@@ -44,7 +42,7 @@
 			// 3. 미구현) 이미 입력되어있는 데이터와 현재 입력된 데이터가 같은 경우 >>> : 로직을 생각할 시간이 부족해서 PASS
 			if('' == $("#tename").val() || '' == $("#temail").val() ||
 			   '' == $("#tecp").val() || '' == $("#me_zipcode").val() ||
-			   '' == $("#me_doro").val() || '' == $("#me_dorodetail").val()) {
+			   '' == $("#me_doro").val()) {
 			   
 				alert("입력하신 정보를 확인해주세요. (공백불가)");
 				return
@@ -57,7 +55,6 @@
 				var tecp = $("#tecp").val();
 				var me_zipcode = $("#me_zipcode").val();
 				var me_doro = $("#me_doro").val();
-				var me_dorodetail = $("#me_dorodetail").val();
 				
 				console.log("====== 업데이트 요청 데이터 출력해보기 =======");
 				console.log("tename >>> :" + tename);
@@ -65,17 +62,16 @@
 				console.log("tecp >>> :" + tecp);
 				console.log("me_zipcode >>> :" + me_zipcode);
 				console.log("me_doro >>> :" + me_doro);
-				console.log("me_dorodetail >>> :" + me_dorodetail);
 				console.log("====================================");
 
 				callAjaxUpdate( tename, temail, tecp,
-								me_zipcode, me_doro, me_dorodetail);
+								me_zipcode, me_doro);
 				
 			}
 		});
 	
 		function callAjaxUpdate( tename, temail, tecp,
-								 me_zipcode, me_doro, me_dorodetail) {
+								 me_zipcode, me_doro) {
 			
 			console.log("====== Ajax로 넘어온 데이터 확인 ======");
 			console.log("tename >>> :" + tename);
@@ -83,7 +79,6 @@
 			console.log("tecp >>> :" + tecp);
 			console.log("me_zipcode >>> :" + me_zipcode);
 			console.log("me_doro >>> :" + me_doro);
-			console.log("me_dorodetail >>> :" + me_dorodetail);
 			console.log("================================");
 			
 			alert("Ajax 데이터 통신 시작 >>> : 요청 데이터를 보냅니다.");
@@ -96,7 +91,6 @@
 					tecp : tecp,
 					me_zipcode : me_zipcode,
 					me_doro : me_doro,
-					me_dorodetail : me_dorodetail,
 			};
 			
 			$.ajax({
@@ -151,9 +145,6 @@
 			 		<br>
 			 		<br>
 			 		도로명주소 : <input type="text" name="me_doro" id="me_doro" style="width:250px" value="${ data.mt_doro}">
-			 		<br>
-			 		<br>	 	
-			 		상세주소 : <input type="text" name="me_dorodetail" id="me_dorodetail" style="width:250px"  value="${ data.mt_dorodetail}">
 			 		<br>
 					<br>
 					<hr>
