@@ -48,7 +48,6 @@ public class KosmosMemberVO {
 		this.ms_cp = ms_cp;
 		this.ms_zipcode = ms_zipcode;
 		this.ms_doro = ms_doro;
-//		this.ms_dorodetail = ms_dorodetail;
 		this.ms_photo = ms_photo;
 		this.ms_grade = ms_grade;
 		this.ms_semester = ms_semester;
@@ -133,14 +132,6 @@ public class KosmosMemberVO {
 	public void setMs_doro(String ms_doro) {
 		this.ms_doro = ms_doro;
 	}
-
-//	public String getMs_dorodetail() {
-//		return ms_dorodetail;
-//	}
-//
-//	public void setMs_dorodetail(String ms_dorodetail) {
-//		this.ms_dorodetail = ms_dorodetail;
-//	}
 
 	public String getMs_photo() {
 		return ms_photo;
@@ -247,8 +238,6 @@ public class KosmosMemberVO {
 		logger.info("취미 >>> : " + mvo.getMs_upddate());
 		logger.info("취미 >>> : " + mvo.getMs_delyn());
 
-		
-		
 		logger.info("KosmosMemberVO 데이터 확인 끝  >>> : ");	
 	}
 }

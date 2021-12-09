@@ -14,9 +14,7 @@ public class KosmosTeacherVO {
 	private String mt_cp;
 	private String mt_zipcode;
 	private String mt_doro;
-	private String mt_dorodetail;
 	private String mt_photo;
-	private String sb_num;
 	private String mt_insdate;
 	private String mt_upddate;
 	private String mt_delyn;
@@ -28,8 +26,8 @@ public class KosmosTeacherVO {
 public KosmosTeacherVO(String mt_num, String mt_id, String mt_name,
 					   String mt_gen, String mt_birth, String mt_pw, 
 					   String mt_cp, String mt_zipcode, String mt_doro,
-					   String mt_dorodetail, String mt_photo, String sb_num, 
-					   String mt_insdate, String mt_upddate, String mt_delyn) {
+					   String mt_dorodetail, String mt_photo, String mt_insdate, 
+					   String mt_upddate, String mt_delyn) {
 
 	this.mt_num = mt_num;
 	this.mt_id = mt_id;
@@ -40,9 +38,7 @@ public KosmosTeacherVO(String mt_num, String mt_id, String mt_name,
 	this.mt_cp = mt_cp;
 	this.mt_zipcode = mt_zipcode;
 	this.mt_doro = mt_doro;
-	this.mt_dorodetail = mt_dorodetail;
 	this.mt_photo = mt_photo;
-	this.sb_num = sb_num;
 	this.mt_insdate = mt_insdate;
 	this.mt_upddate = mt_upddate;
 	this.mt_delyn = mt_delyn;
@@ -120,28 +116,12 @@ public KosmosTeacherVO(String mt_num, String mt_id, String mt_name,
 		this.mt_doro = mt_doro;
 	}
 	
-	public String getMt_dorodetail() {
-		return mt_dorodetail;
-	}
-	
-	public void setMt_dorodetail(String mt_dorodetail) {
-		this.mt_dorodetail = mt_dorodetail;
-	}
-	
 	public String getMt_photo() {
 		return mt_photo;
 	}
 	
 	public void setMt_photo(String mt_photo) {
 		this.mt_photo = mt_photo;
-	}
-	
-	public String getSb_num() {
-		return sb_num;
-	}
-	
-	public void setSb_num(String sb_num) {
-		this.sb_num = sb_num;
 	}
 	
 	public String getMt_insdate() {
@@ -180,9 +160,7 @@ public KosmosTeacherVO(String mt_num, String mt_id, String mt_name,
 		logger.info("취미 >>> : " + mvo.getMt_pw());
 		logger.info("취미 >>> : " + mvo.getMt_cp());
 		logger.info("취미 >>> : " + mvo.getMt_zipcode());
-		logger.info("취미 >>> : " + mvo.getMt_dorodetail());
 		logger.info("취미 >>> : " + mvo.getMt_photo());
-		logger.info("취미 >>> : " + mvo.getSb_num());
 		logger.info("취미 >>> : " + mvo.getMt_insdate());
 		logger.info("취미 >>> : " + mvo.getMt_upddate());
 		logger.info("취미 >>> : " + mvo.getMt_delyn());
