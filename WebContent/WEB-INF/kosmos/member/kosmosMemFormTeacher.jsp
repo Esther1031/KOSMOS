@@ -16,6 +16,27 @@
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
 
+<style>
+
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
+	body {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	width: 1400px;
+	}
+	
+	.register-form {
+		margin: 50px auto;
+	}
+	
+	.signup-form {
+	    width: 1015px;
+	    margin-left: 100px;
+	}
+
+</style>
+
+
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">

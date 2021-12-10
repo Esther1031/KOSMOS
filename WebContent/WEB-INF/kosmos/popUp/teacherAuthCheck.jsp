@@ -35,6 +35,7 @@
 		margin : 0 auto;
 		border : 5px solid #34558B;
 		border-radius: 15px;
+		width: 500px;
 	}
 	h2{
 		text-align : center;
@@ -121,8 +122,8 @@
 		</div>
 		<br>
 		<div class="button">
-			<button type="button" id="keyCheck">확인</button>
-			<button type="reset">다시입력</button>
+			<button type="button" id="keyCheck" style="width:100px">확인</button>
+			<button type="reset" style="width:100px">다시입력</button>
 		</div>
 		<br>
 	</div>

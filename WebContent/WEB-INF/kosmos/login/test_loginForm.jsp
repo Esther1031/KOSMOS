@@ -94,7 +94,7 @@
 		// 회원가입 버튼 클릭시 로직 		
 		$("#join").click(function(){
 			console.log("회원가입 링크가 클릭됨 >>> : 회원 유형 선택창을 띄웁니다.");
-			window.open("loginChoice.k", "", "width=660, height=700, resizable=no, scrollbars=no, status=no");
+			window.open("loginChoice.k", "", "width=1450, height=800, resizable=no, scrollbars=no, status=no");
 		});
 		
 		

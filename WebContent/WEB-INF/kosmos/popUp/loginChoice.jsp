@@ -38,7 +38,7 @@
 		
 		$("#teImg").click(function(){
 			
-			window.open("joinTeacher.k", "", "width=660, height=700, resizable=no, scrollbars=no, status=no");
+			window.open("joinTeacher.k", "", "width=1500, height=800, resizable=no, scrollbars=no, status=no");
 
 		});
 		
