@@ -83,13 +83,13 @@
 			var thisYear = thisDate.getFullYear();	
 			for (var i = (thisYear-5); i < (thisYear+5); i++){
 				if (i < thisYear){
-					$("#key_sbyear").append("<option value='"+i+"'>"+i+"</option>");	
+					$("#sb_year").append("<option value='"+i+"'>"+i+"</option>");	
 				}
 			}
-			$("#key_sbyear").append("<option value='"+thisYear+"' selected>"+thisYear+"</option>");	
+			$("#sb_year").append("<option value='"+thisYear+"' selected>"+thisYear+"</option>");	
 			for (var i = (thisYear-5); i < (thisYear+5); i++){
 				if (i > thisYear){
-					$("#key_sbyear").append("<option value='"+i+"'>"+i+"</option>");	
+					$("#sb_year").append("<option value='"+i+"'>"+i+"</option>");	
 				}
 			}
 			
@@ -208,18 +208,52 @@
 					$("#teacher_key").focus();
 				}
 			});
+						
+			//########## sb_Code 불러오는 Ajax 시작 ##########
+			$("#codeBtn").click(function(){
+				alert("btn 진입 >>> : ");
+				callAjax();
+			});
 			
-			// border 색 바꾸는 함수 만드는 중 (수정 중)
-			function changeBorderToRed(myval){
-				var test = $("#myval");
-				alert("myval >>> : " + myval);
-				if (test.val() == 0){
-					alert(test.id + "을(를) 선택해주세요.");
-					$("#myval").focus();
-					$("#myval").css("border", "1px solid red");
+			function callAjax(){
+				alert("callAjax() 함수 호출 성공 >>> : ");
+
+				let codeURL = "subjectCallCode.k";
+				let groupVal = $("#sb_group").val();
+				let nameVal = $("#sb_name").val();
+				let dataParam = {
+						group : groupVal,
+						name : nameVal
 				}
-			}
+				console.log("groupVal >>> : " + groupVal);
+				console.log("nameVal >>> : " + nameVal);
 				
+				$.ajax({
+					url : codeURL,
+					type : "POST",
+					data : dataParam,
+					contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+					success : whenSuccess,
+					error : whenError
+				});
+				
+				// 성공했을 때 실행되는 함수
+				function whenSuccess(resData){
+					console.log("코드 data >>> : " + resData);
+					
+					// 코드 받아오면 sb_code에 바로 입력하기
+					if (resData != null){
+						$("#sb_code").val(resData);
+					}
+				}
+				
+				// 실패했을 때 실행되는 함수
+				function whenError(e) {
+					console.log("에러가 >>> : " + e.responseText);
+				}
+			}	// end of callAjax()
+			//########## sb_Code 불러오는 Ajax 끝 ##########
+			
 			// 등록 버튼 누르면
 			$(document).on("click", "#insertBtn", function(){
 				alert("(확인용) insertBtn >>> : ");				
@@ -333,34 +367,22 @@
 	
 	<hr>
 	<form id="subjectInsertForm" name="subjectInsertForm">
-		과목코드, 과목명, 담당교사 Ajax ㄱㄱ<br>
-		(테스트 시 편의를 위해 임시로 관리자 비밀번호 입력해두었습니다.)
 		<br><br>
+		교과군과 과목명을 입력하고 코드확인 버튼을 누르면 과목코드가 입력됩니다.<br>
 		<table border="1">
 			<thead>
 				<tr>
-					<th colspan="10" style="font-size: 20px;">과목 등록</th>
+					<th colspan="10" style="font-size: 20px;">새과목 등록</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
 					<td colspan="5">
-						개설년도<select id="key_sbyear" name="key_sbyear"></select>
+						개설년도<select id="sb_year" name="sb_year"></select>
+						&nbsp;&nbsp;&nbsp;&nbsp;
 						대상학년/개설학기
 						<select id="sb_grade" name="sb_grade"></select>
 						<select id="sb_semester" name="sb_semester"></select>
-					</td>
-				</tr>
-				<tr>
-					<td colspan="5">
-					교과군 <select id="sb_group" name="sb_group"></select>
-					<!-- 각 과목마다 순번이 있고, 저장된 값이 있으면, 저장되지 않은 값이 있음. DB와 연결하여 찾아야 함. 
-						 ID 찾기 코드 사용하기 -->
-					과목코드
-						<input type="text" id="sb_code" name="sb_code" value="" style="width:20px">
-					<!-- 과목유형 -->
-						<input type="radio" id="sb_type1" name="sb_type" value="필수" checked>필수
-						<input type="radio" id="sb_type2" name="sb_type" value="선택">선택
 					</td>
 				</tr>
 				<tr>
@@ -379,18 +401,24 @@
 					</td>
 				</tr>
 				<tr>
+					<td colspan="5">
+					교과군 <select id="sb_group" name="sb_group"></select>
+					<!-- 과목유형 -->
+					<input type="radio" id="sb_type1" name="sb_type" value="필수" checked>필수
+					<input type="radio" id="sb_type2" name="sb_type" value="선택">선택
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					선수과목 
+					<input type="radio" id="sb_beforeyn1" name="sb_beforeyn" value="Y" checked>있음
+					<input type="radio" id="sb_beforeyn2" name="sb_beforeyn" value="N">없음
+					</td>
+				</tr>
+				<tr>
 					<td>과목명</td>
 					<td>
-						<div>
-							<!-- db에 있는 정보와 일치하면 검색 / db에 있는 정보와 일치하지 않으면 색 변하면서 (새로 입력) 메시지 보이게 -->
-							<input type="text" id="sb_name" name="sb_name" placeholder="직접입력">
-							<!-- <button type="button">검색</button> -->
-						</div>
-						<div>
-							선수과목 
-							<input type="radio" id="sb_beforeyn1" name="sb_beforeyn" value="Y" checked>있음
-							<input type="radio" id="sb_beforeyn2" name="sb_beforeyn" value="N">없음
-						</div>
+						<input type="text" id="sb_name" name="sb_name" placeholder="직접입력">
+						<button type="button" id="codeBtn" name="codeBtn" class="required" >코드확인</button>
+						과목코드
+						<input type="text"  id="sb_code" name="sb_code" value="" style="width:20px" readonly />
 					</td>
 				</tr>
 				<tr>

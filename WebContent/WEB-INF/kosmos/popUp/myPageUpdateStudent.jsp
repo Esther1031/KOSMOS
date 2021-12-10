@@ -38,6 +38,34 @@
 <meta charset="UTF-8">
 <title>회원정보수정(학생)</title>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="resource/css/front.css"></script>
+<style type="text/css">
+	
+	body{
+		background: #eee;
+	}
+	table {
+		border: 5px solid #34558B;
+		padding: 10px;
+		margin: 0px auto;
+		margin-top: 80px;
+		border-radius: 10px;
+	}
+	 
+	button {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: initial;
+		color: white;
+		background-color: #34558b;
+		height: 30px;
+		width:308px; 
+		border: 0px solid black;
+		border-radius: 4px;
+	}
+
+</style>
+
+
 <script type="text/javascript">
 
 	$(document).ready(function(){

@@ -5,11 +5,36 @@
 <head>
 <meta charset="UTF-8">
 <title>교사 인증키 확인창</title>
+<script src="resource/css/front.css"></script>
 <style type="text/css">
+	
+	body{
+		background: #eee;
+	}
+	table {
+		border: 5px solid #34558B;
+		padding: 10px;
+		margin: 0px auto;
+		margin-top: 80px;
+		border-radius: 10px;
+	}
+	 
+	button {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: initial;
+		color: white;
+		background-color: #34558b;
+		height: 30px;
+		width:308px; 
+		border: 0px solid black;
+		border-radius: 4px;
+	}
+
 
 	.frame{
 		margin : 0 auto;
 		border : 5px solid #34558B;
+		border-radius: 15px;
 	}
 	h2{
 		text-align : center;

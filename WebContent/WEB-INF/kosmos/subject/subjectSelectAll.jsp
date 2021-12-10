@@ -88,19 +88,19 @@
 	%>
 	<%
 		// 페이징 변수 세팅
-			int pageSize = 0;
-			int groupSize = 0;
-			int curPage = 0;
-			int totalCount = 0;
+		int pageSize = 0;
+		int groupSize = 0;
+		int curPage = 0;
+		int totalCount = 0;
 			
-			Object objPaging = request.getAttribute("pagingSVO");
-			KosmosSubjectVO pagingSVO = (KosmosSubjectVO)objPaging;
+		Object objPaging = request.getAttribute("pagingSVO");
+		KosmosSubjectVO pagingSVO = (KosmosSubjectVO)objPaging;
 			
-			Object obj = request.getAttribute("listSA");
-			if (obj == null){
+		Object obj = request.getAttribute("listSA");
+		if (obj == null){
 		System.out.println("obj가 null");
-			}
-			ArrayList<KosmosSubjectVO> listSA = (ArrayList<KosmosSubjectVO>)obj;
+		}
+		ArrayList<KosmosSubjectVO> listSA = (ArrayList<KosmosSubjectVO>)obj;
 	%>
 	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
@@ -180,6 +180,10 @@
 		});
 		
 		$(document).on("click", "#updateBtn", function(){
+			if ($('.sbnum:checked').length == 0){
+				alert("수정할 글번호 하나를 선택하세요!!");
+				return;
+			}
 			$("#subjectSelectAll").attr({
 				'action':'subjectUpdateForm.k',
 				'method':'GET',
@@ -192,6 +196,10 @@
 		});
 		
 		$(document).on("click", "#deleteBtn", function(){
+			if ($('.sbnum:checked').length == 0){
+				alert("삭제할 글번호 하나를 선택하세요!!");
+				return;
+			}
 			$("#subjectSelectAll").attr({
 				'action':'subjectDelete.k',
 				'method':'GET',
@@ -247,12 +255,21 @@
 <div class="bg_gnb"></div>
 <div class="content-top">제일 위</div>
 <div class="content" align="center">
-	<div id="s_left"></div>
+	<div id="s_left">
+		<div>
+			<ul>
+				<a href="subjectSelectEssential.k"><li>필수</li></a>
+				<a href="subjectSelectChoice.k"><li>선택</li></a>
+			</ul>
+			
+		</div>
+	</div>
 	<div id="contents">
 	<hr>
 	<hr>
 	<h3 style="font-size:30px;">개설 강좌 목록</h3>
 		<form id="subjectSelectAll" name="subjectSelectAll">
+		<p align="right"><input type="button" id="insertBtn" value="과목 새등록"></p>
 			<table border="1" align="center" class="tableSearch">
 				<thead>
 					<tr>
@@ -297,8 +314,7 @@
 						<th>대상학기</th>
 						<th>담당교사명</th>
 						<th>정원</th>
-						<th>수업요일</th>	
-						<th>수업교시</th> 
+						<th>수업요일/교시</th> 
 						<th>선수과목명</th>
 					</tr>
 				</thead>
@@ -306,12 +322,13 @@
 				if (listSA != null && listSA.size() >= 0){
 					for (int i=0; i < listSA.size(); i++){
 						KosmosSubjectVO svo = listSA.get(i);
-						// 패이징 새팅
+						// 패이징 세팅
 						pageSize = Integer.parseInt(pagingSVO.getPageSize());
 						groupSize = Integer.parseInt(pagingSVO.getGroupSize());
 						curPage = Integer.parseInt(pagingSVO.getCurPage());
 						totalCount = Integer.parseInt(svo.getTotalCount());
 						
+						// 과목 세팅
 						String sb_grade = SubjectUtils.gradeDBToFront(svo.getSb_grade());
 						String sb_group = SubjectUtils.groupDBToFront(svo.getSb_group());
 						String sb_semester = SubjectUtils.semesterDBToFront(svo.getSb_semester());
@@ -321,7 +338,7 @@
 			%>
 					<tbody>
 						<tr>
-							<th><input type="checkbox" id="sb_num" name="sb_num" value="<%= svo.getSb_num() %>"></th>
+							<th><input type="checkbox" id="sb_num" name="sb_num" class="sbnum" value="<%= svo.getSb_num() %>"></th>
 							<td><%= svo.getSb_year() %></td>
 							<td><%= sb_group %></td>	<!-- 국어, 영어, 수학, 사회, 과학 -->
 							<td><%= svo.getSb_code() %></td>
@@ -332,8 +349,7 @@
 							<td><%= sb_semester %>학기</td>
 							<td><%= svo.getSb_teacher() %></td>
 							<td><%= svo.getSb_maxstu() %> 명</td>
-							<td><%= svo.getSb_day() %>요일</td>	
-							<td><%= svo.getSb_time() %>교시</td>
+							<td><%= svo.getSb_day() %>요일&nbsp;<%= svo.getSb_time() %>교시</td>
 							<td><%= svo.getSb_beforename() %></td>
 						</tr>
 					</tbody>	
@@ -350,7 +366,7 @@
 				String mt_id = lvo.getMt_id();
 				if (mt_id != null){
 			%>
-						<input type="button" id="insertBtn" value="새등록">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type="button" id="updateBtn" value="수정">
 						<input type="button" id="deleteBtn" value="삭제">
 			<%

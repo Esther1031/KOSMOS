@@ -6,7 +6,34 @@
 <meta charset="UTF-8">
 <title>비밀번호 찾기</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="resource/css/front.css"></script>
+<style type="text/css">
+	
+	body{
+		background: #eee;
+	}
+	table {
+		border: 5px solid #34558B;
+		padding: 10px;
+		margin: 0px auto;
+		margin-top: 80px;
+		border-radius: 10px;
+	}
+	 
+	button {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: initial;
+		color: white;
+		background-color: #34558b;
+		height: 30px;
+		width:308px; 
+		border: 0px solid black;
+		border-radius: 4px;
+	}
+
+</style>
 <script type="text/javascript">
+
 	
 	$(document).ready(function(){
 
@@ -120,7 +147,7 @@
 		<tr>
 			<td>
 				<h2>
-					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호 찾기</b>
+					<b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;비밀번호 찾기</b>
 				</h2>
 			</td>
 		</tr>
@@ -146,7 +173,7 @@
 		</tr>
 		<tr>
 			<td>
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			
 			<button type="button" id="findPw">비밀번호찾기</button>
 			</td>
 		</tr>	

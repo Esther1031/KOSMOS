@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.kosmos.notice.dao.KosmosNoticeDAO">
+
+<!-- 
+	
+	==============
+	 공지사항 테이블 생성
+	==============
+	create table KOSMOS_NOTICE(
+	    NO_NUM      NUMBER  primary key,        게시물 번호
+	    MT_NUM      VARCHAR2(20),               작성자 
+	    NO_SUBJECT  VARCHAR2(50),               제목
+	    NO_CONTENTS VARCHAR2(2000),             내용
+	    NO_FILE     VARCHAR2(500),              파일명
+	    NO_HIT      NUMBER,                     조회수
+	    MT_ID       VARCHAR2(100),              교사 아이디(이메일 주소)
+	    NO_INSDATE  DATE,                       등록일
+	    NO_UPDDATE  DATE,                       수정일
+	    NO_DELYN    VARCHAR2(1)                 삭제여부
+	);
+
+	================
+	공지사항 번호 시퀀스 생성
+	================
+	CREATE SEQUENCE NUM_SEQ
+	       INCREMENT BY 1
+	       START WITH 1
+	       MINVALUE 1
+	       MAXVALUE 3000
+	       NOCYCLE
+	       NOCACHE
+	       NOORDER;
+	
+	================
+	공지사항 게시글 입력 1
+	================
+	insert into KOSMOS_NOTICE
+	values(
+	    1,										 게시글 번호
+	    (
+	    select  T.MT_NAME						 작성자
+	    from    KOSMOS_MEMTEA T
+	    where   T.MT_NUM = 'T20210001'
+	    ),
+	    'BLAHBLAH',								 제목
+	    '야호',									 내용
+	    '1',									 파일명
+	    0,										 조회수
+	    (
+	    select  T.MT_ID							 교사 아이디(이메일 주소)
+	    from    KOSMOS_MEMTEA T
+	    where   T.MT_NUM = 'T20210001'
+	    ),
+	    sysdate,								 등록일
+	    sysdate,								 수정일
+	    'Y'										 삭제여부
+	);
+	
+	 ===============
+	 공지사항 게시글 입력 2
+	 ===============
+	insert into KOSMOS_NOTICE
+	values(
+	    NUM_SEQ.NEXTVAL,                		 게시글 번호
+	    (
+	    select  T.MT_NAME               		 작성자
+	    from    KOSMOS_MEMTEA T
+	    where   T.MT_NUM = 'T20210001'
+	    ),
+	    'lololol',                      		 제목
+	    'ohohoho',                      		 내용
+	    '123',                          		 파일명
+	    0,                              		 조회수
+	    (
+	    select  T.MT_ID                 		 교사 아이디(이메일 주소)
+	    from    KOSMOS_MEMTEA T
+	    where   T.MT_NUM = 'T20210001'
+	    ),
+	    sysdate,								 등록일
+	    sysdate,								 수정일
+	    'Y'										 삭제여부
+	);
+
+ -->
+
+	<!-- 공지사항 글 쓰기-->
+	<insert id="noticeInsert" parameterType="noticeVO">
+		INSERT INTO KOSMOS_NOTICE(
+						NO_NUM,
+						MT_NUM,
+						NO_SUBJECT,
+						NO_CONTENTS,
+				   		NO_FILE,
+				   		MT_ID,
+						NO_INSDATE,
+						NO_DELYN
+		)
+		VALUES(
+						NUM_SEQ.NEXTVAL,
+						#{mt_num, jdbcType=VARCHAR},
+						#{no_subject, jdbcType=VARCHAR},
+						#{no_contents, jdbcType=VARCHAR},
+						#{no_file, jdbcType=VARCHAR},
+						#{mt_id, jdbcType=VARCHAR},
+						SYSDATE,
+						'Y'
+		)
+	</insert>
+	
+	<!-- 공지사항 전체 조회 -->
+	<select id="noticeList" parameterType="noticeVO" resultType="noticeVO">
+		SELECT 	*
+		FROM	
+			(
+			SELECT
+					N.NO_NUM							AS NO_NUM,
+					N.NO_SUBJECT						AS NO_SUBJECT,
+					N.MT_NUM							AS MT_NUM,
+					TO_CHAR(N.NO_INSDATE, 'YYYY-MM-DD')	AS NO_INSDATE,
+					N.NO_HIT							AS NO_HIT,
+					CEIL(ROW_NUMBER() OVER(ORDER BY N.NO_NUM)/ #{pageSize, jdbcType=VARCHAR}) AS pageSize,
+					COUNT(N.NO_NUM) OVER() 				AS totalCount
+			FROM	KOSMOS_NOTICE N
+			WHERE	N.NO_DELYN = 'Y'
+			<include refid="search"></include>
+			ORDER BY N.NO_NUM DESC, N.NO_INSDATE DESC
+			)
+		WHERE pageSize = #{curPage, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- sql 조각: 검색 -->
+	<sql id="search">
+		<if test = "searchType == 'title'">
+			<![CDATA[AND N.NO_SUBJECT LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test= "searchType == 'contents'">
+			<![CDATA[AND N.NO_CONTENTS LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+		<if test= "searchType == 'writer'">
+			<![CDATA[AND N.MT_NUM LIKE '%' || #{keyword, jdbcType=VARCHAR} || '%']]>
+		</if>
+	</sql>
+    	
+    <!-- 공지사항 게시글 상세 조회 -->
+	<select id="noticeSelect" parameterType="noticeVO" resultType="noticeVO">
+		SELECT
+				NVL(N.NO_NUM, 0)								AS NO_NUM,
+				NVL(N.NO_SUBJECT, ' ')							AS NO_SUBJECT,
+				NVL(TO_CHAR(N.NO_INSDATE, 'YYYY-MM-DD'), ' ')	AS NO_INSDATE,
+				N.MT_NUM 										AS MT_NUM, 
+				NVL(N.NO_CONTENTS, ' ')							AS NO_CONTENTS,
+				NVL(N.NO_FILE, ' ')								AS NO_FILE,
+				NVL(N.MT_ID, ' ')								AS MT_ID
+		FROM	KOSMOS_NOTICE N
+		WHERE	N.NO_NUM = #{no_num}
+	</select>
+	
+	<!-- 게시글 상세 조회와 동시에 조회수 증가 -->
+	<update id="updateCntHit" parameterType="hashMap">
+		UPDATE	KOSMOS_NOTICE
+		SET		NO_HIT = NVL(NO_HIT, 0) +1
+		WHERE	NO_NUM = #{no_num}
+	</update>
+	
+	<!-- 공지사항 글 수정 -->
+	<update id="noticeUpdate" parameterType="noticeVO">
+		UPDATE	KOSMOS_NOTICE
+		SET		NO_SUBJECT = #{no_subject, jdbcType=VARCHAR},
+				NO_CONTENTS = #{no_contents, jdbcType=VARCHAR},
+				NO_FILE = #{no_file, jdbcType=VARCHAR},
+				NO_UPDDATE = SYSDATE
+		WHERE	NO_DELYN = 'Y'
+		AND		NO_NUM = #{no_num, jdbcType=INTEGER}
+	</update>
+
+	<!-- 공지사항 글 삭제 -->
+	<update id="noticeDelete" parameterType="noticeVO">
+		UPDATE	KOSMOS_NOTICE
+		SET		NO_UPDDATE = SYSDATE,
+				NO_DELYN = 'N'
+		WHERE	NO_DELYN = 'Y'
+		AND		NO_NUM = #{no_num, jdbcType=INTEGER}
+	</update>
+
+<!-- 세션 -->	
+	<!-- 교사 로그인 시, 교사 이름 불러오기 -->
+	<select id="checkTeacher" parameterType="noticeVO" resultType="noticeVO">
+		SELECT 	T.MT_NAME,
+				T.MT_ID
+		FROM	KOSMOS_MEMTEA T
+		WHERE	T.MT_ID = #{mt_id, jdbcType=VARCHAR}	                          	 
+		AND   	T.MT_PW = #{mt_pw, jdbcType=VARCHAR} 	
+	</select>
+	
+	<!-- 학생 로그인 시, 학생 이름 불러오기 -->
+	<select id="checkStudent" parameterType="noticeVO" resultType="noticeVO">
+		SELECT 	S.MS_NAME,
+				S.MS_ID
+		FROM	KOSMOS_MEMSTU S
+		WHERE	S.MS_ID = #{ms_id, jdbcType=VARCHAR}	                          	 
+		AND   	S.MS_PW = #{ms_pw, jdbcType=VARCHAR} 	
+	</select>
+
+</mapper>

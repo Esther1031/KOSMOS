@@ -55,19 +55,25 @@ public class FileUploadUtil {
 		}		
 		return bool;
 	}
-	
+
+// 파라미터	
+	// 파라미터 하나
 	public String getParameter(String s){
 		return mr.getParameter(s);
 	}
 	
+	// 파라미터 여러 개
 	public String[] getParameterValues(String s){
 		return mr.getParameterValues(s);		
 	}
 	
+// 파일명	
+	// 파일명 하나
 	public String getFileName(String f){
 		return mr.getFilesystemName(f);
 	}
 	
+	// 파일명 여러 개
 	public ArrayList<String> getFileNames(){
 		@SuppressWarnings("unchecked")
 		Enumeration<String> en = mr.getFileNames();
