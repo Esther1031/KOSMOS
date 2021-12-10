@@ -33,6 +33,7 @@
 
 	.frame{
 		margin : 0 auto;
+		margin-top: 200px;
 		border : 5px solid #34558B;
 		border-radius: 15px;
 		width: 500px;
