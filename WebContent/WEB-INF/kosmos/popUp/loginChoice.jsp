@@ -5,18 +5,23 @@
 <head>
 <meta charset="UTF-8">
 <title>회원유형 선택(팝업창)</title>
-<style type="text/css">
+<script src="resource/css/front.css"></script>
 
-	.frame{
-		width : 316px;
-		height : 242px;
-		align : center;
-		border : 5px solid #34558B;
-		margin : 100px auto;
-	}
+<style type="text/css">
 	
-	.content{
+	body{
+		background: #eee;
+	}
+	table {
+		border: 5px solid #34558B;
+		padding: 10px;
+		margin: 0px auto;
+		margin-top: 80px;
+		border-radius: 10px;
 		
+	}
+	img {
+		border: 1px solid gray;
 	}
 	
 </style>
@@ -47,9 +52,9 @@
 <br>
 <br>
 <div class="frame">
-	<table border="1">
-		<div class="content">
-			<tr>
+
+	<table>
+			<tr style="border-bottom: 5px solid #34558B">
 				<td align="center"><h2>학생</h2></td>
 				<td align="center"><h2>교사</h2></td>
 			</tr>
@@ -57,7 +62,7 @@
 				<td><img src="/KOSMOS/img/Student.png" width="150" height="150" name="stImg" id="stImg"></td>
 				<td><img src="/KOSMOS/img/Teacher.png" width="150" height="150" name="teImg" id="teImg"></td>
 			</tr>
-		</div>
+
 	</table>
 </div>
 </body>

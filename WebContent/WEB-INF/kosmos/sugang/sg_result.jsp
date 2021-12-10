@@ -8,7 +8,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>수강신청</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script type="text/javascript"
             src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
@@ -29,15 +29,21 @@
 <body>
 
 <!-- 사이드메뉴 -->
-<div class="d-flex flex-column flex-shrink-0 bg-light vh-100" style="width: 120px; float:left;">
+<div class="d-flex flex-column flex-shrink-0 vh-100" style="width: 150px; float:left;">
     <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li class="nav-item">
-            <a href="registration.k?year=2&subjectBefore=" class="nav-link active py-3 border-bottom bg-secondary"> <i
-                    class="fa fa-home"></i> <small>홈</small> </a></li>
-        <li><a href="subjectGroup.k?code=01" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i> <small
-                style="font-color: black">수강신청</small> </a></li>
-        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> <small>수강신청현황</small>
+            <a href="registration.k?year=2&subjectBefore=" class="nav-link active py-3 border-bottom"> <i
+                    class="fa fa-home"></i> 홈 </a></li>
+        <li><a href="subjectGroup.k?code=01" class="nav-link py-3 border-bottom"> <i class="fa fa-dashboard"></i>수강신청
         </a></li>
+        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> 수강신청현황
+        </a></li>
+
+
+        <!-- 학교홈페이 연결부분 -->
+        <li><a href="sugangListAll.k" class="nav-link py-3 border-bottom"> <i class="fa fa-first-order"></i> xx 고등학교
+        </a></li>
+
 
     </ul>
     <div class="dropdown border-top">
@@ -53,6 +59,7 @@
             <li><a class="dropdown-item" href="#">Sign out</a></li>
         </ul>
     </div>
+</div>
 </div>
 
 
@@ -73,7 +80,7 @@
         </symbol>
     </svg>
 
-    <div class="alert alert-secondary d-flex align-items-center" role="alert">
+    <div class="alert alert-sophie d-flex align-items-center" role="alert">
         <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:">
             <use xlink:href="#info-fill"/>
         </svg>
@@ -92,7 +99,7 @@
 
     </div>
 
-    <li class="list-group-item list-group-item-secondary">
+    <li class="list-group-item list-group-item-sophie">
         <div class="blank" style="height: 40px"></div>
 
         <table class="table table-hover">

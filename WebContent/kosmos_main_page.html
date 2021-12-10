@@ -5,15 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>메인 페이지</title>
-  <link rel="stylesheet" href="default.css">
-  <link rel="stylesheet" href="gnb3.css">
-  <script src="js/jquery.js" charset="utf-8"></script>
-  <script src="js/gnb3.js" charset="utf-8"></script>
+  <link rel="stylesheet" href="resource/css/default.css">
+  <link rel="stylesheet" href="resource/css/gnb3.css">
+  <script src="resource/js/jquery.js" charset="utf-8"></script>
+  <script src="resource/js/gnb3.js" charset="utf-8"></script>
 </head>
 <style type="text/css">
 
-	.content-top{
-		height: 60px;
+	.content{
+		width: 1300px;
+		height: 500px;
+		margin: 0px auto;
+		margin-bottom: 100px;
+		float: center;
+		border: 1px solid red;
 	}
 	
 	#s_left{
@@ -42,12 +47,23 @@
 		height:70px;
 		float:bottom;
 	}
-	
+	.image{
+      position: relative;
+      background:url(img/kosmos_1.jpg);no-repeat;height:250px; background-position: center;
+	}
+	.text{
+		padding-top:20px; margin-left:20px;
+	}
 </style>
 <body>
-<div style="width:1400px; margin:0 auto;"></div>
+<div class="image">
+    <!-- <img src="/KOSMOS/img/kosmos_1.jpg" width="100%"> -->
+    <div class="text">
+        <a href=""><h1>KOSMOS 고등학교</h1></a>
+    </div>
+</div>
+<div class="container">
 <header>
-  <h1><a href="">코스모스고등학교<span class="hide"></span></a></h1>
   <nav>
     <ul class="gnb">
       <li>
@@ -87,7 +103,28 @@
       </li>
     </ul>
   </nav>
+
 </header>
+
+<div class="content">
+
+<!-- 요기에 넣으면 됩니다 크기 1000px인데 작으면 말해줘요  -->
+
+
+
+<!-- 요기까지 -->
+
+</div>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+<!-- 
 <div class="bg_gnb"></div>
 <div class="content-top">제일 위</div>
 <div class="content" align="center">
@@ -100,7 +137,4 @@
 		교무실 02-123-4567(09:00~17:00) 행정실 02-7654-3210(09:00~24:00)<br/>
 		Copyright (c) 코스모스고등학교 All Rights Reseved
 	</div>
-</div>
-</div>
-</body>
-</html>
+	 -->
