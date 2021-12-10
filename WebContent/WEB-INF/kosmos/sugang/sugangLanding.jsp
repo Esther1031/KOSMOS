@@ -13,8 +13,13 @@
 <!-- 더미 kosmosSugangController로 이동 -->
 
 <a href="registration.k">수강신청</a><br>
+<<<<<<< HEAD
+<a href="mainTimeTable.k">시간표</a>
+<a href="boardSelectAll.k">시간표</a>
+=======
 <a href="mainTimeTable.k">시간표</a><br>
 <a href="noticeList.k">공지사항</a>
 
+>>>>>>> d1ca10829b3990ab616315c2096bd0a643955d12
 </body>
 </html>

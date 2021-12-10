@@ -148,5 +148,4 @@ public abstract class CommonUtils {
 	public static final int NOTICE_CUR_PAGE = 1;		// 현재 페이지
 	public static final int NOTICE_TOTAL_COUNT = 0;		// 전체 게시물 개수
 	
-	
 }

@@ -45,10 +45,10 @@ public class FileUploadUtil {
 		try {
 			mr = new MultipartRequest(req, filePath, imgfileSize, encodeType, new FileRename());
 			System.out.println("mr >>> : " + mr);
-			System.out.println("mr.getOriginalFileName(\"sbfile\") >>> : " + mr.getOriginalFileName("sbfile"));
-			System.out.println("mr.getFilesystemName(\"sbfile\") >>> : " + mr.getFilesystemName("sbfile"));
+			System.out.println("mr.getOriginalFileName(\"bo_file\") >>> : " + mr.getOriginalFileName("bo_file"));
+			System.out.println("mr.getFilesystemName(\"bo_file\") >>> : " + mr.getFilesystemName("bo_file"));
 			
-			ThumnailImg.thumnailFun(filePath, mr.getFilesystemName("sbfile"));	
+			ThumnailImg.thumnailFun(filePath, mr.getFilesystemName("bo_file"));	
 			bool=true;						
 		}catch(Exception e) {
 			System.out.println("imgfileUploadUtil.imgfileUpload() >>> : " + mr);			
