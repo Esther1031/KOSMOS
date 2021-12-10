@@ -18,6 +18,17 @@
 
     <style>
         @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+        
+        .list-group {
+		    color: #856404;
+		    border: 1px solid black;
+		    border-radius: 8px; 
+		}
+		.btn-outline-primary {
+ 		  	color: black;
+		    border-color: black;
+		}
+
     </style>
     <script>
         $().alert('close')
