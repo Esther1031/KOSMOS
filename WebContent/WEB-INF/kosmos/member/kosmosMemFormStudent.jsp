@@ -16,9 +16,26 @@
 <!-- Main css -->
 <link rel="stylesheet" href="css/style.css">
 
+<style>
+
+	@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR&display=swap');
+
+	body {
+	font-family: 'IBM Plex Sans KR', sans-serif;
+	width: 1400px;
+	}
+	.register-form {
+	
+	margin: 50px auto;
+	}
+
+</style>
+
+
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript">
+
 
 	$(document).ready(function(){	
 		
@@ -184,7 +201,7 @@
                         <h2>학생 회원가입 </h2>
                     </div>
                 </div>
-                <div class="signup-form">
+<!--                  <div class="signup-form">-->
                     <form name="memForm" id="memForm" class="register-form">
                         <div class="form-row">
                             <div class="form-group">
@@ -240,9 +257,9 @@
                                      <a href="#" class="form-link">학년,반,번호는 01~99 숫자로만 입력합니다</a>
                                    </div>
                     			  <div class="form-radio-group">   
-                                    <input type="text" name="ms_grade" id="ms_grade" placeholder="학년(00)" maxlength="2" style="width:150px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
-                                    <input type="text" name="ms_class" id="ms_class" placeholder="반(00)"  maxlength="2" style="width:150px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
-                                    <input type="text" name="ms_number" id="ms_number" placeholder="번호(00)"  maxlength="2" style="width:150px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+                                    <input type="text" name="ms_grade" id="ms_grade" placeholder="학년(00)" maxlength="2" style="width:130px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"/>
+                                    <input type="text" name="ms_class" id="ms_class" placeholder="반(00)"  maxlength="2" style="width:130px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
+                                    <input type="text" name="ms_number" id="ms_number" placeholder="번호(00)"  maxlength="2" style="width:130px" onKeyup="this.value=this.value.replace(/[^0-9]/g,'');" />
                                  </div>
                                 </div>
                                 <div class="form-input">
@@ -264,7 +281,6 @@
             </div>
         </div>
 
-    </div>
 
     <!-- JS -->
     <script src="vendor/jquery/jquery.min.js"></script>

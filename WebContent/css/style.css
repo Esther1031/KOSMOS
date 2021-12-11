@@ -197,7 +197,7 @@ h2 {
 
 .clear {
   clear: both; }
-
+/*
 body {
   font-size: 14px;
   line-height: 1.8;
@@ -207,23 +207,24 @@ body {
   margin: 0px;
   background: #282828;
   padding: 50px 0; }
-
+*/
 .main {
   position: relative; }
 
 .container {
   width: 1400px;
   margin: 0 auto;
-  background: #fff; }
+  background: #fff;
+   }
 
 .signup-img {
   position: relative;
-  width: 385px;
-  margin-bottom: -8px; }
+  width: 380px;
+ }
 
 .signup-form {
   width: 1015px;
-  margin-top: -2px; }
+  }
 
 .signup-img-content {
   position: absolute;
@@ -238,14 +239,14 @@ body {
   width: 100%; }
 
 .register-form {
-  padding: 93px 115px 90px 80px;
-  margin-bottom: -8px; }
+
+}
 
 .form-row {
   margin: 0 -30px; }
   .form-row .form-group {
-    width: 50%;
-    padding: 0 30px; }
+    width: 60%;
+    padding: 0 20px; }
 
 .form-input, .form-select, .form-radio {
   margin-bottom: 23px; }
@@ -493,7 +494,8 @@ li.init {
   -ms-transform: translateX(-50%); }
 
 .form-submit {
-  text-align: right; }
+  text-align: right;
+  margin-left: 500px; }
 
 .submit {
   width: 150px;
@@ -503,6 +505,7 @@ li.init {
   font-weight: bold;
   font-size: 14px;
   padding: 10px;
+
   border: none;
   cursor: pointer;
   text-transform: uppercase;
