@@ -4,7 +4,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>[공모전] 2021년 고교학점제 UCC 공모전 개최 안내</title>
+    <link rel="stylesheet" href="resource/css/default.css">
+    <link rel="stylesheet" href="resource/css/gnb3.css">
+    <script src="resource/js/jquery.js" charset="utf-8"></script>
+    <script src="resource/js/gnb3.js" charset="utf-8"></script>
+
+
+<style>
+
+</style>
 </head>
 <body style="text-align:center;">
 <h3 class="page-title1">공지사항</h3>

@@ -133,7 +133,7 @@
 	    map.setCenter(location); // 얻은 좌표를 지도의 중심으로 설정합니다.
 	    map.setZoom(17); // 지도의 줌 레벨을 변경합니다.
 	
-	    infowindow.setContent('<div style="padding:20px;">' + 'geolocation.getCurrentPosition() 위치' + '</div>');
+	    infowindow.setContent('<div style="padding:20px;">' + '코스모스 고등학교' + '</div>');
 	
 	    infowindow.open(map, location);
 	    console.log('Coordinates: ' + location.toString());

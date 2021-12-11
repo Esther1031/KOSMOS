@@ -11,6 +11,61 @@
   <link rel="stylesheet" href="resource/css/gnb3.css">
   <script src="js/jquery.js" charset="utf-8"></script>
   <script src="js/gnb3.js" charset="utf-8"></script>
+ <!--  
+  			<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+				
+			<script>
+				var Seourl = 'http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=58ae7970b66bd66c1602a8cd4c2ca3f4&units=metric';
+					
+				$.getJSON(Seourl,function(result){		
+					// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
+					$('.setemp').append(result.main.temp + ' º');
+					//$('.lowtemp').append(result.main.temp_min);
+					//$('.hightemp').append(result.main.temp_max);
+			
+					/*아이콘					
+					$('.icon').append(result.weather[0].icon);					
+					->					
+					var wiconUrl = '<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">'// 이렇게하면 고정적인 img 가 나오기때문에 					
+					->
+					'<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon +'.png" alt="'+ result.weather[0].description +'">'
+					로 수정					
+					   -
+					*/
+					//(result.weather[0].icon
+					
+					$('.seicon').html(wiconUrl);
+			});
+			$.getJSON(Gyourl,function(result){		
+				// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
+				$('.gytemp').append(result.main.temp + ' º');
+				
+				
+				$('.gyicon').html(wiconUrl);
+			});
+			
+			$.getJSON(Gyourl,function(result){		
+			// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
+			$('.butemp').append(result.main.temp + ' º');
+			
+			
+			$('.buicon').html(wiconUrl);
+			});
+			</script>
+			
+			
+			
+			<script>
+				function openNav() {	
+				  document.getElementById("mySidenav").style.width = "250px";
+				}
+				
+				function closeNav() {
+				  document.getElementById("mySidenav").style.width = "0";
+				}
+			</script>
+			 -->
+  
 </head>
 <style type="text/css">
 
@@ -85,108 +140,37 @@
 
 </style>
 <body>
-
-			<div class="text">
-        		<a href=""><h1>KOSMOS 고등학교</h1></a>
-   			 </div>
-		<!-- <div class = "mainb3">Seoul<br>Current Weather</div>-->
-
-			
-			<div class="seicon", style = "text-align:center"></div>
-			<div class="setemp"> 현재 온도 : </div>
-			
-			<!--  <div class="lowtemp">최저 온도 : </div>-->
-			<!--  <div class="hightemp">최고 온도 : </div>-->
-			<!--  <div class="lowtemp">최저 온도 : </div>-->
-			<!--  <div class="hightemp">최고 온도 : </div>-->
-			
-			<!-- <img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">
-			 	  아이콘 출력 : http://openweathermap.org/img/wn/10d@2x.png  끝에 @2x는 모바일용에만 적용한다. (2배키우라는 뜻)
-			 -->
-			
-			<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-				
-			<script>
-				var Seourl = 'http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=58ae7970b66bd66c1602a8cd4c2ca3f4&units=metric';
-					
-				$.getJSON(Seourl,function(result){		
-					// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
-					$('.setemp').append(result.main.temp + ' º');
-					//$('.lowtemp').append(result.main.temp_min);
-					//$('.hightemp').append(result.main.temp_max);
-			
-					/*아이콘					
-					$('.icon').append(result.weather[0].icon);					
-					->					
-					var wiconUrl = '<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">'// 이렇게하면 고정적인 img 가 나오기때문에 					
-					->
-					'<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon +'.png" alt="'+ result.weather[0].description +'">'
-					로 수정					
-					   -
-					*/
-					//(result.weather[0].icon
-					
-					$('.seicon').html(wiconUrl);
-			});
-			$.getJSON(Gyourl,function(result){		
-				// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
-				$('.gytemp').append(result.main.temp + ' º');
-				
-				
-				$('.gyicon').html(wiconUrl);
-			});
-			
-			$.getJSON(Gyourl,function(result){		
-			// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
-			$('.butemp').append(result.main.temp + ' º');
-			
-			
-			$('.buicon').html(wiconUrl);
-			});
-			</script>
-			
-			
-			
-			<script>
-				function openNav() {	
-				  document.getElementById("mySidenav").style.width = "250px";
-				}
-				
-				function closeNav() {
-				  document.getElementById("mySidenav").style.width = "0";
-				}
-			</script>
 <div class="image">
     <!-- <img src="/KOSMOS/img/kosmos_1.jpg" width="100%"> -->
     <div class="text">
-        <a href=""><h1></h1></a>
+        <a href=""><h1>KOSMOS 고등학교</h1></a>
     </div>
+</div>
 <div class="container">
-<div id="nav_menu">
-<ul>
-<li><a href="#">로그인</a></li>
-<li><a href="#">수강신청</a></li>
-</ul>
-</div>
-</div>
 <header>
   <nav>
     <ul class="gnb">
       <li>
+        <a href="kosmos_main_page.html">Home</a>
+      </li>
+      <li>
         <a href="#">학교 소개</a>
         <ul>
-          <li><a href="kosmos_words.jsp">학교장 인사</a></li>
-          <li><a href="kosmos_history.jsp">학교 연혁</a></li>
-          <li><a href="kosmos_info.jsp">학교 소개</a></li>
-          <li><a href="kosmos_symbol.jsp">학교 상징</a></li>
-          <li> <a href="kosmos_map.jsp">학교 위치</a></li>
+          <li><a href="kosmos_words.html">학교장 인사</a></li>
+          <li><a href="kosmos_history.html">학교 연혁</a></li>
+          <li><a href="kosmos_info.html">학교 소개</a></li>
+          <li><a href="kosmos_symbol.html">학교 상징</a></li>
+          <li> <a href="kosmos_map.html">학교 위치</a></li>
         </ul>
+      </li>
+      <li>
+        <a href="#">수강신청</a>
       </li>
       <li>
         <a href="#">수업정보</a>
         <ul>
           <li><a href="subjectSelectAll.k">과목정보</a></li>
-          <li><a href="#">시간표</a></li>
+          <li><a href="mainTimeTable.k">시간표</a></li>
         </ul>
       </li>
       <li>
