@@ -150,18 +150,22 @@
 
     <header>
         <nav>
+        	<!-- 메뉴 css 클래스명 gnb -->
             <ul class="gnb">
+            
                 <li>
+<!-- 학교소개 링크 -->
                     <a href="#">학교 소개</a>
                     <ul>
-                        <li><a href="kosmos_words.html">학교장 인사</a></li>
-                        <li><a href="kosmos_history.html">학교 연혁</a></li>
-                        <li><a href="kosmos_info.html">학교 소개</a></li>
-                        <li><a href="kosmos_symbol.html">학교 상징</a></li>
-                        <li><a href="kosmos_map.html">학교 위치</a></li>
+                        <li><a href="kosmos_words.jsp">학교장 인사</a></li>
+                        <li><a href="kosmos_history.jsp">학교 연혁</a></li>
+                        <li><a href="kosmos_info.jsp">학교 소개</a></li>
+                        <li><a href="kosmos_symbol.jsp">학교 상징</a></li>
+                        <li><a href="kosmos_map.jsp">학교 위치</a></li>
                     </ul>
                 </li>
-
+                
+<!-- 수업정보 링크 -->
                 <li>
                     <a href="#">수업정보</a>
                     <ul>
@@ -169,12 +173,18 @@
                         <li><a href="mainTimeTable.k">시간표</a></li>
                     </ul>
                 </li>
+
+<!-- 공지사항 링크 -->
                 <li>
                     <a href="#">공지사항</a>
                 </li>
+
+
                 <li>
                     <a href="#">코스모스숲</a>
                 </li>
+
+<!-- 마이페이지 링크 -->
                 <li>
                     <a href="#">마이페이지</a>
                 </li>
@@ -233,7 +243,7 @@
             <div style="float:top; height: 40%">
 
                 <h1>오늘의 메뉴</h1>
-                흰쌀밥,된장국,김치,꼬마돈까스,제육볶음
+                	흰쌀밥,된장국,김치,꼬마돈까스,제육볶음
                 <div class="slide">
                     <ul>
                         <li><img src="img/_rice.jpg"></li>
@@ -248,7 +258,7 @@
     </div>
 </div>
 
-
+<!-- footer 부분  -->
 <div id="footer" align="center">
     <div class="container">
         서울 금천구 가산동 8명로 88 코스모스고등학교 <br/>
