@@ -64,15 +64,27 @@ public class KosmosSchoolController {
 	@GetMapping("loginForm")
 	public String loginForm() {
 		logger.info("KosmosLoginController.loginForm() 진입 >>> : 로그인 화면으로 이동합니다.");
-	//	return "login/test_loginForm";
-		return "login/test_loginForm";
+			return "login/loginForm";
+	}
+	
+	
+	
+	
+	//==================================================================================
+	//	로그인 화면으로 연결
+	//==================================================================================
+	
+	@GetMapping("loginFormPop")
+	public String loginFormPop() {
+		logger.info("KosmosLoginController.loginFormPop() 진입 >>> : 로그인 팝업 화면을 띄웁니다.");
+			return "popUp/loginFormPop";
 	}
 	
 	
 	// =======================================================================================
-	// 로그인 화면에서 로그인 성공시 수강신청 화면 연결 로직 학생/선생 분기
+	// 로그인 화면에서 로그인 성공시 수강신청 화면 연결 로직 학생/선생 분기  >>>>>>>>>>>> 수강 컨트롤러로 변경
 	// =======================================================================================
-	
+	/*
 	@GetMapping("mainSugang")
 	public String mainSugang(HttpSession hs, KosmosLoginVO lvo) {
 		
@@ -96,9 +108,9 @@ public class KosmosSchoolController {
 		System.out.println("mt_num >>> : " + mt_num);	
 		
 		if(ms_id != null) {								// 학생인 경우 수강 컨트롤러 -> 수강신청 페이지로 이동
-			// #솔잎 이 만들어준 페이지 미적용 상태
-			// 현재 더미페이지
-			return "sugang/sugangLanding";
+
+			
+			return "sugang/sg_index";
 			
 		} else {										// 교사인 경우 수강 관리 페이지로 -> 교사 관리 페이지는 구현 보류 상태
 			// #미구현 : 홀딩 : 교수가 로그인한 경우 수강신청관리페이지로 이동해야 함.
@@ -106,7 +118,7 @@ public class KosmosSchoolController {
 		}
 		
 	}
-	
+	*/
 	
 	// =======================================================================================
 	// 학교 메인 홈페이지(case1 : 수강신청에서 학교홈페이지 '링크' 클릭시 / case2 : 학교 홈페이지에서 '홈' 클릭시)
@@ -114,8 +126,19 @@ public class KosmosSchoolController {
 	
 	@GetMapping("mainHome")
 	public String home() {
+		logger.info("KosmosLoginController.mainHome() 진입 >>> : 학교 홈페이지로 이동합니다.");
+		return "school/home";
+	}
+	
+	
+	// =======================================================================================
+	// 학교 소개 : 학교장 인사 클릭
+	// =======================================================================================
+	
+	@GetMapping("schoolGreetings")
+	public String schoolGreetings() {
 		
-		return "school/kosmos_main_page";
+		return "school/greetings";
 	}
 	
 	
@@ -123,46 +146,57 @@ public class KosmosSchoolController {
 	// 학교 소개 : 학교 연혁 클릭
 	// =======================================================================================
 	
-	@GetMapping("mainHistory")
-	public String history() {
+	@GetMapping("schoolHistory")
+	public String schoolHistory() {
 		
-		return "";
+		return "school/history";
 	}
+	
+	// =======================================================================================
+	// 학교 소개 : 학교 소개 클릭
+	// =======================================================================================
+	
+	@GetMapping("schoolIntroduce")
+	public String schoolIntroduce() {
+		
+		return "school/cowdog";
+	}
+	
 	
 	// =======================================================================================
 	// 학교 소개 : 학교 상징 클릭
 	// =======================================================================================
 	
-	@GetMapping("symbol")
-	public String symbol() {
+	@GetMapping("schoolSymbol")
+	public String schoolSymbol() {
 		
-		return "";
+		return "school/symbol";
 	}
 	
 	// =======================================================================================
 	// 학교 소개 : 주소 약도 클릭
 	// =======================================================================================
 	
-	@GetMapping("mainLocation")
-	public String location() {
+	@GetMapping("schoolLocation")
+	public String schoolLocation() {
 		
-		return "";
+		return "school/location";
 	}
 	
 	
 	// =======================================================================================
-	// 수강 신청 클릭(학교 홈페이지 내의 수강신청 메뉴)
+	// 수강 신청 클릭(학교 홈페이지 내의 수강신청 메뉴) >>>> sugang 컨트롤러로 연결
 	// =======================================================================================
-	
-	@GetMapping("mainApply")
+	/*
+	@GetMapping("viewSugang")
 	public String apply() {
 		
 		return "";
 	}
-	
+	*/
 	
 	// =======================================================================================
-	// 수업 정보 : 과목 정보 클릭
+	// 수업 정보 : 과목 정보 클릭   >>>> subject 컨트롤러로 연결
 	// =======================================================================================
 	
 	@GetMapping("mainSubject")
@@ -212,30 +246,41 @@ public class KosmosSchoolController {
 		if(list1.size() > 0 && list2.size() > 0 && list3.size() > 0 && 
 				list4.size() > 0 && list5.size() > 0 && list6.size() > 0
 				&& list7.size() > 0) {
-			return "../../kosmos_timetable";
+			return "school/timetable";
 		}
 		return "school/checkfail";
 	}
 	
 	// =======================================================================================
-	// 공지사항 클릭
+	// 공지사항 클릭   >>>  notice 컨트롤러에서 바로 진행
 	// =======================================================================================
-	
+	/*
 	@GetMapping("mainNotice")
 	public String notice() {
 		
 		return "";
 	}
-	
+	*/
 	
 	// =======================================================================================
-	// 코스모스숲 클릭
+	// 코스모스숲 클릭   >>>   board 컨트롤러에서 바로 진행
 	// =======================================================================================
-	
+	/*
 	@GetMapping("mainForest")
 	public String forest() {
 		
 		return "";
+	}
+	*/
+	
+	// =======================================================================================
+	// 학교 홈페이지에서 공지사항 이미지 클릭시 팝업창 오픈
+	// =======================================================================================
+	
+	@GetMapping("noticePop")
+	public String noticePop() {
+		
+		return "popUp/notice";
 	}
 	
 }

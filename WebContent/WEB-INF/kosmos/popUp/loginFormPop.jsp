@@ -6,26 +6,37 @@
 <head>
 <meta charset="UTF-8">
 <title>로그인 페이지</title>
-<style>
-
-#video {
-       position: absolute;
-     top: 0px;
-     left: 0px;
-     min-width: 100%;
-     min-height: 100%;
-     width: 1px;
-     z-index: -1;
-     overflow: hidden;
-     background-size:30px 30px
-    }
 <style type="text/css">
 
+    body {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: initial;
+	    background: #eee
+	} 	
 	.wrap {
 		width : 330px;
 		align : center;
-		border : 5px solid #F6CED8;
+		border : 5px solid #34558B;
 		margin : 100px auto;
+		border-radius: 10px;
+	}
+	
+	.text {
+		border: 1px solid gray;
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: initial;
+		background-color: #eee;
+	}
+	 
+	.button {
+		font-family: 'IBM Plex Sans KR', sans-serif;
+		font-size: initial;
+		color: white;
+		background-color: #34558b;
+		height: 30px;
+		width:308px; 
+		border: 0px solid black;
+		border-radius: 4px;
 	}
 	
 	h1{ 
@@ -61,14 +72,14 @@
 				chkbox = $("#teacher").val();					// 변수 chkbox에 교사의 밸류 "02"넣기
 				
 			}
-			console.log("교사이 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
+			console.log("교사가 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
 		});
 		
 		
 		// 회원가입 버튼 클릭시 로직 		
 		$("#join").click(function(){
 			console.log("회원가입 링크가 클릭됨 >>> : 회원 유형 선택창을 띄웁니다.");
-			window.open("loginChoice.k", "", "width=660, height=700, resizable=no, scrollbars=no, status=no");
+			window.open("loginChoice.k", "", "width=1450, height=800, resizable=no, scrollbars=no, status=no");
 		});
 		
 		
@@ -150,27 +161,24 @@
 				//if (resData != null) {
 				//	alert("입력하신 정보에 해당하는 데이터가 없습니다.");
 				//	return
-				
-			// 커뮤니티 테스트 주석처리
+					
 				 if (resData == "successSt") {
 					
 					alert("로그인 성공!")
-					location.href="mainSugang.k";
+					location.href="registration.k";
 					window.open("checkEnvironment.k", "", "width=600, height=800, resizable=no, scrollbars=no, status=no");	
 					return dataParam 
 					
 				} else if (resData == "successTe") {
 					
 					alert("로그인 성공!")
-					location.href="mainSugang.k";
+					location.href="registration.k";
 					window.open("checkEnvironment.k", "", "width=600, height=800, resizable=no, scrollbars=no, status=no");	
 
 				} else if (resData == "fail" || resData == null) {
 					
 					alert("로그인 실패 : 유형 / 아이디 / 비밀번호를 다시 확인해주세요.");
-			 	}	 
-			 	
-			 
+				}	
 			}
 				
 			function whenError(e){
@@ -187,9 +195,6 @@
 </script>
 </head>
 <body>
-<video id="video" preload="auto" autoplay="true" loop="loop" muted="muted" volume="0">
-      <source src="img/vedio2.mp4">
-</video>
 <div class="wrap">
 <h1>로그인</h1>
 	<form name="loginForm" id="loginForm">
@@ -201,13 +206,13 @@
 				</td>
 			</tr>
 			<tr>
-				<td><input type="text" name="mid" id="mid" placeholder="아이디" style="width:300px;"></td>
+				<td><input class="text" type="text" name="mid" id="mid" placeholder="아이디" style="width:300px;"></td>
 			</tr>	
 			<tr>
-				<td><input type="text" name="mpw" id="mpw" placeholder="비밀번호" style="width:300px;"></td>
+				<td><input class="text" type="text" name="mpw" id="mpw" placeholder="비밀번호" style="width:300px;"></td>
 			</tr>
 			<tr>
-				<td><button type="button" name="btn" id="btn" style="width:308px; background-color: pink;">로그인</button></td>
+				<td><button class="button" type="button" name="btn" id="btn">로그인</button></td>
 			</tr>
 			<tr>
 				<td align="center">

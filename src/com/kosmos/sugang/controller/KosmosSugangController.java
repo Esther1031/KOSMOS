@@ -163,6 +163,7 @@ public class KosmosSugangController {
 
     /* 과목정보 불러와서 학생 회원에 따른 수강리스트를 출력   */
     @RequestMapping(value = "registration", method = RequestMethod.GET)
+    //@GetMapping("registration")
     public String Select(KosmosSugangSubjectVO svo, Model model, HttpServletRequest req, HttpSession hs) {
         logger.info("-----[수강가능한 리스트 뽑기 시작] ");
 
@@ -272,6 +273,7 @@ public class KosmosSugangController {
         return "sugang/sg_index";
        
     }
+    
 }
 
 

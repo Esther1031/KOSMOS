@@ -87,7 +87,7 @@
 				chkbox = $("#teacher").val();					// 변수 chkbox에 교사의 밸류 "02"넣기
 				
 			}
-			console.log("교사이 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
+			console.log("교사가 선택되었습니다. >>> : value : [02]");	// 콘솔 출력
 		});
 		
 		
@@ -180,14 +180,14 @@
 				 if (resData == "successSt") {
 					
 					alert("로그인 성공!")
-					location.href="mainSugang.k";
+					location.href="registration.k";
 					window.open("checkEnvironment.k", "", "width=600, height=800, resizable=no, scrollbars=no, status=no");	
 					return dataParam 
 					
 				} else if (resData == "successTe") {
 					
 					alert("로그인 성공!")
-					location.href="mainSugang.k";
+					location.href="registration.k";
 					window.open("checkEnvironment.k", "", "width=600, height=800, resizable=no, scrollbars=no, status=no");	
 
 				} else if (resData == "fail" || resData == null) {
