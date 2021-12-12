@@ -215,9 +215,9 @@ public class KosmosSchoolController {
 	public String timetable(KosmosSchoolVO svo, Model model, HttpSession hs, KosmosLoginVO lvo) {
 		logger.info("KosmosSchoolController timetable() 함수 진입 >>> : ");
 		
-		KosmosLoginVO lvo_data = (KosmosLoginVO) hs.getAttribute("result");
+		KosmosLoginVO lvo_data = (KosmosLoginVO) hs.getAttribute("result"); 
 		String ms_num = lvo_data.getMs_num();
-
+		
 		svo.setMs_num(ms_num);
 		
 		// 1교시 세팅
@@ -242,13 +242,7 @@ public class KosmosSchoolController {
 		
 		model.addAttribute("listall", listall);
 		
-		// 7교시까지 셀렉트 성공하면 school_timetable로
-		if(list1.size() > 0 && list2.size() > 0 && list3.size() > 0 && 
-				list4.size() > 0 && list5.size() > 0 && list6.size() > 0
-				&& list7.size() > 0) {
-			return "school/timetable";
-		}
-		return "school/checkfail";
+		return "school/timetable";
 	}
 	
 	// =======================================================================================

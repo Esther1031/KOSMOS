@@ -66,7 +66,7 @@ public class KosmosSugangController {
 	        vo.setSb_beforeyn(listAll.get(i).getSb_beforeyn());
 	        vo.setSb_beforename(listAll.get(i).getSb_beforename());
 	        vo.setSb_maxstu(listAll.get(i).getSb_maxstu());
-	        vo.setMs_num(listAll.get(i).getMs_num());
+	        vo.setMs_num(lvo_data.getMs_num());
 	        
 	        logger.info("[for] > vo.ms_num 		: (" + i + ")" + vo.getMs_num());
 	        logger.info("[for] > vo.sb_group 		: (" + i + ")" + vo.getSb_group());
@@ -82,7 +82,7 @@ public class KosmosSugangController {
     	model.addAttribute("listAll", listAll);
     	hs.setAttribute("timeTableList", listAll);
     	
-        return "../../kosmos_timetable";
+    	return "school/sugangtime";
     }
     
     /* 최종 수강신청한 내역 확인 (Delyn으로 체크)  */

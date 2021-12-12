@@ -119,7 +119,7 @@
 			<h2>인증KEY 값을 입력해주세요.</h2>
 		</div>
 		<div class="insert">
-			인증 Key : <input type="text" name="authKey" id="authKey" placeholder="인증키 입력">
+			인증 Key : <input type="password" name="authKey" id="authKey" placeholder="인증키 입력">
 		</div>
 		<br>
 		<div class="button">

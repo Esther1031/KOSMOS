@@ -149,11 +149,11 @@
 
     <!-- <img src="/KOSMOS/img/kosmos_1.jpg" width="100%"> -->
     <div class="text">
-        <a href=""><h1>KOSMOS 고등학교</h1></a>
+        <a href="mainHome.k"><h1>KOSMOS 고등학교</h1></a>
     </div>
     <div class="right_box">
     	<a href style="margin-right: 10px;" id="loginbtn">로그인</a>
-    	<a href="">수강신청</a>
+    	<a href="registration.k">수강신청</a>
     </div>
 </div>
 
@@ -235,7 +235,7 @@
         <div style="width: 69%; float:left; margin-left:5px;margin-right:5px;height:100%">
 
             <!-- 본문 요기다가 넣어주세요 빨간테두리에서 가운데 부분 입니다. -->
-
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="img/highschool.jpg"/>
             <!-- 본문 끝 -->
 
         </div>
@@ -279,7 +279,7 @@
     <div class="container">
         서울 금천구 가산동 8명로 88 코스모스고등학교 <br/>
         교무실 02-123-4567(09:00~17:00) 행정실 02-7654-3210(09:00~24:00)<br/>
-        opyright (c) 코스모스고등학교 All Rights Reserved
+        Copyright (c) 코스모스고등학교 All Rights Reserved
     </div>
 </div>
 

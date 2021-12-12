@@ -209,7 +209,7 @@
                             <div class="form-group">
                                  <div class="form-input">
                                     <label for="mt_num" class="required">회원번호</label>
-									<td><input type="text" name="mt_num" id="mt_num" readonly/></td>
+									<td><input type="text" name="ms_num" id="ms_num" placeholder="자동생성"readonly/></td>
                                  </div>
                                 <div class="form-input">
                                     <label for="mt_name" class="required">이름</label>

@@ -51,9 +51,11 @@ public class KosmosBoardController {
 					
 		KosmosLoginVO lvo_data1  = (KosmosLoginVO)hs.getAttribute("result");
 		String ms_num = lvo_data1.getMs_num();
+		logger.info("ms_num >>>" + ms_num);
 		
 		// 채번 구하기
 		String bo_num= ChabunUtil.getBoardChabun("N", chabunService.getBoardChabun().getBo_num());
+		logger.info("bo_num >>> : " + bo_num);
 				
 		// 이미지 업로드
 		FileUploadUtil fu = new FileUploadUtil(	CommonUtils.BOARD_IMG_UPLOAD_PATH

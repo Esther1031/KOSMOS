@@ -227,7 +227,7 @@
 				<td><input class="text" type="text" name="mid" id="mid" placeholder="아이디" style="width:300px;"></td>
 			</tr>	
 			<tr>
-				<td><input class="text" type="text" name="mpw" id="mpw" placeholder="비밀번호" style="width:300px;"></td>
+				<td><input class="password" type="text" name="mpw" id="mpw" placeholder="비밀번호" style="width:300px;"></td>
 			</tr>
 			<tr>
 				<td><button class="button" type="button" name="btn" id="btn">로그인</button></td>

@@ -6,7 +6,7 @@
 <meta charset="UTF-8">
 <title>fail</title>
 <script>
-	location.href="kosmos_main_page.html";
+	location.href="mainTimeTable.k";
 </script>
 </head>
 <body>
