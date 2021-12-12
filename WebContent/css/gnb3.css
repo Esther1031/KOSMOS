@@ -1,0 +1,256 @@
+
+
+    
+
+header {
+	font-color: #043874;
+	font-weight: bold;
+	position: relative; 
+	width: 100%; 
+	margin: 0 auto;
+	}
+	
+header h1 {
+	position: absolute; 
+	left: 0; top: 26px;
+	}
+	
+<!--
+
+-->
+
+header .gnb {
+	text-align: right; 
+	font-size: 0;
+	margin: -55px 260px 150px 0px;
+
+	
+
+	}
+	
+header .gnb > li {
+	display: inline-block; 
+	padding: 0px 40px 0px 0px;
+	}
+	
+header .gnb > li > a {
+	display: block; 
+	position: relative; 
+	padding: 0 10px; 
+	line-height: 50px; 
+	font-size: 18px; 
+	color: #043874;
+	}
+	
+header .gnb > li:hover > a:before,
+header .gnb > li > a:focus:before {
+	content: ""; 
+	position: absolute; 
+	left: 0; 
+	right: 0; 
+	bottom: 0; 
+	height: 4px; 
+	background: #3ac1d3;
+	}
+	
+header .gnb > li:hover > a:after,
+header .gnb > li > a:focus:after {
+	content: ""; 
+	position: absolute; 
+	right: 0; 
+	top: 40px; 
+	width: 10px; 
+	height: 10px;
+	}
+	
+header .gnb > li ul {
+	display: inline-block;
+ 	display: none; position: absolute; 
+    }
+    
+header .gnb > li ul li {
+	float: left;
+	}
+	
+header .gnb > li ul li a {
+	display: block; 
+	padding: 0 16px; 
+	line-height: 62px; 
+	font-size: 16px; 
+	color: #043874;
+	}
+	
+header .gnb > li ul li a:hover,
+header .gnb > li ul li a:focus {
+	color: #3ac1d3;
+	}
+	
+header .gnb > li:last-child ul {
+
+	}
+	
+.bg_gnb {
+	display: none; 
+	position: absolute; 
+	left: 0; right: 0; top: 107px; 
+	height: 62px; 
+	}
+	
+.ie9 .bg_gnb {
+	background: #38cebb;
+	}
+
+
+		.content{
+
+		width: 1800px;
+		height: 1000px;
+		margin: 0px auto;
+		margin-bottom: 130px;
+		padding: 20px 0px 20px 0px auto;
+		float: center;
+		/*border: 1px solid red; */
+	}
+	
+	#footer{
+		border-top:double;
+		color: gray;
+		width:100%;
+		height:70px;
+		float:bottom;
+
+	}
+
+	.right_box {
+		width: 300px;
+		float: right;
+		margin: -40px 120px;
+		font-size: 16px;
+		font-color: gray;
+	}
+	
+	    <!-- 스크롤바 설정 --> 	
+		.scroll{
+		 	border: 1px solid #6c757d 0.5;   
+		    overflow-y: scroll;
+		    height: 500px;
+		    box-sizing: border-box;
+		    color: white;
+
+		}
+		
+		/* 스크롤바 설정*/
+		.type1::-webkit-scrollbar{
+		    width: 6px;
+		}
+		
+		/* 스크롤바 막대 설정*/
+		.type1::-webkit-scrollbar-thumb{
+		    height: 17%;
+		    background-color: rgba(255,255,255,1);
+		    /* 스크롤바 둥글게 설정    */
+		    border-radius: 10px;    
+		}
+		
+		/* 스크롤바 뒷 배경 설정*/
+		.type1::-webkit-scrollbar-track{
+		    background-color: rgba(0,0,0,0);
+		}
+
+
+	table.type03 {
+	  border-collapse: collapse;
+	  text-align: left;
+	  line-height: 1.5;
+	  border-top: 1px solid #ccc;
+	  border-left: 3px solid #369;
+	  margin : 20px 10px;
+	}
+	
+	table.type03 th {
+	  width: 147px;
+	  padding: 10px;
+	  font-weight: bold;
+	  vertical-align: top;
+	  color: #153d73;
+	  border-right: 1px solid #ccc;
+	  border-bottom: 1px solid #ccc;
+	
+	}
+	table.type03 td {
+	  width: 349px;
+	  padding: 10px;
+	  vertical-align: top;
+	  border-right: 1px solid #ccc;
+	  border-bottom: 1px solid #ccc;
+	  
+	}
+	.col_1 {
+		height: 700px;
+	}
+	.col2 {
+		
+		border: 1px solid red; 
+		float: top;
+		margin-bottom: 20px;
+		width: 650px;
+	}
+
+		/*식단돌아가는것*/
+		 .slide{width:100%; height:70%; overflow:hidden;}
+    .slide ul{position:relative;height:100%;}
+    .slide li{position:absolute;left:0;right:0;top:0;bottom:0;opacity:0;animation:fade 8s infinite;}
+    .slide li:nth-child(1){animation-delay:0s}
+    .slide li:nth-child(2){animation-delay:2s}
+    .slide li:nth-child(3){animation-delay:4s}
+    .slide li:nth-child(4){animation-delay:6s}
+    .slide li:nth-child(5){animation-delay:8s}
+     /* 100 / 8 = 12.5 */
+    @keyframes fade {
+      0% {opacity:0;}
+      5% {opacity:1;}
+      25% {opacity:1;}
+      30% {opacity:0;}
+      100% {opacity:0;}
+      
+      s_left{
+      	float: left;
+      	width: 20%;
+      
+      }
+	s_right{
+		float: left;
+		width: 20%;
+	}
+	
+	
+	
+/*      
+
+display: none; position: absolute; z-index: 10;
+
+background: linear-gradient(to right, #38cebb, #3db1ed);
+
+
+header h1 a {
+	display: block; 
+	width: 120x; 
+	height: 79px; 
+	background: url(img/KakaoTalk_20211128_143447619.jpg) no-repeat;
+	}
+
+		       /*1차 메뉴박스
+.menu-bar .menu-box-1 > ul {
+        
+            display: inline-block;
+            /* 메뉴 길이 
+            border-radius: 10px;
+            -moz-box-sizing: border-box;
+            -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+            /* 여기까지 
+            width: 100%;
+            -align: center;
+}
+
+*/
