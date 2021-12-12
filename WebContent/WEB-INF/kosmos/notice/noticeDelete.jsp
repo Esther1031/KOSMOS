@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>넘겨주는 페이지</title>
+<title>삭제중</title>
 </head>
 <body>
 	<script>
