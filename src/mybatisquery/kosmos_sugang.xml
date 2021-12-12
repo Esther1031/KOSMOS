@@ -12,7 +12,7 @@
 					,SB_NAME
 					,SB_CREDITUNIT
 					,SB_GRADE
-				--	,SB_YEAR 
+					,SB_YEAR
 					,SB_SEMESTER
 					,SB_TEACHER
 					,SB_MAXSTU 
