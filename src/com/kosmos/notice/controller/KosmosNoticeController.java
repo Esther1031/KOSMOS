@@ -33,6 +33,7 @@ public class KosmosNoticeController {
 		this.kosmosNoticeService = kosmosNoticeService;
 	}
 	
+	
 	// ==================================================================== /
 	//  공지사항 글쓰기 폼 출력
 	// ==================================================================== /	
@@ -69,7 +70,7 @@ public class KosmosNoticeController {
 											   CommonUtils.NOTICE_EN_CODE);
 		
 		boolean bool = fu.imgfileUploadSize(req);
-		logger.info(bool);
+		logger.info("imgfileUploadSize ! : " + bool);
 
 		String no_subject = fu.getParameter("no_subject");
 		String no_contents = fu.getParameter("no_contents");
@@ -94,13 +95,12 @@ public class KosmosNoticeController {
 			return "notice/noticeInsert";
 		}
 			
-
-		return "notice/noticeForm"; // ?
+		return "notice/noticeForm";
 	}
 	
 	
 	// ==================================================================== /
-	// 공지사항 목록 조회 (LANDING: SELECT ALL)
+	// 공지사항 목록 조회 (LANDING)
 	// ==================================================================== /
 	@GetMapping("noticeList")
 	public String noticeList(HttpSession hs, Model model, KosmosNoticeVO nvo) {
@@ -193,8 +193,13 @@ public class KosmosNoticeController {
 					
 					model.addAttribute("pagingNvo", nvo);
 					model.addAttribute("listAll", listAll);
-				}		
-				return "notice/noticeList";
+					
+					return "notice/noticeList";
+					
+				} else {							// 게시물이 없는 경우
+					
+					return "notice/noticeLanding";
+				}
 				
 			} else {								// STUDENT LOGIN ==================== //
 	
@@ -210,7 +215,7 @@ public class KosmosNoticeController {
 				nvo.setSearchType(searchType);
 				nvo.setKeyword(keyword);
 				// MS_NAME ---> userName
-//				hs.setAttribute("userName", ms_name);
+				hs.setAttribute("userName", ms_name);
 				logger.info("DO U GET searchType ??? : " + nvo.getSearchType());
 				logger.info("DO U GET keyword ??? : " + nvo.getKeyword());
 				
@@ -228,9 +233,13 @@ public class KosmosNoticeController {
 					
 					model.addAttribute("pagingNvo", nvo);
 					model.addAttribute("listAll", listAll);
-				}
+					
+					return "notice/noticeList";
+
+				} else {								// 게시물이 없는 경우
 				
-				return "notice/noticeList";
+					return "notice/noticeLanding";
+				}
 			}
 		
 		} else {										// ======= JUST SELECT NOTICE LIST ======= //
@@ -249,10 +258,10 @@ public class KosmosNoticeController {
 				nvo.setMt_num(teacherName);
 				nvo.setMt_id(teacherId);
 				
-				// MT_NAME ---> "writer"
-				hs.setAttribute("writer", teacherName);
 				// MT_NAME ---> "userName"
 				hs.setAttribute("userName", teacherName);
+				// MT_ID -----> "teacherId"
+				hs.setAttribute("teacherId", teacherId);
 				
 				// PAGIN SETTING
 				nvo.setPageSize(String.valueOf(pageSize));
@@ -267,10 +276,14 @@ public class KosmosNoticeController {
 					
 					model.addAttribute("pagingNvo", nvo);
 					model.addAttribute("listAll", listAll);
-				}		
-				return "notice/noticeList";
-				
-			} else {								// STUDENT LOGIN ========================= //
+					
+					return "notice/noticeList";
+				} else {								// 게시물이 없는 경우
+					
+					return "notice/noticeLanding";
+
+				}
+				} else {								// STUDENT LOGIN ========================= //
 	
 				List<KosmosNoticeVO> listStu = kosmosNoticeService.checkStudent(lvo);
 				
@@ -294,9 +307,13 @@ public class KosmosNoticeController {
 					
 					model.addAttribute("pagingNvo", nvo);
 					model.addAttribute("listAll", listAll);
+					return "notice/noticeList";
+					
+				} else {								// 게시물이 없는 경우
+			
+					return "notice/noticeLanding";
+			
 				}
-				
-				return "notice/noticeList";
 			}
 		}
 	}

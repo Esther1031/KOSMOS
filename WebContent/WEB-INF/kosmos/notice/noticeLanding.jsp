@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@ page import="com.kosmos.notice.vo.KosmosNoticeVO" %>
 <%@ page import="com.kosmos.login.vo.KosmosLoginVO" %>
 
 <!DOCTYPE html>
@@ -9,8 +8,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>공지사항 > 상세조회</title>
+    <title>공지사항 > 전체</title>
 
+    <!-- 	css랑 js 파일 경로
+            WebContent/resource/css/default.css
+            WebContent/resource/css/gnb3.css
+            요거 두개 보시면 됩니다.
+            
+            default 는 본문 글자 셋팅 (맨 아랫줄 body부분)
+            gnb 는 메뉴 css 및 빨간 테두리 부분 (content로 검색) 들어가 있어요. 
+    -->
     <link rel="stylesheet" href="resource/css/default.css">
     <link rel="stylesheet" href="resource/css/gnb3.css">
 
@@ -40,42 +47,22 @@
     </script>
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script> 
 	<script type="text/javascript">
-		$(document).ready(function(){
 			
-			// 목록 버튼 클릭
-			$("#listBtn").on("click", function(){
-				$("#noticeDetail").attr({
-					"action":"noticeList.k",
-					"method":"GET",
-					"enctype":"application/x-www-form-urlencoded"
+		$(document).ready(function(){
+		
+				// 조회 버튼 클릭.
+				$(document).on("click", "#searchBtn", function(){
+					alert("게시글 검색");		
+					$("#noticeLanding").attr({"method":"GET",
+						                   "action":"noticeList.k"}).submit();
 				});
 				
-				$("#noticeDetail").submit();
-			});
-			
-			// 수정 버튼 클릭
-			$(document).on("click", "#updateBtn", function(){
+				// 글쓰기 버튼 클릭.
+				$(document).on("click", "#I", function(){
+					location.href="noticeForm.k";
+				});
 				
-				var v1 = $("#no_num").val();
-				
-				$("#noticeDetail").attr({
-					"action":"noticeUpdateForm.k?no_num="+v1,
-					"method":"POST",
-					"enctype":"multipart/form-data"
-				}).submit();
-			});
-			
-			// 삭제 버튼 클릭
-			$(document).on("click", "#deleteBtn", function(){
-				var v1 = $("#no_num").val();
-				$("#noticeDetail").attr({
-					"action":"noticeDelete.k?no_num="+v1,
-					"method":"POST",
-					"enctype":"multipart/form-data"
-				}).submit();
-			});
-			
-		});	
+		});
 	</script>
 	<!-- =============================== script =============================== -->
     
@@ -109,23 +96,10 @@
             height: auto;
             border: 1px solid gray;
         }
-		.tt {
+		.tt{
 			text-align:center;
 		}
-		th, td {
-			width: 680px;
-			border: 1px solid Gainsboro;
-			text-align:left;
-			line-height:2;
-		}
-		table {
-			width:750px;
-			text-align:right;
-		}
-		.line{
-			text-align:center;
-			border-top: 1px solid #727272;
-		}
+			
 		.content{
 			width: 1200px;
 			height: 900px;
@@ -134,24 +108,13 @@
 			float: center;
 			border: 1px solid red;
 		}
-		.all{
-			width: 750px;
-			margin: 50px 10px 50px 180px;
+		
+		.list{
+			width: 780px;
+			float:right;
+			margin:30px 80px 10px 20px;
 		}
-		.wrap {
-			width : 660px;
-			align : center;
-			border : 5px;
-			margin : 10px auto;
-		}
-		.listBtn {
-			padding: 10px 0px 10px 0px;	
-			float: right;
-		}
-		.forWriter{
-			margin-top: 10px;
-			float: right;
-		}	
+		
 		.paging{
 			margin-top: 20px;
    			border-top: 1px dashed #dadada;
@@ -253,90 +216,78 @@
 	        <!-- 보더값 적용 소스 : <div id="s_center" style="width: 69%; border:1px solid black;float:left;margin-left:5px;margin-right:5px;height:100%;">본문  -->
 	        <div style="width:84%; float:right; margin-left:5px; margin-right:5px; height:100%">
 				<% request.setCharacterEncoding("UTF-8"); %>
-				<%
-					KosmosNoticeVO nvo = null;
-					Object obj = request.getAttribute("listS");
-					
-					nvo = (KosmosNoticeVO)obj;
-					System.out.println("수정, 삭제에서 쓸 교사 아이디 : " + nvo.getMt_id());
-					System.out.println("뷰에서 선택한 글 번호 : " + nvo.getNo_num());
-				%>
-		
-				<form id="noticeDetail" method="POST">
-					<div class="all">
-							<div style="margin::5px 0px 5px 0px;">
-								<h2>공지사항</h2>
+				<form method="POST" id="noticeLanding">
+					<!-- 전체를 하나의 레이아웃으로 묶음. -->
+					<div class="list">
+						<div style="margin::5px 0px 5px 0px;">
+							<h2>공지사항</h2>
+						</div>
+						<hr>
+						
+						<!-- 'ㅇㅇㅇ님 로그인 중입니다' 추후 위치 조정 필요 -->
+						<%	String userName = (String)session.getAttribute("userName"); %>					
+							<%=userName %>님 로그인중입니다.
+						<!-- 'ㅇㅇㅇ님 로그인 중입니다' 추후 위치 조정 필요 -->
+						
+						
+							<!-- 공지사항 게시글 목록 상단 레이아웃 -->
+							<div style="margin-top:10px;">
+								<!-- (좌) 공지사항 게시물 개수 조회-->
+								<div style="float:left; width:50%;">전체 <span>0</span>건</div>
+			
+								<!-- (우) 공지사항 게시물 조건 조회(검색)-->
+								<div style="float:right; width:50%; text-align:right; margin-bottom:10px;">				
+									<select name="searchType" id="searchType">
+										<option value="title" selected>제목</option>
+										<option value="contents">내용</option>
+										<option value="writer">작성자</option>
+									</select>
+									<!-- 검색값을 받음 -->
+									<input type="text" name="keyword" placeholder="검색어 입력" />
+									<!-- 검색 버튼 -->
+									<input type="button" id="searchBtn" value="조회" />
+								</div>
 							</div>
-						<table>
-							<input type="hidden" id="no_num" name="no_num" value="<%=nvo.getNo_num() %>" />
-							<input type="hidden" name="mt_num" value="<%=nvo.getMt_num() %>" />
-							<tr>
-								<td class="line"></td>
-								<td class="line"></td>
-								<td class="line"></td>
-								<td class="line"></td>
-							</tr>
-							<tr>
-								<th colspan="1" class="tt">&nbsp;&nbsp;제&nbsp;목&nbsp;&nbsp;&nbsp;</th>
-								<td colspan="3">
-									<input name="no_subject" value="<%= nvo.getNo_subject() %>" size="80" readonly />
-								</td>
-							</tr>
-							<tr>
-								<th class="tt">&nbsp;&nbsp;&nbsp;작성자&nbsp;&nbsp;&nbsp;</th>
-								<td>
-									<input type="text" name="mt_num" value="<%= nvo.getMt_num() %>" style="text-align:center;" readonly />
-								</td>
-								<th class="tt">&nbsp;&nbsp;&nbsp;작성일&nbsp;&nbsp;&nbsp;</th>
-								<td>
-									<input name="no_insdate" value="<%= nvo.getNo_insdate() %>" style="text-align:center;" readonly />
-								</td>
-							</tr>
-							<tr>
-								<th colspan="1" class="tt">&nbsp;첨부파일&nbsp;</th>
-								<td colspan="3">
-									<a href="">&nbsp;&nbsp;<%=nvo.getNo_file() %></a>
-								</td>
-							</tr>
-							<tr>
-								<td colspan="4">
-									<textarea name="no_contents" id="no_contents" rows="28" cols="104" readonly /><%= nvo.getNo_contents() %>
-									</textarea>
-								</td>
-							</tr>
-						</table>
-		
-						<div class="wrap">
-							<div class="listBtn">
-								<button type="button" id="listBtn">목록</button>
-							</div>
-							<% 
-								// 세션에서 받은 교사 아이디
-								KosmosLoginVO lvo = (KosmosLoginVO) session.getAttribute("result");
+							
+							
+							<!-- 공지사항 목록 -->
+							<table id="noticeList" style="margin: 30px 10px 20px 0px; width:780px;" summary='공지사항 첫 화면: 공지사항 목록'>
+								<thead>
+									<tr>
+										<th class="tt" width="60px" title="번호">번호</th>
+										<th class="tt" width="250px" title="제목">제목</th>
+										<th class="tt" width="48px" title="작성자">작성자</th>
+										<th class="tt" width="68px" title="작성일">작성일</th>
+										<th class="tt" width="45px" title="조회수">조회수</th>
+									</tr>
+								</thead>	
+								<tbody>
+									<tr>
+										<td class="tt"><!-- 번호 --></td>
+										<td class="tt"><!-- 제목 --></td>
+										<td class="tt"><!-- 작성자 --></td>
+										<td class="tt"><!-- 작성일 --></td>
+										<td class="tt"><!-- 조회수 --></td>
+									</tr>
+								</tbody>
+							</table>
+							<!-- 
+								교사회원에게만 글쓰기 버튼을 활성화 
+								학생회원 글쓰기 버튼 비활성화
+							-->			
+							<%
+								KosmosLoginVO lvo = (KosmosLoginVO)session.getAttribute("result");
 								String mt_id = lvo.getMt_id();
-								System.out.println("로그인한 교사 아이디 : " + mt_id);
-								if(mt_id == null){
-									return;
-								}
 								
-								// 작성자 아이디
-								nvo = (KosmosNoticeVO)obj;
-								String writer_id = nvo.getMt_id();
-								System.out.println("글을 쓴 작성자 아이디 : " + writer_id);
-								
-								// 작성자 아이디와 로그인한 회원의 아이디가 같은 경우 '수정', '삭제' 버튼 활성화
-								if(mt_id.equals( nvo.getMt_id())) {
-							%>	
-							<div class="forWriter">
-								<button type="button"id="updateBtn">수정</button>
-								<button type="button"id="deleteBtn">삭제</button>
+								// 교사 회원으로 로그인한 경우에만 '글쓰기'버튼 활성화
+								if(mt_id != null) {
+							%>
+							<div style="margin-top: 10px;">
+								<input type="button" value="글쓰기" id="I" style="float:right;">
 							</div>
 							<%
-								} else {
-									return;
-								}
+								} // end of if
 							%>
-						</div>
 					</div>
 				</form>
 	        </div>

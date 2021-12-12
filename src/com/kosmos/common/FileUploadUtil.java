@@ -48,7 +48,7 @@ public class FileUploadUtil {
 			System.out.println("mr.getOriginalFileName(\"bo_file\") >>> : " + mr.getOriginalFileName("bo_file"));
 			System.out.println("mr.getFilesystemName(\"bo_file\") >>> : " + mr.getFilesystemName("bo_file"));
 			
-			ThumnailImg.thumnailFun(filePath, mr.getFilesystemName("bo_file"));	
+			ThumnailImg.thumnailFun(filePath, mr.getFilesystemName("no_file"));	
 			bool=true;						
 		}catch(Exception e) {
 			System.out.println("imgfileUploadUtil.imgfileUpload() >>> : " + mr);			
@@ -56,24 +56,24 @@ public class FileUploadUtil {
 		return bool;
 	}
 
-// ÆÄ¶ó¹ÌÅÍ	
-	// ÆÄ¶ó¹ÌÅÍ ÇÏ³ª
+// ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½	
+	// ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½Ï³ï¿½
 	public String getParameter(String s){
 		return mr.getParameter(s);
 	}
 	
-	// ÆÄ¶ó¹ÌÅÍ ¿©·¯ °³
+	// ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public String[] getParameterValues(String s){
 		return mr.getParameterValues(s);		
 	}
 	
-// ÆÄÀÏ¸í	
-	// ÆÄÀÏ¸í ÇÏ³ª
+// ï¿½ï¿½ï¿½Ï¸ï¿½	
+	// ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½Ï³ï¿½
 	public String getFileName(String f){
 		return mr.getFilesystemName(f);
 	}
 	
-	// ÆÄÀÏ¸í ¿©·¯ °³
+	// ï¿½ï¿½ï¿½Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	public ArrayList<String> getFileNames(){
 		@SuppressWarnings("unchecked")
 		Enumeration<String> en = mr.getFileNames();
