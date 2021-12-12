@@ -385,7 +385,7 @@
     <div class="container">
         서울 금천구 가산동 8명로 88 코스모스고등학교 <br/>
         교무실 02-123-4567(09:00~17:00) 행정실 02-7654-3210(09:00~24:00)<br/>
-        opyright (c) 코스모스고등학교 All Rights Reserved
+        Copyright (c) 코스모스고등학교 All Rights Reserved
     </div>
 </div>
 
