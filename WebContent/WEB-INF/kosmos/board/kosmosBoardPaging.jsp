@@ -131,15 +131,16 @@
 	//	boardSelectList.jsp?&curPage=6
 	//	boardSelectList.jsp?&curPage=40	
 %>
+	&nbsp;&nbsp;&nbsp;
 	<a href="<%=url%>?<%=str%>curPage=<%=linkPage%>">▶</a>&nbsp;&nbsp;&nbsp;
-	<a href="<%=url%>?<%=str%>curPage=<%=pageCount%>">▷▷</a>&nbsp;&nbsp;&nbsp;
+	<a href="<%=url%>?<%=str%>curPage=<%=pageCount%>">▷▷</a>
 <%
 	}else{
 		System.out.println("다음그룹이 있는 경우 linkPage >>> : " + linkPage);
 		System.out.println("다음그룹이 있는 경우pageCount >>> : " +pageCount);
 		System.out.println("다음그룹이 있는 경우_else");
 %>
-	▶&nbsp;&nbsp;&nbsp;▷▷&nbsp;&nbsp;&nbsp;
+	&nbsp;&nbsp;&nbsp;▶&nbsp;&nbsp;&nbsp;▷▷
 <%
 	}
 %>

@@ -144,7 +144,30 @@
         	padding-top:10px; 
         	padding-bottom:10px; 
         }
-
+        
+		.section{
+			background-color: #34558b;
+			color: white;	
+			text-align: center;
+			width: 230px;
+			height: 150px;
+			border-radius: 20px;
+			display:block;
+			margin: 5px 0px 0px 40px;
+		}
+		.nav{
+			background-color: #fafafa;
+			color: black;
+			margin-top: 40px;
+			border-radius: 0px 0px 10px 10px;
+			text-align:left;
+			height: 200px;
+			font-size: inherit;
+		}
+           .line1{
+			border-top: 1px dashed Gainsboro;
+			width: 190px;
+		}
     </style>
 	<%
 		request.setCharacterEncoding("UTF-8");
@@ -284,7 +307,7 @@
 
     <!-- <img src="/KOSMOS/img/kosmos_1.jpg" width="100%"> -->
     <div class="text">
-        <a href=""><h1>KOSMOS 고등학교</h1></a>
+        <a href="mainHome.k"><h1>KOSMOS 고등학교</h1></a>
     </div>
     <div class="right_box">
     	<a href style="margin-right: 10px;" id="loginbtn">로그인</a>
@@ -353,22 +376,32 @@
         <!-- 왼쪽부분  width 15프로  -->
         <!-- 보더값 적용 소스 : <div id="s_left" style="width:15%;border:1px solid black;float:left;height:100%;"> -->
         <div style="width:15%; float:left;height:100%;">
-
-            <!-- 왼쪽 상단 : 공모전 -->
-            <div style="height: 30%; margin-top: 50px;">
-            	<ul class="sub_menu">
-					<li><h3>과목 유형</h3></li>
-					<a href="subjectSelectEssential.k"><li class="sub_menu_li"><h4>필수</h4></li></a>
-					<a href="subjectSelectChoice.k"><li class="sub_menu_li"><h4>선택</h4></li></a>
-				</ul>
-            </div>
-            <div>
-            </div>
+		    <section class="section">
+		    <br>
+		    <h2>과목 정보</h2>
+			    <nav class="nav">
+			        <br>
+			        <ul style="padding-left: 20px;">
+			            <li style="margin-bottom: 15px;">
+			                <a href="subjectSelectEssential.k">
+			                    <span>필수</span>
+			                </a>
+			            </li>
+			            <li class="line1">
+			            </li>
+			            <li style="margin-top: 15px;">
+			                <a href="subjectSelectChoice.k">
+			                    <span>선택</span>
+			                </a>
+			            </li>
+			        </ul>
+			    </nav>
+			</section>
         </div>
 
         <!-- 가운데부분 width: 69프로 -->
         <!-- 보더값 적용 소스 : <div id="s_center" style="width: 69%; border:1px solid black;float:left;margin-left:5px;margin-right:5px;height:100%;">본문  -->
-        <div style="width: 69%; float:left; margin-left:5px;margin-right:5px;height:100%">
+        <div style="width: 83%; float:left; margin-left:5px;margin-right:5px;height:100%">
 
              <h3 style="font-size:30px; margin:0px auto;" align="center">개설 강좌 전체 목록</h3>
 		<form id="subjectSelectAll" name="subjectSelectAll">
@@ -493,7 +526,7 @@
 
         <!-- 오른쪽부분 width: 15프로 -->
         <!-- 보더값 적용 소스 : <div id="s_right" style="width:15%; float:right;height:100%;"본문  -->
-        <div style="width:15%; float:right;height:100%">
+        <div style="float:right;height:100%">
 
             <!-- 오른쪽에서 상단 부분 : 날씨 -->
             <div style="height: 30%; margin-top: 50px">

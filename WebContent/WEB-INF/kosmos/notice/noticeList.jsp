@@ -44,6 +44,12 @@
                 window.open("notice.jsp", "", "width=800, height=800, resizable=no, scrollbars=no, status=no");
 
             });
+            
+            $("#loginbtn").click(function () {
+
+                window.open("loginFormPop.k", "", "width=600, height=500, resizable=no, scrollbars=no, status=no");
+
+            });
 
         });
     </script>
@@ -100,11 +106,23 @@
         }
 		.tt{
 			text-align:center;
+			height: 40px;
 		}
-		
 		.line{
 			text-align:center;
-			border-bottom: 1px solid #727272;
+			border-top: 1px solid #34558b;
+			color: #34558b;
+			height: 40px;
+		}
+		.line2{
+			text-align:center;
+			border-top: 1px solid #34558b;
+			color: #34558b;
+			height: 10px;
+		}
+		.line1{
+			border-top: 1px dashed Gainsboro;
+			width: 190px;
 		}
 		.content{
 			width: 1200px;
@@ -114,13 +132,49 @@
 			float: center;
 			border: 1px solid red;
 		}
-		
 		.list{
 			width: 780px;
 			float:right;
 			margin:30px 80px 10px 20px;
 		}
-		
+		.insertBtn{		
+			color: white;
+			background-color: #34558b;
+			height: 25px;
+			width: 60px; 
+			border: 0px solid black;
+			border-radius: 4px;
+			display:block;
+		}
+		.searchBtn{
+			color: white;
+			background-color: #34558b;
+			height: 20px;
+			width: 40px; 
+			border: 0px solid black;
+			border-radius: 4px;
+			display:block;
+			float:right;
+		}
+		.section{
+			background-color: #34558b;
+			color: white;	
+			text-align: center;
+			width: 230px;
+			height: 150px;
+			border-radius: 20px;
+			display:block;
+			margin: 5px 0px 0px 40px;
+		}
+		.nav{
+			background-color: #fafafa;
+			color: black;
+			margin-top: 40px;
+			border-radius: 0px 0px 10px 10px;
+			text-align:left;
+			height: 200px;
+			font-size: inherit;
+		}
 		.paging{
 			margin-top: 20px;
    			border-top: 1px dashed #dadada;
@@ -139,9 +193,12 @@
 	
 	    <!-- <img src="/KOSMOS/img/kosmos_1.jpg" width="100%"> -->
 	    <div class="text">
-	        <a href=""><h1>KOSMOS 고등학교</h1></a>
+	        <a href="mainHome.k"><h1>KOSMOS 고등학교</h1></a>
 	    </div>
-	    <div class="right_box"><a href style="margin-right: 10px;">로그인</a><a href="">수강신청</a></div>
+	     <div class="right_box">
+    	<a href style="margin-right: 10px;" id="loginbtn">로그인</a>
+    	<a href="registration.k">수강신청</a>
+    </div>
 	</div>
 	<!-- =========================== header1 =========================== -->
 
@@ -158,11 +215,11 @@
 				<!-- 학교소개 링크 -->
 				    <a href="#">학교 소개</a>
 				    <ul>
-					<li><a href="kosmos_words.jsp">학교장 인사</a></li>
-					<li><a href="kosmos_history.jsp">학교 연혁</a></li>
-					<li><a href="kosmos_info.jsp">학교 소개</a></li>
-					<li><a href="kosmos_symbol.jsp">학교 상징</a></li>
-					<li><a href="kosmos_map.jsp">학교 위치</a></li>
+						<li><a href="schoolGreetings.k">학교장 인사</a></li>
+                        <li><a href="schoolHistory.k">학교 연혁</a></li>
+                        <li><a href="schoolIntroduce.k">학교 소개</a></li>
+                        <li><a href="schoolSymbol.k">학교 상징</a></li>
+                        <li><a href="schoolLocation.k">학교 위치</a></li>
 				    </ul>
 				</li>
 				
@@ -182,12 +239,12 @@
 		
 		
 				<li>
-				    <a href="#">코스모스숲</a>
+				    <a href="boardSelectAll.k">코스모스숲</a>
 				</li>
 		
 				<!-- 마이페이지 링크 -->
 				<li>
-				    <a href="#">마이페이지</a>
+				    <a href="mainMyPage.k">마이페이지</a>
 				</li>
 			    </ul>
 			</nav>
@@ -205,14 +262,27 @@
 	        <!-- =========================== 왼쪽 사이드 바 =========================== -->
 	        <!-- 보더값 적용 소스 : <div id="s_left" style="width:15%;border:1px solid black;float:left;height:100%;"> -->
 	        <div style="width:15%; float:left;height:100%;">
-	
-	            <!-- 왼쪽 상단 : 공모전 -->
-	            <div>
-	            </div>
-	
-	            <div>
-	                <!-- 왼쪽 하단 : 공모전 이미지 아래 빈칸부분 만약 넣고 싶은거 있으면 요기다가-->
-	            </div>
+				<section class="section">
+					<br>
+					<h2>공지사항</h2>
+					<nav class="nav">
+						<br>
+						<ul style="padding-left: 20px;">
+							<li style="margin-bottom: 15px;">
+								
+									<span></span>
+								
+							</li>
+							<li class="line1">
+							</li>
+							<li style="margin-top: 15px;">
+								
+									<span></span>
+								
+							</li>
+						</ul>
+					</nav>
+				</section>
 	        </div>
 	        <!-- =========================== 왼쪽 사이드 바 =========================== -->
 
@@ -249,10 +319,10 @@
 						<h2>공지사항</h2>
 					</div>
 					
-					<!-- 'ㅇㅇㅇ님 로그인 중입니다' 추후 위치 조정 필요 -->
+					<!-- 'ㅇㅇㅇ님 로그인 중입니다' 위치 조정 필요 -->
 					<%	String userName = (String)session.getAttribute("userName"); %>					
 						<%=userName %>님 로그인중입니다.
-					<!-- 'ㅇㅇㅇ님 로그인 중입니다' 추후 위치 조정 필요 -->
+					<!-- 'ㅇㅇㅇ님 로그인 중입니다' 위치 조정 필요 -->
 					
 					
 						<!-- 공지사항 게시글 목록 상단 레이아웃 -->
@@ -268,29 +338,29 @@
 									<option value="writer">작성자</option>
 								</select>
 								<!-- 검색값을 받음 -->
-								<input type="text" name="keyword" placeholder="검색어 입력" />
+								<input type="text" name="keyword" placeholder="검색어 입력" size="22" />
 								<!-- 검색 버튼 -->
-								<input type="button" id="searchBtn" value="조회" />
+								<button class="searchBtn" type="button" id="searchBtn">조회</button>
 							</div>
 						</div>
 						
 
 						<!-- 공지사항 목록 -->
-						<table id="noticeList" style="margin: 30px 10px 20px 0px; width:780px;" summary='공지사항 첫 화면: 공지사항 목록'>
+						<table id="noticeList" style="margin: 0px 10px 20px 0px; width:780px;" summary='공지사항 첫 화면: 공지사항 목록'>
 							<thead>
-								<tr>
-									<td class="line"></td>
-									<td class="line"></td>
-									<td class="line"></td>
-									<td class="line"></td>
-									<td class="line"></td>
-								</tr>
 								<tr>
 									<th class="line" width="60px" title="번호">번호</th>
 									<th class="line" width="250px" title="제목">제목</th>
 									<th class="line" width="48px" title="작성자">작성자</th>
 									<th class="line" width="68px" title="작성일">작성일</th>
 									<th class="line" width="45px" title="조회수">조회수</th>
+								</tr>
+								<tr>
+									<td class="line2"></td>
+									<td class="line2"></td>
+									<td class="line2"></td>
+									<td class="line2"></td>
+									<td class="line2"></td>
 								</tr>
 							</thead>
 						<%
@@ -352,7 +422,7 @@
 						if(mt_id != null) {
 					%>
 						<div style="margin-top: 10px;">
-							<input type="button" value="글쓰기" id="I" style="float:right;">
+							<button class="insertBtn" type="button" id="I" style="float:right;">글쓰기</button>
 						</div>
 					<%
 						} // end of if

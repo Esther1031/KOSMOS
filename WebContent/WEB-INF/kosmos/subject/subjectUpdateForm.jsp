@@ -198,6 +198,30 @@
 			height: 30px;
 			border: 0px solid black;
 		}
+		
+        .section{
+			background-color: #34558b;
+			color: white;	
+			text-align: center;
+			width: 230px;
+			height: 150px;
+			border-radius: 20px;
+			display:block;
+			margin: 5px 0px 0px 40px;
+		}
+		.nav{
+			background-color: #fafafa;
+			color: black;
+			margin-top: 40px;
+			border-radius: 0px 0px 10px 10px;
+			text-align:left;
+			height: 200px;
+			font-size: inherit;
+		}
+           .line1{
+			border-top: 1px dashed Gainsboro;
+			width: 190px;
+		}		
     </style>
 </head>
 	<% request.setCharacterEncoding("UTF-8"); %>
@@ -436,18 +460,28 @@
 		<!-- ========================================== 왼쪽 사이드 바 ========================================== -->
         <!-- 왼쪽부분  width 15프로  -->
         <!-- 보더값 적용 소스 : <div id="s_left" style="width:15%;border:1px solid black;float:left;height:100%;"> -->
-        <div style="width:0%; float:left;height:100%;">
-
-            <!-- 왼쪽 상단 : 공모전 -->
-            <%--
-            <div><img id="img_ucc" name="img_ucc"
-                      style="border:1px soild gray; width:100%; height: 50%">
-            </div>
-			 --%>
-			 
-            <div>
-                <!-- 왼쪽 하단 : 공모전 이미지 아래 빈칸부분 만약 넣고 싶은거 있으면 요기다가-->
-            </div>
+        <div style="width:15%; float:left;height:100%;">
+	    <section class="section">
+	    <br>
+	    <h2>과목 정보</h2>
+	    <nav class="nav">
+	        <br>
+	        <ul style="padding-left: 20px;">
+	            <li style="margin-bottom: 15px;">
+	                <a href="subjectSelectEssential.k">
+	                    <span>필수</span>
+	                </a>
+	            </li>
+	            <li class="line1">
+	            </li>
+	            <li style="margin-top: 15px;">
+	                <a href="subjectSelectChoice.k">
+	                    <span>선택</span>
+	                </a>
+	            </li>
+	        </ul>
+	    </nav>
+	</section>
         </div>
 		<!-- ========================================== 왼쪽 사이드 바 ========================================== -->
 		

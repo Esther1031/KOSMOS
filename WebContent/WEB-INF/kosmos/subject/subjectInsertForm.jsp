@@ -198,7 +198,30 @@
 			height: 30px;
 			border: 0px solid black;
 		}
-
+		
+		.section{
+			background-color: #34558b;
+			color: white;	
+			text-align: center;
+			width: 230px;
+			height: 150px;
+			border-radius: 20px;
+			display:block;
+			margin: 5px 0px 0px 40px;
+		}
+		.nav{
+			background-color: #fafafa;
+			color: black;
+			margin-top: 40px;
+			border-radius: 0px 0px 10px 10px;
+			text-align:left;
+			height: 200px;
+			font-size: inherit;
+		}
+		.line1{
+			border-top: 1px dashed Gainsboro;
+			width: 190px;
+		}
     </style>
 
 </head>
@@ -290,10 +313,10 @@
 			
 			// 선수과목명
 			<% 
-			String b = SubjectUtils.beforenameFrontToDB();
-			String[] bArray = b.split(",");
-			for (int i=0; i < bArray.length; i++){
-				String key_beforename = bArray[i];
+				String b = SubjectUtils.beforenameFrontToDB();
+				String[] bArray = b.split(",");
+				for (int i=0; i < bArray.length; i++){
+					String key_beforename = bArray[i];
 			%>
 				$("#sb_beforename1").append("<option value='"+"<%= key_beforename %>"+"'>"+ "<%= key_beforename %>" +"</option>");		
 			<%
@@ -554,18 +577,32 @@
         <!-- 왼쪽부분  width 15프로  -->
         <!-- 보더값 적용 소스 : <div id="s_left" style="width:15%;border:1px solid black;float:left;height:100%;"> -->
         <div style="width:15%; float:left;height:100%;">
-
-            <!-- 왼쪽 상단 : 공모전 -->
-            <div></div>
-
-            <div>
-                <!-- 왼쪽 하단 : 공모전 이미지 아래 빈칸부분 만약 넣고 싶은거 있으면 요기다가-->
-            </div>
+			<section class="section">
+			    <br>
+			    <h2>과목 정보</h2>
+			    <nav class="nav">
+			        <br>
+			        <ul style="padding-left: 20px;">
+			            <li style="margin-bottom: 15px;">
+			                <a href="subjectSelectEssential.k">
+			                    <span>필수</span>
+			                </a>
+			            </li>
+			            <li class="line1">
+			            </li>
+			            <li style="margin-top: 15px;">
+			                <a href="subjectSelectEssential.k">
+			                    <span>선택</span>
+			                </a>
+			            </li>
+			        </ul>
+			    </nav>
+			</section>
         </div>
 
         <!-- 가운데부분 width: 69프로 -->
         <!-- 보더값 적용 소스 : <div id="s_center" style="width: 69%; border:1px solid black;float:left;margin-left:5px;margin-right:5px;height:100%;">본문  -->
-        <div style="width: 69%; float:left; margin-left:5px;margin-right:5px;height:100%">
+        <div style="width: 84%; float:left; margin-left:5px;margin-right:5px;height:100%">
 
             <form id="subjectInsertForm" name="subjectInsertForm">
 				<table border="1">
@@ -676,7 +713,7 @@
 
         <!-- 오른쪽부분 width: 15프로 -->
         <!-- 보더값 적용 소스 : <div id="s_right" style="width:15%; float:right;height:100%;"본문  -->
-        <div style="width:15%; float:right;height:100%">
+        <div style="float:right;height:100%">
 
             <!-- 오른쪽에서 하단부분 : 식단 -->
             
