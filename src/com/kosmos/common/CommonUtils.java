@@ -137,8 +137,8 @@ public abstract class CommonUtils {
 	// ================================================================================ //
 	// 공지사항 NOTICE
 	// ================================================================================ //
-	// 파일(이미지) 업로드(경로 다시 설정해야 함.)
-	public static final String NOTICE_IMG_UPLOAD_PATH = "C:\\new_project\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\test\\fileupload\\notice";
+	// 파일(이미지) 업로드(경로 이클립스마다 계속 다시 설정해야 함.)
+	public static final String NOTICE_IMG_UPLOAD_PATH = "C:\\rerere\\.metadata\\.plugins\\org.eclipse.wst.server.core\\tmp0\\wtpwebapps\\KOSMOS\\fileupload\\notice";
 	public static final int NOTICE_IMG_FILE_SIZE = 2*1024*1024; // 2MB
 	public static final String NOTICE_EN_CODE = "UTF-8";
 	
