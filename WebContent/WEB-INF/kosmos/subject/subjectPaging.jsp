@@ -58,6 +58,9 @@
 	System.out.println("pageCount >>> : " + pageCount);
 	// (0/page)
 	
+	if (groupSize == 0){
+		groupSize = 1;
+	}
 	// 현재 그룹 설정
 	// 1-1/5
 	int curGroup = (curPage-1) / groupSize;
@@ -67,7 +70,7 @@
 	int linkPage = curGroup * groupSize;
 	System.out.println("linkPage >>> : " + linkPage);
 %>
-<p align="right">
+<p align="center" style="margin:8px;">
 <%
 	// 첫 번째 그룹이 아닌 경우
 	if(curGroup > 0){

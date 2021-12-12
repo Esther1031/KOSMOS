@@ -4,85 +4,148 @@
 <%@ page import="com.kosmos.common.SubjectUtils" %> 
 <%@ page import="com.kosmos.login.vo.KosmosLoginVO" %>
 <!DOCTYPE html>
-<html>
+<html lang="ko">
 <head>
-<meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>전체목록 + 개설강좌검색</title>
-  <link rel="stylesheet" href="default.css">
-  <link rel="stylesheet" href="gnb3.css">
-  <script src="js/jquery.js" charset="utf-8"></script>
-  <script src="js/gnb3.js" charset="utf-8"></script>
-</head>
-<style type="text/css">
-		.btnclr{
-			border: 0;
-			background: 0;
-		}
-		
-		/*
-		table{
-			display:inline-block;
-		}
-		*/
-		tr, td {
-			text-align: center;
-		}
-		
-		.content-top{
-			height: 60px;
-		}
-		
-		#s_left{
-			border: 1px solid black;
-			width:20%;
-			height:700px;
-			float:left;
-		}
-		
-		#s_right{
-			border: 1px solid black;
-			width:20%;
-			height:700px;
-			float:left;
-		}
-		
-		#contents{
-			border: 1px solid black;
-			width: 59.5%;
-			float:left;
-		}
-		
-		#footer{
-			border-top:double;
-			width:100%;
-			height:70px;
-			float:bottom;
-		}
-		
-		.tableSearch{
-			width: 600px;
-			height: 80px;
-		}
-				
-		.tableSA{
-			width: 800px;
-		}
-		
-		#sub_menu {
-			width: 234px;
-			float: right;
-			margin-top: 25px;
-			border: solid 1px blue;
-		} 
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>선택 목록 + 개설강좌검색</title>
 
-		#sub_menu li {
-			font-size: 18px;
-			padding: 10px;
-			border-bottom: dotted 1px #cccccc;
-		}
-	</style>
+    <!-- 	css랑 js 파일 경로
+            WebContent/resource/css/default.css
+            WebContent/resource/css/gnb3.css
+            요거 두개 보시면 됩니다.
+            
+            default 는 본문 글자 셋팅 (맨 아랫줄 body부분)
+            gnb 는 메뉴 css 및 빨간 테두리 부분 (content로 검색) 들어가 있어요. 
+    -->
+    <link rel="stylesheet" href="resource/css/default.css">
+    <link rel="stylesheet" href="resource/css/gnb3.css">
+    <link rel="stylesheet" href="resource/css/subjectSelectAll.css">
+    <script src="resource/js/jquery.js" charset="utf-8"></script>
+    <script src="resource/js/gnb3.js" charset="utf-8"></script>
+	
+
+    <!-- 
+        script 정리해보려고 했는데 공모전 ucc 링크가 풀려서 일단 다 합쳐뒀어요 
+    -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+            integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+    <script>
+        var Seourl = 'http://api.openweathermap.org/data/2.5/weather?q=Seoul&appid=58ae7970b66bd66c1602a8cd4c2ca3f4&units=metric';
+
+        $.getJSON(Seourl, function (result) {
+            // result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
+            $('.setemp').append(result.main.temp + ' º');
+            //$('.lowtemp').append(result.main.temp_min);
+            //$('.hightemp').append(result.main.temp_max);
+
+            /*아이콘					
+            $('.icon').append(result.weather[0].icon);					
+            ->					
+            var wiconUrl = '<img src="http://openweathermap.org/img/wn/10d@2x.png" alt="">'// 이렇게하면 고정적인 img 가 나오기때문에 					
+            ->
+            '<img src="http://openweathermap.org/img/wn/'+result.weather[0].icon +'.png" alt="'+ result.weather[0].description +'">'
+            로 수정					
+            -
+            */
+            //(result.weather[0].icon
+            var wiconUrl = '<img src="http://openweathermap.org/img/wn/' + result.weather[0].icon + '.png" alt="' + result.weather[0].description + '">'
+            $('.seicon').html(wiconUrl);
+        });
+        $.getJSON(Gyourl, function (result) {
+            // result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
+            $('.gytemp').append(result.main.temp + ' º');
+
+            var wiconUrl = '<img src="http://openweathermap.org/img/wn/' + result.weather[0].icon + '.png" alt="' + result.weather[0].description + '">'
+            $('.gyicon').html(wiconUrl);
+        });
+
+        $.getJSON(Gyourl, function (result) {
+			// result 변수는 getJSON 안에서 선언되었기때문에 안에서 사용되어야 한다.
+            $('.butemp').append(result.main.temp + ' º');
+
+            var wiconUrl = '<img src="http://openweathermap.org/img/wn/' + result.weather[0].icon + '.png" alt="' + result.weather[0].description + '">'
+            $('.buicon').html(wiconUrl);
+        });
+    </script>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "250px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+/*
+ * 		
+ *		요기만 추가 : 팝업용
+ *		로그인 팝업창도 추가함 _211211_David
+ *
+ */
+        $(document).ready(function () {
+
+            $("#img_ucc").click(function () {
+
+                window.open("noticePop.k", "", "width=800, height=800, resizable=no, scrollbars=no, status=no");
+
+            });
+			
+            $("#loginbtn").click(function () {
+
+                window.open("loginFormPop.k", "", "width=600, height=500, resizable=no, scrollbars=no, status=no");
+
+            });
+           
+            
+        });
+
+    </script>
+
+    <!-- 
+        css파일 공유하는 다른페이지들이랑 겹치거나 
+        다른이유로 적용 안되는 애들 문서에 적용시켜서 우선순위로 넣었어요.
+    -->
+
+    <style type="text/css">
+
+        #footer {
+            border-top: double;
+            width: 100%;
+            height: 70px;
+            float: bottom;
+        }
+
+        .image {
+            position: relative;
+            background: url(img/kosmos_1.jpg);
+            no-repeat;
+            height: 280px;
+            background-position: center;
+        }
+
+        .text {
+            padding-top: 20px;
+            margin-left: 20px;
+            width: 200px;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid gray;
+        }
+        
+        .thTop{
+        	padding-top:10px; 
+        	padding-bottom:10px; 
+        }
+
+    </style>
 	<%
 		request.setCharacterEncoding("UTF-8");
 	%>
@@ -95,14 +158,17 @@
 			
 		Object objPaging = request.getAttribute("pagingSVO_C");
 		KosmosSubjectVO pagingSVO_C = (KosmosSubjectVO)objPaging;
-			
+		
+		Object obj1 = session.getAttribute("result");
+		KosmosLoginVO lvo = (KosmosLoginVO)obj1;
+		String mt_id = lvo.getMt_id();
+		
 		Object obj = request.getAttribute("listSC");
 		if (obj == null){
 		System.out.println("obj가 null");
 		}
 		ArrayList<KosmosSubjectVO> listSC = (ArrayList<KosmosSubjectVO>)obj;
 	%>
-	<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript">
 	$(document).ready(function(){
 		
@@ -208,102 +274,139 @@
 		});
 	});
 	</script>
+</head>
+
+<!-- 본문 -->
 <body>
-<div style="width:1400px; margin:0 auto;"></div>
-<header>
-  <h1><a href="">코스모스고등학교<span class="hide"></span></a></h1>
-  <nav>
-    <ul class="gnb">
-      <li>
-        <a href="kosmos_main_page.html">Home</a>
-      </li>
-      <li>
-          <a href="#">Login</a>
-      </li>
-      <li>
-        <a href="#">학교 소개</a>
-        <ul>
-          <li><a href="kosmos_words.html">학교장 인사</a></li>
-          <li><a href="kosmos_history.html">학교 연혁</a></li>
-          <li><a href="kosmos_info.html">학교 소개</a></li>
-          <li><a href="kosmos_symbol.html">학교 상징</a></li>
-          <li> <a href="kosmos_map.html">학교 위치</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">수강신청</a>
-      </li>
-      <li>
-        <a href="#">수업정보</a>
-        <ul>
-          <li><a href="#subjectSelectAll.k">과목정보</a></li>
-          <li><a href="#">시간표</a></li>
-        </ul>
-      </li>
-      <li>
-        <a href="#">공지사항</a>
-      </li>
-      <li>
-      	<a href="#">코스모스숲</a>
-      </li>
-      <li>
-      	<a href="#">마이페이지</a>
-      </li>
-    </ul>
-  </nav>
-</header>
-<div class="bg_gnb"></div>
-<div class="content-top">제일 위</div>
-<div class="content" align="center">
-	<div id="s_left">
-		<div>
-			<ul>
-				<a href="subjectSelectEssential.k"><li>필수</li></a>
-				<a href="subjectSelectChoice.k"><li>선택</li></a>
-			</ul>
-			
-		</div>
-	</div>
-	<div id="contents">
-	<hr>
-	<hr>
-	<h3 style="font-size:30px;">개설 강좌 목록</h3>
+
+<!-- 상단 이미지 위에 글씨 오버랩 되는 부분 -->
+<div class="image">
+
+    <!-- <img src="/KOSMOS/img/kosmos_1.jpg" width="100%"> -->
+    <div class="text">
+        <a href=""><h1>KOSMOS 고등학교</h1></a>
+    </div>
+    <div class="right_box">
+    	<a href style="margin-right: 10px;" id="loginbtn">로그인</a>
+    	<a href="suGang">수강신청</a>
+    </div>
+</div>
+
+<!-- 메뉴포함 제일 외곽에 있는 틀 시작-->
+<div class="container">
+
+    <header>
+        <nav>
+        	<!-- 메뉴 css 클래스명 gnb -->
+            <ul class="gnb">
+            
+                <li>
+
+
+<!-- 학교소개 링크  : 더미 페이지와 연결해둔 상태_211211_David-->
+
+
+                    <a href="#">학교 소개</a>
+                    <ul>
+                        <li><a href="schoolGreetings.k">학교장 인사</a></li>
+                        <li><a href="schoolHistory.k">학교 연혁</a></li>
+                        <li><a href="schoolIntroduce.k">학교 소개</a></li>
+                        <li><a href="schoolSymbol.k">학교 상징</a></li>
+                        <li><a href="schoolLocation.k">학교 위치</a></li>
+                    </ul>
+                </li>
+                
+<!-- 수업정보 링크 -->
+                <li>
+                    <a href="#">수업정보</a>
+                    <ul>
+                        <li><a href="subjectSelectAll.k">과목정보</a></li>
+                        <li><a href="mainTimeTable.k">시간표</a></li>
+                    </ul>
+                </li>
+
+<!-- 공지사항 링크 -->
+                <li>
+                    <a href="noticeList.k">공지사항</a>
+                </li>
+
+
+                <li>
+                    <a href="boardSelectAll.k">코스모스숲</a>
+                </li>
+
+<!-- 마이페이지 링크 -->
+                <li>
+                    <a href="mainMyPage.k">마이페이지</a>
+                </li>
+            </ul>
+        </nav>
+
+    </header>
+
+    <!-- 
+        (빨간선) 
+        빨간선은 마지막에 웹컨텐트 > 리소스 > css > gnb3.css 에서  
+        content 찾아서 border 지워주시면 됩니다.	
+    -->
+    <div class="content">
+        <!-- 왼쪽부분  width 15프로  -->
+        <!-- 보더값 적용 소스 : <div id="s_left" style="width:15%;border:1px solid black;float:left;height:100%;"> -->
+        <div style="width:15%; float:left;height:100%;">
+
+            <!-- 왼쪽 상단 : 공모전 -->
+            <div style="height: 30%; margin-top: 50px;">
+            	<ul class="sub_menu">
+					<li><h3>과목 유형</h3></li>
+					<a href="subjectSelectEssential.k"><li class="sub_menu_li"><h4>필수</h4></li></a>
+					<a href="subjectSelectChoice.k"><li class="sub_menu_li"><h4>선택</h4></li></a>
+				</ul>
+            </div>
+            <div>
+            </div>
+        </div>
+
+        <!-- 가운데부분 width: 69프로 -->
+        <!-- 보더값 적용 소스 : <div id="s_center" style="width: 69%; border:1px solid black;float:left;margin-left:5px;margin-right:5px;height:100%;">본문  -->
+        <div style="width: 69%; float:left; margin-left:5px;margin-right:5px;height:100%">
+
+             <h3 style="font-size:30px; margin:0px auto;" align="center">개설 강좌 선택 목록</h3>
 		<form id="subjectSelectAll" name="subjectSelectAll">
-		<p align="right"><input type="button" id="insertBtn" value="과목 새등록"></p>
-			<table border="1" align="center" class="tableSearch">
+		<div align="center">
+		<div class="serchwrap">
+				<table border="1" class="tableSearch" style="border: 1px solid Gainsboro;">
+					<thead>
+						<tr>
+							<th>개설년도</th>
+							<td><select class="searchSelect" id="key_sbyear" name="key_sbyear"></select></td>
+						</tr>
+						<tr>
+							<th>대상학년</th>		<!-- 드롭박스 -->
+							<td><select class="searchSelect" id="key_sbgrade" name="key_sbgrade"></select></td>
+							<th>대상학기</th>		<!-- 드롭박스 -->
+							<td><select class="searchSelect" align="center" id="key_sbsemester" name="key_sbsemester"></select></td>
+						</tr>
+						<tr>
+							<th>수업요일</th>		<!-- 드롭박스 -->
+							<td><select class="searchSelect" id="key_sbday" name="key_sbday"></select></td>
+							<th>수업교시</th>		<!-- 드롭박스 -->
+							<td><select class="searchSelect" id="key_sbtime" name="key_sbtime"></select></td>		
+						</tr>
+						<tr>
+							<th>과목명</th>	<!-- 텍스트 -->
+							<td><input type="text" class="searchText" id="key_sbname" name="key_sbname" placeholder="직접입력" /></td>	
+							<th>담당교사명</th>	<!-- 텍스트 -->
+							<td><input type="text" class="searchText" id="key_sbteacher" name="key_sbteacher" placeholder="직접입력" /></td>
+						</tr>
+					</thead>
+				</table>
+			<button type="button" id="searchBtn" class="searchBtn">검색</button>
+			</div>
+			</div>
+			<table border="1" class="tableSA" align="center">
 				<thead>
 					<tr>
-						<th>개설년도</th>
-						<td><select id="key_sbyear" name="key_sbyear"></select></td>
-					</tr>
-					<tr>
-						<th>대상학년</th>		<!-- 드롭박스 -->
-						<td><select id="key_sbgrade" name="key_sbgrade"></select></td>
-						<th>대상학기</th>		<!-- 드롭박스 -->
-						<td><select id="key_sbsemester" name="key_sbsemester"></select></td>
-						<td rowspan="5" align="center">
-							<button type="button" id="searchBtn">검색</button>	
-						</td>
-					</tr>
-					<tr>
-						<th>과목명</th>	<!-- 텍스트 -->
-						<td><input type="text" id="key_sbname" name="key_sbname" placeholder="직접입력" /></td>	
-						<th>담당교사명</th>	<!-- 텍스트 -->
-						<td><input type="text" id="key_sbteacher" name="key_sbteacher" placeholder="직접입력" /></td>
-					</tr>
-					<tr>
-						<th>수업요일</th>		<!-- 드롭박스 -->
-						<td><select id="key_sbday" name="key_sbday"></select></td>
-						<th>수업교시</th>		<!-- 드롭박스 -->
-						<td><select id="key_sbtime" name="key_sbtime"></select></td>		
-					</tr>
-				</thead>
-			</table>
-			<br>
-			<table border="1" class="tableSA">
-				<thead>
-					<tr>
-						<th><input type="checkbox" id="chkTop" name="chkTop"></th>
+						<th class="thTop"><input type="checkbox" id="chkTop" name="chkTop"></th>
 						<th>개설년도</th>
 						<th>교과군</th>	<!-- 국어, 영어, 수학, 사회, 과학 -->
 						<th>과목코드</th>
@@ -343,13 +446,13 @@
 							<td><%= sb_group %></td>	<!-- 국어, 영어, 수학, 사회, 과학 -->
 							<td><%= svo.getSb_code() %></td>
 							<td><%= svo.getSb_type() %></td>	<!-- 필수/선택 -->
-							<td><a href="subjectSelect.k"><input type="hidden" id="sb_name" name ="sb_name" value="<%= svo.getSb_num() %>"><%= svo.getSb_name()%></a></td>
+							<td><%= svo.getSb_name()%></td>
 							<td><%= svo.getSb_creditunit() %></td>	<!-- 1, 2, 3 -->
 							<td><%= sb_grade %>학년</td>	<!-- 1, 2, 3 학년 -->
 							<td><%= sb_semester %>학기</td>
 							<td><%= svo.getSb_teacher() %></td>
 							<td><%= svo.getSb_maxstu() %> 명</td>
-							<td><%= svo.getSb_day() %>요일&nbsp;<%= svo.getSb_time() %>교시</td>
+							<td><%= svo.getSb_day() %>요일<br><%= svo.getSb_time() %>교시</td>
 							<td><%= svo.getSb_beforename() %></td>
 						</tr>
 					</tbody>	
@@ -358,17 +461,14 @@
 			}
 			%>
 				<tr>
-					<td colspan="20" align="center">
-						<input type="button" id="selectBtn" value="조회">
+					<td colspan="20" style="padding-top:10px; padding-bottom:10px; padding-left:80px;">
+						<input type="button" id="selectBtn" class="btn" value="조회">
 			<%
-				Object obj1 = session.getAttribute("result");
-				KosmosLoginVO lvo = (KosmosLoginVO)obj1;
-				String mt_id = lvo.getMt_id();
 				if (mt_id != null){
 			%>
-						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type="button" id="updateBtn" value="수정">
-						<input type="button" id="deleteBtn" value="삭제">
+						<input type="button" id="updateBtn" class="btn" value="수정">
+						<input type="button" id="deleteBtn" class="btn" value="삭제">
+						<input type="button" id="insertBtn" class="btn" value="과목 새등록" style="float:right;">
 			<%
 				};
 			 %>
@@ -388,15 +488,33 @@
 				</tr>
 			</table>
 		</form>
-	</div>
-	<div id="s_right">사이드바 오른쪽</div>
-	<div id="footer" align="center">
-		<div class="container">
-			서울 금천구 가산동 8명로 88 코스모스고등학교 <br/>
-			교무실 02-123-4567(09:00~17:00) 행정실 02-7654-3210(09:00~24:00)<br/>
-			Copyright (c) 코스모스고등학교 All Rights Reseved
-		</div>
-	</div>
+
+        </div>
+
+        <!-- 오른쪽부분 width: 15프로 -->
+        <!-- 보더값 적용 소스 : <div id="s_right" style="width:15%; float:right;height:100%;"본문  -->
+        <div style="width:15%; float:right;height:100%">
+
+            <!-- 오른쪽에서 상단 부분 : 날씨 -->
+            <div style="height: 30%; margin-top: 50px">
+            </div>
+
+            <!-- 오른쪽에서 하단부분 : 식단 -->
+            <div style="float:top; height: 40%">
+
+            </div>
+        </div>
+    </div>
 </div>
+
+<!-- footer 부분  -->
+<div id="footer" align="center">
+    <div class="container">
+        서울 금천구 가산동 8명로 88 코스모스고등학교 <br/>
+        교무실 02-123-4567(09:00~17:00) 행정실 02-7654-3210(09:00~24:00)<br/>
+        copyright (c) 코스모스고등학교 All Rights Reserved
+    </div>
+</div>
+
 </body>
 </html>
